@@ -7,7 +7,7 @@
 
 We are a team based in the [School of Computing, National University of Singapore](http://www.comp.nus.edu.sg).
 
-You can reach us at the email `ryanc@comp.nus.edu.sg`
+You can reach us at the email `ryanc[at]comp.nus.edu.sg`
 
 ## Project team
 
