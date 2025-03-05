@@ -38,7 +38,7 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 [[github](http://github.com/nicolaskjh)] 
 [[portfolio](team/johndoe.md)]
 
-* Roles: Developer
+* Role: Developer
 * Responsibilities: Testing, Integration
 
 ### Joselyn
