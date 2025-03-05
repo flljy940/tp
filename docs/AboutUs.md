@@ -17,7 +17,7 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 [[homepage](http://www.comp.nus.edu.sg/~damithch)]
 [[github](https://github.com/bipplane)]
-[[portfolio](team/johndoe.md)]
+[[portfolio](team/bipplane.md)]
 
 * Role: Team lead, scheduling & tracking
 
@@ -26,7 +26,7 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 <img src="images/izniy.png" width="200px">
 
 [[github](http://github.com/izniy)]
-[[portfolio](team/johndoe.md)]
+[[portfolio](team/izniy.md)]
 
 * Role: Developer
 * Responsibilities: Code Quality, Documentation
@@ -36,7 +36,7 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 <img src="images/nicolaskjh.png" width="200px">
 
 [[github](http://github.com/nicolaskjh)] 
-[[portfolio](team/johndoe.md)]
+[[portfolio](team/nicolaskjh.md)]
 
 * Role: Developer
 * Responsibilities: Testing, Integration
@@ -46,7 +46,7 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 <img src="images/flljy940.png" width="200px">
 
 [[github](http://github.com/flljy940)]
-[[portfolio](team/johndoe.md)]
+[[portfolio](team/flljy940.md)]
 
 * Role: Developer
 * Responsibilities: Deliverables and deadlines, Expert
