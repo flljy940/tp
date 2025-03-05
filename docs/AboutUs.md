@@ -48,5 +48,6 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 [[github](http://github.com/flljy940)]
 [[portfolio](team/johndoe.md)]
 
-* Role: Developer
-* Responsibilities: Dev Ops + Threading
+* Role: Deliverables and deadlines, Expert
+* Responsibilities: Ensure project deliverables are done on time and in the right format. Helps other team member with matters related to the specific tool.
+
