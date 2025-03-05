@@ -33,7 +33,7 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 ### Nicolas
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/nicolaskjh.png" width="200px">
 
 [[github](http://github.com/nicolaskjh)] 
 [[portfolio](team/johndoe.md)]
