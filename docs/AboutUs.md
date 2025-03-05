@@ -43,7 +43,7 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 ### Joselyn
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/flljy940.png" width="200px">
 
 [[github](http://github.com/flljy940)]
 [[portfolio](team/johndoe.md)]
