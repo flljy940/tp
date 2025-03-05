@@ -23,7 +23,7 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 ### Yin Zi
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/izniy.png" width="200px">
 
 [[github](http://github.com/izniy)]
 [[portfolio](team/johndoe.md)]
