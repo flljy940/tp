@@ -274,13 +274,15 @@ _{Explain here how the data archiving feature will be implemented}_
 
 **Target user profile**:
 
-* has a need to manage a significant number of contacts
+* provides private tuition
+* has to manage a significant number of contacts and addresses
+* has to track whether payment has been made for various students
 * prefer desktop apps over other types
 * can type fast
 * prefers typing to mouse interactions
 * is reasonably comfortable using CLI apps
 
-**Value proposition**: manage contacts faster than a typical mouse/GUI driven app
+**Value proposition**: Provides quick lookup for client address, contact number, last payment made and last topic covered with student
 
 
 ### User stories
