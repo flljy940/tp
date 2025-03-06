@@ -302,14 +302,56 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 (For all use cases below, the **System** is the `AddressBook` and the **Actor** is the `user`, unless specified otherwise)
 
-**Use case: Delete a person**
+**Use case: Add a student**
 
 **MSS**
 
-1.  User requests to list persons
-2.  AddressBook shows a list of persons
-3.  User requests to delete a specific person in the list
-4.  AddressBook deletes the person
+1.  User inputs command to add student with the required parameters
+2.  AddressBook adds the student with the supplied contact details
+
+    Use case ends.
+
+**Extensions**
+
+* 1a. The user supplies an invalid input parameter.
+
+  * 1a1. AddressBook shows an error message for the relevant parameters.
+        
+    Use case resumes at step 1.
+
+
+
+**Use case: Delete a student**
+
+**MSS**
+
+1.  User requests to list students
+2.  AddressBook shows a list of students
+3.  User requests to delete a specific student in the list
+4.  AddressBook deletes the student
+
+    Use case ends.
+
+**Extensions**
+
+* 2a. The list is empty.
+
+  Use case ends.
+
+* 3a. The given index is invalid.
+
+    * 3a1. AddressBook shows an error message.
+
+      Use case resumes at step 2.
+
+**Use case: Mark/Unmark student payments**
+
+**MSS**
+
+1.  User requests to list students
+2.  AddressBook shows a list of students
+3.  User requests to mark or unmark payment for a specific student in the list
+4.  AddressBook marks or unmarks the payment
 
     Use case ends.
 
@@ -329,15 +371,35 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 ### Non-Functional Requirements
 
-1.  Should work on any _mainstream OS_ as long as it has Java `17` or above installed.
-2.  Should be able to hold up to 1000 persons without a noticeable sluggishness in performance for typical usage.
-3.  A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
+#### Compatibility Requirements
+- **Cross-Platform Support**: The application should run seamlessly on any _mainstream OS_ with Java 17 or above installed.
+- **File Compatibility**: The data file format should be compatible with future versions of the application to ensure backward compatibility.
+
+#### Performance Requirements
+- **Response Time**: The system should respond to user commands within 2 seconds for up to 1000 student entries.
+- **Startup Time**: The application should start up within 5 seconds on a _standard machine_.
+- **Memory Usage**: The application should not exceed 512MB of memory usage during normal operation with 1000 student entries.
+
+#### Scalability Requirements
+- **Data Storage**: The application should be able to handle up to 10,000 student entries without significant performance degradation.
+- **File Size**: The data file storing student information should not exceed 10MB for 1000 entries.
+
+#### Usability Requirements
+- **User Interface**: The command-line interface (CLI) should be intuitive and provide clear feedback for both successful and failed operations.
+- **Error Handling**: Error messages should be descriptive and guide the user on how to correct their input.
+- **Accessibility**: A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
+
+#### Documentation Requirements
+- **User Guide**: A comprehensive user guide should be provided to explain how to use the application, including command formats and examples.
+- **Developer Guide**: A detailed developer guide should be provided to explain the architecture, design decisions, and how to extend the application.
+- **Error Handling Documentation**: All possible error messages and their resolutions should be documented in the user guide.
 
 *{More to be added}*
 
 ### Glossary
 
 * **Mainstream OS**: Windows, Linux, Unix, MacOS
+* **Standard Machine**: A machine with minimally 8GB RAM and an SSD.
 * **Private contact detail**: A contact detail that is not meant to be shared with others
 
 --------------------------------------------------------------------------------------------------------------------
