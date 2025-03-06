@@ -289,41 +289,43 @@ _{Explain here how the data archiving feature will be implemented}_
 
 Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
 
-| Priority | As a …​                                    | I want to …​                 | So that I can…​                                                        |
-|----------|--------------------------------------------|------------------------------|------------------------------------------------------------------------|
-| `* * *`  | new user                                   | see usage instructions       | refer to instructions when I forget how to use the App                 |
-| `* * *`  | user                                       | add a new person             |                                                                        |
-| `* * *`  | user                                       | delete a person              | remove entries that I no longer need                                   |
-| `* * *`  | user                                       | find a person by name        | locate details of persons without having to go through the entire list |
-| `* *`    | user                                       | hide private contact details | minimize chance of someone else seeing them by accident                |
-| `*`      | user with many persons in the address book | sort persons by name         | locate a person easily                                                 |
+| Priority | As a …​                                      | I want to …​                   | So that I can…​                                                         |
+|----------|----------------------------------------------|--------------------------------|-------------------------------------------------------------------------|
+| `* * *`  | new user                                     | see usage instructions         | refer to instructions when I forget how to use the App                  |
+| `* * *`  | tutor                                        | add a new student              | log all my students and their details                                   |
+| `* * *`  | tutor                                        | add a student's address        | easily look up their address to go over and conduct a lesson            |
+| `* * *`  | tutor                                        | add a student's contact number | easily look up their contact if I need to reach out to them             |
+| `* * *`  | tutor                                        | add a student's subject taken  | prepare materials for their lesson                                      |
+| `* * *`  | tutor                                        | delete a student               | remove student entries that I no longer need                            |
+| `* * *`  | tutor                                        | find a student by name         | locate details of students without having to go through the entire list |
+| `* *`    | tutor                                        | hide private contact details   | minimize chance of someone else seeing them by accident                 |
+| `*`      | tutor with many students in the address book | sort students by name          | locate a student easily                                                 |
 
 *{More to be added}*
 
-### Use cases
+### Use Cases
 
 (For all use cases below, the **System** is the `AddressBook` and the **Actor** is the `user`, unless specified otherwise)
 
-**Use case: Add a student**
+**Use Case U1: Add a student to the contact list**
 
 **MSS**
 
-1.  User inputs command to add student with the required parameters
+1.  User requests to add student and their details
 2.  AddressBook adds the student with the supplied contact details
 
     Use case ends.
 
 **Extensions**
 
-* 1a. The user supplies an invalid input parameter.
-
+* 1a. The user supplies invalid input parameter(s).
   * 1a1. AddressBook shows an error message for the relevant parameters.
         
     Use case resumes at step 1.
 
 
 
-**Use case: Delete a student**
+**Use Case U2: Delete a student from the contact list**
 
 **MSS**
 
@@ -336,17 +338,17 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **Extensions**
 
-* 2a. The list is empty.
+* 2a. The student list is empty.
 
   Use case ends.
 
-* 3a. The given index is invalid.
+* 3a. The index supplied by the user is invalid.
 
     * 3a1. AddressBook shows an error message.
 
       Use case resumes at step 2.
 
-**Use case: Mark/Unmark student payments**
+**Use Case U3: Mark/unmark student payments**
 
 **MSS**
 
@@ -359,11 +361,11 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **Extensions**
 
-* 2a. The list is empty.
+* 2a. The student list is empty.
 
   Use case ends.
 
-* 3a. The given index is invalid.
+* 3a. The index supplied by the user is invalid.
 
     * 3a1. AddressBook shows an error message.
 
@@ -373,9 +375,10 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 ### Non-Functional Requirements
 
-#### Compatibility Requirements
+#### Usability Requirements
 - **Cross-Platform Support**: The application should run seamlessly on any _mainstream OS_ with Java 17 or above installed.
 - **File Compatibility**: The data file format should be compatible with future versions of the application to ensure backward compatibility.
+- **Accessibility**: A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
 
 #### Performance Requirements
 - **Response Time**: The system should respond to user commands within 2 seconds for up to 1000 student entries.
@@ -385,16 +388,6 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 #### Scalability Requirements
 - **Data Storage**: The application should be able to handle up to 10,000 student entries without significant performance degradation.
 - **File Size**: The data file storing student information should not exceed 10MB for 1000 entries.
-
-#### Usability Requirements
-- **User Interface**: The command-line interface (CLI) should be intuitive and provide clear feedback for both successful and failed operations.
-- **Error Handling**: Error messages should be descriptive and guide the user on how to correct their input.
-- **Accessibility**: A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
-
-#### Documentation Requirements
-- **User Guide**: A comprehensive user guide should be provided to explain how to use the application, including command formats and examples.
-- **Developer Guide**: A detailed developer guide should be provided to explain the architecture, design decisions, and how to extend the application.
-- **Error Handling Documentation**: All possible error messages and their resolutions should be documented in the user guide.
 
 *{More to be added}*
 
