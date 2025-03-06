@@ -37,7 +37,7 @@ You can reach us at the email `ryanc[at]comp.nus.edu.sg`
 
 [[LinkedIn](https://www.linkedin.com/in/ryanno3o/)]
 [[github](https://github.com/bipplane)]
-[[portfolio](team/johndoe.md)]
+[[portfolio](team/bipplane.md)]
 
 * Role: Team lead, Developer
 * Responsibilities: Scheduling & Tracking
@@ -67,7 +67,7 @@ You can reach us at the email `ryanc[at]comp.nus.edu.sg`
 </div>
 
 [[github](http://github.com/izniy)]
-[[portfolio](team/johndoe.md)]
+[[portfolio](team/izniy.md)]
 
 * Role: Developer
 * Responsibilities: Code Quality, Documentation
@@ -97,7 +97,7 @@ You can reach us at the email `ryanc[at]comp.nus.edu.sg`
 </div>
 
 [[github](http://github.com/nicolaskjh)] 
-[[portfolio](team/johndoe.md)]
+[[portfolio](team/nicolaskjh.md)]
 
 * Role: Developer
 * Responsibilities: Testing, Integration
@@ -127,8 +127,7 @@ You can reach us at the email `ryanc[at]comp.nus.edu.sg`
 </div>
 
 [[github](http://github.com/flljy940)]
-[[portfolio](team/johndoe.md)]
+[[portfolio](team/flljy940.md)]
 
 * Role: Developer
 * Responsibilities: Deliverables and deadlines, Expert
-
