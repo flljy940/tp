@@ -7,6 +7,7 @@ import static seedu.address.testutil.Assert.assertThrows;
 import java.net.URL;
 import java.nio.file.Path;
 
+import javafx.stage.Stage;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
 
@@ -80,6 +81,12 @@ public class UiPartTest {
         URL testFileUrl = MainApp.class.getResource(testFilePathInView);
         assertNotNull(testFileUrl, testFilePathInView + " does not exist.");
         return testFileUrl;
+    }
+
+    @Test
+    public void helpWindow_constructorTest_throwsInitializationError() {
+        assertThrows(ExceptionInInitializerError.class, () -> new HelpWindow());
+        assertThrows(NoClassDefFoundError.class, () -> new HelpWindow(new Stage()));
     }
 
     /**
