@@ -28,8 +28,8 @@ public class NextLessonCommand extends Command {
             + "Example: " + COMMAND_WORD + " 1 "
             + PREFIX_NEXTLESSON + "3-4-2025.";
 
-    public static final String MESSAGE_ADD_NEXTLESSON_SUCCESS = "Added Next Lesson to Person: %1$s";
-    public static final String MESSAGE_DELETE_NEXTLESSON_SUCCESS = "Removed Next Lesson to Person: %1$s";
+    public static final String MESSAGE_ADD_NEXTLESSON_SUCCESS = "Added Next Lesson to Person: ";
+    public static final String MESSAGE_DELETE_NEXTLESSON_SUCCESS = "Removed Next Lesson to Person: ";
 
     private final Index index;
     private final NextLesson nextLesson;
@@ -73,6 +73,7 @@ public class NextLessonCommand extends Command {
         String message = !nextLesson.value.isEmpty()
                 ? MESSAGE_ADD_NEXTLESSON_SUCCESS
                 : MESSAGE_DELETE_NEXTLESSON_SUCCESS;
+
         return String.format(message, Messages.format(personToEdit));
     }
 
