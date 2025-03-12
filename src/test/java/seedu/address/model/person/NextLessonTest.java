@@ -1,6 +1,8 @@
 package seedu.address.model.person;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
@@ -27,5 +29,18 @@ public class NextLessonTest {
         // different nextLesson -> returns false
         NextLesson differentNextLesson = new NextLesson("tomorrow");
         assertFalse(nextLesson.equals(differentNextLesson));
+    }
+
+    @Test
+    public void testHashCode() {
+        NextLesson lesson1 = new NextLesson("today");
+        NextLesson lesson2 = new NextLesson("today");
+        NextLesson lesson3 = new NextLesson("tomorrow");
+
+        // Same value -> Same hash code
+        assertEquals(lesson1.hashCode(), lesson2.hashCode());
+
+        // Different values -> Different hash codes
+        assertNotEquals(lesson1.hashCode(), lesson3.hashCode());
     }
 }
