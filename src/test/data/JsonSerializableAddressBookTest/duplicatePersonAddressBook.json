@@ -5,7 +5,7 @@
     "email": "alice@example.com",
     "address": "123, Jurong West Ave 6, #08-111",
     "nextLesson": "",
-    "tags": [ "friends" ]
+    "subjects": [ "math" ]
   }, {
     "name": "Alice Pauline",
     "phone": "94351253",

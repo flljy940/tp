@@ -32,7 +32,7 @@ public class NextLessonTest {
     }
 
     @Test
-    public void testHashCode() {
+    public void hashCodeMethod() {
         NextLesson lesson1 = new NextLesson("today");
         NextLesson lesson2 = new NextLesson("today");
         NextLesson lesson3 = new NextLesson("tomorrow");
