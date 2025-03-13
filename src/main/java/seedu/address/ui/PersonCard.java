@@ -55,6 +55,14 @@ public class PersonCard extends UiPart<Region> {
         address.setText(person.getAddress().value);
         remark.setText(person.getRemark().value);
         email.setText(person.getEmail().value);
+
+        if (!person.getRemark().value.isEmpty()) {
+            remark.setText(person.getRemark().value);
+            remark.setStyle("-fx-text-fill: green; -fx-font-weight: bold;");
+        } else {
+            remark.setText("");
+        }
+
         person.getTags().stream()
                 .sorted(Comparator.comparing(tag -> tag.tagName))
                 .forEach(tag -> tags.getChildren().add(new Label(tag.tagName)));
