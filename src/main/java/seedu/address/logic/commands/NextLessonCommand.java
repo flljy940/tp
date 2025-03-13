@@ -56,7 +56,7 @@ public class NextLessonCommand extends Command {
         Person personToEdit = lastShownList.get(index.getZeroBased());
         Person editedPerson = new Person(
                 personToEdit.getName(), personToEdit.getPhone(), personToEdit.getEmail(),
-                personToEdit.getAddress(), nextLesson, personToEdit.getTags()
+                personToEdit.getAddress(), nextLesson, personToEdit.getSubjects()
         );
         model.setPerson(personToEdit, editedPerson);
         model.updateFilteredPersonList(Model.PREDICATE_SHOW_ALL_PERSONS);

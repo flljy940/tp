@@ -8,7 +8,7 @@ import java.util.Objects;
 import java.util.Set;
 
 import seedu.address.commons.util.ToStringBuilder;
-import seedu.address.model.tag.Tag;
+import seedu.address.model.subject.Subject;
 
 /**
  * Represents a Person in the address book.
@@ -24,19 +24,19 @@ public class Person {
     // Data fields
     private final Address address;
     private final NextLesson nextLesson;
-    private final Set<Tag> tags = new HashSet<>();
+    private final Set<Subject> subjects = new HashSet<>();
 
     /**
      * Every field must be present and not null.
      */
-    public Person(Name name, Phone phone, Email email, Address address, NextLesson nextLesson, Set<Tag> tags) {
-        requireAllNonNull(name, phone, email, address, tags);
+    public Person(Name name, Phone phone, Email email, Address address, NextLesson nextLesson, Set<Subject> subjects) {
+        requireAllNonNull(name, phone, email, address, subjects);
         this.name = name;
         this.phone = phone;
         this.email = email;
         this.address = address;
         this.nextLesson = nextLesson;
-        this.tags.addAll(tags);
+        this.subjects.addAll(subjects);
     }
 
     public Name getName() {
@@ -63,8 +63,8 @@ public class Person {
      * Returns an immutable tag set, which throws {@code UnsupportedOperationException}
      * if modification is attempted.
      */
-    public Set<Tag> getTags() {
-        return Collections.unmodifiableSet(tags);
+    public Set<Subject> getSubjects() {
+        return Collections.unmodifiableSet(subjects);
     }
 
     /**
@@ -100,13 +100,13 @@ public class Person {
                 && phone.equals(otherPerson.phone)
                 && email.equals(otherPerson.email)
                 && address.equals(otherPerson.address)
-                && tags.equals(otherPerson.tags);
+                && subjects.equals(otherPerson.subjects);
     }
 
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(name, phone, email, address, tags);
+        return Objects.hash(name, phone, email, address, subjects);
     }
 
     @Override
@@ -116,7 +116,7 @@ public class Person {
                 .add("phone", phone)
                 .add("email", email)
                 .add("address", address)
-                .add("tags", tags)
+                .add("subjects", subjects)
                 .toString();
     }
 
