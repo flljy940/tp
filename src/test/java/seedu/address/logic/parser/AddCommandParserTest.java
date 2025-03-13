@@ -58,10 +58,12 @@ public class AddCommandParserTest {
 
 
         // multiple subjects - all accepted
-        Person expectedPersonMultipleSubjects = new PersonBuilder(BOB).withSubjects(VALID_SUBJECT_CHEMISTRY, VALID_SUBJECT_MATH)
+        Person expectedPersonMultipleSubjects = new PersonBuilder(BOB).withSubjects(
+                VALID_SUBJECT_CHEMISTRY, VALID_SUBJECT_MATH)
                 .build();
         assertParseSuccess(parser,
-                NAME_DESC_BOB + PHONE_DESC_BOB + EMAIL_DESC_BOB + ADDRESS_DESC_BOB + SUBJECT_DESC_MATH + SUBJECT_DESC_CHEMISTRY,
+                NAME_DESC_BOB + PHONE_DESC_BOB + EMAIL_DESC_BOB + ADDRESS_DESC_BOB
+                        + SUBJECT_DESC_MATH + SUBJECT_DESC_CHEMISTRY,
                 new AddCommand(expectedPersonMultipleSubjects));
     }
 

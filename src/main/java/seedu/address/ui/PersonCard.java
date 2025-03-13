@@ -63,10 +63,6 @@ public class PersonCard extends UiPart<Region> {
 
         person.getSubjects().stream()
                 .sorted(Comparator.comparing(subject -> subject.subjectName))
-                .forEach(subject -> {
-                    Label subjectLabel = new Label(subject.subjectName);
-                    subjectLabel.getStyleClass().add("label");
-                    subjects.getChildren().add(subjectLabel);
-                });
+                .forEach(subject -> subjects.getChildren().add(new Label(subject.subjectName)));
     }
 }
