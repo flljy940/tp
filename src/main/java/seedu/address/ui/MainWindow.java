@@ -6,6 +6,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextInputControl;
+import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyCombination;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.StackPane;
@@ -27,19 +28,25 @@ public class MainWindow extends UiPart<Stage> {
 
     private final Logger logger = LogsCenter.getLogger(getClass());
 
-    private Stage primaryStage;
-    private Logic logic;
+    private final Stage primaryStage;
+    private final Logic logic;
+
+    private long lastEscTime = 0;
+    private final long escDelay = 500;
 
     // Independent Ui parts residing in this Ui container
     private PersonListPanel personListPanel;
     private ResultDisplay resultDisplay;
-    private HelpWindow helpWindow;
+    private final HelpWindow helpWindow;
 
     @FXML
     private StackPane commandBoxPlaceholder;
 
     @FXML
     private MenuItem helpMenuItem;
+
+    @FXML
+    private MenuItem escItem;
 
     @FXML
     private StackPane personListPanelPlaceholder;
@@ -65,6 +72,8 @@ public class MainWindow extends UiPart<Stage> {
 
         setAccelerators();
 
+        setKeyboardShortcut();
+
         helpWindow = new HelpWindow();
     }
 
@@ -74,6 +83,7 @@ public class MainWindow extends UiPart<Stage> {
 
     private void setAccelerators() {
         setAccelerator(helpMenuItem, KeyCombination.valueOf("F1"));
+        setAccelerator(escItem, KeyCombination.valueOf("Esc"));
     }
 
     /**
@@ -165,6 +175,23 @@ public class MainWindow extends UiPart<Stage> {
 
     public PersonListPanel getPersonListPanel() {
         return personListPanel;
+    }
+
+    /**
+     * Allows user to exit TutorRec with an ESC press.
+     */
+    private void setKeyboardShortcut() {
+        getRoot().getScene().setOnKeyPressed(event -> {
+            if (event.getCode() == KeyCode.ESCAPE) {
+                long currentTime = System.currentTimeMillis();
+                if (currentTime - lastEscTime < escDelay) {
+                    // Double ESC pressed
+                    handleExit();
+                } else {
+                    lastEscTime = currentTime;
+                }
+            }
+        });
     }
 
     /**
