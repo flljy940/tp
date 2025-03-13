@@ -1,19 +1,42 @@
 #copyButton, #helpMessage {
-    -fx-text-fill: white;
+    -fx-text-fill: #333333;
+    -fx-font-size: 15px;
 }
 
 #copyButton {
-    -fx-background-color: dimgray;
+    -fx-background-color: #8cb6e0;
+    -fx-background-radius: 5px;
+    -fx-padding: 8px 10px;
+    -fx-font-weight: bold;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 3, 0, 0, 2);
+    -fx-min-width: 170px;
+    -fx-alignment: center;
 }
 
 #copyButton:hover {
-    -fx-background-color: gray;
+    -fx-background-color: #a6c9f0;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.3), 5, 0, 0, 3);
 }
 
 #copyButton:armed {
-    -fx-background-color: darkgray;
+    -fx-background-color: #7aa0c8;
 }
 
 #helpMessageContainer {
-    -fx-background-color: derive(#1d1d1d, 20%);
+    -fx-background-color: #b3d9ff;
+    -fx-padding: 20px;
+    -fx-spacing: 10px;
+    -fx-min-width: 500px;
+    -fx-min-height: 95px;
+    -fx-alignment: center;
+    -fx-border-color: #a6c9f0;
+    -fx-border-width: 1px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 5, 0, 0, 3);
+}
+
+#helpMessage {
+    -fx-font-size: 14px;
+    -fx-wrap-text: true;
+    -fx-max-width: 400px;
+    -fx-line-spacing: 1px;
 }
