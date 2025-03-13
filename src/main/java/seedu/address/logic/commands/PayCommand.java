@@ -43,7 +43,7 @@ public class PayCommand extends Command {
 
         Person paidPerson = new Person(
                 personToEdit.getName(), personToEdit.getPhone(), personToEdit.getEmail(),
-                personToEdit.getAddress(), updatedRemark, personToEdit.getTags());
+                personToEdit.getAddress(), personToEdit.getNextLesson(), updatedRemark, personToEdit.getSubjects());
 
         model.setPerson(personToEdit, paidPerson);
         model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
