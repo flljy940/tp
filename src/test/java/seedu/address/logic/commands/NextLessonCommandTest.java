@@ -40,7 +40,8 @@ public class NextLessonCommandTest {
         NextLessonCommand nextLessonCommand = new NextLessonCommand(
                 INDEX_FIRST_PERSON, new NextLesson(editedPerson.getNextLesson().value));
 
-        String expectedMessage = String.format(NextLessonCommand.MESSAGE_ADD_NEXTLESSON_SUCCESS, editedPerson);
+        String expectedMessage = String.format(
+                NextLessonCommand.MESSAGE_ADD_NEXTLESSON_SUCCESS, Messages.format(editedPerson));
 
         Model expectedModel = new ModelManager(new AddressBook(model.getAddressBook()), new UserPrefs());
         expectedModel.setPerson(firstPerson, editedPerson);
@@ -56,7 +57,8 @@ public class NextLessonCommandTest {
         NextLessonCommand nextLessonCommand = new NextLessonCommand(
                 INDEX_FIRST_PERSON, new NextLesson(editedPerson.getNextLesson().toString()));
 
-        String expectedMessage = String.format(NextLessonCommand.MESSAGE_DELETE_NEXTLESSON_SUCCESS, editedPerson);
+        String expectedMessage = String.format(
+                NextLessonCommand.MESSAGE_DELETE_NEXTLESSON_SUCCESS, Messages.format(editedPerson));
 
         Model expectedModel = new ModelManager(new AddressBook(model.getAddressBook()), new UserPrefs());
         expectedModel.setPerson(firstPerson, editedPerson);
@@ -75,7 +77,8 @@ public class NextLessonCommandTest {
         NextLessonCommand nextLessonCommand = new NextLessonCommand(
                 INDEX_FIRST_PERSON, new NextLesson(editedPerson.getNextLesson().value));
 
-        String expectedMessage = String.format(NextLessonCommand.MESSAGE_ADD_NEXTLESSON_SUCCESS, editedPerson);
+        String expectedMessage = String.format(
+                NextLessonCommand.MESSAGE_ADD_NEXTLESSON_SUCCESS, Messages.format(editedPerson));
 
         Model expectedModel = new ModelManager(new AddressBook(model.getAddressBook()), new UserPrefs());
         expectedModel.setPerson(firstPerson, editedPerson);
