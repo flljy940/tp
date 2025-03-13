@@ -9,8 +9,8 @@ import static seedu.address.testutil.Assert.assertThrows;
 import org.junit.jupiter.api.Test;
 
 public class SubjectTest {
-    private final String TEST_SUBJECT_1 = "math";
-    private final String TEST_SUBJECT_2 = "chemistry";
+    private static final String TEST_SUBJECT_1 = "math";
+    private static final String TEST_SUBJECT_2 = "chemistry";
 
     @Test
     public void constructor_null_throwsNullPointerException() {
