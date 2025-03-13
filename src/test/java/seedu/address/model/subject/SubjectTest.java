@@ -54,7 +54,7 @@ public class SubjectTest {
     }
 
     @Test
-    public void hashCodeTest() {
+    public void hashCodeMethod() {
         Subject subject1 = new Subject(TEST_SUBJECT_1);
         Subject subject2 = new Subject(TEST_SUBJECT_1);
         Subject subject3 = new Subject(TEST_SUBJECT_2);
@@ -67,7 +67,7 @@ public class SubjectTest {
     }
 
     @Test
-    public void toStringTest() {
+    public void toStringMethod() {
         Subject subject1 = new Subject(TEST_SUBJECT_1);
         Subject subject2 = new Subject(TEST_SUBJECT_1);
         Subject subject3 = new Subject(TEST_SUBJECT_2);
