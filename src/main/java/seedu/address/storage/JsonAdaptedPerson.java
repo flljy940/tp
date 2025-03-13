@@ -17,6 +17,7 @@ import seedu.address.model.person.NextLesson;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
 import seedu.address.model.subject.Subject;
+import seedu.address.model.person.Remark;
 
 /**
  * Jackson-friendly version of {@link Person}.
@@ -30,6 +31,7 @@ class JsonAdaptedPerson {
     private final String email;
     private final String address;
     private final String nextLesson;
+    private final String remark;
     private final List<JsonAdaptedSubject> subjects = new ArrayList<>();
 
     /**
@@ -38,13 +40,14 @@ class JsonAdaptedPerson {
     @JsonCreator
     public JsonAdaptedPerson(@JsonProperty("name") String name, @JsonProperty("phone") String phone,
             @JsonProperty("email") String email, @JsonProperty("address") String address,
-            @JsonProperty("nextLesson") String nextLesson,
+            @JsonProperty("nextLesson") String nextLesson, @JsonProperty("remark") String remark,
             @JsonProperty("subjects") List<JsonAdaptedSubject> subjects) {
         this.name = name;
         this.phone = phone;
         this.email = email;
         this.address = address;
         this.nextLesson = nextLesson;
+        this.remark = remark;
         if (subjects != null) {
             this.subjects.addAll(subjects);
         }
@@ -59,6 +62,7 @@ class JsonAdaptedPerson {
         email = source.getEmail().value;
         address = source.getAddress().value;
         nextLesson = source.getNextLesson().value;
+        remark = source.getRemark().value;
         subjects.addAll(source.getSubjects().stream()
                 .map(JsonAdaptedSubject::new)
                 .collect(Collectors.toList()));
@@ -106,6 +110,11 @@ class JsonAdaptedPerson {
             throw new IllegalValueException(Address.MESSAGE_CONSTRAINTS);
         }
         final Address modelAddress = new Address(address);
+
+        if (remark == null) {
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Remark.class.getSimpleName()));
+        }
+        final Remark modelRemark = new Remark(remark);
 
         if (nextLesson == null) {
             throw new IllegalValueException(

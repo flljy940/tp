@@ -9,6 +9,7 @@ import java.util.Set;
 
 import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.model.subject.Subject;
+import seedu.address.model.person.Remark;
 
 /**
  * Represents a Person in the address book.
@@ -24,18 +25,20 @@ public class Person {
     // Data fields
     private final Address address;
     private final NextLesson nextLesson;
+    private final Remark remark;
     private final Set<Subject> subjects = new HashSet<>();
 
     /**
      * Every field must be present and not null.
      */
-    public Person(Name name, Phone phone, Email email, Address address, NextLesson nextLesson, Set<Subject> subjects) {
-        requireAllNonNull(name, phone, email, address, subjects);
+    public Person(Name name, Phone phone, Email email, Address address, NextLesson nextLesson, Remark remark, Set<Subject> subjects) {
+        requireAllNonNull(name, phone, email, address, tags);
         this.name = name;
         this.phone = phone;
         this.email = email;
         this.address = address;
         this.nextLesson = nextLesson;
+        this.remark = remark;
         this.subjects.addAll(subjects);
     }
 
@@ -57,6 +60,10 @@ public class Person {
 
     public NextLesson getNextLesson() {
         return nextLesson;
+    }
+
+    public Remark getRemark() {
+        return remark;
     }
 
     /**
