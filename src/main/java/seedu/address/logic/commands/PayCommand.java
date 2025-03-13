@@ -12,18 +12,25 @@ import seedu.address.model.Model;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Remark;
 
+/**
+ * Marks a person as paid in the address book.
+ */
 public class PayCommand extends Command {
 
     public static final String COMMAND_WORD = "pay";
     public static final String MESSAGE_PAY_SUCCESS = "Marked as PAID: %1$s";
-
-    private final Index index;
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
             + ": Marks the person identified by the index number as paid.\n"
             + "Parameters: INDEX (must be a positive integer)\n"
             + "Example: " + COMMAND_WORD + " 1";
 
+    private final Index index;
+
+    /**
+     * Constructor for PayCommand.
+     * @param index of the person in the filtered person list to mark as paid
+     */
     public PayCommand(Index index) {
         requireAllNonNull(index);
         this.index = index;

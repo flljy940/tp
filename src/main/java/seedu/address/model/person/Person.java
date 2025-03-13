@@ -9,7 +9,6 @@ import java.util.Set;
 
 import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.model.subject.Subject;
-import seedu.address.model.person.Remark;
 
 /**
  * Represents a Person in the address book.
@@ -31,7 +30,8 @@ public class Person {
     /**
      * Every field must be present and not null.
      */
-    public Person(Name name, Phone phone, Email email, Address address, NextLesson nextLesson, Remark remark, Set<Subject> subjects) {
+    public Person(Name name, Phone phone, Email email, Address address, NextLesson nextLesson,
+                  Remark remark, Set<Subject> subjects) {
         requireAllNonNull(name, phone, email, address, subjects);
         this.name = name;
         this.phone = phone;

@@ -96,7 +96,7 @@ You can reach us at the email `ryanc[at]comp.nus.edu.sg`
   <img src="images/nicolaskjh.png" alt="Nicolas">
 </div>
 
-[[github](http://github.com/nicolaskjh)] 
+[[github](http://github.com/nicolaskjh)]
 [[portfolio](team/nicolaskjh.md)]
 
 * Role: Developer

@@ -16,8 +16,8 @@ import seedu.address.model.person.Name;
 import seedu.address.model.person.NextLesson;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
-import seedu.address.model.subject.Subject;
 import seedu.address.model.person.Remark;
+import seedu.address.model.subject.Subject;
 
 /**
  * Jackson-friendly version of {@link Person}.
