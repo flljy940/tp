@@ -6,6 +6,7 @@
     "email" : "alice@example.com",
     "address" : "123, Jurong West Ave 6, #08-111",
     "nextLesson": "no lesson anymore yeah",
+    "remark" : "",
     "subjects" : [ "math" ]
   }, {
     "name" : "Benson Meier",
@@ -13,6 +14,7 @@
     "email" : "johnd@example.com",
     "address" : "311, Clementi Ave 2, #02-25",
     "nextLesson": "",
+    "remark" : "",
     "subjects" : [ "math", "chemistry" ]
   }, {
     "name" : "Carl Kurz",
@@ -20,6 +22,7 @@
     "email" : "heinz@example.com",
     "address" : "wall street",
     "nextLesson": "",
+    "remark" : "",
     "subjects" : [ ]
   }, {
     "name" : "Daniel Meier",
@@ -27,6 +30,7 @@
     "email" : "cornelia@example.com",
     "address" : "10th street",
     "nextLesson": "",
+    "remark" : "",
     "subjects" : [ "physics" ]
   }, {
     "name" : "Elle Meyer",
@@ -34,6 +38,7 @@
     "email" : "werner@example.com",
     "address" : "michegan ave",
     "nextLesson": "",
+    "remark" : "",
     "subjects" : [ ]
   }, {
     "name" : "Fiona Kunz",
@@ -41,6 +46,7 @@
     "email" : "lydia@example.com",
     "address" : "little tokyo",
     "nextLesson": "",
+    "remark" : "",
     "subjects" : [ ]
   }, {
     "name" : "George Best",
@@ -48,6 +54,7 @@
     "email" : "anna@example.com",
     "address" : "4th street",
     "nextLesson": "",
+    "remark" : "",
     "subjects" : [ ]
   } ]
 }
