@@ -13,6 +13,7 @@ import seedu.address.logic.commands.NextLessonCommand;
 import seedu.address.model.person.NextLesson;
 
 public class NextLessonCommandParserTest {
+
     private NextLessonCommandParser parser = new NextLessonCommandParser();
     private final String nonEmptyDate = "Today.";
 

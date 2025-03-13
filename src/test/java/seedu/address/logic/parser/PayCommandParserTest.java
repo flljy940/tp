@@ -13,6 +13,7 @@ import seedu.address.logic.commands.PayCommand;
 public class PayCommandParserTest {
 
     private final PayCommandParser parser = new PayCommandParser();
+    private final String invalidIndex = "-3";
 
     @Test
     public void parse_validIndex_success() {
@@ -21,6 +22,13 @@ public class PayCommandParserTest {
         PayCommand expectedCommand = new PayCommand(INDEX_FIRST_PERSON);
 
         assertParseSuccess(parser, userInput, expectedCommand);
+    }
+
+    @Test
+    public void parse_invalidIndex_failure() {
+        String expectedMessage = String.format(MESSAGE_INVALID_COMMAND_FORMAT, PayCommand.MESSAGE_USAGE);
+
+        assertParseFailure(parser, invalidIndex, expectedMessage);
     }
 
     @Test
