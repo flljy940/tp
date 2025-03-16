@@ -16,9 +16,6 @@ public class NextLesson {
     public final LocalTime startTime;
     public final LocalTime endTime;
 
-    private static final DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ofPattern("d MMM");
-    private static final DateTimeFormatter TIME_FORMATTER = DateTimeFormatter.ofPattern("Hmm");
-
     /**
      * Constructs a {@code NextLesson}.
      *
@@ -36,34 +33,27 @@ public class NextLesson {
         this.endTime = endTime;
     }
 
-    public LocalDate getDate() {
-        return date;
-    }
-
-    public LocalTime getStartTime() {
-        return startTime;
-    }
-
-    public LocalTime getEndTime() {
-        return endTime;
-    }
-
     @Override
     public String toString() {
-        return String.format("%s %s-%s",
-                date.format(DATE_FORMATTER),
-                startTime.format(TIME_FORMATTER),
-                endTime.format(TIME_FORMATTER));
+        return date.format(DateTimeFormatter.ofPattern("d MMM")) + " " +
+                startTime.format(DateTimeFormatter.ofPattern("Hmm")) + " " +
+                endTime.format(DateTimeFormatter.ofPattern("Hmm"));
     }
 
     @Override
     public boolean equals(Object other) {
-        if (other == this) return true; // short circuit if same object
-        if (!(other instanceof NextLesson)) return false; // instanceof handles nulls
+        if (other == this) {
+            return true; // short circuit if same object
+        }
+
+        if (!(other instanceof NextLesson)) {
+            return false; // instanceof handles nulls
+        }
+
         NextLesson that = (NextLesson) other;
-        return Objects.equals(date, that.date)
-                    && Objects.equals(startTime, that.startTime)
-                    && Objects.equals(endTime, that.endTime); // state check
+        return date.equals(that.date)
+                    && startTime.equals(that.startTime)
+                    && endTime.equals(that.endTime); // state check
     }
 
     @Override
