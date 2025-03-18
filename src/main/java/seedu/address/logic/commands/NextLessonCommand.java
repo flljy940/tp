@@ -3,10 +3,6 @@ package seedu.address.logic.commands;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NEXTLESSON;
 
-import java.time.LocalDate;
-import java.time.LocalTime;
-import java.time.format.DateTimeFormatter;
-import java.util.Date;
 import java.util.List;
 
 import seedu.address.commons.core.index.Index;
@@ -97,33 +93,5 @@ public class NextLessonCommand extends Command {
         NextLessonCommand otherCommand = (NextLessonCommand) other;
         return index.equals(otherCommand.index)
                 && nextLesson.equals(otherCommand.nextLesson);
-    }
-
-    /**
-     * Parses a string input like "16 Mar 9-11" into NextLesson object
-     * @param input the string to parse
-     * @return the NextLesson object
-     */
-    public static NextLesson parseNextLesson(String input) {
-        String[] dateTimeParts = input.split(" ");
-        if (dateTimeParts.length != 2) {
-            throw new IllegalArgumentException("Invalid date and time format. ");
-        }
-
-        // Parse date
-        DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("d MMM");
-        LocalDate date = LocalDate.parse(dateTimeParts[0], dateFormatter);
-
-        // Parse time range (e.g., 930-1130)
-        String[] timeParts = dateTimeParts[1].split("-");
-        if (timeParts.length != 2) {
-            throw new IllegalArgumentException("Invalid time format. ");
-        }
-
-        DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("Hmm");
-        LocalTime startTime = LocalTime.parse(timeParts[0], timeFormatter);
-        LocalTime endTime = LocalTime.parse(timeParts[1], timeFormatter);
-
-        return new NextLesson(date, startTime, endTime);
     }
 }

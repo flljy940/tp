@@ -2,62 +2,56 @@ package seedu.address.model.person;
 
 import static java.util.Objects.requireNonNull;
 
-import java.time.LocalDate;
-import java.time.LocalTime;
+import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Objects;
 
 /**
  * Represents a Person's next lesson date in the address book.
  */
 public class NextLesson {
 
-    public final LocalDate date;
-    public final LocalTime startTime;
-    public final LocalTime endTime;
+    public final LocalDateTime value;
 
     /**
      * Constructs a {@code NextLesson}.
      *
-     * @param date The date of the next lesson.
-     * @param startTime The start time of the lesson.
-     * @param endTime The end time of the lesson.
+     * @param nextLesson The valid upcoming lesson date.
      */
-    public NextLesson(LocalDate date, LocalTime startTime, LocalTime endTime) {
-        requireNonNull(date);
-        requireNonNull(startTime);
-        requireNonNull(endTime);
+    public NextLesson(String nextLesson) {
+        requireNonNull(nextLesson);
 
-        this.date = date;
-        this.startTime = startTime;
-        this.endTime = endTime;
+        if (nextLesson.isEmpty()) {
+            this.value = null;
+        } else {
+            this.value = LocalDateTime.parse(nextLesson, DateTimeFormatter.ofPattern("d MMM H-H"));
+        }
+    }
+
+    /**
+     * Formats the lesson date and time as a string.
+     */
+    public String getFormattedNextLesson() {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d MMM H-H");
+        return value.format(formatter);
     }
 
     @Override
     public String toString() {
-        return date.format(DateTimeFormatter.ofPattern("d MMM")) + " " +
-                startTime.format(DateTimeFormatter.ofPattern("Hmm")) + " " +
-                endTime.format(DateTimeFormatter.ofPattern("Hmm"));
+        if (value == null) {
+            return "";
+        }
+        return getFormattedNextLesson();
     }
 
     @Override
     public boolean equals(Object other) {
-        if (other == this) {
-            return true; // short circuit if same object
-        }
-
-        if (!(other instanceof NextLesson)) {
-            return false; // instanceof handles nulls
-        }
-
-        NextLesson that = (NextLesson) other;
-        return date.equals(that.date)
-                    && startTime.equals(that.startTime)
-                    && endTime.equals(that.endTime); // state check
+        return other == this // short circuit if same object
+        || (other instanceof NextLesson // instanceof handles nulls
+        && value.equals(((NextLesson) other).value)); // state check
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(date, startTime, endTime);
+        return value == null ? 0 : value.hashCode();
     }
 }
