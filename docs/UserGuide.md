@@ -39,6 +39,8 @@ TutorRec is a **desktop app for managing contacts, optimised for use via a Comma
 
    * `clear` : Deletes all contacts.
 
+   * `nextlesson 3 d/13 Mar 9-12` : Add the next lesson date for the 3rd contact.  
+
    * `exit` : Exits the app.
 
 1. Refer to the [Features](#features) below for details of each command.
@@ -61,7 +63,10 @@ TutorRec is a **desktop app for managing contacts, optimised for use via a Comma
   e.g. `[s/SUBJECT]…​` can be used as ` ` (i.e. 0 times), `s/math`, `s/math s/chemistry` etc.
 
 * Parameters can be in any order.<br>
-  e.g. if the command specifies `n/NAME p/PHONE_NUMBER`, `p/PHONE_NUMBER n/NAME` is also acceptable.
+  e.g. if the command specifies `n/NAME p/PHONE_NUMBER`, `p/PHONE_NUMBER n/NAME` 
+
+* Date format for next lesson must be in `d MMM HHmm-HHmm` format, <br>
+  e.g. `nextlesson 3 d/13 Mar 0900-1200` 
 
 * Extraneous parameters for commands that do not take in parameters (such as `help`, `list`, `exit` and `clear`) will be ignored.<br>
   e.g. if the command specifies `help 123`, it will be interpreted as `help`.
@@ -148,6 +153,22 @@ Examples:
 * `list` followed by `delete 2` deletes the 2nd person in the contact list.
 * `find Betsy` followed by `delete 1` deletes the 1st person in the results of the `find` command.
 
+### Adding next lesson date for a person : `nextlesson`
+
+Adds date for upcoming lesson for an existing person in the contact list.
+
+Format: `nextlesson INDEX d/NEXT_LESSON`
+
+* Adds the date of next lesson for the person at the specified `INDEX`. The index refers to the index number shown in the displayed person list. The index **must be a positive integer** 1, 2, 3, …​
+* Existing values will be updated to the input values.
+* When adding dates, the existing dates of the person will be appended i.e adding of tags is cumulative.
+* You can remove all the person’s next lesson dates by typing `d/` without
+  specifying any tags after it.
+
+Examples:
+*  `nextlesson 1 d/13 Mar 9-11` Adds/Updates the date of next lesson of the 1st person to be `13 Mar 9-11`.
+*  `nextlesson 2 d/` Removes the next lesson date for the 2nd person.
+
 ### Marking that a person made payment : `pay`
 
 Marks the specified person as PAID to indicate that payment has been made.
@@ -219,5 +240,6 @@ Action     | Format, Examples
 **Delete** | `delete INDEX`<br> e.g., `delete 3`
 **Edit**   | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [s/SUBJECT]…​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`
 **Find**   | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`
+**Nextlesson** | `nextlesson INDEX d/[NEXT_LESSON]`<br> e.g., `nextlesson 3 d/13 Mar 9-11`
 **List**   | `list`
 **Help**   | `help`

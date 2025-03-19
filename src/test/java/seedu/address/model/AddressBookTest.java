@@ -2,6 +2,7 @@ package seedu.address.model;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_ADDRESS_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_SUBJECT_MATH;
@@ -87,6 +88,27 @@ public class AddressBookTest {
     public void toStringMethod() {
         String expected = AddressBook.class.getCanonicalName() + "{persons=" + addressBook.getPersonList() + "}";
         assertEquals(expected, addressBook.toString());
+    }
+
+    @Test
+    public void equals() {
+        // same object -> returns true
+        assertEquals(addressBook, addressBook);
+
+        // null -> returns false
+        assertNotEquals(addressBook, null);
+
+        // different types -> returns false
+        assertNotEquals(addressBook, 1);
+
+        // different persons -> returns false
+        AddressBook addressBookCopy = new AddressBook();
+        addressBook.addPerson(ALICE);
+        assertNotEquals(addressBook, addressBookCopy);
+
+        // same persons -> returns true
+        addressBookCopy.addPerson(ALICE);
+        assertEquals(addressBook, addressBookCopy);
     }
 
     /**
