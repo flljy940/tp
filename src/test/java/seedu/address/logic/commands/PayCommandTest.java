@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandFailure;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.address.logic.commands.CommandTestUtil.showPersonAtIndex;
+import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
 import static seedu.address.testutil.TypicalIndexes.INDEX_SECOND_PERSON;
 import static seedu.address.testutil.TypicalPersons.getTypicalAddressBook;
@@ -89,5 +90,31 @@ public class PayCommandTest {
         assertFalse(standardCommand.equals(new ClearCommand()));
 
         assertFalse(standardCommand.equals(new PayCommand(INDEX_SECOND_PERSON)));
+    }
+
+    @Test
+    public void execute_nullModel_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () -> new PayCommand(INDEX_FIRST_PERSON).execute(null));
+    }
+
+    @Test
+    public void execute_nullIndex_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () -> new PayCommand(null));
+    }
+
+    @Test
+    public void execute_personAlreadyPaid_success() {
+        Person firstPerson = model.getFilteredPersonList().get(INDEX_FIRST_PERSON.getZeroBased());
+        Person editedPerson = new PersonBuilder(firstPerson).withRemark("PAID").build();
+        model.setPerson(firstPerson, editedPerson);
+
+        PayCommand payCommand = new PayCommand(INDEX_FIRST_PERSON);
+
+        String expectedMessage = String.format(PayCommand.MESSAGE_PAY_SUCCESS, Messages.format(editedPerson));
+
+        Model expectedModel = new ModelManager(new AddressBook(model.getAddressBook()), new UserPrefs());
+        expectedModel.setPerson(firstPerson, editedPerson);
+
+        assertCommandSuccess(payCommand, model, expectedMessage, expectedModel);
     }
 }
