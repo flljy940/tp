@@ -18,6 +18,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
 
+import seedu.address.commons.core.GuiSettings;
 import seedu.address.logic.commands.AddCommand;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.ListCommand;
@@ -40,7 +41,7 @@ public class LogicManagerTest {
     @TempDir
     public Path temporaryFolder;
 
-    private Model model = new ModelManager();
+    private final Model model = new ModelManager();
     private Logic logic;
 
     @BeforeEach
@@ -85,6 +86,33 @@ public class LogicManagerTest {
     @Test
     public void getFilteredPersonList_modifyList_throwsUnsupportedOperationException() {
         assertThrows(UnsupportedOperationException.class, () -> logic.getFilteredPersonList().remove(0));
+    }
+
+    @Test
+    public void getAddressBook_returnsModelAddressBook() {
+        Model expectedModel = new ModelManager();
+        Person testPerson = new PersonBuilder().build();
+        expectedModel.addPerson(testPerson);
+
+        Logic testLogic = new LogicManager(expectedModel, new StorageManager(
+                new JsonAddressBookStorage(temporaryFolder.resolve("dummyAB3.json")),
+                new JsonUserPrefsStorage(temporaryFolder.resolve("dummyPrefs.json"))));
+
+        assertEquals(expectedModel.getAddressBook(), testLogic.getAddressBook());
+    }
+
+    @Test
+    public void guiSettings_getAndSet_success() {
+        // Test getting GUI settings
+        GuiSettings expectedSettings = new GuiSettings(800, 600, 50, 50);
+        model.setGuiSettings(expectedSettings);
+        GuiSettings returnedSettings = logic.getGuiSettings();
+        assertEquals(expectedSettings, returnedSettings);
+
+        GuiSettings newSettings = new GuiSettings(123, 456, 100, 100);
+        logic.setGuiSettings(newSettings);
+        GuiSettings modelSettings = model.getGuiSettings();
+        assertEquals(newSettings, modelSettings);
     }
 
     /**
