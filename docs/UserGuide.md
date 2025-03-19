@@ -155,7 +155,7 @@ Examples:
 
 Adds date for upcoming lesson for an existing person in the contact list.
 
-Format: `nextlesson INDEX d/NEXTLESSON`
+Format: `nextlesson INDEX d/NEXT_LESSON`
 
 * Adds the date of next lesson for the person at the specified `INDEX`. The index refers to the index number shown in the displayed person list. The index **must be a positive integer** 1, 2, 3, …​
 * Existing values will be updated to the input values.
@@ -223,6 +223,6 @@ Action     | Format, Examples
 **Delete** | `delete INDEX`<br> e.g., `delete 3`
 **Edit**   | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`
 **Find**   | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`
-**Nextlesson** | `nexlesson INDEX d/[NEXTLESSON]`<br> e.g., `nextlesson 3 d/13 Mar 9-11`
+**Nextlesson** | `nexlesson INDEX d/[NEXT_LESSON]`<br> e.g., `nextlesson 3 d/13 Mar 9-11`
 **List**   | `list`
 **Help**   | `help`
