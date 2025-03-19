@@ -24,6 +24,7 @@ import seedu.address.logic.commands.FindCommand;
 import seedu.address.logic.commands.HelpCommand;
 import seedu.address.logic.commands.ListCommand;
 import seedu.address.logic.commands.NextLessonCommand;
+import seedu.address.logic.commands.PayCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.person.NameContainsKeywordsPredicate;
 import seedu.address.model.person.NextLesson;
@@ -92,11 +93,18 @@ public class AddressBookParserTest {
     }
 
     @Test
-    public void parseCommand_nextlesson() throws Exception {
-        final NextLesson nextlesson = new NextLesson("today");
+    public void parseCommand_nextLesson() throws Exception {
+        final NextLesson nextLesson = new NextLesson("today");
         NextLessonCommand command = (NextLessonCommand) parser.parseCommand(NextLessonCommand.COMMAND_WORD + " "
-                + INDEX_FIRST_PERSON.getOneBased() + " " + PREFIX_NEXTLESSON + nextlesson.value);
-        assertEquals(new NextLessonCommand(INDEX_FIRST_PERSON, nextlesson), command);
+                + INDEX_FIRST_PERSON.getOneBased() + " " + PREFIX_NEXTLESSON + nextLesson.value);
+        assertEquals(new NextLessonCommand(INDEX_FIRST_PERSON, nextLesson), command);
+    }
+
+    @Test
+    public void parseCommand_pay() throws Exception {
+        PayCommand command = (PayCommand) parser.parseCommand(
+                PayCommand.COMMAND_WORD + " " + INDEX_FIRST_PERSON.getOneBased());
+        assertEquals(new PayCommand(INDEX_FIRST_PERSON), command);
     }
 
     @Test
