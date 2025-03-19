@@ -69,7 +69,11 @@ public class PersonCard extends UiPart<Region> {
                 .sorted(Comparator.comparing(subject -> subject.subjectName))
                 .forEach(subject ->
                         subjectLabel.append(subject.subjectName).append(" | "));
-        subjects.setText(subjectLabel.substring(0, subjectLabel.length() - 3));
+        if (subjectLabel.length() > 0) {
+            subjects.setText(subjectLabel.substring(0, subjectLabel.length() - 3));
+        } else {
+            subjects.setText("");
+        }
 
         if (!person.getRemark().value.isEmpty()) {
             remark.setText(person.getRemark().value);
