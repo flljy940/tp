@@ -34,6 +34,8 @@ TutorRec is a **desktop app for managing contacts, optimised for use via a Comma
    * `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01` : Adds a contact named `John Doe` to the contact list.
 
    * `delete 3` : Deletes the 3rd contact shown in the current list.
+   
+   * `paid 3` : Marks the 3rd contact as PAID to indicate that payment has been made.
 
    * `clear` : Deletes all contacts.
 
@@ -167,6 +169,20 @@ Examples:
 *  `nextlesson 1 d/13 Mar 9-11` Adds/Updates the date of next lesson of the 1st person to be `13 Mar 9-11`.
 *  `nextlesson 2 d/` Removes the next lesson date for the 2nd person.
 
+### Marking that a person made payment : `pay`
+
+Marks the specified person as PAID to indicate that payment has been made.
+
+Format: `pay INDEX`
+
+* Marks the person at the specific `INDEX` as PAID to indicate that payment has been made by the person.
+* The index refers to the index number shown in the displayed person list.
+* The index **must be a positive integer** 1, 2, 3, …​
+
+Examples:
+* `list` followed by `pay 2` marks the 2nd person as PAID in the contact list.
+* `find David` followed by `pay 1` marks the 1st person in the results of the `find` command.
+
 ### Clearing all entries : `clear`
 
 Clears all entries from the contact list.
@@ -220,6 +236,7 @@ Action     | Format, Examples
 -----------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 **Add**    | `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [s/SUBJECT]…​` <br> e.g., `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 s/math s/english`
 **Clear**  | `clear`
+**Pay**    | `pay INDEX`<br> e.g., `pay 3`
 **Delete** | `delete INDEX`<br> e.g., `delete 3`
 **Edit**   | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [s/SUBJECT]…​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`
 **Find**   | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`
