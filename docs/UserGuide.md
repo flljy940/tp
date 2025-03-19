@@ -240,6 +240,6 @@ Action     | Format, Examples
 **Delete** | `delete INDEX`<br> e.g., `delete 3`
 **Edit**   | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [s/SUBJECT]…​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`
 **Find**   | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`
-**Nextlesson** | `nexlesson INDEX d/[NEXT_LESSON]`<br> e.g., `nextlesson 3 d/13 Mar 9-11`
+**Nextlesson** | `nextlesson INDEX d/[NEXT_LESSON]`<br> e.g., `nextlesson 3 d/13 Mar 9-11`
 **List**   | `list`
 **Help**   | `help`
