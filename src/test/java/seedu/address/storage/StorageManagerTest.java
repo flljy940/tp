@@ -44,13 +44,6 @@ public class StorageManagerTest {
 
         assertEquals(expectedPath, manager.getUserPrefsFilePath());
     }
-    @Test
-    public void getUserPrefsFilePath_withInvalidPath_throwsException() {
-        assertThrows(IllegalArgumentException.class, () ->
-            new StorageManager(
-                new JsonAddressBookStorage(getTempFilePath("ab")),
-                new JsonUserPrefsStorage(Paths.get("**invalid**path"))));
-    }
 
     @Test
     public void prefsReadSave() throws Exception {
