@@ -80,6 +80,18 @@ public class NextLesson {
         this.endTime = null;
     }
 
+    public LocalDate getDate() {
+        return date;
+    }
+
+    public LocalTime getStartTime() {
+        return startTime;
+    }
+
+    public LocalTime getEndTime() {
+        return endTime;
+    }
+
     public boolean isEmpty() {
         return date == null && startTime == null && endTime == null;
     }

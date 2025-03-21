@@ -3,11 +3,53 @@ package seedu.address.model.person;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import java.time.LocalDate;
+import java.time.LocalTime;
 
 import org.junit.jupiter.api.Test;
 
 public class NextLessonTest {
+
+    @Test
+    void constructor_validInput_parsesCorrectly() {
+        String input = "15/4/2023 1430-1600";
+        NextLesson lesson = new NextLesson(input);
+
+        assertEquals(LocalDate.of(2023, 4, 15), lesson.getDate());
+        assertEquals(LocalTime.of(14, 30), lesson.getStartTime());
+        assertEquals(LocalTime.of(16, 0), lesson.getEndTime());
+    }
+
+    @Test
+    void constructor_missingDash_throwsException() {
+        String input = "15/4/2023 14301600"; // Missing '-'
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> new NextLesson(input));
+        assertTrue(exception.getMessage().contains("Invalid format"));
+    }
+
+    @Test
+    void constructor_invalidDateFormat_throwsException() {
+        String input = "15-04-2023 1430-1600"; // Incorrect date separator
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> new NextLesson(input));
+        assertTrue(exception.getMessage().contains("Invalid format"));
+    }
+
+    @Test
+    void constructor_invalidTimeFormat_throwsException() {
+        String input = "15/4/2023 14:30-16:00"; // Incorrect time format
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> new NextLesson(input));
+        assertTrue(exception.getMessage().contains("Invalid format"));
+    }
+
+    @Test
+    void constructor_missingSpaceBeforeTime_throwsException() {
+        String input = "15/4/20231430-1600"; // Missing space before time
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> new NextLesson(input));
+        assertTrue(exception.getMessage().contains("Invalid format"));
+    }
 
     @Test
     public void equals() {
