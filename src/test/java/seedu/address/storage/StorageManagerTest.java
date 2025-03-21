@@ -2,9 +2,11 @@ package seedu.address.storage;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalPersons.getTypicalAddressBook;
 
 import java.nio.file.Path;
+import java.nio.file.Paths;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -33,23 +35,21 @@ public class StorageManagerTest {
         return testFolder.resolve(fileName);
     }
 
-@Test
-public void getUserPrefsFilePath_withValidPath_returnsCorrectPath() {
-    Path expectedPath = getTempFilePath("prefs");
-    StorageManager manager = new StorageManager(
-            new JsonAddressBookStorage(getTempFilePath("ab")),
-            new JsonUserPrefsStorage(expectedPath));
-    
-    assertEquals(expectedPath, manager.getUserPrefsFilePath());
-}
+    @Test
+    public void getUserPrefsFilePath_withValidPath_returnsCorrectPath() {
+        Path expectedPath = getTempFilePath("prefs");
+        StorageManager manager = new StorageManager(
+                new JsonAddressBookStorage(getTempFilePath("ab")),
+                new JsonUserPrefsStorage(expectedPath));
 
-@Test
-public void getUserPrefsFilePath_withInvalidPath_throwsException() {
-    assertThrows(IllegalArgumentException.class, () ->
-        new StorageManager(
-            new JsonAddressBookStorage(getTempFilePath("ab")),
-            new JsonUserPrefsStorage(Paths.get("**invalid**path"))));
-}
+        assertEquals(expectedPath, manager.getUserPrefsFilePath());
+    }
+    @Test
+    public void getUserPrefsFilePath_withInvalidPath_throwsException() {
+        assertThrows(IllegalArgumentException.class, () ->
+            new StorageManager(
+                new JsonAddressBookStorage(getTempFilePath("ab")),
+                new JsonUserPrefsStorage(Paths.get("**invalid**path"))));
     }
 
     @Test

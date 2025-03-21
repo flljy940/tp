@@ -64,16 +64,18 @@ public class AppParametersTest {
         assertFalse(appParameters.equals(5.0f));
 
         // different config path -> returns false
-        AppParameters otherAppParameters = new AppParameters();
-        otherAppParameters.setConfigPath(Paths.get("configPath"));
-        assertFalse(appParameters.equals(otherAppParameters));
+        AppParameters sameAppParameters = new AppParameters();
+        sameAppParameters.setConfigPath(Paths.get("configPath"));
+        assertFalse(appParameters.equals(sameAppParameters));
 
         // same hashcode -> returns true
+        assertTrue(appParameters.equals(appParameters));
         appParameters.setConfigPath(Paths.get("configPath"));
-        assertEquals(appParameters.hashCode(), otherAppParameters.hashCode());
+        assertEquals(appParameters.hashCode(), sameAppParameters.hashCode());
 
         // different hashcode -> returns false
-        otherAppParameters.setConfigPath(Paths.get("configPath2"));
+        AppParameters otherAppParameters = new AppParameters();
+        otherAppParameters.setConfigPath(Paths.get("otherConfigPath"));
         assertNotEquals(appParameters.hashCode(), otherAppParameters.hashCode());
     }
 

@@ -171,6 +171,11 @@ public class UniquePersonListTest {
 
     @Test
     public void iterator_returnsCorrectIterator() {
+        // Test empty list
+        Iterator<Person> emptyIterator = uniquePersonList.iterator();
+        assertFalse(emptyIterator.hasNext());
+
+        // Test adding and iterating through list
         uniquePersonList.add(ALICE);
         uniquePersonList.add(BOB);
 
@@ -180,6 +185,9 @@ public class UniquePersonListTest {
         assertEquals(ALICE, iterator.next());
         assertTrue(iterator.hasNext());
         assertEquals(BOB, iterator.next());
+
+        // Test removal through iterator
+        iterator.remove();
         assertFalse(iterator.hasNext());
     }
 
