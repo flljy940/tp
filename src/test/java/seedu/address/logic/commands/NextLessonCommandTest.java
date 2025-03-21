@@ -55,7 +55,7 @@ public class NextLessonCommandTest {
         Person editedPerson = new PersonBuilder(firstPerson).withNextLesson("").build();
 
         NextLessonCommand nextLessonCommand = new NextLessonCommand(
-                INDEX_FIRST_PERSON, new NextLesson(editedPerson.getNextLesson().toString()));
+                INDEX_FIRST_PERSON, new NextLesson(editedPerson.getNextLesson().getValue()));
 
         String expectedMessage = String.format(
                 NextLessonCommand.MESSAGE_DELETE_NEXTLESSON_SUCCESS, Messages.format(editedPerson));

@@ -6,7 +6,6 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_NEXTLESSON;
 
 import java.time.DateTimeException;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -83,20 +82,18 @@ public class NextLessonCommandParser implements Parser<NextLessonCommand> {
             }
 
             LocalDate date = LocalDate.of(year, month, day);
-            LocalDateTime startDateTime = LocalDateTime.of(date, LocalTime.of(startHours, startMinutes));
-            LocalDateTime endDateTime = LocalDateTime.of(date, LocalTime.of(endHours, endMinutes));
+            LocalTime startTime = LocalTime.of(startHours, startMinutes);
+            LocalTime endTime = LocalTime.of(endHours, endMinutes);
 
-            // Ensure start time is before end time
-            if (!startDateTime.isBefore(endDateTime)) {
+            if (!startTime.isBefore(endTime)) {
                 throw new ParseException("Start time must be before end time.");
             }
 
-            // Optional: Prevent past dates
             if (date.isBefore(CURRENT_DATE)) {
                 throw new ParseException("Lesson date cannot be in the past.");
             }
 
-            return new NextLesson(startDateTime, endDateTime);
+            return new NextLesson(date, startTime, endTime);
         } catch (NumberFormatException e) {
             throw new ParseException("Invalid numeric value in date or time: " + dateTimeString, e);
         } catch (DateTimeException e) {

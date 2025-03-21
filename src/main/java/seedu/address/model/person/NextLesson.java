@@ -3,30 +3,34 @@ package seedu.address.model.person;
 import static java.util.Objects.requireNonNull;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Objects;
 
 /**
  * Represents a Person's next lesson date in the address book.
  */
 public class NextLesson {
 
-    public final LocalDateTime startDateTime;
-    public final LocalDateTime endDateTime;
+    public final LocalDate date;
+    public final LocalTime startTime;
+    public final LocalTime endTime;
 
     /**
      * Constructs a {@code NextLesson}.
      *
-     * @param startDateTime The start date and time of the lesson.
-     * @param endDateTime The end date and time of the lesson.
+     * @param date      The date of next lesson.
+     * @param startTime The start time of the lesson.
+     * @param endTime   The end time of the lesson.
      */
-    public NextLesson(LocalDateTime startDateTime, LocalDateTime endDateTime) {
-        requireNonNull(startDateTime);
-        requireNonNull(endDateTime);
+    public NextLesson(LocalDate date, LocalTime startTime, LocalTime endTime) {
+        requireNonNull(date);
+        requireNonNull(startTime);
+        requireNonNull(endTime);
 
-        this.startDateTime = startDateTime;
-        this.endDateTime = endDateTime;
+        this.date = date;
+        this.startTime = startTime;
+        this.endTime = endTime;
     }
 
     /**
@@ -38,13 +42,14 @@ public class NextLesson {
         requireNonNull(nextLesson, "Next lesson string cannot be null");
 
         if (nextLesson.isEmpty()) {
-            this.startDateTime = null;
-            this.endDateTime = null;
+            this.date = null;
+            this.startTime = null;
+            this.endTime = null;
             return;
         }
 
         try {
-            // For format like "15/04/2023 1430-1600"
+            // For format like "15/4/2023 1430-1600"
             int dashIndex = nextLesson.lastIndexOf('-');
             if (dashIndex == -1) {
                 throw new IllegalArgumentException("Invalid format. Expected date with time range");
@@ -58,8 +63,9 @@ public class NextLesson {
             LocalTime startTime = LocalTime.parse(startTimePart, DateTimeFormatter.ofPattern("HHmm"));
             LocalTime endTime = LocalTime.parse(endTimePart, DateTimeFormatter.ofPattern("HHmm"));
 
-            this.startDateTime = LocalDateTime.of(date, startTime);
-            this.endDateTime = LocalDateTime.of(date, endTime);
+            this.date = date;
+            this.startTime = startTime;
+            this.endTime = endTime;
         } catch (Exception e) {
             throw new IllegalArgumentException("Invalid format: " + e.getMessage(), e);
         }
@@ -69,98 +75,55 @@ public class NextLesson {
      * Constructs an empty {@code NextLesson}.
      */
     public NextLesson() {
-        this.startDateTime = null;
-        this.endDateTime = null;
+        this.date = null;
+        this.startTime = null;
+        this.endTime = null;
     }
 
-    /**
-     * Formats the lesson date and time as a string.
-     */
-    public String getFormattedNextLesson() {
-        if (startDateTime == null || endDateTime == null) {
-            return "";
-        }
-
-        String dateStr = startDateTime.getDayOfMonth()
-                + " " + getMonthAbbreviation(startDateTime.getMonthValue())
-                + " " + startDateTime.getYear();
-
-        int startHour = startDateTime.getHour();
-        int endHour = endDateTime.getHour();
-
-        return dateStr + " " + startHour + "-" + endHour;
+    public boolean isEmpty() {
+        return date == null && startTime == null && endTime == null;
     }
 
     @Override
     public String toString() {
-        return getFormattedNextLesson();
+        return getValue();
     }
 
     @Override
     public boolean equals(Object other) {
-        if (other == this) {
-            return true;
+        if (this == other) {
+            return true; // Same object
         }
-
-        if (!(other instanceof NextLesson)) {
-            return false;
+        if (other == null || getClass() != other.getClass()) {
+            return false; // Null or different class
         }
+        NextLesson otherLesson = (NextLesson) other;
 
-        NextLesson otherNextLesson = (NextLesson) other;
-
-        if (this.startDateTime == null && otherNextLesson.startDateTime == null) {
-            return true;
-        } else if (this.startDateTime == null || otherNextLesson.startDateTime == null) {
-            return false;
-        }
-
-        return startDateTime.equals(otherNextLesson.startDateTime)
-                && endDateTime.equals(otherNextLesson.endDateTime);
+        return Objects.equals(date, otherLesson.date)
+                && Objects.equals(startTime, otherLesson.startTime)
+                && Objects.equals(endTime, otherLesson.endTime);
     }
 
     @Override
     public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + ((startDateTime == null) ? 0 : startDateTime.hashCode());
-        result = prime * result + ((endDateTime == null) ? 0 : endDateTime.hashCode());
-        return result;
+        return Objects.hash(date, startTime, endTime);
     }
 
     /**
-     * Returns the next lesson information as a string in the format "dd/MM/yyyy HHMM-HHMM"
+     * Returns the next lesson information as a string in the format "d/M/yyyy HHmm-HHMmm
      */
     public String getValue() {
-        if (startDateTime == null || endDateTime == null) {
+        if (isEmpty()) {
             return "";
         }
 
-        // Format the date from the startDateTime
-        String dateStr = startDateTime.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+        DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("d/M/yyyy");
+        DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HHmm");
 
-        // Format the start and end times
-        String startTimeStr = startDateTime.format(DateTimeFormatter.ofPattern("HHmm"));
-        String endTimeStr = endDateTime.format(DateTimeFormatter.ofPattern("HHmm"));
+        String dateStr = (date != null) ? date.format(dateFormatter) : "";
+        String startStr = (startTime != null) ? startTime.format(timeFormatter) : "";
+        String endStr = (endTime != null) ? endTime.format(timeFormatter) : "";
 
-        // Combine into the final format
-        return String.format("%s %s-%s", dateStr, startTimeStr, endTimeStr);
-    }
-
-    private String getMonthAbbreviation(int month) {
-        switch (month) {
-        case 1: return "Jan";
-        case 2: return "Feb";
-        case 3: return "Mar";
-        case 4: return "Apr";
-        case 5: return "May";
-        case 6: return "Jun";
-        case 7: return "Jul";
-        case 8: return "Aug";
-        case 9: return "Sep";
-        case 10: return "Oct";
-        case 11: return "Nov";
-        case 12: return "Dec";
-        default: return "";
-        }
+        return String.format("%s %s-%s", dateStr, startStr, endStr).trim();
     }
 }

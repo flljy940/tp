@@ -103,7 +103,11 @@ public class PersonBuilder {
      * Sets the {@code NextLesson} of the {@code Person} that we are building.
      */
     public PersonBuilder withNextLesson(String nextLesson) {
-        this.nextLesson = new NextLesson(nextLesson);
+        if (nextLesson == null || nextLesson.isEmpty()) {
+            this.nextLesson = new NextLesson();
+        } else {
+            this.nextLesson = new NextLesson(nextLesson);
+        }
         return this;
     }
 
