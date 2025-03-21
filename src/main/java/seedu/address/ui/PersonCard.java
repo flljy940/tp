@@ -43,7 +43,7 @@ public class PersonCard extends UiPart<Region> {
     @FXML
     private Label remark;
     @FXML
-    private FlowPane subjects;
+    private Label subjects;
 
     /**
      * Creates a {@code PersonCode} with the given {@code Person} and index to display.
@@ -66,15 +66,23 @@ public class PersonCard extends UiPart<Region> {
             nextLesson.getChildren().clear(); // Clear if no next lesson
         }
 
+        StringBuilder subjectLabel = new StringBuilder();
+        person.getSubjects().stream()
+                .sorted(Comparator.comparing(subject -> subject.subjectName))
+                .forEach(subject ->
+                        subjectLabel.append(subject.subjectName).append(" | "));
+        if (subjectLabel.length() > 0) {
+            subjects.setText(subjectLabel.substring(0, subjectLabel.length() - 3));
+        } else {
+            subjects.setText("");
+        }
+
         if (!person.getRemark().value.isEmpty()) {
             remark.setText(person.getRemark().value);
             remark.setStyle("-fx-text-fill: green; -fx-font-weight: bold;");
         } else {
-            remark.setText("");
+            remark.setText("NOT PAID");
+            remark.setStyle("-fx-text-fill: red; -fx-font-weight: bold;");
         }
-
-        person.getSubjects().stream()
-                .sorted(Comparator.comparing(subject -> subject.subjectName))
-                .forEach(subject -> subjects.getChildren().add(new Label(subject.subjectName)));
     }
 }

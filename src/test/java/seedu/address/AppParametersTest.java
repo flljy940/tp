@@ -2,6 +2,7 @@ package seedu.address;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.nio.file.Paths;
@@ -63,9 +64,19 @@ public class AppParametersTest {
         assertFalse(appParameters.equals(5.0f));
 
         // different config path -> returns false
+        AppParameters sameAppParameters = new AppParameters();
+        sameAppParameters.setConfigPath(Paths.get("configPath"));
+        assertFalse(appParameters.equals(sameAppParameters));
+
+        // same hashcode -> returns true
+        assertTrue(appParameters.equals(appParameters));
+        appParameters.setConfigPath(Paths.get("configPath"));
+        assertEquals(appParameters.hashCode(), sameAppParameters.hashCode());
+
+        // different hashcode -> returns false
         AppParameters otherAppParameters = new AppParameters();
-        otherAppParameters.setConfigPath(Paths.get("configPath"));
-        assertFalse(appParameters.equals(otherAppParameters));
+        otherAppParameters.setConfigPath(Paths.get("otherConfigPath"));
+        assertNotEquals(appParameters.hashCode(), otherAppParameters.hashCode());
     }
 
     private static class ParametersStub extends Application.Parameters {

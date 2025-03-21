@@ -34,8 +34,12 @@ TutorRec is a **desktop app for managing contacts, optimised for use via a Comma
    * `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01` : Adds a contact named `John Doe` to the contact list.
 
    * `delete 3` : Deletes the 3rd contact shown in the current list.
+   
+   * `paid 3` : Marks the 3rd contact as PAID to indicate that payment has been made.
 
    * `clear` : Deletes all contacts.
+
+   * `nextlesson 3 d/13 Mar 9-12` : Add the next lesson date for the 3rd contact.  
 
    * `exit` : Exits the app.
 
@@ -53,13 +57,16 @@ TutorRec is a **desktop app for managing contacts, optimised for use via a Comma
   e.g. in `add n/NAME`, `NAME` is a parameter which can be used as `add n/John Doe`.
 
 * Items in square brackets are optional.<br>
-  e.g `n/NAME [t/TAG]` can be used as `n/John Doe t/friend` or as `n/John Doe`.
+  e.g `n/NAME [s/SUBJECT]` can be used as `n/John Doe s/math` or as `n/John Doe`.
 
 * Items with `…`​ after them can be used multiple times including zero times.<br>
-  e.g. `[t/TAG]…​` can be used as ` ` (i.e. 0 times), `t/friend`, `t/friend t/family` etc.
+  e.g. `[s/SUBJECT]…​` can be used as ` ` (i.e. 0 times), `s/math`, `s/math s/chemistry` etc.
 
 * Parameters can be in any order.<br>
-  e.g. if the command specifies `n/NAME p/PHONE_NUMBER`, `p/PHONE_NUMBER n/NAME` is also acceptable.
+  e.g. if the command specifies `n/NAME p/PHONE_NUMBER`, `p/PHONE_NUMBER n/NAME` 
+
+* Date format for next lesson must be in `d MMM HHmm-HHmm` format, <br>
+  e.g. `nextlesson 3 d/13 Mar 0900-1200` 
 
 * Extraneous parameters for commands that do not take in parameters (such as `help`, `list`, `exit` and `clear`) will be ignored.<br>
   e.g. if the command specifies `help 123`, it will be interpreted as `help`.
@@ -80,16 +87,16 @@ Format: `help`
 
 Adds a person to the contact list.
 
-Format: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]…​`
+Format: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [s/SUBJECT]…​`
 
 <box type="tip" seamless>
 
-**Tip:** A person can have any number of tags (including 0)
+**Tip:** A person can have any number of subjects (including 0)
 </box>
 
 Examples:
 * `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01`
-* `add n/Betsy Crowe t/friend e/betsycrowe@example.com a/Newgate Prison p/1234567 t/criminal`
+* `add n/Betsy Crowe s/math e/betsycrowe@example.com a/Newgate p/1234567 s/physics`
 
 ### Listing all persons : `list`
 
@@ -101,18 +108,18 @@ Format: `list`
 
 Edits an existing person in the contact list.
 
-Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`
+Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [s/SUBJECT]…​`
 
 * Edits the person at the specified `INDEX`. The index refers to the index number shown in the displayed person list. The index **must be a positive integer** 1, 2, 3, …​
 * At least one of the optional fields must be provided.
 * Existing values will be updated to the input values.
-* When editing tags, the existing tags of the person will be removed i.e adding of tags is not cumulative.
-* You can remove all the person’s tags by typing `t/` without
-    specifying any tags after it.
+* When editing subjects, the existing subjects of the person will be removed i.e adding of subjects is not cumulative.
+* You can remove all the person’s subjects by typing `s/` without
+    specifying any subjects after it.
 
 Examples:
 *  `edit 1 p/91234567 e/johndoe@example.com` Edits the phone number and email address of the 1st person to be `91234567` and `johndoe@example.com` respectively.
-*  `edit 2 n/Betsy Crower t/` Edits the name of the 2nd person to be `Betsy Crower` and clears all existing tags.
+*  `edit 2 n/Betsy Crower s/` Edits the name of the 2nd person to be `Betsy Crower` and clears all existing subjects.
 
 ### Locating persons by name: `find`
 
@@ -145,6 +152,36 @@ Format: `delete INDEX`
 Examples:
 * `list` followed by `delete 2` deletes the 2nd person in the contact list.
 * `find Betsy` followed by `delete 1` deletes the 1st person in the results of the `find` command.
+
+### Adding next lesson date for a person : `nextlesson`
+
+Adds date for upcoming lesson for an existing person in the contact list.
+
+Format: `nextlesson INDEX d/NEXT_LESSON`
+
+* Adds the date of next lesson for the person at the specified `INDEX`. The index refers to the index number shown in the displayed person list. The index **must be a positive integer** 1, 2, 3, …​
+* Existing values will be updated to the input values.
+* When adding dates, the existing dates of the person will be appended i.e adding of tags is cumulative.
+* You can remove all the person’s next lesson dates by typing `d/` without
+  specifying any tags after it.
+
+Examples:
+*  `nextlesson 1 d/13 Mar 9-11` Adds/Updates the date of next lesson of the 1st person to be `13 Mar 9-11`.
+*  `nextlesson 2 d/` Removes the next lesson date for the 2nd person.
+
+### Marking that a person made payment : `pay`
+
+Marks the specified person as PAID to indicate that payment has been made.
+
+Format: `pay INDEX`
+
+* Marks the person at the specific `INDEX` as PAID to indicate that payment has been made by the person.
+* The index refers to the index number shown in the displayed person list.
+* The index **must be a positive integer** 1, 2, 3, …​
+
+Examples:
+* `list` followed by `pay 2` marks the 2nd person as PAID in the contact list.
+* `find David` followed by `pay 1` marks the 1st person in the results of the `find` command.
 
 ### Clearing all entries : `clear`
 
@@ -197,10 +234,12 @@ _Details coming soon ..._
 
 Action     | Format, Examples
 -----------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------
-**Add**    | `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]…​` <br> e.g., `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 t/friend t/colleague`
+**Add**    | `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [s/SUBJECT]…​` <br> e.g., `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 s/math s/english`
 **Clear**  | `clear`
+**Pay**    | `pay INDEX`<br> e.g., `pay 3`
 **Delete** | `delete INDEX`<br> e.g., `delete 3`
-**Edit**   | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`
+**Edit**   | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [s/SUBJECT]…​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`
 **Find**   | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`
+**Nextlesson** | `nextlesson INDEX d/[NEXT_LESSON]`<br> e.g., `nextlesson 3 d/13 Mar 9-11`
 **List**   | `list`
 **Help**   | `help`

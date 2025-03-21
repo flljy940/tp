@@ -34,6 +34,16 @@ public class StorageManagerTest {
     }
 
     @Test
+    public void getUserPrefsFilePath_withValidPath_returnsCorrectPath() {
+        Path expectedPath = getTempFilePath("prefs");
+        StorageManager manager = new StorageManager(
+                new JsonAddressBookStorage(getTempFilePath("ab")),
+                new JsonUserPrefsStorage(expectedPath));
+
+        assertEquals(expectedPath, manager.getUserPrefsFilePath());
+    }
+
+    @Test
     public void prefsReadSave() throws Exception {
         /*
          * Note: This is an integration test that verifies the StorageManager is properly wired to the
