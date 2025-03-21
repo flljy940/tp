@@ -11,6 +11,7 @@ import static seedu.address.testutil.TypicalPersons.BOB;
 
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.Iterator;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
@@ -166,6 +167,32 @@ public class UniquePersonListTest {
     public void asUnmodifiableObservableList_modifyList_throwsUnsupportedOperationException() {
         assertThrows(UnsupportedOperationException.class, ()
             -> uniquePersonList.asUnmodifiableObservableList().remove(0));
+    }
+
+    @Test
+    public void iterator_returnsCorrectIterator() {
+        uniquePersonList.add(ALICE);
+        uniquePersonList.add(BOB);
+
+        Iterator<Person> iterator = uniquePersonList.iterator();
+
+        assertTrue(iterator.hasNext());
+        assertEquals(ALICE, iterator.next());
+        assertTrue(iterator.hasNext());
+        assertEquals(BOB, iterator.next());
+        assertFalse(iterator.hasNext());
+    }
+
+    @Test
+    public void equals() {
+        // same object -> returns true
+        assertTrue(uniquePersonList.equals(uniquePersonList));
+
+        // null -> returns false
+        assertFalse(uniquePersonList.equals(null));
+
+        // different types -> returns false
+        assertFalse(uniquePersonList.equals(5));
     }
 
     @Test

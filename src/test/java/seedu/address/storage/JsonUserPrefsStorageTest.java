@@ -39,6 +39,15 @@ public class JsonUserPrefsStorageTest {
     }
 
     @Test
+    public void getUserPrefsFilePath_returnsCorrectPath() {
+        Path expectedPath = Paths.get("test/path.json");
+        JsonUserPrefsStorage storage = new JsonUserPrefsStorage(expectedPath);
+
+        Path returnedPath = storage.getUserPrefsFilePath();
+        assertEquals(expectedPath, returnedPath);
+    }
+
+    @Test
     public void readUserPrefs_notJsonFormat_exceptionThrown() {
         assertThrows(DataLoadingException.class, () -> readUserPrefs("NotJsonFormatUserPrefs.json"));
     }

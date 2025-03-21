@@ -99,6 +99,7 @@ public class LogicManagerTest {
                 new JsonUserPrefsStorage(temporaryFolder.resolve("dummyPrefs.json"))));
 
         assertEquals(expectedModel.getAddressBook(), testLogic.getAddressBook());
+        assertEquals(expectedModel.getAddressBookFilePath(), testLogic.getAddressBookFilePath());
     }
 
     @Test

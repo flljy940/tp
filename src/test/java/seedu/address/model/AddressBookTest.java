@@ -109,6 +109,9 @@ public class AddressBookTest {
         // same persons -> returns true
         addressBookCopy.addPerson(ALICE);
         assertEquals(addressBook, addressBookCopy);
+
+        // same hashcode -> returns true
+        assertEquals(addressBook.hashCode(), addressBookCopy.hashCode());
     }
 
     /**
