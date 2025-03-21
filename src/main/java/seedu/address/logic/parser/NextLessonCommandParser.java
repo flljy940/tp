@@ -86,11 +86,12 @@ public class NextLessonCommandParser implements Parser<NextLessonCommand> {
             LocalTime endTime = LocalTime.of(endHours, endMinutes);
 
             if (!startTime.isBefore(endTime)) {
+                System.out.println("🚨 Error: Start time " + startTime + " is NOT before end time " + endTime);
                 throw new ParseException("Start time must be before end time.");
             }
 
             if (date.isBefore(CURRENT_DATE)) {
-                throw new ParseException("Lesson date cannot be in the past.");
+                throw new ParseException("Lesson date cannot be in the past.", new IllegalArgumentException());
             }
 
             return new NextLesson(date, startTime, endTime);
