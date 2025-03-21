@@ -33,13 +33,23 @@ public class StorageManagerTest {
         return testFolder.resolve(fileName);
     }
 
-    @Test
-    public void getUserPrefsFilePath_success() {
-        StorageManager expectedStorageManager = new StorageManager(
-                new JsonAddressBookStorage(getTempFilePath("ab")),
-                new JsonUserPrefsStorage(getTempFilePath("prefs")));
-        assertEquals(expectedStorageManager.getUserPrefsFilePath(),
-                storageManager.getUserPrefsFilePath());
+@Test
+public void getUserPrefsFilePath_withValidPath_returnsCorrectPath() {
+    Path expectedPath = getTempFilePath("prefs");
+    StorageManager manager = new StorageManager(
+            new JsonAddressBookStorage(getTempFilePath("ab")),
+            new JsonUserPrefsStorage(expectedPath));
+    
+    assertEquals(expectedPath, manager.getUserPrefsFilePath());
+}
+
+@Test
+public void getUserPrefsFilePath_withInvalidPath_throwsException() {
+    assertThrows(IllegalArgumentException.class, () ->
+        new StorageManager(
+            new JsonAddressBookStorage(getTempFilePath("ab")),
+            new JsonUserPrefsStorage(Paths.get("**invalid**path"))));
+}
     }
 
     @Test
