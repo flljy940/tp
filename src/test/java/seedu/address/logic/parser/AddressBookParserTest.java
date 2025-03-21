@@ -93,9 +93,9 @@ public class AddressBookParserTest {
 
     @Test
     public void parseCommand_nextlesson() throws Exception {
-        final NextLesson nextlesson = new NextLesson("today");
+        final NextLesson nextlesson = new NextLesson("15/4/2025 1900-2100");
         NextLessonCommand command = (NextLessonCommand) parser.parseCommand(NextLessonCommand.COMMAND_WORD + " "
-                + INDEX_FIRST_PERSON.getOneBased() + " " + PREFIX_NEXTLESSON + nextlesson.value);
+                + INDEX_FIRST_PERSON.getOneBased() + " " + PREFIX_NEXTLESSON + nextlesson.getValue());
         assertEquals(new NextLessonCommand(INDEX_FIRST_PERSON, nextlesson), command);
     }
 

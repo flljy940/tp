@@ -15,7 +15,7 @@ import seedu.address.model.person.NextLesson;
 public class NextLessonCommandParserTest {
 
     private NextLessonCommandParser parser = new NextLessonCommandParser();
-    private final String nonEmptyDate = "Today.";
+    private final String nonEmptyDate = "15/4/2025 1900-2100";
 
     @Test
     public void parse_indexSpecified_success() {

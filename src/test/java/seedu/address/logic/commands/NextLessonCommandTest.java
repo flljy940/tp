@@ -28,7 +28,7 @@ import seedu.address.testutil.PersonBuilder;
  */
 public class NextLessonCommandTest {
 
-    private static final String NEXTLESSON_STUB = "today";
+    private static final String NEXTLESSON_STUB = "15/04/2025 1900-2100";
 
     private Model model = new ModelManager(getTypicalAddressBook(), new UserPrefs());
 
@@ -38,7 +38,7 @@ public class NextLessonCommandTest {
         Person editedPerson = new PersonBuilder(firstPerson).withNextLesson(NEXTLESSON_STUB).build();
 
         NextLessonCommand nextLessonCommand = new NextLessonCommand(
-                INDEX_FIRST_PERSON, new NextLesson(editedPerson.getNextLesson().value));
+                INDEX_FIRST_PERSON, new NextLesson(NEXTLESSON_STUB));
 
         String expectedMessage = String.format(
                 NextLessonCommand.MESSAGE_ADD_NEXTLESSON_SUCCESS, Messages.format(editedPerson));
@@ -75,7 +75,7 @@ public class NextLessonCommandTest {
                 .withNextLesson(NEXTLESSON_STUB).build();
 
         NextLessonCommand nextLessonCommand = new NextLessonCommand(
-                INDEX_FIRST_PERSON, new NextLesson(editedPerson.getNextLesson().value));
+                INDEX_FIRST_PERSON, new NextLesson(editedPerson.getNextLesson().getValue()));
 
         String expectedMessage = String.format(
                 NextLessonCommand.MESSAGE_ADD_NEXTLESSON_SUCCESS, Messages.format(editedPerson));

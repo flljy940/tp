@@ -26,7 +26,7 @@ public class NextLessonCommand extends Command {
             + "Parameters: INDEX (must be a positive integer) "
             + PREFIX_NEXTLESSON + "[DATE]\n"
             + "Example: " + COMMAND_WORD + " 1 "
-            + PREFIX_NEXTLESSON + "16 Mar 9-12.";
+            + PREFIX_NEXTLESSON + "15/04/2025 1400-1600.";
 
     public static final String MESSAGE_ADD_NEXTLESSON_SUCCESS = "Added Next Lesson to Person: %1$s\"";
     public static final String MESSAGE_DELETE_NEXTLESSON_SUCCESS = "Removed Next Lesson to Person: %1$s\"";
