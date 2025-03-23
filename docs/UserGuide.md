@@ -35,7 +35,11 @@ TutorRec is a **desktop app for managing contacts, optimised for use via a Comma
 
    * `delete 3` : Deletes the 3rd contact shown in the current list.
    
-   * `paid 3` : Marks the 3rd contact as PAID to indicate that payment has been made.
+   * `pay 3` : Marks the 3rd contact as PAID to indicate that payment has been made.
+   
+   * `unpay 3` : Resets the 3rd contact to NOT PAID to indicate that payment has not been made.
+   
+   * `unpay all` : Resets all contacts to NOT PAID to indicate that payment has not been made by all contacts.
 
    * `clear` : Deletes all contacts.
 
@@ -183,6 +187,22 @@ Examples:
 * `list` followed by `pay 2` marks the 2nd person as PAID in the contact list.
 * `find David` followed by `pay 1` marks the 1st person in the results of the `find` command.
 
+### Resetting the payment statement of one person or all persons : `unpay`
+
+Resets the specified person’s payment status to NOT PAID, or resets payment statuses for all persons.
+
+Format: `unpay INDEX` or `unpay all`
+
+* Resets the payment status of the person at the specified `INDEX` to NOT PAID.
+* The index refers to the index number shown in the displayed person list.
+* The index **must be a positive integer** 1, 2, 3, …​
+* Alternatively, using `unpay all` will reset the payment statuses of all persons in the displayed list to NOT PAID.
+
+Examples:
+* `list` followed by `unpay 2` resets the payment status of the 2nd person in the contact list to NOT PAID.
+* `find David` followed by `unpay 1` resets the payment status of the 1st person in the results of the `find` command.
+* `unpay all` resets payment statuses for everyone in the current contact list.
+
 ### Clearing all entries : `clear`
 
 Clears all entries from the contact list.
@@ -237,6 +257,7 @@ Action     | Format, Examples
 **Add**    | `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [s/SUBJECT]…​` <br> e.g., `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 s/math s/english`
 **Clear**  | `clear`
 **Pay**    | `pay INDEX`<br> e.g., `pay 3`
+**Unpay**  | `unpay INDEX`<br> e.g., `unpay 3` or `unpay all`
 **Delete** | `delete INDEX`<br> e.g., `delete 3`
 **Edit**   | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [s/SUBJECT]…​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`
 **Find**   | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`
