@@ -79,8 +79,14 @@ public class UnpayCommand extends Command {
             return false;
         }
         UnpayCommand otherCommand = (UnpayCommand) other;
-        return (isResetAll == otherCommand.isResetAll)
-                && ((index == null && otherCommand.index == null)
-                || (index != null && index.equals(otherCommand.index)));
+
+        if (this.isResetAll != otherCommand.isResetAll) {
+            return false;
+        }
+        if (this.isResetAll) {
+            return true;
+        }
+
+        return this.index.equals(otherCommand.index);
     }
 }
