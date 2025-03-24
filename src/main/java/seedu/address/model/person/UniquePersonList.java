@@ -106,7 +106,7 @@ public class UniquePersonList implements Iterable<Person> {
         Comparator<Person> byDate = Comparator.comparing(
             person -> {
                 NextLesson nextLesson = person.getNextLesson();
-                if (nextLesson == null || nextLesson.isEmpty()) {
+                if (nextLesson.isEmpty()) {
                     return null;
                 }
                 return nextLesson.getDate();
@@ -117,9 +117,6 @@ public class UniquePersonList implements Iterable<Person> {
         Comparator<Person> byTime = Comparator.comparing(
             person -> {
                 NextLesson nextLesson = person.getNextLesson();
-                if (nextLesson == null || nextLesson.isEmpty()) {
-                    return null;
-                }
                 return nextLesson.getStartTime();
             },
             Comparator.nullsLast(Comparator.naturalOrder())
