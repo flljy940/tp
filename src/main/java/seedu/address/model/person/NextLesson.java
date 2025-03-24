@@ -15,6 +15,7 @@ public class NextLesson {
     public final LocalDate date;
     public final LocalTime startTime;
     public final LocalTime endTime;
+    public static final String MESSAGE_CONSTRAINTS = "Next lesson string cannot be null";
 
     /**
      * Constructs a {@code NextLesson}.
@@ -39,7 +40,7 @@ public class NextLesson {
      * @param nextLesson The string representation of next lesson date.
      */
     public NextLesson(String nextLesson) {
-        requireNonNull(nextLesson, "Next lesson string cannot be null");
+        requireNonNull(nextLesson, MESSAGE_CONSTRAINTS);
 
         if (nextLesson.isEmpty()) {
             this.date = null;
@@ -132,9 +133,10 @@ public class NextLesson {
         DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("d/M/yyyy");
         DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HHmm");
 
-        String dateStr = (date != null) ? date.format(dateFormatter) : "";
-        String startStr = (startTime != null) ? startTime.format(timeFormatter) : "";
-        String endStr = (endTime != null) ? endTime.format(timeFormatter) : "";
+        // Parser guarantees that either date, startTime and endTime will never be null
+        String dateStr = date.format(dateFormatter);
+        String startStr = startTime.format(timeFormatter);
+        String endStr = endTime.format(timeFormatter);
 
         return String.format("%s %s-%s", dateStr, startStr, endStr).trim();
     }
