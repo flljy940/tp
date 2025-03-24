@@ -46,7 +46,7 @@ public class NextLessonCommandParserTest {
     }
 
     @Test
-    void constructor_invalidDateFormat_throwsParseException() {
+    void parseNextLesson_invalidDateFormat_throwsParseException() {
         String[] invalidInputs = {
             "15-4-2025 0900-1100", // Wrong separator in date
             "15/04/2025 9:00-11:00", // Wrong time format
@@ -59,7 +59,6 @@ public class NextLessonCommandParserTest {
         for (String invalidInput : invalidInputs) {
             assertParseFailure(parser, invalidInput,
                     String.format(MESSAGE_INVALID_COMMAND_FORMAT, NextLessonCommand.MESSAGE_USAGE));
-
         }
     }
 
@@ -87,7 +86,6 @@ public class NextLessonCommandParserTest {
         for (String input : invalidStartEndTimes) {
             assertParseFailure(parser, input,
                     String.format(MESSAGE_INVALID_COMMAND_FORMAT, NextLessonCommand.MESSAGE_USAGE));
-
         }
     }
 

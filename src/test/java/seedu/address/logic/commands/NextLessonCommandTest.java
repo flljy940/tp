@@ -1,5 +1,6 @@
 package seedu.address.logic.commands;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_NEXTLESSON_AMY;
@@ -111,6 +112,19 @@ public class NextLessonCommandTest {
 
         assertCommandFailure(nextLessonCommand, model, Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
     }
+
+    // Test case for non-empty nextLesson string
+    @Test
+    void testNextLessonNonEmptyString() {
+        String nextLesson = "15/4/2023 1430-1600";
+        NextLesson nextLessonToSet = (nextLesson == null || nextLesson.isEmpty())
+                ? new NextLesson()
+                : new NextLesson(nextLesson);
+
+        assertEquals(nextLesson, nextLessonToSet.toString(),
+                "The NextLesson object should match the given nextLesson string.");
+    }
+
 
     @Test
     public void equals() {
