@@ -24,6 +24,8 @@ public class NextLessonCommandParser implements Parser<NextLessonCommand> {
     private static final String DATE_TIME_FORMAT = "d/M/yyyy HHmm-HHmm";
     private static final String DATE_REGEX = "(\\d{1,2})/(\\d{1,2})/(\\d{4})\\s(\\d{4})-(\\d{4})";
     private static final LocalDate CURRENT_DATE = LocalDate.now();
+    public static final String MESSAGE_CONSTRAINTS =
+            "Invalid date format. Expected: 'd/M/yyyy HHmm-HHmm' (e.g., 15/4/2025 0900-1100)";
 
     /**
      * Parses the given {@code String} of arguments in the ocntext of the {@code NextLessonCommand}
@@ -56,8 +58,7 @@ public class NextLessonCommandParser implements Parser<NextLessonCommand> {
         Matcher matcher = pattern.matcher(dateTimeString);
 
         if (!matcher.matches()) {
-            throw new ParseException(
-                    "Invalid date format. Expected: 'd/M/yyyy HHmm-HHmm' (e.g., 15/4/2025 0900-1100)");
+            throw new ParseException(MESSAGE_CONSTRAINTS);
         }
 
         try {
@@ -88,6 +89,10 @@ public class NextLessonCommandParser implements Parser<NextLessonCommand> {
             if (!startTime.isBefore(endTime)) {
                 System.out.println("🚨 Error: Start time " + startTime + " is NOT before end time " + endTime);
                 throw new ParseException("Start time must be before end time.");
+            }
+
+            if (startTime.equals(endTime)) {
+                throw new ParseException("Start time and end time cannot be the same.", new IllegalArgumentException());
             }
 
             if (date.isBefore(CURRENT_DATE)) {
