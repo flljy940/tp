@@ -12,10 +12,10 @@ import java.util.Objects;
  */
 public class NextLesson {
 
+    public static final String MESSAGE_CONSTRAINTS = "Next lesson string cannot be null";
     public final LocalDate date;
     public final LocalTime startTime;
     public final LocalTime endTime;
-    public static final String MESSAGE_CONSTRAINTS = "Next lesson string cannot be null";
 
     /**
      * Constructs a {@code NextLesson}.

@@ -21,11 +21,11 @@ import seedu.address.model.person.NextLesson;
  */
 public class NextLessonCommandParser implements Parser<NextLessonCommand> {
 
+    public static final String MESSAGE_CONSTRAINTS =
+            "Invalid date format. Expected: 'd/M/yyyy HHmm-HHmm' (e.g., 15/4/2025 0900-1100)";
     private static final String DATE_TIME_FORMAT = "d/M/yyyy HHmm-HHmm";
     private static final String DATE_REGEX = "(\\d{1,2})/(\\d{1,2})/(\\d{4})\\s(\\d{4})-(\\d{4})";
     private static final LocalDate CURRENT_DATE = LocalDate.now();
-    public static final String MESSAGE_CONSTRAINTS =
-            "Invalid date format. Expected: 'd/M/yyyy HHmm-HHmm' (e.g., 15/4/2025 0900-1100)";
 
     /**
      * Parses the given {@code String} of arguments in the ocntext of the {@code NextLessonCommand}
