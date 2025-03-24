@@ -319,13 +319,24 @@
 
 #commandTextField {
     -fx-background-color: transparent #383838 transparent #383838;
+    -fx-background-radius: 10;
     -fx-background-insets: 0;
+    -fx-padding: 10 10 10 45;
+    -fx-background-image: url('../images/terminal.png');
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: 15px center;
+    -fx-background-size: 25px;
     -fx-border-color: #383838 #383838 #ffffff #383838;
     -fx-border-insets: 0;
     -fx-border-width: 1;
-    -fx-font-family: "Segoe UI Light";
-    -fx-font-size: 13pt;
+    -fx-font-family: "Microsoft JhengHei UI";
+    -fx-font-size: 12pt;
     -fx-text-fill: white;
+}
+
+#commandTextField:focused {
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 3.5, 0.4, 0, 1);
+    -fx-prompt-text-fill: derive(-fx-control-inner-background, -30%);
 }
 
 #filterField, #personListPanel, #personWebpage {
