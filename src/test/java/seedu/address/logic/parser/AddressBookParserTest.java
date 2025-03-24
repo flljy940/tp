@@ -93,11 +93,11 @@ public class AddressBookParserTest {
     }
 
     @Test
-    public void parseCommand_nextLesson() throws Exception {
-        final NextLesson nextLesson = new NextLesson("today");
+    public void parseCommand_nextlesson() throws Exception {
+        final NextLesson nextlesson = new NextLesson("15/4/2025 1900-2100");
         NextLessonCommand command = (NextLessonCommand) parser.parseCommand(NextLessonCommand.COMMAND_WORD + " "
-                + INDEX_FIRST_PERSON.getOneBased() + " " + PREFIX_NEXTLESSON + nextLesson.value);
-        assertEquals(new NextLessonCommand(INDEX_FIRST_PERSON, nextLesson), command);
+                + INDEX_FIRST_PERSON.getOneBased() + " " + PREFIX_NEXTLESSON + nextlesson.getValue());
+        assertEquals(new NextLessonCommand(INDEX_FIRST_PERSON, nextlesson), command);
     }
 
     @Test

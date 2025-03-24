@@ -20,7 +20,7 @@ import seedu.address.model.subject.Subject;
  */
 public class SampleDataUtil {
 
-    public static final NextLesson EMPTY_NEXTLESSON = new NextLesson("");
+    public static final NextLesson EMPTY_NEXTLESSON = new NextLesson();
     public static final Remark EMPTY_REMARK = new Remark("");
 
     public static Person[] getSamplePersons() {
