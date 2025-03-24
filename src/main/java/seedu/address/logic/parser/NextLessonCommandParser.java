@@ -57,7 +57,7 @@ public class NextLessonCommandParser implements Parser<NextLessonCommand> {
 
         if (!matcher.matches()) {
             throw new ParseException(
-                    "Invalid date format. Expected: 'd/M/yyyy HHmm-HHmm' (e.g., 15/4/2025 0900-1100)");
+                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, NextLessonCommand.MESSAGE_USAGE));
         }
 
         try {
@@ -86,12 +86,11 @@ public class NextLessonCommandParser implements Parser<NextLessonCommand> {
             LocalTime endTime = LocalTime.of(endHours, endMinutes);
 
             if (!startTime.isBefore(endTime)) {
-                System.out.println("🚨 Error: Start time " + startTime + " is NOT before end time " + endTime);
                 throw new ParseException("Start time must be before end time.");
             }
 
             if (date.isBefore(CURRENT_DATE)) {
-                throw new ParseException("Lesson date cannot be in the past.", new IllegalArgumentException());
+                throw new ParseException("Lesson date cannot be in the past.");
             }
 
             return new NextLesson(date, startTime, endTime);
