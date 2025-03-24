@@ -3,6 +3,7 @@ package seedu.address.model.person;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
+import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
 
@@ -95,6 +96,40 @@ public class UniquePersonList implements Iterable<Person> {
         }
 
         internalList.setAll(persons);
+    }
+
+    /**
+     * Sorts the list by NextLesson date.
+     */
+    public void sortByNextLesson() {
+        requireAllNonNull(internalList);
+        Comparator<Person> byDate = Comparator.comparing(
+            person -> {
+                NextLesson nextLesson = person.getNextLesson();
+                if (nextLesson == null || nextLesson.isEmpty()) {
+                    return null;
+                }
+                return nextLesson.getDate();
+            },
+            Comparator.nullsLast(Comparator.naturalOrder())
+        );
+
+        Comparator<Person> byTime = Comparator.comparing(
+            person -> {
+                NextLesson nextLesson = person.getNextLesson();
+                if (nextLesson == null || nextLesson.isEmpty()) {
+                    return null;
+                }
+                return nextLesson.getStartTime();
+            },
+            Comparator.nullsLast(Comparator.naturalOrder())
+        );
+
+        List<Person> sortedList = internalList.stream()
+                .sorted(byDate.thenComparing(byTime))
+                .collect(java.util.stream.Collectors.toList());
+
+        internalList.setAll(sortedList);
     }
 
     /**
