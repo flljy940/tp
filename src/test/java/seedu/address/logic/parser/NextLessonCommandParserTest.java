@@ -1,5 +1,7 @@
 package seedu.address.logic.parser;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NEXTLESSON;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseFailure;
@@ -12,12 +14,13 @@ import org.junit.jupiter.api.Test;
 
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.NextLessonCommand;
+import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.person.NextLesson;
 
 public class NextLessonCommandParserTest {
 
     private static final LocalDate CURRENT_DATE = LocalDate.now();
-    private NextLessonCommandParser parser = new NextLessonCommandParser();
+    private final NextLessonCommandParser parser = new NextLessonCommandParser();
     private final String nonEmptyDate = "15/4/2025 1900-2100";
 
     @Test
@@ -98,5 +101,23 @@ public class NextLessonCommandParserTest {
 
         assertParseFailure(parser, pastDate,
                 String.format(MESSAGE_INVALID_COMMAND_FORMAT, NextLessonCommand.MESSAGE_USAGE));
+    }
+
+    @Test
+    public void parse_invalidInput_throwsParseException() {
+        // Invalid index
+        String invalidIndexInput = "a " + PREFIX_NEXTLESSON + "15/4/2025 1900-2100";
+        assertParseFailure(parser, invalidIndexInput,
+                String.format(MESSAGE_INVALID_COMMAND_FORMAT, NextLessonCommand.MESSAGE_USAGE));
+
+        // Invalid date format
+        String invalidDateFormatInput = "1 " + PREFIX_NEXTLESSON + "15-4-2025 1900-2100";
+        assertParseFailure(parser, invalidDateFormatInput,
+                String.format(NextLessonCommandParser.MESSAGE_CONSTRAINTS));
+
+        // Invalid time format
+        String invalidTimeFormatInput = "1 " + PREFIX_NEXTLESSON + "15/4/2025 19:00-21:00";
+        assertParseFailure(parser, invalidTimeFormatInput,
+                String.format(NextLessonCommandParser.MESSAGE_CONSTRAINTS));
     }
 }
