@@ -57,7 +57,7 @@ public class FilterDateCommandParser implements Parser<FilterDateCommand> {
             }
 
             return new NextLessonEqualsDatePredicate(filterNextLessonDate);
-        }  catch (DateTimeException e) {
+        } catch (DateTimeException e) {
             throw new ParseException(MESSAGE_INVALID_DATE, e);
         }
     }

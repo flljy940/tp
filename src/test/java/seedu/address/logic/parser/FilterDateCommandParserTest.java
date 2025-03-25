@@ -59,18 +59,17 @@ public class FilterDateCommandParserTest {
 
     @Test
     public void parse_invalidDateFormat_throwsParseException() {
-        String invalidDateFormat = "15-04-2025";
-        assertParseFailure(parser, invalidDateFormat, MESSAGE_INVALID_DATE);
+        // invalid format
+        assertParseFailure(parser, "15-04-2025", MESSAGE_INVALID_DATE);
 
-        String[] invalidDates = {
-                "0/4/2025", // Invalid day (0)
-                "15/14/2025", // Invalid month (14)
-                "15/4/202", // Invalid year (202)
-        };
+        // invalid day
+        assertParseFailure(parser, "0/4/2025", MESSAGE_INVALID_DATE);
 
-        for (String invalidDate : invalidDates) {
-            assertParseFailure(parser, invalidDate, MESSAGE_INVALID_DATE);
-        }
+        // invalid month
+        assertParseFailure(parser, "15/14/2025", MESSAGE_INVALID_DATE);
+
+        // invalid year
+        assertParseFailure(parser, "15/4/202", MESSAGE_INVALID_DATE);
     }
 
 }
