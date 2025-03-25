@@ -21,6 +21,8 @@ import seedu.address.model.person.NextLesson;
  */
 public class NextLessonCommandParser implements Parser<NextLessonCommand> {
 
+    public static final String MESSAGE_CONSTRAINTS =
+            "Invalid date format. Expected: 'd/M/yyyy HHmm-HHmm' (e.g., 15/4/2025 0900-1100)";
     private static final String DATE_TIME_FORMAT = "d/M/yyyy HHmm-HHmm";
     private static final String DATE_REGEX = "(\\d{1,2})/(\\d{1,2})/(\\d{4})\\s(\\d{4})-(\\d{4})";
     private static final LocalDate CURRENT_DATE = LocalDate.now();
@@ -56,8 +58,7 @@ public class NextLessonCommandParser implements Parser<NextLessonCommand> {
         Matcher matcher = pattern.matcher(dateTimeString);
 
         if (!matcher.matches()) {
-            throw new ParseException(
-                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, NextLessonCommand.MESSAGE_USAGE));
+            throw new ParseException(MESSAGE_CONSTRAINTS);
         }
 
         try {
@@ -86,11 +87,16 @@ public class NextLessonCommandParser implements Parser<NextLessonCommand> {
             LocalTime endTime = LocalTime.of(endHours, endMinutes);
 
             if (!startTime.isBefore(endTime)) {
+                System.out.println("🚨 Error: Start time " + startTime + " is NOT before end time " + endTime);
                 throw new ParseException("Start time must be before end time.");
             }
 
+            if (startTime.equals(endTime)) {
+                throw new ParseException("Start time and end time cannot be the same.", new IllegalArgumentException());
+            }
+
             if (date.isBefore(CURRENT_DATE)) {
-                throw new ParseException("Lesson date cannot be in the past.");
+                throw new ParseException("Lesson date cannot be in the past.", new IllegalArgumentException());
             }
 
             return new NextLesson(date, startTime, endTime);

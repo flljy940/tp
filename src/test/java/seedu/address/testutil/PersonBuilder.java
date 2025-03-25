@@ -1,5 +1,7 @@
 package seedu.address.testutil;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -100,13 +102,28 @@ public class PersonBuilder {
     }
 
     /**
-     * Sets the {@code NextLesson} of the {@code Person} that we are building.
+     * Sets the {@code NextLesson} of the {@code Person} that we are building
+     * using String.
      */
     public PersonBuilder withNextLesson(String nextLesson) {
         if (nextLesson == null || nextLesson.isEmpty()) {
             this.nextLesson = new NextLesson();
         } else {
             this.nextLesson = new NextLesson(nextLesson);
+        }
+        return this;
+    }
+
+    /**
+     * Sets the {@code NextLesson} of the {@code Person} that we are building
+     * using LocalDate and LocalTime.
+     */
+    public PersonBuilder withNextLesson(
+            LocalDate date, LocalTime startTime, LocalTime endTime) {
+        if (nextLesson == null || nextLesson.isEmpty()) {
+            this.nextLesson = new NextLesson();
+        } else {
+            this.nextLesson = new NextLesson(date, startTime, endTime);
         }
         return this;
     }

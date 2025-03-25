@@ -10,6 +10,8 @@ import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalPersons.ALICE;
 import static seedu.address.testutil.TypicalPersons.getTypicalAddressBook;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
@@ -82,6 +84,57 @@ public class AddressBookTest {
     @Test
     public void getPersonList_modifyList_throwsUnsupportedOperationException() {
         assertThrows(UnsupportedOperationException.class, () -> addressBook.getPersonList().remove(0));
+    }
+
+    @Test
+    public void sortPersonListByNextLesson_sortsCorrectly() {
+        // Create an address book to be sorted
+        AddressBook addressBookToSort = new AddressBook();
+
+        Person editedAlice = new PersonBuilder().withName("Alice")
+                .withNextLesson(LocalDate.of(2025, 4, 10), LocalTime.of(10, 0), LocalTime.of(12, 0))
+                .build();
+
+        Person editedBob = new PersonBuilder().withName("Bob")
+                .withNextLesson(LocalDate.of(2025, 4, 11), LocalTime.of(10, 0), LocalTime.of(12, 0))
+                .build();
+
+        Person editedCharlie = new PersonBuilder().withName("Charlie")
+                .withNextLesson(LocalDate.of(2025, 4, 11), LocalTime.of(13, 0), LocalTime.of(15, 0))
+                .build();
+
+        Person editedDavid = new PersonBuilder().withName("David")
+                .build();
+
+        addressBook.addPerson(editedAlice);
+        addressBook.addPerson(editedBob);
+        addressBook.addPerson(editedCharlie);
+        addressBook.addPerson(editedDavid);
+
+        addressBookToSort.addPerson(editedAlice);
+        addressBookToSort.addPerson(editedDavid);
+        addressBookToSort.addPerson(editedBob);
+        addressBookToSort.addPerson(editedCharlie);
+        addressBookToSort.sortPersonListByNextLesson();
+
+        assertEquals(addressBook, addressBookToSort);
+
+        // Add Ethan to have the earliest lesson to test sorting
+        Person editedEthan = new PersonBuilder().withName("Ethan")
+                .withNextLesson(LocalDate.of(2025, 4, 10), LocalTime.of(8, 0), LocalTime.of(10, 0))
+                .build();
+
+        AddressBook expectedAddressBook = new AddressBook();
+        expectedAddressBook.addPerson(editedEthan);
+        expectedAddressBook.addPerson(editedAlice);
+        expectedAddressBook.addPerson(editedBob);
+        expectedAddressBook.addPerson(editedCharlie);
+        expectedAddressBook.addPerson(editedDavid);
+
+        addressBookToSort.addPerson(editedEthan);
+        addressBookToSort.sortPersonListByNextLesson();
+
+        assertEquals(expectedAddressBook, addressBookToSort);
     }
 
     @Test
