@@ -5,7 +5,7 @@
     "phone" : "94351253",
     "email" : "alice@example.com",
     "address" : "123, Jurong West Ave 6, #08-111",
-    "nextLesson": "no lesson anymore yeah",
+    "nextLesson": "14/4/2025 1400-1600",
     "remark" : "",
     "subjects" : [ "math" ]
   }, {
@@ -13,7 +13,7 @@
     "phone" : "98765432",
     "email" : "johnd@example.com",
     "address" : "311, Clementi Ave 2, #02-25",
-    "nextLesson": "",
+    "nextLesson": "13/4/2025 1900-2100",
     "remark" : "",
     "subjects" : [ "math", "chemistry" ]
   }, {

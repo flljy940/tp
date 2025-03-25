@@ -43,7 +43,7 @@ TutorRec is a **desktop app for managing contacts, optimised for use via a Comma
 
    * `clear` : Deletes all contacts.
 
-   * `nextlesson 3 d/13 Mar 9-12` : Add the next lesson date for the 3rd contact.  
+   * `nextlesson 3 d/15/4/2025 1800-2000` : Add the next lesson date for the 3rd contact.  
 
    * `exit` : Exits the app.
 
@@ -69,8 +69,8 @@ TutorRec is a **desktop app for managing contacts, optimised for use via a Comma
 * Parameters can be in any order.<br>
   e.g. if the command specifies `n/NAME p/PHONE_NUMBER`, `p/PHONE_NUMBER n/NAME` 
 
-* Date format for next lesson must be in `d MMM HHmm-HHmm` format, <br>
-  e.g. `nextlesson 3 d/13 Mar 0900-1200` 
+* Date format for next lesson must be in `d/M/yyyy HHmm-HHmm` format, <br>
+  e.g. `nextlesson 3 d/15/4/2025 1800-2000` 
 
 * Extraneous parameters for commands that do not take in parameters (such as `help`, `list`, `exit` and `clear`) will be ignored.<br>
   e.g. if the command specifies `help 123`, it will be interpreted as `help`.
@@ -170,7 +170,7 @@ Format: `nextlesson INDEX d/NEXT_LESSON`
   specifying any tags after it.
 
 Examples:
-*  `nextlesson 1 d/13 Mar 9-11` Adds/Updates the date of next lesson of the 1st person to be `13 Mar 9-11`.
+*  `nextlesson 1 d/15/4/2025 1800-2000` Adds/Updates the date of next lesson of the 1st person to be `15/4/2025 1800-2000`.
 *  `nextlesson 2 d/` Removes the next lesson date for the 2nd person.
 
 ### Marking that a person made payment : `pay`
@@ -261,6 +261,6 @@ Action     | Format, Examples
 **Delete** | `delete INDEX`<br> e.g., `delete 3`
 **Edit**   | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [s/SUBJECT]…​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`
 **Find**   | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`
-**Nextlesson** | `nextlesson INDEX d/[NEXT_LESSON]`<br> e.g., `nextlesson 3 d/13 Mar 9-11`
+**Nextlesson** | `nextlesson INDEX d/[NEXT_LESSON]`<br> e.g., `nextlesson 3 d/15/4/2025 1800-2000`
 **List**   | `list`
 **Help**   | `help`

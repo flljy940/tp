@@ -61,7 +61,7 @@ class JsonAdaptedPerson {
         phone = source.getPhone().value;
         email = source.getEmail().value;
         address = source.getAddress().value;
-        nextLesson = source.getNextLesson().value;
+        nextLesson = source.getNextLesson().toString();
         remark = source.getRemark().value;
         subjects.addAll(source.getSubjects().stream()
                 .map(JsonAdaptedSubject::new)

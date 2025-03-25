@@ -58,10 +58,12 @@ public class PersonCard extends UiPart<Region> {
         remark.setText(person.getRemark().value);
         email.setText(person.getEmail().value);
 
-        if (!person.getNextLesson().value.isEmpty()) {
-            Label nextLessonLabel = new Label(person.getNextLesson().value);
+        if (person.getNextLesson() != null && !person.getNextLesson().toString().isEmpty()) {
+            Label nextLessonLabel = new Label(person.getNextLesson().toString());
             nextLessonLabel.getStyleClass().add("label");
             nextLesson.getChildren().add(nextLessonLabel);
+        } else {
+            nextLesson.getChildren().clear(); // Clear if no next lesson
         }
 
         StringBuilder subjectLabel = new StringBuilder();
