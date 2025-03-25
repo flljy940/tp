@@ -108,7 +108,7 @@ public class AddressBookParserTest {
                 PayCommand.COMMAND_WORD + " " + INDEX_FIRST_PERSON.getOneBased());
         assertEquals(new PayCommand(INDEX_FIRST_PERSON), command);
     }
- 
+
     @Test
     public void parseCommand_sort() throws Exception {
         assertTrue(parser.parseCommand(SortCommand.COMMAND_WORD) instanceof SortCommand);
