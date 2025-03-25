@@ -121,7 +121,7 @@ public class AddressBookParserTest {
         UnpayCommand command = (UnpayCommand) parser.parseCommand(
                 UnpayCommand.COMMAND_WORD + " " + INDEX_FIRST_PERSON.getOneBased());
         assertEquals(new UnpayCommand(INDEX_FIRST_PERSON), command);
-
+    }
 
     @Test
     public void parseCommand_unrecognisedInput_throwsParseException() {
