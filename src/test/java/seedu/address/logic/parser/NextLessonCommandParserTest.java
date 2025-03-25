@@ -6,6 +6,8 @@ import static seedu.address.logic.parser.CommandParserTestUtil.assertParseFailur
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseSuccess;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
 
+import java.time.LocalDate;
+
 import org.junit.jupiter.api.Test;
 
 import seedu.address.commons.core.index.Index;
@@ -14,8 +16,9 @@ import seedu.address.model.person.NextLesson;
 
 public class NextLessonCommandParserTest {
 
+    private static final LocalDate CURRENT_DATE = LocalDate.now();
     private NextLessonCommandParser parser = new NextLessonCommandParser();
-    private final String nonEmptyDate = "Today.";
+    private final String nonEmptyDate = "15/4/2025 1900-2100";
 
     @Test
     public void parse_indexSpecified_success() {
@@ -27,7 +30,7 @@ public class NextLessonCommandParserTest {
 
         // no date of next lesson
         userInput = targetIndex.getOneBased() + " " + PREFIX_NEXTLESSON;
-        expectedCommand = new NextLessonCommand(INDEX_FIRST_PERSON, new NextLesson(""));
+        expectedCommand = new NextLessonCommand(INDEX_FIRST_PERSON, new NextLesson());
         assertParseSuccess(parser, userInput, expectedCommand);
     }
 
@@ -40,5 +43,58 @@ public class NextLessonCommandParserTest {
 
         // no index
         assertParseFailure(parser, NextLessonCommand.COMMAND_WORD + " " + nonEmptyDate, expectedMessage);
+    }
+
+    @Test
+    void parseNextLesson_invalidDateFormat_throwsParseException() {
+        String[] invalidInputs = {
+            "15-4-2025 0900-1100", // Wrong separator in date
+            "15/04/2025 9:00-11:00", // Wrong time format
+            "2025/4/15 0900-1100", // Wrong date format order
+            "15/4/2025 0900", // Missing end time
+            "15/4/2025-1100", // Missing start time
+            "15/4/2025" // Only date, no time range
+        };
+
+        for (String invalidInput : invalidInputs) {
+            assertParseFailure(parser, invalidInput,
+                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, NextLessonCommand.MESSAGE_USAGE));
+        }
+    }
+
+    @Test
+    void constructor_invalidTimeValues_throwsException() {
+        String[] invalidTimes = {
+            "15/4/2025 2500-1100", // Invalid start hour (25:00)
+            "15/4/2025 0900-6060", // Invalid end minute (60:60)
+            "15/4/2025 2399-1200" // Invalid start minute (23:99)
+        };
+
+        for (String input : invalidTimes) {
+            assertParseFailure(parser, input,
+                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, NextLessonCommand.MESSAGE_USAGE));
+        }
+    }
+
+    @Test
+    void constructor_startTimeNotBeforeEndTime_throwsException() {
+        String[] invalidStartEndTimes = {
+            "15/4/2025 1200-1200", // Start time == End time
+            "15/4/2025 1500-1400" // Start time > End time
+        };
+
+        for (String input : invalidStartEndTimes) {
+            assertParseFailure(parser, input,
+                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, NextLessonCommand.MESSAGE_USAGE));
+        }
+    }
+
+    @Test
+    void constructor_pastDate_throwsParseException() {
+        String pastDate = CURRENT_DATE.minusDays(1).format(java.time.format.DateTimeFormatter.ofPattern("d/M/yyyy"))
+            + " 0900-1100";
+
+        assertParseFailure(parser, pastDate,
+                String.format(MESSAGE_INVALID_COMMAND_FORMAT, NextLessonCommand.MESSAGE_USAGE));
     }
 }

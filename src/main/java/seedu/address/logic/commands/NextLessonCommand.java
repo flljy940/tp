@@ -26,7 +26,7 @@ public class NextLessonCommand extends Command {
             + "Parameters: INDEX (must be a positive integer) "
             + PREFIX_NEXTLESSON + "[DATE]\n"
             + "Example: " + COMMAND_WORD + " 1 "
-            + PREFIX_NEXTLESSON + "3-4-2025.";
+            + PREFIX_NEXTLESSON + "15/4/2025 1400-1600.";
 
     public static final String MESSAGE_ADD_NEXTLESSON_SUCCESS = "Added Next Lesson to Person: %1$s\"";
     public static final String MESSAGE_DELETE_NEXTLESSON_SUCCESS = "Removed Next Lesson to Person: %1$s\"";
@@ -54,9 +54,14 @@ public class NextLessonCommand extends Command {
         }
 
         Person personToEdit = lastShownList.get(index.getZeroBased());
+
+        NextLesson nextLessonToSet = (nextLesson == null || nextLesson.isEmpty())
+                ? new NextLesson()
+                : new NextLesson(nextLesson.toString());
+
         Person editedPerson = new Person(
                 personToEdit.getName(), personToEdit.getPhone(), personToEdit.getEmail(),
-                personToEdit.getAddress(), nextLesson, personToEdit.getRemark(), personToEdit.getSubjects()
+                personToEdit.getAddress(), nextLessonToSet, personToEdit.getRemark(), personToEdit.getSubjects()
         );
         model.setPerson(personToEdit, editedPerson);
         model.updateFilteredPersonList(Model.PREDICATE_SHOW_ALL_PERSONS);
@@ -70,7 +75,7 @@ public class NextLessonCommand extends Command {
      * {@code personToEdit}
      */
     private String generateSuccessMessage(Person personToEdit) {
-        String message = !nextLesson.value.isEmpty()
+        String message = !nextLesson.toString().isEmpty()
                 ? MESSAGE_ADD_NEXTLESSON_SUCCESS
                 : MESSAGE_DELETE_NEXTLESSON_SUCCESS;
 
