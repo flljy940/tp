@@ -24,6 +24,18 @@ public class NextLessonTest {
     }
 
     @Test
+    void constructor_nullInput_throwsException() {
+        Exception exception = assertThrows(NullPointerException.class, () -> new NextLesson(null));
+        assertTrue(exception.getMessage().contains(NextLesson.MESSAGE_CONSTRAINTS));
+    }
+
+    @Test
+    void constructor_emptyInput_createsEmptyLesson() {
+        NextLesson emptyLesson = new NextLesson("");
+        assertTrue(emptyLesson.isEmpty());
+    }
+
+    @Test
     void constructor_missingDash_throwsException() {
         String input = "15/4/2023 14301600"; // Missing '-'
         Exception exception = assertThrows(IllegalArgumentException.class, () -> new NextLesson(input));
@@ -52,6 +64,39 @@ public class NextLessonTest {
     }
 
     @Test
+    void isEmpty_allFieldsNull_returnsTrue() {
+        NextLesson lesson = new NextLesson();
+        assertTrue(lesson.isEmpty());
+    }
+
+    @Test
+    void constructor_nullDate_throwsException() {
+        assertThrows(NullPointerException.class, () -> new NextLesson(
+                null, LocalTime.of(14, 30), LocalTime.of(16, 0))
+        );
+    }
+
+    @Test
+    void constructor_nullStartTime_throwsException() {
+        assertThrows(NullPointerException.class, () -> new NextLesson(
+                LocalDate.of(2023, 4, 15), null, LocalTime.of(16, 0))
+        );
+    }
+
+    @Test
+    void constructor_nullEndTime_throwsException() {
+        assertThrows(NullPointerException.class, () -> new NextLesson(
+                LocalDate.of(2023, 4, 15), LocalTime.of(14, 30), null)
+        );
+    }
+
+    @Test
+    void isEmpty_allFieldsNotNull_returnsFalse() {
+        NextLesson lesson = new NextLesson(LocalDate.of(2023, 4, 15), LocalTime.of(14, 30), LocalTime.of(16, 0));
+        assertFalse(lesson.isEmpty());
+    }
+
+    @Test
     public void equals() {
         NextLesson nextLesson = new NextLesson("14/4/2025 1400-1600");
 
@@ -71,6 +116,30 @@ public class NextLessonTest {
         // different nextLesson -> returns false
         NextLesson differentNextLesson = new NextLesson("15/4/2025 1900-2100");
         assertFalse(nextLesson.equals(differentNextLesson));
+
+        // different date -> returns false
+        NextLesson differentDate = new NextLesson("15/4/2025 1400-1600");
+        assertFalse(nextLesson.equals(differentDate));
+
+        // different start time -> returns false
+        NextLesson differentStartTime = new NextLesson("14/4/2025 1500-1600");
+        assertFalse(nextLesson.equals(differentStartTime));
+
+        // different end time -> returns false
+        NextLesson differentEndTime = new NextLesson("14/4/2025 1400-1700");
+        assertFalse(nextLesson.equals(differentEndTime));
+    }
+
+    @Test
+    void getValue_allFieldsNonNull_returnsFormattedString() {
+        NextLesson lesson = new NextLesson(LocalDate.of(2023, 4, 15), LocalTime.of(14, 30), LocalTime.of(16, 0));
+        assertEquals("15/4/2023 1430-1600", lesson.getValue());
+    }
+
+    @Test
+    void getValue_allFieldsNull_returnsEmptyString() {
+        NextLesson emptyLesson = new NextLesson();
+        assertEquals(emptyLesson.getValue(), "");
     }
 
     @Test

@@ -8,7 +8,10 @@ import static seedu.address.logic.commands.CommandTestUtil.VALID_SUBJECT_MATH;
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalPersons.ALICE;
 import static seedu.address.testutil.TypicalPersons.BOB;
+import static seedu.address.testutil.TypicalPersons.CARL;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Iterator;
@@ -189,6 +192,46 @@ public class UniquePersonListTest {
         // Test removal through iterator
         iterator.remove();
         assertFalse(iterator.hasNext());
+    }
+
+    @Test
+    public void sortByNextLesson_sortsCorrectly() {
+        // Test empty list
+        uniquePersonList.sortByNextLesson();
+        UniquePersonList expectedUniquePersonList = new UniquePersonList();
+        assertEquals(expectedUniquePersonList, uniquePersonList);
+
+        // Test list with one person
+        uniquePersonList.add(CARL);
+        uniquePersonList.sortByNextLesson();
+        expectedUniquePersonList.add(CARL);
+        assertEquals(expectedUniquePersonList, uniquePersonList);
+
+        // Test list with multiple persons with sorting
+        uniquePersonList.add(ALICE);
+        uniquePersonList.sortByNextLesson();
+
+        expectedUniquePersonList.remove(CARL);
+        expectedUniquePersonList.add(ALICE);
+        expectedUniquePersonList.add(CARL);
+
+        assertEquals(expectedUniquePersonList, uniquePersonList);
+    }
+
+    @Test
+    public void sortByNextLesson_handlesEmptyNextLesson() {
+        // Create persons with empty NextLesson
+        Person editedAlice = new PersonBuilder().withName("Alice").withNextLesson("").build();
+        Person editedBob = new PersonBuilder().withName("Bob")
+                .withNextLesson(LocalDate.of(2025, 4, 10), LocalTime.of(10, 0), LocalTime.of(12, 0)).build();
+
+        uniquePersonList.add(editedAlice);
+        uniquePersonList.add(editedBob);
+        uniquePersonList.sortByNextLesson();
+
+        List<Person> sortedList = uniquePersonList.asUnmodifiableObservableList();
+        assertEquals(editedBob, sortedList.get(0));
+        assertEquals(editedAlice, sortedList.get(1));
     }
 
     @Test

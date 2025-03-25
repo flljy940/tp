@@ -12,7 +12,9 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.Optional;
 import java.util.Set;
+import java.util.logging.Logger;
 
+import seedu.address.commons.core.LogsCenter;
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.EditCommand;
 import seedu.address.logic.commands.EditCommand.EditPersonDescriptor;
@@ -24,6 +26,7 @@ import seedu.address.model.subject.Subject;
  */
 public class EditCommandParser implements Parser<EditCommand> {
 
+    private static final Logger logger = LogsCenter.getLogger(EditCommandParser.class);
     /**
      * Parses the given {@code String} of arguments in the context of the EditCommand
      * and returns an EditCommand object for execution.
@@ -31,6 +34,7 @@ public class EditCommandParser implements Parser<EditCommand> {
      */
     public EditCommand parse(String args) throws ParseException {
         requireNonNull(args);
+        logger.info("Parsing edit command with arguments: " + args);
         ArgumentMultimap argMultimap =
                 ArgumentTokenizer.tokenize(
                         args, PREFIX_NAME, PREFIX_PHONE, PREFIX_EMAIL, PREFIX_ADDRESS, PREFIX_SUBJECT);
@@ -39,7 +43,9 @@ public class EditCommandParser implements Parser<EditCommand> {
 
         try {
             index = ParserUtil.parseIndex(argMultimap.getPreamble());
+            logger.info("Parsed index: " + index.getOneBased());
         } catch (ParseException pe) {
+            logger.warning("Failed to parse index: " + pe.getMessage());
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, EditCommand.MESSAGE_USAGE), pe);
         }
 
@@ -62,9 +68,11 @@ public class EditCommandParser implements Parser<EditCommand> {
         parseSubjectsForEdit(argMultimap.getAllValues(PREFIX_SUBJECT)).ifPresent(editPersonDescriptor::setSubjects);
 
         if (!editPersonDescriptor.isAnyFieldEdited()) {
+            logger.warning("No fields edited in edit command");
             throw new ParseException(EditCommand.MESSAGE_NOT_EDITED);
         }
 
+        logger.info("Successfully created EditCommand with index: " + index.getOneBased());
         return new EditCommand(index, editPersonDescriptor);
     }
 
@@ -75,6 +83,8 @@ public class EditCommandParser implements Parser<EditCommand> {
      */
     private Optional<Set<Subject>> parseSubjectsForEdit(Collection<String> subjects) throws ParseException {
         assert subjects != null;
+
+        logger.fine("Parsing subjects for edit: " + subjects);
 
         if (subjects.isEmpty()) {
             return Optional.empty();

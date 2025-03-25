@@ -25,6 +25,7 @@ import seedu.address.logic.commands.HelpCommand;
 import seedu.address.logic.commands.ListCommand;
 import seedu.address.logic.commands.NextLessonCommand;
 import seedu.address.logic.commands.PayCommand;
+import seedu.address.logic.commands.SortCommand;
 import seedu.address.logic.commands.UnpayCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.person.NameContainsKeywordsPredicate;
@@ -94,7 +95,7 @@ public class AddressBookParserTest {
     }
 
     @Test
-    public void parseCommand_nextlesson() throws Exception {
+    public void parseCommand_nextLesson() throws Exception {
         final NextLesson nextlesson = new NextLesson("15/4/2025 1900-2100");
         NextLessonCommand command = (NextLessonCommand) parser.parseCommand(NextLessonCommand.COMMAND_WORD + " "
                 + INDEX_FIRST_PERSON.getOneBased() + " " + PREFIX_NEXTLESSON + nextlesson.getValue());
@@ -107,13 +108,20 @@ public class AddressBookParserTest {
                 PayCommand.COMMAND_WORD + " " + INDEX_FIRST_PERSON.getOneBased());
         assertEquals(new PayCommand(INDEX_FIRST_PERSON), command);
     }
+  
+    @Test
+    public void parseCommand_sort() throws Exception {
+        assertTrue(parser.parseCommand(SortCommand.COMMAND_WORD) instanceof SortCommand);
+        assertTrue(parser.parseCommand(SortCommand.COMMAND_WORD + " 333") instanceof SortCommand);
+        assertTrue(parser.parseCommand(SortCommand.COMMAND_WORD + " ") instanceof SortCommand);
+    }
 
     @Test
     public void parseCommand_unpay() throws Exception {
         UnpayCommand command = (UnpayCommand) parser.parseCommand(
                 UnpayCommand.COMMAND_WORD + " " + INDEX_FIRST_PERSON.getOneBased());
         assertEquals(new UnpayCommand(INDEX_FIRST_PERSON), command);
-    }
+
 
     @Test
     public void parseCommand_unrecognisedInput_throwsParseException() {
