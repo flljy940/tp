@@ -27,6 +27,21 @@ public class FilterDateCommand extends Command {
     }
 
     @Override
+    public boolean equals(Object other) {
+        if (other == this) {
+            return true;
+        }
+
+        // instanceof handles nulls
+        if (!(other instanceof FilterDateCommand)) {
+            return false;
+        }
+
+        FilterDateCommand otherFilterDateCommand = (FilterDateCommand) other;
+        return predicate.equals(otherFilterDateCommand.predicate);
+    }
+
+    @Override
     public CommandResult execute(Model model) {
         requireNonNull(model);
         model.updateFilteredPersonList(predicate);

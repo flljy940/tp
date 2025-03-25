@@ -17,6 +17,7 @@ import seedu.address.model.person.NextLessonEqualsDatePredicate;
 public class FilterDateCommandParser implements Parser<FilterDateCommand> {
 
     public static final String MESSAGE_INVALID_DATE = "Invalid date format. Expected: 'd/M/yyyy' (e.g., 15/4/2025)";
+    public static final String MESSAGE_INVALID_PAST_DATE = "Invalid date specified. Filter date cannot be in the past.";
     private static final String DATE_REGEX = "(\\d{1,2})/(\\d{1,2})/(\\d{4})";
     private static final LocalDate CURRENT_DATE = LocalDate.now();
 
@@ -52,14 +53,12 @@ public class FilterDateCommandParser implements Parser<FilterDateCommand> {
             LocalDate filterNextLessonDate = LocalDate.of(year, month, day);
 
             if (filterNextLessonDate.isBefore(CURRENT_DATE)) {
-                throw new ParseException("Filter date cannot be in the past.", new IllegalArgumentException());
+                throw new ParseException(MESSAGE_INVALID_PAST_DATE, new IllegalArgumentException());
             }
 
             return new NextLessonEqualsDatePredicate(filterNextLessonDate);
-        }  catch (NumberFormatException e) {
-            throw new ParseException("Invalid numeric value in date: " + dateString, e);
         }  catch (DateTimeException e) {
-            throw new ParseException("Invalid date: " + e.getMessage(), e);
+            throw new ParseException(MESSAGE_INVALID_DATE, e);
         }
     }
 }
