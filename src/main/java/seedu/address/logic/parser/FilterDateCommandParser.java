@@ -4,7 +4,8 @@ import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 
 import java.time.DateTimeException;
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import seedu.address.logic.commands.FilterDateCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
@@ -14,6 +15,10 @@ import seedu.address.model.person.NextLessonEqualsDatePredicate;
  * Parses input arguments and creates a new FilterDateCommand object
  */
 public class FilterDateCommandParser implements Parser<FilterDateCommand> {
+
+    public static final String MESSAGE_INVALID_DATE = "Invalid date format. Expected: 'd/M/yyyy' (e.g., 15/4/2025)";
+    private static final String DATE_REGEX = "(\\d{1,2})/(\\d{1,2})/(\\d{4})";
+    private static final LocalDate CURRENT_DATE = LocalDate.now();
 
     /**
      * Parses the given {@code String} of arguments in the context of the FilterDateCommand
@@ -27,15 +32,33 @@ public class FilterDateCommandParser implements Parser<FilterDateCommand> {
                     String.format(MESSAGE_INVALID_COMMAND_FORMAT, FilterDateCommand.MESSAGE_USAGE));
         }
 
-        return new FilterDateCommand(parseNextLessonDate(trimmedArgs));
+        return new FilterDateCommand(parseFilterNextLessonDate(trimmedArgs));
     }
 
-    private NextLessonEqualsDatePredicate parseNextLessonDate(String dateString) throws ParseException {
-        try {
-            LocalDate nextLessonDate = LocalDate.parse(dateString, DateTimeFormatter.ofPattern("d/M/yyyy"));
+    private NextLessonEqualsDatePredicate parseFilterNextLessonDate(String dateString) throws ParseException {
+        Pattern datePattern = Pattern.compile(DATE_REGEX);
+        Matcher dateMatcher = datePattern.matcher(dateString);
 
-            return new NextLessonEqualsDatePredicate(nextLessonDate);
-        } catch (DateTimeException e) {
+        if (!dateMatcher.matches()) {
+            throw new ParseException(MESSAGE_INVALID_DATE);
+        }
+
+        try {
+            // Parse date components
+            int day = Integer.parseInt(dateMatcher.group(1));
+            int month = Integer.parseInt(dateMatcher.group(2));
+            int year = Integer.parseInt(dateMatcher.group(3));
+
+            LocalDate filterNextLessonDate = LocalDate.of(year, month, day);
+
+            if (filterNextLessonDate.isBefore(CURRENT_DATE)) {
+                throw new ParseException("Filter date cannot be in the past.", new IllegalArgumentException());
+            }
+
+            return new NextLessonEqualsDatePredicate(filterNextLessonDate);
+        }  catch (NumberFormatException e) {
+            throw new ParseException("Invalid numeric value in date: " + dateString, e);
+        }  catch (DateTimeException e) {
             throw new ParseException("Invalid date: " + e.getMessage(), e);
         }
     }
