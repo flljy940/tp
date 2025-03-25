@@ -86,10 +86,10 @@ public class AddressBookParser {
 
         case PayCommand.COMMAND_WORD:
             return new PayCommandParser().parse(arguments);
-            
+        
         case SortCommand.COMMAND_WORD:
             return new SortCommand();
-            
+        
         case UnpayCommand.COMMAND_WORD:
             return new UnpayCommandParser().parse(arguments);
 
