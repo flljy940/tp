@@ -30,17 +30,34 @@ public class UnpayCommand extends Command {
     private final Index index;
     private final boolean isResetAll;
 
+    /**
+     * Creates an UnpayCommand to reset payment for a specific student by index.
+     *
+     * @param index Index of the student in the displayed list.
+     */
     public UnpayCommand(Index index) {
         requireNonNull(index);
         this.index = index;
         this.isResetAll = false;
     }
 
+    /**
+     * Creates an UnpayCommand to reset payment status for all students.
+     *
+     * @param isResetAll True if resetting for all students.
+     */
     public UnpayCommand(boolean isResetAll) {
         this.index = null;
         this.isResetAll = isResetAll;
     }
 
+    /**
+     * Executes the UnpayCommand, resetting payment status for a student or all students.
+     *
+     * @param model The model containing the student list.
+     * @return Command result message.
+     * @throws CommandException If the provided index is invalid.
+     */
     @Override
     public CommandResult execute(Model model) throws CommandException {
         if (isResetAll) {
@@ -60,8 +77,13 @@ public class UnpayCommand extends Command {
             }
 
             Person personToEdit = lastShownList.get(index.getZeroBased());
-            Person unpaidPerson = new Person(personToEdit.getName(), personToEdit.getPhone(), personToEdit.getEmail(),
-                    personToEdit.getAddress(), personToEdit.getNextLesson(), new Remark(""), personToEdit.getSubjects());
+            Person unpaidPerson = new Person(personToEdit.getName(),
+                    personToEdit.getPhone(),
+                    personToEdit.getEmail(),
+                    personToEdit.getAddress(),
+                    personToEdit.getNextLesson(),
+                    new Remark(""),
+                    personToEdit.getSubjects());
 
             model.setPerson(personToEdit, unpaidPerson);
             model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
