@@ -94,6 +94,13 @@ public class AddressBook implements ReadOnlyAddressBook {
         persons.remove(key);
     }
 
+    /**
+     * Sorts the persons list by NextLesson date.
+     */
+    public void sortPersonListByNextLesson() {
+        persons.sortByNextLesson();
+    }
+
     //// util methods
 
     @Override

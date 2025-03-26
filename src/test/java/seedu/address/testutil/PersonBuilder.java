@@ -1,5 +1,7 @@
 package seedu.address.testutil;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -22,7 +24,7 @@ public class PersonBuilder {
     public static final String DEFAULT_PHONE = "85355255";
     public static final String DEFAULT_EMAIL = "amy@gmail.com";
     public static final String DEFAULT_ADDRESS = "123, Jurong West Ave 6, #08-111";
-    public static final String DEFAULT_NEXT_LESSON = "no lesson anymore yeah";
+    public static final String DEFAULT_NEXT_LESSON = "15/04/2025 1900-2100";
     public static final String DEFAULT_REMARK = "She likes aardvarks.";
 
     private Name name;
@@ -100,10 +102,29 @@ public class PersonBuilder {
     }
 
     /**
-     * Sets the {@code NextLesson} of the {@code Person} that we are building.
+     * Sets the {@code NextLesson} of the {@code Person} that we are building
+     * using String.
      */
     public PersonBuilder withNextLesson(String nextLesson) {
-        this.nextLesson = new NextLesson(nextLesson);
+        if (nextLesson == null || nextLesson.isEmpty()) {
+            this.nextLesson = new NextLesson();
+        } else {
+            this.nextLesson = new NextLesson(nextLesson);
+        }
+        return this;
+    }
+
+    /**
+     * Sets the {@code NextLesson} of the {@code Person} that we are building
+     * using LocalDate and LocalTime.
+     */
+    public PersonBuilder withNextLesson(
+            LocalDate date, LocalTime startTime, LocalTime endTime) {
+        if (nextLesson == null || nextLesson.isEmpty()) {
+            this.nextLesson = new NextLesson();
+        } else {
+            this.nextLesson = new NextLesson(date, startTime, endTime);
+        }
         return this;
     }
 
