@@ -173,6 +173,14 @@ Examples:
 *  `nextlesson 1 d/15/4/2025 1800-2000` Adds/Updates the date of next lesson of the 1st person to be `15/4/2025 1800-2000`.
 *  `nextlesson 2 d/` Removes the next lesson date for the 2nd person.
 
+### Sorting of all persons by lesson date : `sort`
+
+Sorts the list of persons by their next lesson date, with earliest date first.
+
+Format: `sort`
+
+* Those without lesson dates will be listed at the end.
+
 ### Marking that a person made payment : `pay`
 
 Marks the specified person as PAID to indicate that payment has been made.
