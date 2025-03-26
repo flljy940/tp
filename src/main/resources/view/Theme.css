@@ -77,7 +77,7 @@
 }
 
 .split-pane:horizontal .split-pane-divider {
-    -fx-background-color: derive(#87cefa, 20%);
+    -fx-background-color: transparent;
     -fx-border-color: transparent transparent transparent #4d4d4d;
 }
 
@@ -233,17 +233,18 @@
 }
 
 .grid-pane {
-    -fx-background-color: derive(#3cb371, 30%);
-    -fx-border-color: derive(#3cb371, 30%);
+    -fx-background-color: derive(#ffe4c4, 30%);
+    -fx-border-color: derive(#fffff0, 30%);
     -fx-border-width: 1px;
 }
 
 .grid-pane .stack-pane {
-    -fx-background-color: derive(#3cb371, 30%);
+    -fx-background-color: derive(#fffacd, 30%);
 }
 
 .context-menu {
-    -fx-background-color: derive(#3cb371, 50%);
+    -fx-background-color: derive(#f5f5dc, 50%);
+    -fx-background-radius: 12;
 }
 
 .context-menu .label {
@@ -262,7 +263,7 @@
 }
 
 .menu .left-container {
-    -fx-background-color: #6b8e23;
+    -fx-background-color: #fffffa;
 }
 
 /*
@@ -273,8 +274,8 @@
 .button {
     -fx-padding: 5 22 5 22;
     -fx-border-color: #e2e2e2;
-    -fx-border-width: 2;
-    -fx-background-radius: 0;
+    -fx-border-width: 8;
+    -fx-background-radius: 8;
     -fx-background-color: #1d1d1d;
     -fx-font-family: "Segoe UI", Helvetica, Arial, sans-serif;
     -fx-font-size: 11pt;
@@ -283,12 +284,13 @@
 }
 
 .button:hover {
-    -fx-background-color: #6b8e23;
+    -fx-background-color: #ffffff;
+    -fx-background-radius: 8px;
     -fx-text-fill: white;
 }
 
 .button:pressed, .button:default:hover:pressed {
-  -fx-background-color: white;
+  -fx-background-color: #ffffff;
   -fx-text-fill: #1d1d1d;
 }
 
