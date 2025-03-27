@@ -27,7 +27,7 @@
               <Insets right="5.0" />
             </HBox.margin>
           </Label>
-          <Button fx:id="copyButton" mnemonicParsing="false" onAction="#copyUrl" text="Copy URL (Ctrl + C)" style="-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 5px; -fx-padding: 10px 15px;">
+          <Button fx:id="copyButton" mnemonicParsing="false" onAction="#copyUrl" text="Copy URL (Enter)" style="-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 5px; -fx-padding: 10px 15px;">
             <HBox.margin>
               <Insets left="5.0" />
             </HBox.margin>

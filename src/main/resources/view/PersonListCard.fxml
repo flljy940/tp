@@ -27,12 +27,23 @@
         </Label>
         <Label fx:id="name" text="\$first" styleClass="cell_big_label" />
       </HBox>
-      <FlowPane fx:id="nextLesson" />
-      <Label fx:id="phone" styleClass="cell_small_label" text="\$phone" />
-      <Label fx:id="address" styleClass="cell_small_label" text="\$address" />
-      <Label fx:id="email" styleClass="cell_small_label" text="\$email" />
-      <Label fx:id="subjects" styleClass="cell_small_label" text="\$subjects" />
-      <Label fx:id="remark" styleClass="cell_small_label" text="\$remark" />
+      <FlowPane fx:id="nextLesson">
+        <padding>
+          <Insets left="21" top="1" />
+        </padding>
+      </FlowPane>
+      <GridPane hgap="50">
+        <padding>
+          <Insets left="35" top="3"/>
+        </padding>
+        <Label fx:id="phone" styleClass="cell_small_label_phone" text="\$phone" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+        <Label fx:id="email" styleClass="cell_small_label_email" text="\$email" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+        <Label fx:id="subjects" styleClass="cell_small_label_subject" text="\$subjects" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+        <Label fx:id="address" styleClass="cell_small_label_address" text="\$address" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+      </GridPane>
     </VBox>
   </GridPane>
+  <HBox alignment="TOP_RIGHT" styleClass="remark-container">
+    <Label fx:id="remark" styleClass="cell_small_label_remark" text="\$remark"/>
+  </HBox>
 </HBox>
