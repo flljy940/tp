@@ -9,13 +9,13 @@ Class "{abstract}\nCommand" as Command
 package "Parser classes"{
 Class "<<interface>>\nParser" as Parser
 Class AddressBookParser
-Class AddCommandParser
-Class DeleteCommandParser
-Class EditCommandParser
-Class FindCommandParser
-Class NextLessonCommandParser
-Class PayCommandParser
-Class UnpayCommandParser
+AddressBookParser .down.> AddCommandParser : create >
+AddressBookParser .down.> DeleteCommandParser : create >
+AddressBookParser .down.> EditCommandParser : create >
+AddressBookParser .down.> FindCommandParser : create >
+AddressBookParser .down.> NextLessonCommandParser : create >
+AddressBookParser .down.> PayCommandParser : create >
+AddressBookParser .down.> UnpayCommandParser : create >
 Class CliSyntax
 Class ParserUtil
 Class ArgumentMultimap
@@ -28,8 +28,8 @@ HiddenOutside ..> AddressBookParser
 
 AddressBookParser .down.> XYZCommandParser: <<create>>
 
-XYZCommandParser ..> XYZCommand : <<create>>
-AddressBookParser ..> Command : <<use>>
+XYZCommandParser ..> XYZCommand : create >
+AddressBookParser ..> Command : use >
 XYZCommandParser .up.|> Parser
 XYZCommandParser ..> ArgumentMultimap
 XYZCommandParser ..> ArgumentTokenizer
