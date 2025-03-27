@@ -96,7 +96,7 @@ public class HelpWindow extends UiPart<Stage> {
     }
 
     /**
-     * Allows user to copy URL with a hotkey (Ctrl + C)
+     * Allows user to close the window with F1 or copy URL with a hotkey (Ctrl + C or ENTER).
      */
     private void setKeyboardShortcuts() {
         getRoot().getScene().setOnKeyPressed(event -> {
@@ -127,7 +127,7 @@ public class HelpWindow extends UiPart<Stage> {
 
         Timeline timeline = new Timeline(new KeyFrame(
             Duration.seconds(1),
-            event -> copyButton.setText("Copy URL (Ctrl + C)")
+            event -> copyButton.setText("Copy URL (Enter)")
         ));
         timeline.setCycleCount(1);
         timeline.play();

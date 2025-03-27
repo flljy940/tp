@@ -241,7 +241,7 @@ TutorRec data will be saved in the hard disk automatically after any command tha
 
 ### Editing the data file
 
-TutorRec data is saved automatically as a JSON file `[JAR file location]/data/tutorrec.json`. Advanced users are welcome to update data directly by editing that data file.
+TutorRec data is saved automatically as a JSON file `[JAR file location]/data/addressbook.json`. Advanced users are welcome to update data directly by editing that data file.
 
 
 
