@@ -173,6 +173,14 @@ Examples:
 *  `nextlesson 1 d/15/4/2025 1800-2000` Adds/Updates the date of next lesson of the 1st person to be `15/4/2025 1800-2000`.
 *  `nextlesson 2 d/` Removes the next lesson date for the 2nd person.
 
+### Sorting of all persons by lesson date : `sort`
+
+Sorts the list of persons by their next lesson date and time, with the earliest lesson shown first.
+
+Format: `sort`
+
+* Those without lesson dates will be shifted to the end of the list, after all contacts with valid lesson dates.
+
 ### Marking that a person made payment : `pay`
 
 Marks the specified person as PAID to indicate that payment has been made.
@@ -234,6 +242,8 @@ TutorRec data will be saved in the hard disk automatically after any command tha
 ### Editing the data file
 
 TutorRec data is saved automatically as a JSON file `[JAR file location]/data/addressbook.json`. Advanced users are welcome to update data directly by editing that data file.
+
+
 
 <box type="warning" seamless>
 
