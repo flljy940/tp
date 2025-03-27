@@ -8,6 +8,8 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_NEXTLESSON;
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -20,6 +22,7 @@ import seedu.address.logic.commands.DeleteCommand;
 import seedu.address.logic.commands.EditCommand;
 import seedu.address.logic.commands.EditCommand.EditPersonDescriptor;
 import seedu.address.logic.commands.ExitCommand;
+import seedu.address.logic.commands.FilterDateCommand;
 import seedu.address.logic.commands.FindCommand;
 import seedu.address.logic.commands.HelpCommand;
 import seedu.address.logic.commands.ListCommand;
@@ -30,6 +33,7 @@ import seedu.address.logic.commands.UnpayCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.person.NameContainsKeywordsPredicate;
 import seedu.address.model.person.NextLesson;
+import seedu.address.model.person.NextLessonEqualsDatePredicate;
 import seedu.address.model.person.Person;
 import seedu.address.testutil.EditPersonDescriptorBuilder;
 import seedu.address.testutil.PersonBuilder;
@@ -121,6 +125,15 @@ public class AddressBookParserTest {
         UnpayCommand command = (UnpayCommand) parser.parseCommand(
                 UnpayCommand.COMMAND_WORD + " " + INDEX_FIRST_PERSON.getOneBased());
         assertEquals(new UnpayCommand(INDEX_FIRST_PERSON), command);
+    }
+
+    @Test
+    public void parseCommand_filterDate() throws Exception {
+        String dateString = "15/4/2025";
+        LocalDate date = LocalDate.parse(dateString, DateTimeFormatter.ofPattern("d/M/yyyy"));
+        FilterDateCommand command = (FilterDateCommand) parser.parseCommand(
+                FilterDateCommand.COMMAND_WORD + " " + dateString);
+        assertEquals(new FilterDateCommand(new NextLessonEqualsDatePredicate(date)), command);
     }
 
     @Test

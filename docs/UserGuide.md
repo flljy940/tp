@@ -173,6 +173,14 @@ Examples:
 *  `nextlesson 1 d/15/4/2025 1800-2000` Adds/Updates the date of next lesson of the 1st person to be `15/4/2025 1800-2000`.
 *  `nextlesson 2 d/` Removes the next lesson date for the 2nd person.
 
+### Sorting of all persons by lesson date : `sort`
+
+Sorts the list of persons by their next lesson date and time, with the earliest lesson shown first.
+
+Format: `sort`
+
+* Those without lesson dates will be shifted to the end of the list, after all contacts with valid lesson dates.
+
 ### Marking that a person made payment : `pay`
 
 Marks the specified person as PAID to indicate that payment has been made.
@@ -203,6 +211,18 @@ Examples:
 * `find David` followed by `unpay 1` resets the payment status of the 1st person in the results of the `find` command.
 * `unpay all` resets payment statuses for everyone in the current contact list.
 
+### Filtering by next lesson date : `filter`
+
+Filters and shows all persons whose next lesson date matches the specified input date.
+
+Format: `filter DATE`
+
+* The date refers to the date you wish to filter all persons by.
+* `DATE` must be in `d/M/yyyy` format (eg. `15/4/2025` or `3/5/2025`)
+
+Example:
+* `filter 15/4/2025` filters and shows you all persons whose next lesson is on `15/4/2025`.
+
 ### Clearing all entries : `clear`
 
 Clears all entries from the contact list.
@@ -221,7 +241,9 @@ TutorRec data will be saved in the hard disk automatically after any command tha
 
 ### Editing the data file
 
-TutorRec data is saved automatically as a JSON file `[JAR file location]/data/tutorrec.json`. Advanced users are welcome to update data directly by editing that data file.
+TutorRec data is saved automatically as a JSON file `[JAR file location]/data/addressbook.json`. Advanced users are welcome to update data directly by editing that data file.
+
+
 
 <box type="warning" seamless>
 
