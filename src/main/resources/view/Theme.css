@@ -1,18 +1,18 @@
 .background {
-    -fx-background-color: derive(#e8e8e8, 20%);
+    -fx-background-color: #ffe4b5;
     background-color: #ffe4b5; /* Used in the default.html file */
 }
 
 .label {
     -fx-font-size: 11pt;
-    -fx-font-family: "Segoe UI Semibold";
+    -fx-font-family: "Segoe UI";
     -fx-text-fill: black;
     -fx-opacity: 0.9;
 }
 
 .label-bright {
     -fx-font-size: 11pt;
-    -fx-font-family: "Segoe UI Semibold";
+    -fx-font-family: "Segoe UI";
     -fx-text-fill: black;
     -fx-opacity: 1;
 }
@@ -26,7 +26,7 @@
 
 .text-field {
     -fx-font-size: 12pt;
-    -fx-font-family: "Segoe UI Semibold";
+    -fx-font-family: "Segoe UI";
 }
 
 .tab-pane {
@@ -40,9 +40,9 @@
 }
 
 .table-view {
-    -fx-base: #d9f3ff;
-    -fx-control-inner-background: #ffffff;
-    -fx-background-color: #f0f0f0;
+    -fx-base: #ffe4b5;
+    -fx-control-inner-background: #ffe4b5;
+    -fx-background-color: #ffe4b5;
     -fx-table-cell-border-color: transparent;
     -fx-table-header-border-color: transparent;
     -fx-padding: 5;
@@ -90,7 +90,7 @@
 .list-view {
     -fx-background-insets: 0;
     -fx-padding: 0;
-    -fx-background-color: derive(#fafad2, 70%);
+    -fx-background-color: derive(#ffe4b5, 60%);
     -fx-background-radius: 20px;
     -fx-border-radius: 20px;
 }
@@ -98,17 +98,18 @@
 .list-cell {
     -fx-label-padding: 0 0 0 0;
     -fx-graphic-text-gap : 0;
-    -fx-padding: 5px 0 0 0;
+    -fx-padding: 2px 0 2px 0;
     -fx-background-radius: 20px;
     -fx-border-radius: 20px;
+    -fx-effect: dropshadow(one-pass-box, rgba(0, 0, 0, 0.15), 3, 0.2, 0, 1);
 }
 
 .list-cell:filled:even {
-    -fx-background-color: #ffe4b5;
+    -fx-background-color: #fffaf0;
 }
 
 .list-cell:filled:odd {
-    -fx-background-color: #ffefd5;
+    -fx-background-color: #fffffc;
 }
 
 .list-cell:filled:selected {
@@ -116,8 +117,9 @@
 }
 
 .list-cell:filled:selected #cardPane {
-    -fx-border-color: #3cb371;
-    -fx-border-width: 1;
+    -fx-border-color: derive(#3cb371, 50%);
+    -fx-border-radius: 20px;
+    -fx-border-width: 2;
 }
 
 .list-cell .label {
@@ -243,7 +245,6 @@
 }
 
 .context-menu {
-    -fx-background-color: derive(#3cb371, 50%);
     -fx-background-color: linear-gradient(to bottom, #ffefd5, #f8e8c8);
     -fx-background-radius: 12;
     -fx-border-radius: 12;
