@@ -203,6 +203,18 @@ Examples:
 * `find David` followed by `unpay 1` resets the payment status of the 1st person in the results of the `find` command.
 * `unpay all` resets payment statuses for everyone in the current contact list.
 
+### Filtering by next lesson date : `filter`
+
+Filters and shows all persons whose next lesson date matches the specified input date.
+
+Format: `filter DATE`
+
+* The date refers to the date you wish to filter all persons by.
+* `DATE` must be in `d/M/yyyy` format (eg. `15/4/2025` or `3/5/2025`)
+
+Example:
+* `filter 15/4/2025` filters and shows you all persons whose next lesson is on `15/4/2025`.
+
 ### Clearing all entries : `clear`
 
 Clears all entries from the contact list.
