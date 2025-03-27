@@ -1,0 +1,19 @@
+@startuml
+hide circle
+skinparam classAttributeIconSize 0
+
+Class "<<interface>>\nParser" as Parser
+Class FilterDateCommandParser {
+  +MESSAGE_INVALID_DATE: String
+  +MESSAGE_INVALID_PAST_DATE: String
+  -DATE_REGEX: String
+  -CURRENT_DATE: LocalDate
+  +parse(): FilterDateCommand
+  -parseFilterNextLessonDate(String): NextLessonEqualsDatePredicate
+}
+Class ParserException
+
+FilterDateCommandParser .up.|> Parser
+Parser .right.> ParserException: throws >
+FilterDateCommandParser .right.> ParserException: throws >
+@enduml

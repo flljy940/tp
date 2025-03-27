@@ -3,17 +3,18 @@ hide circle
 skinparam classAttributeIconSize 0
 
 Class "{abstract}\nCommand" as Command {
-  +execute(Model): CommandResult
+  +execute(Model): CommandResult {abstract}
 }
-Class RemarkCommand {
+Class FilterDateCommand {
   +COMMAND_WORD: String
+  +MESSAGE_SUCCESS: String
   +MESSAGE_USAGE: String
-  +MESSAGE_NOT_IMPLEMENTED_YET: String
+  -predicate: NextLessonEqualsDatePredicate
   +execute(Model): CommandResult
 }
 Class CommandException
 
-RemarkCommand -up-|> Command
+FilterDateCommand -up-|> Command
 Command ..> CommandException: throws >
-RemarkCommand .right.> CommandException: throws >
+FilterDateCommand .right.> CommandException: throws >
 @enduml
