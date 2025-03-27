@@ -93,7 +93,7 @@ Adds a person to the contact list.
 
 Format: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [s/SUBJECT]…​`
 
-<box type="tip" seamless>
+<box type="tip" seamless></box>
 
 **Tip:** A person can have any number of subjects (including 0)
 </box>
@@ -175,11 +175,11 @@ Examples:
 
 ### Sorting of all persons by lesson date : `sort`
 
-Sorts the list of persons by their next lesson date, with earliest date first.
+Sorts the list of persons by their next lesson date and time, with the earliest lesson shown first.
 
 Format: `sort`
 
-* Those without lesson dates will be listed at the end.
+* Those without lesson dates will be shifted to the end of the list, after all contacts with valid lesson dates.
 
 ### Marking that a person made payment : `pay`
 
@@ -243,7 +243,7 @@ TutorRec data will be saved in the hard disk automatically after any command tha
 
 TutorRec data is saved automatically as a JSON file `[JAR file location]/data/tutorrec.json`. Advanced users are welcome to update data directly by editing that data file.
 
-<box type="warning" seamless>
+<box type="warning" seamless></box>
 
 **Caution:**
 If your changes to the data file makes its format invalid, TutorRec will discard all data and start with an empty data file at the next run.  Hence, it is recommended to take a backup of the file before editing it.<br>
