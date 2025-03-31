@@ -8,13 +8,7 @@ package "Parser classes"{
 Class "{abstract}\nCommand" as Command
 Class "<<interface>>\nParser" as Parser
 Class AddressBookParser
-AddressBookParser .down.> AddCommandParser : create >
-AddressBookParser .down.> DeleteCommandParser : create >
-AddressBookParser .down.> EditCommandParser : create >
-AddressBookParser .down.> FindCommandParser : create >
-AddressBookParser .down.> NextLessonCommandParser : create >
-AddressBookParser .down.> PayCommandParser : create >
-AddressBookParser .down.> UnpayCommandParser : create >
+AddressBookParser .down.> XYZCommandParser : create >
 Class CliSyntax
 Class ParserUtil
 Class ArgumentMultimap
