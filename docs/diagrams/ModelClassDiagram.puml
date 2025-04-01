@@ -20,6 +20,7 @@ Class Name
 Class Phone
 Class NextLesson
 Class Subject
+Class PayStatus
 
 Class I #FFFFFF
 }
@@ -42,6 +43,7 @@ Person *--> Name
 Person *--> Phone
 Person *--> Email
 Person *--> Address
+Person *--> "1" PayStatus
 Person *--> "*" Subject
 Person *--> "0..1" NextLesson
 
