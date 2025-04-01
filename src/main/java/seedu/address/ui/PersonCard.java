@@ -41,7 +41,7 @@ public class PersonCard extends UiPart<Region> {
     @FXML
     private FlowPane nextLesson;
     @FXML
-    private Label remark;
+    private Label payStatus;
     @FXML
     private Label subjects;
 
@@ -55,7 +55,7 @@ public class PersonCard extends UiPart<Region> {
         name.setText(person.getName().fullName);
         phone.setText(person.getPhone().value);
         address.setText(person.getAddress().value);
-        remark.setText(person.getRemark().value);
+        payStatus.setText(person.getPayStatus().value);
         email.setText(person.getEmail().value);
 
         if (person.getNextLesson() != null && !person.getNextLesson().toString().isEmpty()) {
@@ -77,12 +77,12 @@ public class PersonCard extends UiPart<Region> {
             subjects.setText("");
         }
 
-        if (!person.getRemark().value.isEmpty()) {
-            remark.setText(person.getRemark().value);
-            remark.setStyle("-fx-text-fill: green; -fx-font-weight: bold;");
+        if (!person.getPayStatus().value.isEmpty()) {
+            payStatus.setText(person.getPayStatus().value);
+            payStatus.setStyle("-fx-text-fill: green; -fx-font-weight: bold;");
         } else {
-            remark.setText("NOT PAID");
-            remark.setStyle("-fx-text-fill: red; -fx-font-weight: bold;");
+            payStatus.setText("NOT PAID");
+            payStatus.setStyle("-fx-text-fill: red; -fx-font-weight: bold;");
         }
     }
 }
