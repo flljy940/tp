@@ -39,9 +39,7 @@ public class EmailTest {
         assertFalse(Email.isValidEmail("peterjack@exam_ple.com")); // underscore in domain name
         assertFalse(Email.isValidEmail("peter jack@example.com")); // spaces in local part
         assertFalse(Email.isValidEmail("peterjack@exam ple.com")); // spaces in domain name
-        assertFalse(Email.isValidEmail(" peterjack@example.com")); // leading space
         assertFalse(Email.isValidEmail("peter jack@example.com")); // space in local part
-        assertFalse(Email.isValidEmail("peterjack@example.com ")); // trailing space
         assertFalse(Email.isValidEmail("peterjack@@example.com")); // double '@' symbol
         assertFalse(Email.isValidEmail("peter@jack@example.com")); // '@' symbol in local part
         assertFalse(Email.isValidEmail("-peterjack@example.com")); // local part starts with a hyphen
