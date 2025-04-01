@@ -32,6 +32,7 @@ public class EmailTest {
         assertFalse(Email.isValidEmail("@example.com")); // missing local part
         assertFalse(Email.isValidEmail("peterjackexample.com")); // missing '@' symbol
         assertFalse(Email.isValidEmail("peterjack@")); // missing domain name
+        assertFalse(Email.isValidEmail("peterjack@examplecom")); // missing '.' in domain name
 
         // invalid parts
         assertFalse(Email.isValidEmail("peterjack@-")); // invalid domain name
@@ -39,6 +40,7 @@ public class EmailTest {
         assertFalse(Email.isValidEmail("peter jack@example.com")); // spaces in local part
         assertFalse(Email.isValidEmail("peterjack@exam ple.com")); // spaces in domain name
         assertFalse(Email.isValidEmail(" peterjack@example.com")); // leading space
+        assertFalse(Email.isValidEmail("peter jack@example.com")); // space in local part
         assertFalse(Email.isValidEmail("peterjack@example.com ")); // trailing space
         assertFalse(Email.isValidEmail("peterjack@@example.com")); // double '@' symbol
         assertFalse(Email.isValidEmail("peter@jack@example.com")); // '@' symbol in local part
@@ -51,15 +53,23 @@ public class EmailTest {
         assertFalse(Email.isValidEmail("peterjack@-example.com")); // domain name starts with a hyphen
         assertFalse(Email.isValidEmail("peterjack@example.com-")); // domain name ends with a hyphen
         assertFalse(Email.isValidEmail("peterjack@example.c")); // top level domain has less than two chars
+        assertFalse(Email.isValidEmail("\"quoted string\"@example.com")); // quoted string in local part
+        assertFalse(Email.isValidEmail(".user@example.com")); // local part starts with a period
+        assertFalse(Email.isValidEmail("user.@example.com")); // local part ends with a period
+        assertFalse(Email.isValidEmail("user+-name@example.com")); // invalid special characters in local part
+        assertFalse(Email.isValidEmail("user@example..com")); // domain name has two consecutive periods
+        assertFalse(Email.isValidEmail("user@xn--80aswg.xn--p1ai")); // punycode domain name
+        assertFalse(Email.isValidEmail("peterjackpeterjackpeterjackpeterjackpeterjackpeterjackpeterjackpeterjack@"
+                + "gmail.comcomcomcomcomcomcomcomcomcomcomcom")); // exceeds max length
 
         // valid email
         assertTrue(Email.isValidEmail("PeterJack_1190@example.com")); // underscore in local part
         assertTrue(Email.isValidEmail("PeterJack.1190@example.com")); // period in local part
         assertTrue(Email.isValidEmail("PeterJack+1190@example.com")); // '+' symbol in local part
         assertTrue(Email.isValidEmail("PeterJack-1190@example.com")); // hyphen in local part
-        assertTrue(Email.isValidEmail("a@bc")); // minimal
-        assertTrue(Email.isValidEmail("test@localhost")); // alphabets only
-        assertTrue(Email.isValidEmail("123@145")); // numeric local part and domain name
+        assertTrue(Email.isValidEmail("a@bc.co")); // minimal
+        assertTrue(Email.isValidEmail("test@localhost.co")); // alphabets only
+        assertTrue(Email.isValidEmail("123@145.co")); // numeric local part and domain name
         assertTrue(Email.isValidEmail("a1+be.d@example1.com")); // mixture of alphanumeric and special characters
         assertTrue(Email.isValidEmail("peter_jack@very-very-very-long-example.com")); // long domain name
         assertTrue(Email.isValidEmail("if.you.dream.it_you.can.do.it@example.com")); // long local part
@@ -68,10 +78,10 @@ public class EmailTest {
 
     @Test
     public void equals() {
-        Email email = new Email("valid@email");
+        Email email = new Email("valid@email.com");
 
         // same values -> returns true
-        assertTrue(email.equals(new Email("valid@email")));
+        assertTrue(email.equals(new Email("valid@email.com")));
 
         // same object -> returns true
         assertTrue(email.equals(email));
@@ -83,6 +93,6 @@ public class EmailTest {
         assertFalse(email.equals(5.0f));
 
         // different values -> returns false
-        assertFalse(email.equals(new Email("other.valid@email")));
+        assertFalse(email.equals(new Email("other.valid@email.com")));
     }
 }
