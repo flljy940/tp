@@ -40,7 +40,7 @@ public class CommandTestUtil {
     public static final String VALID_NEXTLESSON_AMY = "13/04/2025 0900-1100";
     public static final String VALID_NEXTLESSON_BOB = "15/04/2025 1700-1900";
     public static final String VALID_PAYSTATUS_AMY = PayStatus.PAID;
-    public static final String VALID_PAYSTATUS_BOB = PayStatus.UNPAID;
+    public static final String VALID_PAYSTATUS_BOB = PayStatus.NOT_PAID;
 
     public static final String NAME_DESC_AMY = " " + PREFIX_NAME + VALID_NAME_AMY;
     public static final String NAME_DESC_BOB = " " + PREFIX_NAME + VALID_NAME_BOB;

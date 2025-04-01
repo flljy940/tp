@@ -12,7 +12,7 @@ public class PayStatusTest {
     public void equals() {
         final PayStatus payStatus = new PayStatus(PayStatus.PAID);
         final PayStatus samePayStatus = new PayStatus(PayStatus.PAID);
-        final PayStatus differentPayStatus = new PayStatus(PayStatus.UNPAID);
+        final PayStatus differentPayStatus = new PayStatus(PayStatus.NOT_PAID);
 
         // same object -> returns true
         assertTrue(payStatus.equals(payStatus));
