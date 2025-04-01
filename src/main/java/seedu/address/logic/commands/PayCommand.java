@@ -9,8 +9,9 @@ import seedu.address.commons.core.index.Index;
 import seedu.address.logic.Messages;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
+import seedu.address.model.person.PayStatus;
 import seedu.address.model.person.Person;
-import seedu.address.model.person.Remark;
+
 
 /**
  * Marks a person as paid in the address book.
@@ -46,11 +47,11 @@ public class PayCommand extends Command {
 
         Person personToEdit = lastShownList.get(index.getZeroBased());
 
-        Remark updatedRemark = new Remark("PAID");
+        PayStatus updatedPayStatus = new PayStatus("PAID");
 
         Person paidPerson = new Person(
                 personToEdit.getName(), personToEdit.getPhone(), personToEdit.getEmail(),
-                personToEdit.getAddress(), personToEdit.getNextLesson(), updatedRemark, personToEdit.getSubjects());
+                personToEdit.getAddress(), personToEdit.getNextLesson(), updatedPayStatus, personToEdit.getSubjects());
 
         model.setPerson(personToEdit, paidPerson);
         model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);

@@ -133,7 +133,7 @@
     -fx-text-fill: #010504;
 }
 
-.cell_small_label_phone .cell_small_label_address .cell_small_label_email .cell_small_label_subject .cell_small_label_remark {
+.cell_small_label_phone .cell_small_label_address .cell_small_label_email .cell_small_label_subject .cell_small_label_payStatus {
     -fx-font-family: "Times";
     -fx-font-size: 15px;
     -fx-text-fill: #010504;
@@ -172,7 +172,7 @@
     -fx-padding: 0 0 0 25px;
 }
 
-.cell_small_label_remark {
+.cell_small_label_payStatus {
     -fx-background-color: white;
     -fx-padding: 3 8 3 8;
     -fx-background-radius: 10;
@@ -186,7 +186,7 @@
     -fx-translate-y: 0;
 }
 
-.remark-container {
+.payStatus-container {
     -fx-hgrow: ALWAYS;
     -fx-align-self: TOP_RIGHT;
     -fx-padding: 10px;
@@ -454,7 +454,7 @@
     -fx-font-family: "Segoe UI Semibold";
 }
 
-#remark {
+#payStatus {
     -fx-background-color: transparent;
     -fx-padding: 5 8 5 8;
     -fx-background-radius: 14px;
