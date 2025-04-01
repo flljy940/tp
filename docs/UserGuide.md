@@ -235,14 +235,23 @@ Exits the program.
 
 Format: `exit`
 
+<box type="tip" seamless>
+
+**Tip:** Once exited, the position and the size of the program on the screen will be updated and saved automatically. 
+</box>
+
 ### Saving the data
 
 TutorRec data will be saved in the hard disk automatically after any command that changes the data. There is no need to save manually.
 
 ### Editing the data file
 
-TutorRec data is saved automatically as a JSON file `[JAR file location]/data/addressbook.json`. Advanced users are welcome to update data directly by editing that data file.
+TutorRec data is saved automatically as a JSON file `[JAR file location]/data/addressbook.json` and `[JAR file location]/preferences.json`.
 
+* `[JAR file location]/data/addressbook.json` stores data related to `person`.
+* `[JAR file location]/preferences.json` stores data related to position and the size of the program.
+
+Advanced users are welcome to update data directly by editing that data file.
 
 
 <box type="warning" seamless>
