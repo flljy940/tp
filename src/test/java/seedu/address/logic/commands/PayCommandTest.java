@@ -28,7 +28,7 @@ public class PayCommandTest {
     @Test
     public void execute_markAsPaidUnfilteredList_success() {
         Person firstPerson = model.getFilteredPersonList().get(INDEX_FIRST_PERSON.getZeroBased());
-        Person editedPerson = new PersonBuilder(firstPerson).withRemark("PAID").build();
+        Person editedPerson = new PersonBuilder(firstPerson).withPayStatus("PAID").build();
 
         PayCommand payCommand = new PayCommand(INDEX_FIRST_PERSON);
 
@@ -45,7 +45,7 @@ public class PayCommandTest {
         showPersonAtIndex(model, INDEX_FIRST_PERSON);
 
         Person firstPerson = model.getFilteredPersonList().get(INDEX_FIRST_PERSON.getZeroBased());
-        Person editedPerson = new PersonBuilder(firstPerson).withRemark("PAID").build();
+        Person editedPerson = new PersonBuilder(firstPerson).withPayStatus("PAID").build();
 
         PayCommand payCommand = new PayCommand(INDEX_FIRST_PERSON);
 
@@ -105,7 +105,7 @@ public class PayCommandTest {
     @Test
     public void execute_personAlreadyPaid_success() {
         Person firstPerson = model.getFilteredPersonList().get(INDEX_FIRST_PERSON.getZeroBased());
-        Person editedPerson = new PersonBuilder(firstPerson).withRemark("PAID").build();
+        Person editedPerson = new PersonBuilder(firstPerson).withPayStatus("PAID").build();
         model.setPerson(firstPerson, editedPerson);
 
         PayCommand payCommand = new PayCommand(INDEX_FIRST_PERSON);

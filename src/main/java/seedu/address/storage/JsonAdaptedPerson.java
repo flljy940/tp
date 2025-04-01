@@ -14,9 +14,9 @@ import seedu.address.model.person.Address;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.NextLesson;
+import seedu.address.model.person.PayStatus;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
-import seedu.address.model.person.Remark;
 import seedu.address.model.subject.Subject;
 
 /**
@@ -31,7 +31,7 @@ class JsonAdaptedPerson {
     private final String email;
     private final String address;
     private final String nextLesson;
-    private final String remark;
+    private final String payStatus;
     private final List<JsonAdaptedSubject> subjects = new ArrayList<>();
 
     /**
@@ -40,14 +40,14 @@ class JsonAdaptedPerson {
     @JsonCreator
     public JsonAdaptedPerson(@JsonProperty("name") String name, @JsonProperty("phone") String phone,
             @JsonProperty("email") String email, @JsonProperty("address") String address,
-            @JsonProperty("nextLesson") String nextLesson, @JsonProperty("remark") String remark,
+            @JsonProperty("nextLesson") String nextLesson, @JsonProperty("payStatus") String payStatus,
             @JsonProperty("subjects") List<JsonAdaptedSubject> subjects) {
         this.name = name;
         this.phone = phone;
         this.email = email;
         this.address = address;
         this.nextLesson = nextLesson;
-        this.remark = remark;
+        this.payStatus = payStatus;
         if (subjects != null) {
             this.subjects.addAll(subjects);
         }
@@ -62,7 +62,7 @@ class JsonAdaptedPerson {
         email = source.getEmail().value;
         address = source.getAddress().value;
         nextLesson = source.getNextLesson().toString();
-        remark = source.getRemark().value;
+        payStatus = source.getPayStatus().value;
         subjects.addAll(source.getSubjects().stream()
                 .map(JsonAdaptedSubject::new)
                 .collect(Collectors.toList()));
@@ -111,10 +111,11 @@ class JsonAdaptedPerson {
         }
         final Address modelAddress = new Address(address);
 
-        if (remark == null) {
-            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Remark.class.getSimpleName()));
+        if (payStatus == null) {
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
+                    PayStatus.class.getSimpleName()));
         }
-        final Remark modelRemark = new Remark(remark);
+        final PayStatus modelPayStatus = new PayStatus(payStatus);
 
         if (nextLesson == null) {
             throw new IllegalValueException(
@@ -124,7 +125,8 @@ class JsonAdaptedPerson {
 
         final Set<Subject> modelSubjects = new HashSet<>(personSubjects);
 
-        return new Person(modelName, modelPhone, modelEmail, modelAddress, modelNextLesson, modelRemark, modelSubjects);
+        return new Person(modelName, modelPhone, modelEmail, modelAddress,
+                modelNextLesson, modelPayStatus, modelSubjects);
     }
 
 }
