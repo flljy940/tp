@@ -80,6 +80,15 @@ public class DeleteCommandTest {
     }
 
     @Test
+    public void execute_emptyAddressBook_throwsCommandException() {
+        Model emptyModel = new ModelManager();
+        Index outOfBoundIndex = INDEX_SECOND_PERSON;
+        DeleteCommand deleteCommand = new DeleteCommand(outOfBoundIndex);
+
+        assertCommandFailure(deleteCommand, emptyModel, Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
+    }
+
+    @Test
     public void equals() {
         DeleteCommand deleteFirstCommand = new DeleteCommand(INDEX_FIRST_PERSON);
         DeleteCommand deleteSecondCommand = new DeleteCommand(INDEX_SECOND_PERSON);
