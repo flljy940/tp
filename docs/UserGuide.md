@@ -43,8 +43,6 @@ TutorRec is a **desktop app for managing contacts, optimised for use via a Comma
 
    * `clear` : Deletes all contacts.
 
-   * `nextlesson 3 d/15/4/2025 1800-2000` : Add the next lesson date for the 3rd contact.  
-
    * `exit` : Exits the app.
 
 1. Refer to the [Features](#features) below for details of each command.
@@ -161,13 +159,14 @@ Examples:
 
 Adds date for upcoming lesson for an existing person in the contact list.
 
-Format: `nextlesson INDEX d/NEXT_LESSON`
+Format: `nextlesson INDEX d/DATE`
 
 * Adds the date of next lesson for the person at the specified `INDEX`. The index refers to the index number shown in the displayed person list. The index **must be a positive integer** 1, 2, 3, …​
 * Existing values will be updated to the input values.
 * When adding dates, the existing dates of the person will be appended i.e adding of tags is cumulative.
 * You can remove all the person’s next lesson dates by typing `d/` without
   specifying any tags after it.
+* `DATE` must be in `d/M/yyyy HHmm-HHmm` format (eg. `15/4/2025 1800-2000`)
 
 Examples:
 *  `nextlesson 1 d/15/4/2025 1800-2000` Adds/Updates the date of next lesson of the 1st person to be `15/4/2025 1800-2000`.
@@ -283,6 +282,6 @@ Action     | Format, Examples
 **Delete** | `delete INDEX`<br> e.g., `delete 3`
 **Edit**   | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [s/SUBJECT]…​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`
 **Find**   | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`
-**Nextlesson** | `nextlesson INDEX d/[NEXT_LESSON]`<br> e.g., `nextlesson 3 d/15/4/2025 1800-2000`
+**Nextlesson** | `nextlesson INDEX d/[DATE]`<br> e.g., `nextlesson 3 d/15/4/2025 1800-2000`
 **List**   | `list`
 **Help**   | `help`
