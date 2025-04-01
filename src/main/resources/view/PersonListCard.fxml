@@ -43,7 +43,7 @@
       </GridPane>
     </VBox>
   </GridPane>
-  <HBox alignment="TOP_RIGHT" styleClass="remark-container">
-    <Label fx:id="remark" styleClass="cell_small_label_remark" text="\$remark"/>
+  <HBox alignment="TOP_RIGHT" styleClass="payStatus-container">
+    <Label fx:id="payStatus" styleClass="cell_small_label_payStatus" text="\$payStatus"/>
   </HBox>
 </HBox>

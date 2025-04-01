@@ -18,6 +18,7 @@ import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.AddressBook;
 import seedu.address.model.Model;
 import seedu.address.model.person.NameContainsKeywordsPredicate;
+import seedu.address.model.person.PayStatus;
 import seedu.address.model.person.Person;
 import seedu.address.testutil.EditPersonDescriptorBuilder;
 
@@ -38,8 +39,8 @@ public class CommandTestUtil {
     public static final String VALID_SUBJECT_CHEMISTRY = "chemistry";
     public static final String VALID_NEXTLESSON_AMY = "13/04/2025 0900-1100";
     public static final String VALID_NEXTLESSON_BOB = "15/04/2025 1700-1900";
-    public static final String VALID_REMARK_AMY = "Like skiing.";
-    public static final String VALID_REMARK_BOB = "Favourite pastime: Eating";
+    public static final String VALID_PAYSTATUS_AMY = PayStatus.PAID;
+    public static final String VALID_PAYSTATUS_BOB = PayStatus.NOT_PAID;
 
     public static final String NAME_DESC_AMY = " " + PREFIX_NAME + VALID_NAME_AMY;
     public static final String NAME_DESC_BOB = " " + PREFIX_NAME + VALID_NAME_BOB;

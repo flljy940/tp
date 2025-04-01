@@ -34,11 +34,11 @@ TutorRec is a **desktop app for managing contacts, optimised for use via a Comma
    * `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01` : Adds a contact named `John Doe` to the contact list.
 
    * `delete 3` : Deletes the 3rd contact shown in the current list.
-   
+
    * `pay 3` : Marks the 3rd contact as PAID to indicate that payment has been made.
-   
+
    * `unpay 3` : Resets the 3rd contact to NOT PAID to indicate that payment has not been made.
-   
+
    * `unpay all` : Resets all contacts to NOT PAID to indicate that payment has not been made by all contacts.
 
    * `clear` : Deletes all contacts.
@@ -65,10 +65,10 @@ TutorRec is a **desktop app for managing contacts, optimised for use via a Comma
   e.g. `[s/SUBJECT]…​` can be used as ` ` (i.e. 0 times), `s/math`, `s/math s/chemistry` etc.
 
 * Parameters can be in any order.<br>
-  e.g. if the command specifies `n/NAME p/PHONE_NUMBER`, `p/PHONE_NUMBER n/NAME` 
+  e.g. if the command specifies `n/NAME p/PHONE_NUMBER`, `p/PHONE_NUMBER n/NAME`
 
 * Date format for next lesson must be in `d/M/yyyy HHmm-HHmm` format. <br>
-  e.g. `nextlesson 3 d/15/4/2025 1800-2000` 
+  e.g. `nextlesson 3 d/15/4/2025 1800-2000`
 
 * Extraneous parameters for commands that do not take in parameters (such as `help`, `list`, `exit` and `clear`) will be ignored.<br>
   e.g. if the command specifies `help 123`, it will be interpreted as `help`.

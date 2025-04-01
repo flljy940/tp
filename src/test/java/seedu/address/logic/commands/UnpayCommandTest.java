@@ -27,11 +27,11 @@ public class UnpayCommandTest {
     @Test
     public void execute_resetSinglePaidPerson_success() {
         Person firstPerson = model.getFilteredPersonList().get(INDEX_FIRST_PERSON.getZeroBased());
-        Person paidPerson = new PersonBuilder(firstPerson).withRemark("PAID").build();
+        Person paidPerson = new PersonBuilder(firstPerson).withPayStatus("PAID").build();
         model.setPerson(firstPerson, paidPerson);
 
         UnpayCommand unpayCommand = new UnpayCommand(INDEX_FIRST_PERSON);
-        Person unpaidPerson = new PersonBuilder(firstPerson).withRemark("").build();
+        Person unpaidPerson = new PersonBuilder(firstPerson).withPayStatus("").build();
         String expectedMessage = String.format(UnpayCommand.MESSAGE_UNPAY_SUCCESS, Messages.format(unpaidPerson));
 
         Model expectedModel = new ModelManager(new AddressBook(model.getAddressBook()), new UserPrefs());
@@ -46,7 +46,7 @@ public class UnpayCommandTest {
 
         Model expectedModel = new ModelManager(new AddressBook(model.getAddressBook()), new UserPrefs());
         expectedModel.getAddressBook().getPersonList().forEach(person -> {
-            Person unpaidPerson = new PersonBuilder(person).withRemark("").build();
+            Person unpaidPerson = new PersonBuilder(person).withPayStatus("").build();
             expectedModel.setPerson(person, unpaidPerson);
         });
 

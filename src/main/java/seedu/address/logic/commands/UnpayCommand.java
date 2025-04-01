@@ -9,8 +9,8 @@ import seedu.address.commons.core.index.Index;
 import seedu.address.logic.Messages;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
+import seedu.address.model.person.PayStatus;
 import seedu.address.model.person.Person;
-import seedu.address.model.person.Remark;
 
 /**
  * Resets the payment status of a student (or all students) to NOT PAID.
@@ -64,7 +64,7 @@ public class UnpayCommand extends Command {
             List<Person> lastShownList = model.getFilteredPersonList();
             for (Person person : lastShownList) {
                 Person unpaidPerson = new Person(person.getName(), person.getPhone(), person.getEmail(),
-                        person.getAddress(), person.getNextLesson(), new Remark(""), person.getSubjects());
+                        person.getAddress(), person.getNextLesson(), new PayStatus("NOT_PAID"), person.getSubjects());
                 model.setPerson(person, unpaidPerson);
             }
             model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
@@ -82,7 +82,7 @@ public class UnpayCommand extends Command {
                     personToEdit.getEmail(),
                     personToEdit.getAddress(),
                     personToEdit.getNextLesson(),
-                    new Remark(""),
+                    new PayStatus(""),
                     personToEdit.getSubjects());
 
             model.setPerson(personToEdit, unpaidPerson);

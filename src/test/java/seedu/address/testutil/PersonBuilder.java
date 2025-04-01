@@ -9,9 +9,9 @@ import seedu.address.model.person.Address;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.NextLesson;
+import seedu.address.model.person.PayStatus;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
-import seedu.address.model.person.Remark;
 import seedu.address.model.subject.Subject;
 import seedu.address.model.util.SampleDataUtil;
 
@@ -25,14 +25,14 @@ public class PersonBuilder {
     public static final String DEFAULT_EMAIL = "amy@gmail.com";
     public static final String DEFAULT_ADDRESS = "123, Jurong West Ave 6, #08-111";
     public static final String DEFAULT_NEXT_LESSON = "15/04/2025 1900-2100";
-    public static final String DEFAULT_REMARK = "She likes aardvarks.";
+    public static final String DEFAULT_PAYSTATUS = "";
 
     private Name name;
     private Phone phone;
     private Email email;
     private Address address;
     private NextLesson nextLesson;
-    private Remark remark;
+    private PayStatus payStatus;
     private Set<Subject> subjects;
 
     /**
@@ -44,7 +44,7 @@ public class PersonBuilder {
         email = new Email(DEFAULT_EMAIL);
         address = new Address(DEFAULT_ADDRESS);
         nextLesson = new NextLesson(DEFAULT_NEXT_LESSON);
-        remark = new Remark(DEFAULT_REMARK);
+        payStatus = new PayStatus(DEFAULT_PAYSTATUS);
         subjects = new HashSet<>();
     }
 
@@ -57,7 +57,7 @@ public class PersonBuilder {
         email = personToCopy.getEmail();
         address = personToCopy.getAddress();
         nextLesson = personToCopy.getNextLesson();
-        remark = personToCopy.getRemark();
+        payStatus = personToCopy.getPayStatus();
         subjects = new HashSet<>(personToCopy.getSubjects());
     }
 
@@ -129,15 +129,15 @@ public class PersonBuilder {
     }
 
     /**
-     * Sets the {@code Remark} of the {@code Person} that we are building.
+     * Sets the {@code PayStatus} of the {@code Person} that we are building.
      */
-    public PersonBuilder withRemark(String remark) {
-        this.remark = new Remark(remark);
+    public PersonBuilder withPayStatus(String payStatus) {
+        this.payStatus = new PayStatus(payStatus);
         return this;
     }
 
     public Person build() {
-        return new Person(name, phone, email, address, nextLesson, remark, subjects);
+        return new Person(name, phone, email, address, nextLesson, payStatus, subjects);
     }
 
 }
