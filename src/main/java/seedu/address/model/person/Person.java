@@ -24,21 +24,21 @@ public class Person {
     // Data fields
     private final Address address;
     private final NextLesson nextLesson;
-    private final Remark remark;
+    private final PayStatus payStatus;
     private final Set<Subject> subjects = new HashSet<>();
 
     /**
      * Every field must be present and not null.
      */
     public Person(Name name, Phone phone, Email email, Address address, NextLesson nextLesson,
-                  Remark remark, Set<Subject> subjects) {
+                  PayStatus payStatus, Set<Subject> subjects) {
         requireAllNonNull(name, phone, email, address, subjects);
         this.name = name;
         this.phone = phone;
         this.email = email;
         this.address = address;
         this.nextLesson = nextLesson;
-        this.remark = remark;
+        this.payStatus = payStatus;
         this.subjects.addAll(subjects);
     }
 
@@ -62,8 +62,8 @@ public class Person {
         return nextLesson;
     }
 
-    public Remark getRemark() {
-        return remark;
+    public PayStatus getPayStatus() {
+        return payStatus;
     }
 
     /**
