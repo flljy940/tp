@@ -59,6 +59,9 @@ public class EmailTest {
         assertFalse(Email.isValidEmail("user@xn--80aswg.xn--p1ai")); // punycode domain name
         assertFalse(Email.isValidEmail("peterjackpeterjackpeterjackpeterjackpeterjackpeterjackpeterjackpeterjack@"
                 + "gmail.comcomcomcomcomcomcomcomcomcomcomcom")); // exceeds max length
+        assertFalse(Email.isValidEmail("@abc.com")); // starts with '@'
+        assertFalse(Email.isValidEmail("peterjack@example.com@")); // ends with '@'
+        assertFalse(Email.isValidEmail("peterjack@example.com.")); // ends with '.'
 
         // valid email
         assertTrue(Email.isValidEmail("PeterJack_1190@example.com")); // underscore in local part

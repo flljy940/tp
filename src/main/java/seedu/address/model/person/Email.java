@@ -54,7 +54,8 @@ public class Email {
         requireNonNull(test);
         test = test.trim();
 
-        if (!test.contains("@") || !test.contains(".") || test.length() >= WORD_LIMIT) {
+        if (!test.contains("@") || !test.contains(".") || test.length() >= WORD_LIMIT
+            || test.startsWith("@") || test.endsWith("@") || test.startsWith(".") || test.endsWith(".")) {
             return false;
         }
 
