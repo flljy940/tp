@@ -18,14 +18,17 @@ public class SubjectContainsKeywordsPredicateTest {
         List<String> firstPredicateKeywordList = Collections.singletonList("first");
         List<String> secondPredicateKeywordList = Arrays.asList("first", "second");
 
-        SubjectContainsKeywordsPredicate firstPredicate = new SubjectContainsKeywordsPredicate(firstPredicateKeywordList);
-        SubjectContainsKeywordsPredicate secondPredicate = new SubjectContainsKeywordsPredicate(secondPredicateKeywordList);
+        SubjectContainsKeywordsPredicate firstPredicate = new SubjectContainsKeywordsPredicate(
+                firstPredicateKeywordList);
+        SubjectContainsKeywordsPredicate secondPredicate = new SubjectContainsKeywordsPredicate(
+                secondPredicateKeywordList);
 
         // same object -> returns true
         assertTrue(firstPredicate.equals(firstPredicate));
 
         // same values -> returns true
-        SubjectContainsKeywordsPredicate firstPredicateCopy = new SubjectContainsKeywordsPredicate(firstPredicateKeywordList);
+        SubjectContainsKeywordsPredicate firstPredicateCopy = new SubjectContainsKeywordsPredicate(
+                firstPredicateKeywordList);
         assertTrue(firstPredicate.equals(firstPredicateCopy));
 
         // different types -> returns false
@@ -41,7 +44,8 @@ public class SubjectContainsKeywordsPredicateTest {
     @Test
     public void test_subjectsContainKeywords_returnsTrue() {
         // One keyword
-        SubjectContainsKeywordsPredicate predicate = new SubjectContainsKeywordsPredicate(Collections.singletonList("math"));
+        SubjectContainsKeywordsPredicate predicate = new SubjectContainsKeywordsPredicate(
+                Collections.singletonList("math"));
         assertTrue(predicate.test(new PersonBuilder().withSubjects("math").build()));
 
         // Multiple keywords
