@@ -22,6 +22,8 @@ import seedu.address.logic.commands.NextLessonCommand;
 import seedu.address.logic.commands.PayCommand;
 import seedu.address.logic.commands.SortCommand;
 import seedu.address.logic.commands.UnpayCommand;
+import seedu.address.logic.commands.FilterPaidStatusCommand;
+import seedu.address.logic.commands.FilterSubjectCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 
 /**
@@ -50,10 +52,6 @@ public class AddressBookParser {
 
         final String commandWord = matcher.group("commandWord");
         final String arguments = matcher.group("arguments");
-
-        // Note to developers: Change the log level in config.json to enable lower level (i.e., FINE, FINER and lower)
-        // log messages such as the one below.
-        // Lower level log messages are used sparingly to minimize noise in the code.
         logger.fine("Command word: " + commandWord + "; Arguments: " + arguments);
 
         switch (commandWord) {
@@ -96,6 +94,12 @@ public class AddressBookParser {
 
         case FilterDateCommand.COMMAND_WORD:
             return new FilterDateCommandParser().parse(arguments);
+
+        case FilterPaidStatusCommand.COMMAND_WORD:
+            return new FilterPaidStatusCommandParser().parse(arguments);
+
+        case FilterSubjectCommand.COMMAND_WORD:
+            return new FilterSubjectCommandParser().parse(arguments);
 
         default:
             logger.finer("This user input caused a ParseException: " + userInput);
