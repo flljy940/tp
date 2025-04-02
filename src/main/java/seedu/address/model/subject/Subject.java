@@ -9,7 +9,9 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
  */
 public class Subject {
 
-    public static final String MESSAGE_CONSTRAINTS = "Subject names should be alphanumeric";
+    public static final String MESSAGE_CONSTRAINTS = "Subject names should be alphanumeric. \n"
+            + "To add multiple subjects, specify 's/' before each subject separately. \n"
+            + "Example: s/math s/chemistry s/physics";
     public static final String VALIDATION_REGEX = "\\p{Alnum}+";
 
     public final String subjectName;
