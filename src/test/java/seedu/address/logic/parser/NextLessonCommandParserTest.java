@@ -23,17 +23,24 @@ import seedu.address.model.person.NextLesson;
 public class NextLessonCommandParserTest {
 
     // Test data to test date and time parsing
-    private static final LocalDate CURRENT_DATE = LocalDate.of(2025, 4, 14);
-    private static final LocalTime CURRENT_TIME = LocalTime.of(10, 0);
+    private static final LocalDate CURRENT_DATE = LocalDate.now();
+    private static final LocalTime CURRENT_TIME = LocalTime.now();
     private final NextLessonCommandParser parser = new NextLessonCommandParser();
-    private final String nonEmptyDate = "15/4/2025 1900-2100";
+    private final String validLessonDateTime =
+            CURRENT_DATE.format(java.time.format.DateTimeFormatter.ofPattern("d/M/yyyy"))
+            + " " + CURRENT_TIME.plusHours(1).format(java.time.format.DateTimeFormatter.ofPattern("HHmm"))
+            + "-" + CURRENT_TIME.plusHours(3).format(java.time.format.DateTimeFormatter.ofPattern("HHmm"));
+    private final String invalidLessonDateTime =
+            CURRENT_DATE.minusDays(1).format(java.time.format.DateTimeFormatter.ofPattern("d/M/yyyy"))
+            + " " + CURRENT_TIME.minusHours(1).format(java.time.format.DateTimeFormatter.ofPattern("HHmm"))
+            + "-" + CURRENT_TIME.plusHours(1).format(java.time.format.DateTimeFormatter.ofPattern("HHmm"));
 
     @Test
     public void parse_indexSpecified_success() {
         // have date of next lesson
         Index targetIndex = INDEX_FIRST_PERSON;
-        String userInput = targetIndex.getOneBased() + " " + PREFIX_NEXTLESSON + nonEmptyDate;
-        NextLessonCommand expectedCommand = new NextLessonCommand(INDEX_FIRST_PERSON, new NextLesson(nonEmptyDate));
+        String userInput = targetIndex.getOneBased() + " " + PREFIX_NEXTLESSON + validLessonDateTime;
+        NextLessonCommand expectedCommand = new NextLessonCommand(INDEX_FIRST_PERSON, new NextLesson(validLessonDateTime));
         assertParseSuccess(parser, userInput, expectedCommand);
 
         // no date of next lesson
@@ -50,7 +57,7 @@ public class NextLessonCommandParserTest {
         assertParseFailure(parser, NextLessonCommand.COMMAND_WORD, expectedMessage);
 
         // no index
-        assertParseFailure(parser, NextLessonCommand.COMMAND_WORD + " " + nonEmptyDate, expectedMessage);
+        assertParseFailure(parser, NextLessonCommand.COMMAND_WORD + " " + validLessonDateTime, expectedMessage);
     }
 
     @Test
@@ -111,6 +118,10 @@ public class NextLessonCommandParserTest {
         String validTimeRangeInput = "1 " + PREFIX_NEXTLESSON + "15/4/2025 1900-2200";
         assertParseSuccess(parser, validTimeRangeInput,
                 new NextLessonCommand(INDEX_FIRST_PERSON, new NextLesson("15/4/2025 1900-2200")));
+
+        String validDateTimeInput = "1 " + PREFIX_NEXTLESSON + validLessonDateTime;
+        assertParseSuccess(parser, validDateTimeInput,
+                new NextLessonCommand(INDEX_FIRST_PERSON, new NextLesson(validLessonDateTime)));
     }
 
     @Test
@@ -149,18 +160,18 @@ public class NextLessonCommandParserTest {
         assertParseFailure(parser, invalidStartAfterEndTimeInput, MESSAGE_INVALID_START_BEFORE_END);
 
         // Date in the past -> invalid
-        String invalidPastDateInput = "1 " + PREFIX_NEXTLESSON + "10/3/2025 0900-1100";
+        String invalidPastDateInput = "1 " + PREFIX_NEXTLESSON + invalidLessonDateTime;
         assertParseFailure(parser, invalidPastDateInput, MESSAGE_INVALID_PAST_LESSON);
+
+        // Time in the past -> invalid
+        String invalidPastTimeInput = "1 " + PREFIX_NEXTLESSON
+                + CURRENT_DATE.format(java.time.format.DateTimeFormatter.ofPattern("d/M/yyyy")) + " "
+                + CURRENT_TIME.minusHours(2).format(java.time.format.DateTimeFormatter.ofPattern("HHmm")) + "-"
+                + CURRENT_TIME.plusHours(1).format(java.time.format.DateTimeFormatter.ofPattern("HHmm"));
+        assertParseFailure(parser, invalidPastTimeInput, MESSAGE_INVALID_PAST_LESSON);
 
         // DateTimeException -> invalid
         String invalidDateTimeInput = "1 " + PREFIX_NEXTLESSON + "30/2/2025 1900-2100";
         assertParseFailure(parser, invalidDateTimeInput, MESSAGE_INVALID_DATE_TIME + "Invalid date 'FEBRUARY 30'");
     }
 }
-
-//        } catch (NumberFormatException e) {
-//            throw new ParseException(MESSAGE_INVALID_NUMERIC + dateTimeString, e);
-//        } catch (
-//DateTimeException e) {
-//            throw new ParseException(MESSAGE_INVALID_DATE_TIME + e.getMessage(), e);
-//        }
