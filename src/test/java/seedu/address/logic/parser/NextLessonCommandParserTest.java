@@ -4,9 +4,15 @@ import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NEXTLESSON;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseFailure;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseSuccess;
+import static seedu.address.logic.parser.NextLessonCommandParser.MESSAGE_INVALID_DATE_TIME;
+import static seedu.address.logic.parser.NextLessonCommandParser.MESSAGE_INVALID_PAST_LESSON;
+import static seedu.address.logic.parser.NextLessonCommandParser.MESSAGE_INVALID_START_BEFORE_END;
+import static seedu.address.logic.parser.NextLessonCommandParser.MESSAGE_INVALID_START_END_TIME;
+import static seedu.address.logic.parser.NextLessonCommandParser.MESSAGE_INVALID_TIME;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
 
 import java.time.LocalDate;
+import java.time.LocalTime;
 
 import org.junit.jupiter.api.Test;
 
@@ -16,7 +22,9 @@ import seedu.address.model.person.NextLesson;
 
 public class NextLessonCommandParserTest {
 
-    private static final LocalDate CURRENT_DATE = LocalDate.now();
+    // Test data to test date and time parsing
+    private static final LocalDate CURRENT_DATE = LocalDate.of(2025, 4, 14);
+    private static final LocalTime CURRENT_TIME = LocalTime.of(10, 0);
     private final NextLessonCommandParser parser = new NextLessonCommandParser();
     private final String nonEmptyDate = "15/4/2025 1900-2100";
 
@@ -99,6 +107,13 @@ public class NextLessonCommandParserTest {
     }
 
     @Test
+    public void parse_validInput_success() {
+        String validTimeRangeInput = "1 " + PREFIX_NEXTLESSON + "15/4/2025 1900-2200";
+        assertParseSuccess(parser, validTimeRangeInput,
+                new NextLessonCommand(INDEX_FIRST_PERSON, new NextLesson("15/4/2025 1900-2200")));
+    }
+
+    @Test
     public void parse_invalidInput_throwsParseException() {
         // Invalid index
         String invalidIndexInput = "a " + PREFIX_NEXTLESSON + "15/4/2025 1900-2100";
@@ -114,5 +129,38 @@ public class NextLessonCommandParserTest {
         String invalidTimeFormatInput = "1 " + PREFIX_NEXTLESSON + "15/4/2025 19:00-21:00";
         assertParseFailure(parser, invalidTimeFormatInput,
                 String.format(NextLessonCommandParser.MESSAGE_CONSTRAINTS));
+
+        // Invalid time ranges -> invalid
+        String invalidTimeRangeInput = "1 " + PREFIX_NEXTLESSON + "15/4/2025 1960-2200";
+        assertParseFailure(parser, invalidTimeRangeInput, MESSAGE_INVALID_TIME);
+        invalidTimeRangeInput = "1 " + PREFIX_NEXTLESSON + "15/4/2025 2100-2260";
+        assertParseFailure(parser, invalidTimeRangeInput, MESSAGE_INVALID_TIME);
+        invalidTimeRangeInput = "1 " + PREFIX_NEXTLESSON + "15/4/2025 2400-2200";
+        assertParseFailure(parser, invalidTimeRangeInput, MESSAGE_INVALID_TIME);
+        invalidTimeRangeInput = "1 " + PREFIX_NEXTLESSON + "15/4/2025 2300-2400";
+        assertParseFailure(parser, invalidTimeRangeInput, MESSAGE_INVALID_TIME);
+
+        // Same start and end time -> invalid
+        String invalidStartEqualEndTimeInput = "1 " + PREFIX_NEXTLESSON + "15/4/2025 0900-0900";
+        assertParseFailure(parser, invalidStartEqualEndTimeInput, MESSAGE_INVALID_START_END_TIME);
+
+        // Start time after end time -> invalid
+        String invalidStartAfterEndTimeInput = "1 " + PREFIX_NEXTLESSON + "15/4/2025 1100-0900";
+        assertParseFailure(parser, invalidStartAfterEndTimeInput, MESSAGE_INVALID_START_BEFORE_END);
+
+        // Date in the past -> invalid
+        String invalidPastDateInput = "1 " + PREFIX_NEXTLESSON + "10/3/2025 0900-1100";
+        assertParseFailure(parser, invalidPastDateInput, MESSAGE_INVALID_PAST_LESSON);
+
+        // DateTimeException -> invalid
+        String invalidDateTimeInput = "1 " + PREFIX_NEXTLESSON + "30/2/2025 1900-2100";
+        assertParseFailure(parser, invalidDateTimeInput, MESSAGE_INVALID_DATE_TIME + "Invalid date 'FEBRUARY 30'");
     }
 }
+
+//        } catch (NumberFormatException e) {
+//            throw new ParseException(MESSAGE_INVALID_NUMERIC + dateTimeString, e);
+//        } catch (
+//DateTimeException e) {
+//            throw new ParseException(MESSAGE_INVALID_DATE_TIME + e.getMessage(), e);
+//        }
