@@ -67,4 +67,4 @@ public class FilterPaidStatusCommandParser implements Parser<FilterPaidStatusCom
                     String.format(MESSAGE_INVALID_COMMAND_FORMAT, FilterPaidStatusCommand.MESSAGE_USAGE));
         }
     }
-}
+} 

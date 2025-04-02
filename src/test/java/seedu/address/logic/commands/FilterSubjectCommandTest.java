@@ -52,7 +52,7 @@ public class FilterSubjectCommandTest {
     }
 
     @Test
-    public void execute_zeroKeywords_noPersonFound() {
+    public void execute_noMatchingSubject_showsEmptyListAndAvailableSubjects() {
         String expectedMessage = String.format(FilterSubjectCommand.MESSAGE_NO_MATCHES, "biology",
                 "chemistry, math, physics");
         SubjectContainsKeywordsPredicate predicate = preparePredicate("biology");
@@ -64,8 +64,25 @@ public class FilterSubjectCommandTest {
     }
 
     @Test
+    public void execute_emptyAddressBook_showsEmptyListAndNoSubjects() {
+        // Clear the address book to ensure no matching results and no available subjects
+        model.setAddressBook(new ModelManager().getAddressBook());
+        expectedModel.setAddressBook(new ModelManager().getAddressBook());
+        
+        String expectedMessage = String.format(FilterSubjectCommand.MESSAGE_NO_MATCHES, "math", "");
+        SubjectContainsKeywordsPredicate predicate = preparePredicate("math");
+        FilterSubjectCommand command = new FilterSubjectCommand(predicate, "math");
+        expectedModel.updateFilteredPersonList(predicate);
+        CommandResult result = command.execute(model);
+        assertEquals(expectedMessage, result.getFeedbackToUser());
+        assertEquals(Collections.emptyList(), model.getFilteredPersonList());
+    }
+
+    @Test
     public void execute_multipleKeywords_multiplePersonsFound() {
-        String expectedMessage = String.format(FilterSubjectCommand.MESSAGE_SUCCESS, "math chemistry");
+        String expectedMessage = String.format(FilterSubjectCommand.MESSAGE_SUCCESS,
+                2, // Expected count: ALICE and BENSON
+                "math chemistry");
         SubjectContainsKeywordsPredicate predicate = preparePredicate("math", "chemistry");
         FilterSubjectCommand command = new FilterSubjectCommand(predicate, "math chemistry");
         expectedModel.updateFilteredPersonList(predicate);

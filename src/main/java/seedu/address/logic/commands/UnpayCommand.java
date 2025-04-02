@@ -68,7 +68,7 @@ public class UnpayCommand extends Command {
         if (isResetAll) {
             for (Person person : lastShownList) {
                 Person unpaidPerson = new Person(person.getName(), person.getPhone(), person.getEmail(),
-                        person.getAddress(), person.getNextLesson(), new PayStatus("NOT_PAID"), person.getSubjects());
+                        person.getAddress(), person.getNextLesson(), new PayStatus(PayStatus.NOT_PAID), person.getSubjects());
                 model.setPerson(person, unpaidPerson);
             }
             model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);

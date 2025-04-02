@@ -18,9 +18,7 @@ public class FilterPaidStatusCommand extends Command {
             + "Parameters: STATUS (must be either 'paid' or 'unpaid')\n"
             + "Example: " + COMMAND_WORD + " paid";
 
-    public static final String MESSAGE_SUCCESS = "Listed all persons with payment status: %1$s";
-    public static final String MESSAGE_NO_STATUS = "At least one payment status must be provided.";
-    public static final String MESSAGE_NO_MATCHING_PERSONS = "No persons found with payment status: %1$s";
+    public static final String MESSAGE_SUCCESS = "Filtered %1$d students with payment status: %2$s";
 
     private final PayStatusEqualsPaidPredicate predicate;
     private final String status;
@@ -37,16 +35,13 @@ public class FilterPaidStatusCommand extends Command {
     }
 
     @Override
-    public CommandResult execute(Model model) throws CommandException {
+    public CommandResult execute(Model model) {
         requireNonNull(model);
         model.updateFilteredPersonList(predicate);
-
-        if (model.getFilteredPersonList().isEmpty()) {
-            throw new CommandException(String.format(MESSAGE_NO_MATCHING_PERSONS, status));
-        }
-
         return new CommandResult(
-                String.format(MESSAGE_SUCCESS, status));
+                String.format(MESSAGE_SUCCESS,
+                        model.getFilteredPersonList().size(),
+                        status));
     }
 
     @Override

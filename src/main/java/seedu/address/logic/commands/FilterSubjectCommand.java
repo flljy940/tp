@@ -22,8 +22,8 @@ public class FilterSubjectCommand extends Command {
             + "Parameters: KEYWORD [MORE_KEYWORDS]...\n"
             + "Example: " + COMMAND_WORD + " math physics";
 
-    public static final String MESSAGE_SUCCESS = "Listed all persons taking: %1$s";
-    public static final String MESSAGE_NO_MATCHES = "No persons found taking: %1$s\n"
+    public static final String MESSAGE_SUCCESS = "Filtered %1$d students taking: %2$s";
+    public static final String MESSAGE_NO_MATCHES = "Filtered 0 students taking: %1$s\n"
             + "Available subjects: %2$s";
 
     private final SubjectContainsKeywordsPredicate predicate;
@@ -55,7 +55,9 @@ public class FilterSubjectCommand extends Command {
         }
 
         return new CommandResult(
-                String.format(MESSAGE_SUCCESS, subjects));
+                String.format(MESSAGE_SUCCESS,
+                        currentFilteredList.size(),
+                        subjects));
     }
 
     /**

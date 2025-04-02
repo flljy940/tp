@@ -8,7 +8,6 @@ import static seedu.address.testutil.TypicalPersons.getTypicalAddressBook;
 
 import org.junit.jupiter.api.Test;
 
-import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.UserPrefs;
@@ -48,31 +47,40 @@ public class FilterPaidStatusCommandTest {
     }
 
     @Test
-    public void execute_filterPaid_success() throws CommandException {
+    public void execute_filterPaid_success() {
         PayStatusEqualsPaidPredicate predicate = new PayStatusEqualsPaidPredicate(true);
         FilterPaidStatusCommand command = new FilterPaidStatusCommand(predicate, PayStatus.PAID);
         expectedModel.updateFilteredPersonList(predicate);
-        String expectedMessage = String.format(FilterPaidStatusCommand.MESSAGE_SUCCESS, PayStatus.PAID);
+        String expectedMessage = String.format(FilterPaidStatusCommand.MESSAGE_SUCCESS,
+                expectedModel.getFilteredPersonList().size(),
+                PayStatus.PAID);
         assertCommandSuccess(command, model, expectedMessage, expectedModel);
     }
 
     @Test
-    public void execute_filterUnpaid_success() throws CommandException {
+    public void execute_filterUnpaid_success() {
         PayStatusEqualsPaidPredicate predicate = new PayStatusEqualsPaidPredicate(false);
         FilterPaidStatusCommand command = new FilterPaidStatusCommand(predicate, PayStatus.NOT_PAID);
         expectedModel.updateFilteredPersonList(predicate);
-        String expectedMessage = String.format(FilterPaidStatusCommand.MESSAGE_SUCCESS, PayStatus.NOT_PAID);
+        String expectedMessage = String.format(FilterPaidStatusCommand.MESSAGE_SUCCESS,
+                expectedModel.getFilteredPersonList().size(),
+                PayStatus.NOT_PAID);
         assertCommandSuccess(command, model, expectedMessage, expectedModel);
     }
 
     @Test
-    public void execute_emptyList_throwsCommandException() {
+    public void execute_emptyList_returnsNoStudentsMessage() {
         // Clear the address book to ensure no matching results
         model.setAddressBook(new ModelManager().getAddressBook());
+        expectedModel.setAddressBook(new ModelManager().getAddressBook());
+        
         PayStatusEqualsPaidPredicate predicate = new PayStatusEqualsPaidPredicate(true);
         FilterPaidStatusCommand command = new FilterPaidStatusCommand(predicate, PayStatus.PAID);
-
-        assertThrows(CommandException.class, () -> command.execute(model));
+        expectedModel.updateFilteredPersonList(predicate);
+        
+        String expectedMessage = String.format(FilterPaidStatusCommand.MESSAGE_SUCCESS,
+                0, PayStatus.PAID);
+        assertCommandSuccess(command, model, expectedMessage, expectedModel);
     }
 
     @Test
@@ -88,7 +96,7 @@ public class FilterPaidStatusCommandTest {
      * - the {@code actualModel} matches {@code expectedModel}
      */
     private void assertCommandSuccess(FilterPaidStatusCommand command, Model actualModel,
-            String expectedMessage, Model expectedModel) throws CommandException {
+            String expectedMessage, Model expectedModel) {
         CommandResult result = command.execute(actualModel);
         assertEquals(expectedMessage, result.getFeedbackToUser());
         assertEquals(expectedModel.getFilteredPersonList(), actualModel.getFilteredPersonList());
