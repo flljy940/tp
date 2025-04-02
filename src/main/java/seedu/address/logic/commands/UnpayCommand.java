@@ -60,13 +60,12 @@ public class UnpayCommand extends Command {
      */
     @Override
     public CommandResult execute(Model model) throws CommandException {
+        List<Person> lastShownList = model.getFilteredPersonList();
+        if (lastShownList.isEmpty()) {
+            throw new CommandException(Messages.MESSAGE_EMPTY_LIST_PAYMENT_STATUS);
+        }
+
         if (isResetAll) {
-            List<Person> lastShownList = model.getFilteredPersonList();
-
-            if (lastShownList.isEmpty()) {
-                return new CommandResult(Messages.MESSAGE_EMPTY_LIST_PAYMENT_STATUS);
-            }
-
             for (Person person : lastShownList) {
                 Person unpaidPerson = new Person(person.getName(), person.getPhone(), person.getEmail(),
                         person.getAddress(), person.getNextLesson(), new PayStatus("NOT_PAID"), person.getSubjects());
@@ -75,8 +74,6 @@ public class UnpayCommand extends Command {
             model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
             return new CommandResult(MESSAGE_UNPAY_ALL_SUCCESS);
         } else {
-            List<Person> lastShownList = model.getFilteredPersonList();
-
             if (index.getZeroBased() >= lastShownList.size()) {
                 throw new CommandException(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
             }
