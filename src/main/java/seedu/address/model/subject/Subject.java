@@ -24,7 +24,7 @@ public class Subject {
     public Subject(String subjectName) {
         requireNonNull(subjectName);
         checkArgument(isValidSubjectName(subjectName), MESSAGE_CONSTRAINTS);
-        this.subjectName = subjectName;
+        this.subjectName = subjectName.toLowerCase();
     }
 
     /**
