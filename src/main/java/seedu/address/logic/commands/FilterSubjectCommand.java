@@ -79,4 +79,4 @@ public class FilterSubjectCommand extends Command {
                 && predicate.equals(((FilterSubjectCommand) other).predicate)
                 && subjects.equals(((FilterSubjectCommand) other).subjects)); // state check
     }
-} 
+}

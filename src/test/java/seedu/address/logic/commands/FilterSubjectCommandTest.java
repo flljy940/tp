@@ -81,4 +81,4 @@ public class FilterSubjectCommandTest {
     private SubjectContainsKeywordsPredicate preparePredicate(String... userInput) {
         return new SubjectContainsKeywordsPredicate(Arrays.asList(userInput));
     }
-} 
+}

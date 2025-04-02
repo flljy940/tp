@@ -58,4 +58,4 @@ public class PayStatusEqualsPaidPredicateTest {
         // paid status
         assertFalse(predicate.test(new PersonBuilder().withPayStatus(PayStatus.PAID).build()));
     }
-} 
+}

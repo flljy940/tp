@@ -56,4 +56,4 @@ public class FilterPaidStatusCommandParserTest {
         assertParseFailure(parser, "paid unpaid",
                 String.format(MESSAGE_INVALID_COMMAND_FORMAT, FilterPaidStatusCommand.MESSAGE_USAGE));
     }
-} 
+}
