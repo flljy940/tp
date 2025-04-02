@@ -26,4 +26,4 @@ public class SubjectContainsKeywordsPredicate implements Predicate<Person> {
                 || (other instanceof SubjectContainsKeywordsPredicate // instanceof handles nulls
                 && keywords.equals(((SubjectContainsKeywordsPredicate) other).keywords)); // state check
     }
-} 
+}

@@ -37,4 +37,4 @@ public class FilterSubjectCommandParser implements Parser<FilterSubjectCommand> 
                 new SubjectContainsKeywordsPredicate(Arrays.asList(lowercaseKeywords)),
                 trimmedArgs);
     }
-} 
+}

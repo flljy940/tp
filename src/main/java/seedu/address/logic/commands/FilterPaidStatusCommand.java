@@ -56,4 +56,4 @@ public class FilterPaidStatusCommand extends Command {
                 && predicate.equals(((FilterPaidStatusCommand) other).predicate)
                 && status.equals(((FilterPaidStatusCommand) other).status)); // state check
     }
-} 
+}

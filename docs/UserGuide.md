@@ -274,7 +274,7 @@ Format: `exit`
 
 <box type="tip" seamless>
 
-**Tip:** Once exited, the position and the size of the program on the screen will be updated and saved automatically. 
+**Tip:** Once exited, the position and the size of the program on the screen will be updated and saved automatically.
 </box>
 
 ### Saving the data

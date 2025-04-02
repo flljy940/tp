@@ -38,4 +38,4 @@ public class FilterSubjectCommandParserTest {
         assertParseSuccess(parser, multipleSpacesInput,
                 new FilterSubjectCommand(new SubjectContainsKeywordsPredicate(keywords), multipleSpacesInput.trim()));
     }
-} 
+}

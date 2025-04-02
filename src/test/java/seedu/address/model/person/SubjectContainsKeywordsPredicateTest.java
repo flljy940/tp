@@ -71,4 +71,4 @@ public class SubjectContainsKeywordsPredicateTest {
         predicate = new SubjectContainsKeywordsPredicate(Arrays.asList("Alice"));
         assertFalse(predicate.test(new PersonBuilder().withName("Alice").withSubjects("math").build()));
     }
-} 
+}
