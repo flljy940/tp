@@ -40,7 +40,8 @@ public class NextLessonCommandParserTest {
         // have date of next lesson
         Index targetIndex = INDEX_FIRST_PERSON;
         String userInput = targetIndex.getOneBased() + " " + PREFIX_NEXTLESSON + validLessonDateTime;
-        NextLessonCommand expectedCommand = new NextLessonCommand(INDEX_FIRST_PERSON, new NextLesson(validLessonDateTime));
+        NextLessonCommand expectedCommand =
+                new NextLessonCommand(INDEX_FIRST_PERSON, new NextLesson(validLessonDateTime));
         assertParseSuccess(parser, userInput, expectedCommand);
 
         // no date of next lesson
