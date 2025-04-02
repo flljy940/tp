@@ -62,6 +62,11 @@ public class UnpayCommand extends Command {
     public CommandResult execute(Model model) throws CommandException {
         if (isResetAll) {
             List<Person> lastShownList = model.getFilteredPersonList();
+
+            if (lastShownList.isEmpty()) {
+                return new CommandResult(Messages.MESSAGE_EMPTY_LIST_PAYMENT_STATUS);
+            }
+
             for (Person person : lastShownList) {
                 Person unpaidPerson = new Person(person.getName(), person.getPhone(), person.getEmail(),
                         person.getAddress(), person.getNextLesson(), new PayStatus("NOT_PAID"), person.getSubjects());
