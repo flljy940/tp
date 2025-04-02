@@ -77,7 +77,7 @@ public class FilterPaidStatusCommandTest {
         model.setAddressBook(new ModelManager().getAddressBook());
         PayStatusEqualsPaidPredicate predicate = new PayStatusEqualsPaidPredicate(true);
         FilterPaidStatusCommand command = new FilterPaidStatusCommand(predicate, PayStatus.PAID);
-        
+
         assertThrows(CommandException.class, () -> command.execute(model));
     }
 
