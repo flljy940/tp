@@ -12,6 +12,9 @@ public class Phone {
 
     public static final String MESSAGE_CONSTRAINTS =
             "Phone numbers should only contain numbers, and it should be at least 3 digits long";
+    public static final String LENGTH_CONSTRAINTS =
+            "The phone number is invalid as it is too long. "
+                    + "Please ensure that you are entering a valid phone number. ";
     public static final String VALIDATION_REGEX = "\\d{3,}";
     public final String value;
 
@@ -23,6 +26,7 @@ public class Phone {
     public Phone(String phone) {
         requireNonNull(phone);
         checkArgument(isValidPhone(phone), MESSAGE_CONSTRAINTS);
+        checkArgument(isValidLength(phone), LENGTH_CONSTRAINTS);
         value = phone;
     }
 
@@ -30,7 +34,18 @@ public class Phone {
      * Returns true if a given string is a valid phone number.
      */
     public static boolean isValidPhone(String test) {
+
         return test.matches(VALIDATION_REGEX);
+    }
+
+    /**
+     * Returns true if a given string is less than 16 characters long.
+     * E.164 standard states that a phone number can be up to 15 digits long.
+     * This method should be used alongside {@link #isValidPhone(String)} to ensure that the phone number is valid.
+     */
+    public static boolean isValidLength(String test) {
+
+        return test.length() < 16;
     }
 
     @Override
