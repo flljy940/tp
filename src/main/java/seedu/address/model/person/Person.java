@@ -96,7 +96,7 @@ public class Person {
             return true;
         }
 
-        return otherPerson.getPhone() != null
+        return otherPerson != null
                 && otherPerson.getPhone().equals(getPhone());
     }
 
