@@ -7,7 +7,6 @@ import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.address.logic.commands.CommandTestUtil.showPersonAtIndex;
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
-import static seedu.address.testutil.TypicalIndexes.INDEX_SECOND_PERSON;
 import static seedu.address.testutil.TypicalPersons.getTypicalAddressBook;
 
 import org.junit.jupiter.api.Test;
@@ -18,6 +17,7 @@ import seedu.address.model.AddressBook;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.UserPrefs;
+import seedu.address.model.person.PayStatus;
 import seedu.address.model.person.Person;
 import seedu.address.testutil.PersonBuilder;
 
@@ -26,9 +26,9 @@ public class PayCommandTest {
     private Model model = new ModelManager(getTypicalAddressBook(), new UserPrefs());
 
     @Test
-    public void execute_markAsPaidUnfilteredList_success() {
+    public void execute_validIndexUnfilteredList_success() {
         Person firstPerson = model.getFilteredPersonList().get(INDEX_FIRST_PERSON.getZeroBased());
-        Person editedPerson = new PersonBuilder(firstPerson).withPayStatus("PAID").build();
+        Person editedPerson = new PersonBuilder(firstPerson).withPayStatus(PayStatus.PAID).build();
 
         PayCommand payCommand = new PayCommand(INDEX_FIRST_PERSON);
 
@@ -41,12 +41,11 @@ public class PayCommandTest {
     }
 
     @Test
-    public void execute_markAsPaidFilteredList_success() {
+    public void execute_validIndexFilteredList_success() {
         showPersonAtIndex(model, INDEX_FIRST_PERSON);
 
         Person firstPerson = model.getFilteredPersonList().get(INDEX_FIRST_PERSON.getZeroBased());
-        Person editedPerson = new PersonBuilder(firstPerson).withPayStatus("PAID").build();
-
+        Person editedPerson = new PersonBuilder(firstPerson).withPayStatus(PayStatus.PAID).build();
         PayCommand payCommand = new PayCommand(INDEX_FIRST_PERSON);
 
         String expectedMessage = String.format(PayCommand.MESSAGE_PAY_SUCCESS, Messages.format(editedPerson));
@@ -58,7 +57,7 @@ public class PayCommandTest {
     }
 
     @Test
-    public void execute_invalidPersonIndexUnfilteredList_failure() {
+    public void execute_invalidIndexUnfilteredList_throwsCommandException() {
         Index outOfBoundIndex = Index.fromOneBased(model.getFilteredPersonList().size() + 1);
         PayCommand payCommand = new PayCommand(outOfBoundIndex);
 
@@ -66,30 +65,50 @@ public class PayCommandTest {
     }
 
     @Test
-    public void execute_invalidPersonIndexFilteredList_failure() {
+    public void execute_invalidIndexFilteredList_throwsCommandException() {
         showPersonAtIndex(model, INDEX_FIRST_PERSON);
-        Index outOfBoundIndex = INDEX_SECOND_PERSON;
 
-        assertTrue(outOfBoundIndex.getZeroBased() < model.getAddressBook().getPersonList().size());
+        Index outOfBoundIndex = Index.fromOneBased(model.getFilteredPersonList().size() + 1);
 
         PayCommand payCommand = new PayCommand(outOfBoundIndex);
+
         assertCommandFailure(payCommand, model, Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
+    }
+
+    @Test
+    public void execute_personAlreadyPaid_success() {
+        Person firstPerson = model.getFilteredPersonList().get(INDEX_FIRST_PERSON.getZeroBased());
+        Person editedPerson = new PersonBuilder(firstPerson).withPayStatus(PayStatus.PAID).build();
+        model.setPerson(firstPerson, editedPerson);
+
+        PayCommand payCommand = new PayCommand(INDEX_FIRST_PERSON);
+
+        String expectedMessage = String.format(PayCommand.MESSAGE_PAY_SUCCESS, Messages.format(editedPerson));
+
+        Model expectedModel = new ModelManager(new AddressBook(model.getAddressBook()), new UserPrefs());
+
+        assertCommandSuccess(payCommand, model, expectedMessage, expectedModel);
     }
 
     @Test
     public void equals() {
         final PayCommand standardCommand = new PayCommand(INDEX_FIRST_PERSON);
 
+        // same values -> returns true
         PayCommand commandWithSameValues = new PayCommand(INDEX_FIRST_PERSON);
         assertTrue(standardCommand.equals(commandWithSameValues));
 
+        // same object -> returns true
         assertTrue(standardCommand.equals(standardCommand));
 
+        // null -> returns false
         assertFalse(standardCommand.equals(null));
 
+        // different types -> returns false
         assertFalse(standardCommand.equals(new ClearCommand()));
 
-        assertFalse(standardCommand.equals(new PayCommand(INDEX_SECOND_PERSON)));
+        // different index -> returns false
+        assertFalse(standardCommand.equals(new PayCommand(Index.fromOneBased(2))));
     }
 
     @Test
@@ -100,21 +119,5 @@ public class PayCommandTest {
     @Test
     public void execute_nullIndex_throwsNullPointerException() {
         assertThrows(NullPointerException.class, () -> new PayCommand(null));
-    }
-
-    @Test
-    public void execute_personAlreadyPaid_success() {
-        Person firstPerson = model.getFilteredPersonList().get(INDEX_FIRST_PERSON.getZeroBased());
-        Person editedPerson = new PersonBuilder(firstPerson).withPayStatus("PAID").build();
-        model.setPerson(firstPerson, editedPerson);
-
-        PayCommand payCommand = new PayCommand(INDEX_FIRST_PERSON);
-
-        String expectedMessage = String.format(PayCommand.MESSAGE_PAY_SUCCESS, Messages.format(editedPerson));
-
-        Model expectedModel = new ModelManager(new AddressBook(model.getAddressBook()), new UserPrefs());
-        expectedModel.setPerson(firstPerson, editedPerson);
-
-        assertCommandSuccess(payCommand, model, expectedMessage, expectedModel);
     }
 }
