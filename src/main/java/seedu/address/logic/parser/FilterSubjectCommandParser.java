@@ -27,7 +27,6 @@ public class FilterSubjectCommandParser implements Parser<FilterSubjectCommand> 
 
         String[] subjectKeywords = trimmedArgs.split("\\s+");
 
-        // Convert keywords to lowercase for case-insensitive matching
         String[] lowercaseKeywords = Arrays.stream(subjectKeywords)
                 .map(String::toLowerCase)
                 .toArray(String[]::new);

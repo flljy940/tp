@@ -46,10 +46,8 @@ public class FilterSubjectCommand extends Command {
         List<Person> unfilteredList = model.getAddressBook().getPersonList();
         model.updateFilteredPersonList(predicate);
 
-        // Get the current filtered list after applying the predicate
         List<Person> currentFilteredList = model.getFilteredPersonList();
 
-        // If no matches found, show available subjects
         if (currentFilteredList.isEmpty()) {
             String availableSubjects = getAvailableSubjects(unfilteredList);
             return new CommandResult(
@@ -74,9 +72,9 @@ public class FilterSubjectCommand extends Command {
 
     @Override
     public boolean equals(Object other) {
-        return other == this // short circuit if same object
-                || (other instanceof FilterSubjectCommand // instanceof handles nulls
+        return other == this
+                || (other instanceof FilterSubjectCommand
                 && predicate.equals(((FilterSubjectCommand) other).predicate)
-                && subjects.equals(((FilterSubjectCommand) other).subjects)); // state check
+                && subjects.equals(((FilterSubjectCommand) other).subjects));
     }
 }

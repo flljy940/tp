@@ -51,9 +51,9 @@ public class FilterPaidStatusCommand extends Command {
 
     @Override
     public boolean equals(Object other) {
-        return other == this // short circuit if same object
-                || (other instanceof FilterPaidStatusCommand // instanceof handles nulls
+        return other == this
+                || (other instanceof FilterPaidStatusCommand
                 && predicate.equals(((FilterPaidStatusCommand) other).predicate)
-                && status.equals(((FilterPaidStatusCommand) other).status)); // state check
+                && status.equals(((FilterPaidStatusCommand) other).status));
     }
 }
