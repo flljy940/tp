@@ -43,8 +43,6 @@ TutorRec is a **desktop app for managing contacts, optimised for use via a Comma
 
    * `clear` : Deletes all contacts.
 
-   * `nextlesson 3 d/15/4/2025 1800-2000` : Add the next lesson date for the 3rd contact.
-
    * `exit` : Exits the app.
 
 1. Refer to the [Features](#features) below for details of each command.
@@ -61,7 +59,7 @@ TutorRec is a **desktop app for managing contacts, optimised for use via a Comma
   e.g. in `add n/NAME`, `NAME` is a parameter which can be used as `add n/John Doe`.
 
 * Items in square brackets are optional.<br>
-  e.g `n/NAME [s/SUBJECT]` can be used as `n/John Doe s/math` or as `n/John Doe`.
+  e.g. `n/NAME [s/SUBJECT]` can be used as `n/John Doe s/math` or as `n/John Doe`.
 
 * Items with `…`​ after them can be used multiple times including zero times.<br>
   e.g. `[s/SUBJECT]…​` can be used as ` ` (i.e. 0 times), `s/math`, `s/math s/chemistry` etc.
@@ -69,7 +67,7 @@ TutorRec is a **desktop app for managing contacts, optimised for use via a Comma
 * Parameters can be in any order.<br>
   e.g. if the command specifies `n/NAME p/PHONE_NUMBER`, `p/PHONE_NUMBER n/NAME`
 
-* Date format for next lesson must be in `d/M/yyyy HHmm-HHmm` format, <br>
+* Date format for next lesson must be in `d/M/yyyy HHmm-HHmm` format. <br>
   e.g. `nextlesson 3 d/15/4/2025 1800-2000`
 
 * Extraneous parameters for commands that do not take in parameters (such as `help`, `list`, `exit` and `clear`) will be ignored.<br>
@@ -117,7 +115,7 @@ Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [s/SUBJECT]…​`
 * Edits the person at the specified `INDEX`. The index refers to the index number shown in the displayed person list. The index **must be a positive integer** 1, 2, 3, …​
 * At least one of the optional fields must be provided.
 * Existing values will be updated to the input values.
-* When editing subjects, the existing subjects of the person will be removed i.e adding of subjects is not cumulative.
+* When editing subjects, the existing subjects of the person will be removed i.e. adding of subjects is not cumulative.
 * You can remove all the person’s subjects by typing `s/` without
     specifying any subjects after it.
 
@@ -131,7 +129,7 @@ Finds persons whose names contain any of the given keywords.
 
 Format: `find KEYWORD [MORE_KEYWORDS]`
 
-* The search is case-insensitive. e.g `hans` will match `Hans`
+* The search is case-insensitive. e.g. `hans` will match `Hans`
 * The order of the keywords does not matter. e.g. `Hans Bo` will match `Bo Hans`
 * Only the name is searched.
 * Only full words will be matched e.g. `Han` will not match `Hans`
@@ -159,18 +157,19 @@ Examples:
 
 ### Adding next lesson date for a person : `nextlesson`
 
-Adds date for upcoming lesson for an existing person in the contact list.
+Adds a date for an upcoming lesson for an existing person in the contact list.
 
-Format: `nextlesson INDEX d/NEXT_LESSON`
+Format: `nextlesson INDEX d/DATE`
 
-* Adds the date of next lesson for the person at the specified `INDEX`. The index refers to the index number shown in the displayed person list. The index **must be a positive integer** 1, 2, 3, …​
+* Adds the next lesson date for the person at the specified `INDEX`. The index refers to the index number shown in the displayed person list. The index **must be a positive integer** 1, 2, 3, …​
 * Existing values will be updated to the input values.
-* When adding dates, the existing dates of the person will be appended i.e adding of tags is cumulative.
+* When adding dates, the existing dates of the person will be appended i.e. adding of tags is cumulative.
 * You can remove all the person’s next lesson dates by typing `d/` without
   specifying any tags after it.
+* `DATE` must be in `d/M/yyyy HHmm-HHmm` format (eg. `15/4/2025 1800-2000`)
 
 Examples:
-*  `nextlesson 1 d/15/4/2025 1800-2000` Adds/Updates the date of next lesson of the 1st person to be `15/4/2025 1800-2000`.
+*  `nextlesson 1 d/15/4/2025 1800-2000` Adds/Updates the next lesson date of the 1st person to be `15/4/2025 1800-2000`.
 *  `nextlesson 2 d/` Removes the next lesson date for the 2nd person.
 
 ### Sorting of all persons by lesson date : `sort`
@@ -235,21 +234,30 @@ Exits the program.
 
 Format: `exit`
 
+<box type="tip" seamless>
+
+**Tip:** Once exited, the position and the size of the program on the screen will be updated and saved automatically. 
+</box>
+
 ### Saving the data
 
 TutorRec data will be saved in the hard disk automatically after any command that changes the data. There is no need to save manually.
 
 ### Editing the data file
 
-TutorRec data is saved automatically as a JSON file `[JAR file location]/data/addressbook.json`. Advanced users are welcome to update data directly by editing that data file.
+TutorRec data is saved automatically as a JSON file `[JAR file location]/data/addressbook.json` and `[JAR file location]/preferences.json`.
 
+* `[JAR file location]/data/addressbook.json` stores data related to `person`.
+* `[JAR file location]/preferences.json` stores data related to position and the size of the program.
+
+Advanced users are welcome to update data directly by editing that data file.
 
 
 <box type="warning" seamless>
 
 **Caution:**
 If your changes to the data file makes its format invalid, TutorRec will discard all data and start with an empty data file at the next run.  Hence, it is recommended to take a backup of the file before editing it.<br>
-Furthermore, certain edits can cause TutorRec to behave in unexpected ways (e.g., if a value entered is outside the acceptable range). Therefore, edit the data file only if you are confident that you can update it correctly.
+Furthermore, certain edits can cause TutorRec to behave in unexpected ways (e.g. if a value entered is outside the acceptable range). Therefore, edit the data file only if you are confident that you can update it correctly.
 </box>
 
 ### Archiving data files `[coming in v2.0]`
@@ -276,13 +284,13 @@ _Details coming soon ..._
 
 Action     | Format, Examples
 -----------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------
-**Add**    | `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [s/SUBJECT]…​` <br> e.g., `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 s/math s/english`
+**Add**    | `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [s/SUBJECT]…​` <br> e.g. `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 s/math s/english`
 **Clear**  | `clear`
-**Pay**    | `pay INDEX`<br> e.g., `pay 3`
-**Unpay**  | `unpay INDEX`<br> e.g., `unpay 3` or `unpay all`
-**Delete** | `delete INDEX`<br> e.g., `delete 3`
-**Edit**   | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [s/SUBJECT]…​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`
-**Find**   | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`
-**Nextlesson** | `nextlesson INDEX d/[NEXT_LESSON]`<br> e.g., `nextlesson 3 d/15/4/2025 1800-2000`
+**Pay**    | `pay INDEX`<br> e.g. `pay 3`
+**Unpay**  | `unpay INDEX`<br> e.g. `unpay 3` or `unpay all`
+**Delete** | `delete INDEX`<br> e.g. `delete 3`
+**Edit**   | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [s/SUBJECT]…​`<br> e.g.`edit 2 n/James Lee e/jameslee@example.com`
+**Find**   | `find KEYWORD [MORE_KEYWORDS]`<br> e.g. `find James Jake`
+**Nextlesson** | `nextlesson INDEX d/[DATE]`<br> e.g. `nextlesson 3 d/15/4/2025 1800-2000`
 **List**   | `list`
 **Help**   | `help`
