@@ -30,7 +30,7 @@ public class Email {
     private static final String DOMAIN_LAST_PART_REGEX = "(" + DOMAIN_PART_REGEX + "){2,}$"; // At least two chars
     private static final String DOMAIN_REGEX = "(" + DOMAIN_PART_REGEX + "\\.)*" + DOMAIN_LAST_PART_REGEX;
     // By RFC 5321, the maximum length of an email address is 254 chars, but we set a lower limit for practical purposes
-    private static final Integer WORD_LIMIT = 100;
+    private static final Integer WORD_LIMIT = 50;
     public static final String VALIDATION_REGEX = LOCAL_PART_REGEX + "@" + DOMAIN_REGEX;
 
     public final String value;
