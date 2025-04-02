@@ -18,15 +18,15 @@ TutorRec is a **desktop app for managing contacts, optimised for use via a Comma
 1. Ensure you have Java `17` or above installed in your Computer.<br>
    **Mac users:** Ensure you have the precise JDK version prescribed [here](https://se-education.org/guides/tutorials/javaInstallationMac.html).
 
-1. Download the latest `.jar` file from [here](https://github.com/AY2425S2-CS2103T-T16-4/tp/releases).
+2. Download the latest `.jar` file from [here](https://github.com/AY2425S2-CS2103T-T16-4/tp/releases).
 
-1. Copy the file to the folder you want to use as the _home folder_ for TutorRec.
+3. Copy the file to the folder you want to use as the _home folder_ for TutorRec.
 
-1. Open a command terminal, `cd` into the folder you put the jar file in, and use the `java -jar tutorrec.jar` command to run the application.<br>
+4. Open a command terminal, `cd` into the folder you put the jar file in, and use the `java -jar tutorrec.jar` command to run the application.<br>
    A GUI similar to the below should appear in a few seconds. Note how the app contains some sample data.<br>
-   ![Ui](images/Ui.png)
+   <img src="images/Ui.png" alt="Ui" width="500px" />
 
-1. Type the command in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will open the help window.<br>
+5. Type the command in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will open the help window.<br>
    Some example commands you can try:
 
    * `list` : Lists all contacts.
@@ -45,7 +45,7 @@ TutorRec is a **desktop app for managing contacts, optimised for use via a Comma
 
    * `exit` : Exits the app.
 
-1. Refer to the [Features](#features) below for details of each command.
+6. Refer to the [Features](#features) below for details of each command.
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -80,7 +80,7 @@ TutorRec is a **desktop app for managing contacts, optimised for use via a Comma
 
 Shows a message explaining how to access the help page.
 
-![help message](images/helpMessage.png)
+<img src="images/helpMessage.png" alt="help message" width="500px" />
 
 Format: `help`
 
@@ -93,7 +93,7 @@ Format: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [s/SUBJECT]…​`
 
 <box type="tip" seamless>
 
-**Tip:** A person can have any number of subjects (including 0)
+**Tip:** A person can have any number of subjects (including 0).
 </box>
 
 Examples:
@@ -139,7 +139,7 @@ Format: `find KEYWORD [MORE_KEYWORDS]`
 Examples:
 * `find John` returns `john` and `John Doe`
 * `find alex david` returns `Alex Yeoh`, `David Li`<br>
-  ![result for 'find alex david'](images/findAlexDavidResult.png)
+  <img src="images/findAlexDavidResult.png" alt="result for 'find alex david'" width="500px" />
 
 ### Deleting a person : `delete`
 
@@ -293,4 +293,6 @@ Action     | Format, Examples
 **Find**   | `find KEYWORD [MORE_KEYWORDS]`<br> e.g. `find James Jake`
 **Nextlesson** | `nextlesson INDEX d/[DATE]`<br> e.g. `nextlesson 3 d/15/4/2025 1800-2000`
 **List**   | `list`
+**Sort**  | `sort`
+**Filter** | `filter DATE`<br> e.g. `filter 15/4/2025`
 **Help**   | `help`

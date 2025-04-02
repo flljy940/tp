@@ -61,6 +61,14 @@ public class UnpayCommandTest {
     }
 
     @Test
+    public void execute_emptyList_failure() {
+        Model model = new ModelManager(new AddressBook(), new UserPrefs());
+        Index invalidIndex = Index.fromOneBased(1);
+        UnpayCommand unpayCommand = new UnpayCommand(invalidIndex);
+        assertCommandFailure(unpayCommand, model, Messages.MESSAGE_EMPTY_LIST_PAYMENT_STATUS);
+    }
+
+    @Test
     public void equals() {
         UnpayCommand unpayIndexOne = new UnpayCommand(INDEX_FIRST_PERSON);
         UnpayCommand unpayIndexTwo = new UnpayCommand(INDEX_SECOND_PERSON);

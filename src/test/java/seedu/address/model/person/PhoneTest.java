@@ -39,6 +39,18 @@ public class PhoneTest {
     }
 
     @Test
+    public void isValidLength() {
+        // null phone number
+        assertThrows(NullPointerException.class, () -> Phone.isValidLength(null));
+
+        // invalid phone number
+        assertFalse(Phone.isValidLength("1234567890123456")); // more than 15 digits
+
+        // valid phone number
+        assertTrue(Phone.isValidLength("123456789012345")); // 15 digits
+    }
+
+    @Test
     public void equals() {
         Phone phone = new Phone("999");
 
