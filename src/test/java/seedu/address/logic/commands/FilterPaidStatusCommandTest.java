@@ -4,13 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.testutil.Assert.assertThrows;
-import static seedu.address.testutil.TypicalPersons.ALICE;
-import static seedu.address.testutil.TypicalPersons.BENSON;
 import static seedu.address.testutil.TypicalPersons.getTypicalAddressBook;
-
-import java.util.Collections;
-import java.util.List;
-
 import org.junit.jupiter.api.Test;
 
 import seedu.address.logic.commands.exceptions.CommandException;
@@ -19,7 +13,6 @@ import seedu.address.model.ModelManager;
 import seedu.address.model.UserPrefs;
 import seedu.address.model.person.PayStatus;
 import seedu.address.model.person.PayStatusEqualsPaidPredicate;
-import seedu.address.model.person.Person;
 
 /**
  * Contains integration tests (interaction with the Model) for {@code FilterPaidStatusCommand}.
