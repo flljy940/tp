@@ -36,11 +36,14 @@ public class CommandTestUtil {
     public static final String VALID_ADDRESS_AMY = "Block 312, Amy Street 1";
     public static final String VALID_ADDRESS_BOB = "Block 123, Bobby Street 3";
     public static final String VALID_SUBJECT_MATH = "math";
+    public static final String VALID_SUBJECT_PHYSICS = "physics";
     public static final String VALID_SUBJECT_CHEMISTRY = "chemistry";
     public static final String VALID_NEXTLESSON_AMY = "13/04/2025 0900-1100";
     public static final String VALID_NEXTLESSON_BOB = "15/04/2025 1700-1900";
     public static final String VALID_PAYSTATUS_AMY = PayStatus.PAID;
     public static final String VALID_PAYSTATUS_BOB = PayStatus.NOT_PAID;
+    public static final String VALID_PAY_STATUS_PAID = "paid";
+    public static final String VALID_PAY_STATUS_UNPAID = "unpaid";
 
     public static final String NAME_DESC_AMY = " " + PREFIX_NAME + VALID_NAME_AMY;
     public static final String NAME_DESC_BOB = " " + PREFIX_NAME + VALID_NAME_BOB;
