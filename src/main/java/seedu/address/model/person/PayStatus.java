@@ -8,7 +8,7 @@ import static java.util.Objects.requireNonNull;
  */
 public class PayStatus {
     public static final String PAID = "PAID";
-    public static final String UNPAID = "UNPAID";
+    public static final String NOT_PAID = "NOT PAID";
 
     public final String value;
 

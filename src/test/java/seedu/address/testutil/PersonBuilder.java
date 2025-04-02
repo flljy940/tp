@@ -25,7 +25,7 @@ public class PersonBuilder {
     public static final String DEFAULT_EMAIL = "amy@gmail.com";
     public static final String DEFAULT_ADDRESS = "123, Jurong West Ave 6, #08-111";
     public static final String DEFAULT_NEXT_LESSON = "15/04/2025 1900-2100";
-    public static final String DEFAULT_PAYSTATUS = PayStatus.UNPAID;
+    public static final String DEFAULT_PAYSTATUS = "";
 
     private Name name;
     private Phone phone;
