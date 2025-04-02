@@ -26,6 +26,7 @@ public class NextLessonCommandParser implements Parser<NextLessonCommand> {
     private static final String DATE_TIME_FORMAT = "d/M/yyyy HHmm-HHmm";
     private static final String DATE_REGEX = "(\\d{1,2})/(\\d{1,2})/(\\d{4})\\s(\\d{4})-(\\d{4})";
     private static final LocalDate CURRENT_DATE = LocalDate.now();
+    private static final LocalTime CURRENT_TIME = LocalTime.now();
 
     /**
      * Parses the given {@code String} of arguments in the ocntext of the {@code NextLessonCommand}
@@ -87,7 +88,6 @@ public class NextLessonCommandParser implements Parser<NextLessonCommand> {
             LocalTime endTime = LocalTime.of(endHours, endMinutes);
 
             if (!startTime.isBefore(endTime)) {
-                System.out.println("🚨 Error: Start time " + startTime + " is NOT before end time " + endTime);
                 throw new ParseException("Start time must be before end time.");
             }
 
@@ -97,6 +97,10 @@ public class NextLessonCommandParser implements Parser<NextLessonCommand> {
 
             if (date.isBefore(CURRENT_DATE)) {
                 throw new ParseException("Lesson date cannot be in the past.", new IllegalArgumentException());
+            }
+
+            if (startTime.isBefore(CURRENT_TIME)) {
+                throw new ParseException("Lesson start time cannot be in the past.", new IllegalArgumentException());
             }
 
             return new NextLesson(date, startTime, endTime);
