@@ -73,11 +73,11 @@ public class FilterPaidStatusCommandTest {
         // Clear the address book to ensure no matching results
         model.setAddressBook(new ModelManager().getAddressBook());
         expectedModel.setAddressBook(new ModelManager().getAddressBook());
-        
+
         PayStatusEqualsPaidPredicate predicate = new PayStatusEqualsPaidPredicate(true);
         FilterPaidStatusCommand command = new FilterPaidStatusCommand(predicate, PayStatus.PAID);
         expectedModel.updateFilteredPersonList(predicate);
-        
+
         String expectedMessage = String.format(FilterPaidStatusCommand.MESSAGE_SUCCESS,
                 0, PayStatus.PAID);
         assertCommandSuccess(command, model, expectedMessage, expectedModel);

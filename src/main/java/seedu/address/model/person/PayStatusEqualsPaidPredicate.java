@@ -28,4 +28,4 @@ public class PayStatusEqualsPaidPredicate implements Predicate<Person> {
                 || (other instanceof PayStatusEqualsPaidPredicate // instanceof handles nulls
                 && isPaid == ((PayStatusEqualsPaidPredicate) other).isPaid); // state check
     }
-} 
+}

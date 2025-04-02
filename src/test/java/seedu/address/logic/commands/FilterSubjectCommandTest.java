@@ -68,7 +68,7 @@ public class FilterSubjectCommandTest {
         // Clear the address book to ensure no matching results and no available subjects
         model.setAddressBook(new ModelManager().getAddressBook());
         expectedModel.setAddressBook(new ModelManager().getAddressBook());
-        
+
         String expectedMessage = String.format(FilterSubjectCommand.MESSAGE_NO_MATCHES, "math", "");
         SubjectContainsKeywordsPredicate predicate = preparePredicate("math");
         FilterSubjectCommand command = new FilterSubjectCommand(predicate, "math");
