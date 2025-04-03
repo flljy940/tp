@@ -548,8 +548,19 @@ testers are expected to do more *exploratory* testing.
 
 ### Saving data
 
-1. Dealing with missing/corrupted data files
+1. Dealing with corrupted data files
 
-   1. _{explain how to simulate a missing/corrupted file, and the expected behavior}_
+   1. Prerequisites: Simulate a corrupted data file by:
+      1. Change directory to the working folder for `tutorrec.jar`
+      2. If the file `data/addressbook.json` is not in the working folder, launch the app by double-clicking on jar file. The app should start with the sample contact list.
+      3. Open the `data/addressbook.json` file and delete the `name` field of the first entry.
 
-1. _{ more test cases …​ }_
+   2. Launch the app by double-clicking on jar file. The app should start with an empty contact list.
+
+2. Dealing with missing data files
+
+   1. Prerequisites: Simulate a missing data file by:
+      1. Change directory to the working folder for `tutorrec.jar`
+      2. If the file `data/addressbook.json` exists in the working folder, delete the `data/addressbook.json` file
+      
+   2. Launch the app by double-clicking ont he jar file. The app should start with the sample contact list.
