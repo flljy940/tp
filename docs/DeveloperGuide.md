@@ -459,7 +459,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
   Use case ends.
 
-**Use Case U5: Filter students with a lesson on a specified date**
+**Use Case U6: Filter students with a lesson on a specified date**
 
 **MSS**
 
