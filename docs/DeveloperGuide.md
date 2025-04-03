@@ -291,8 +291,8 @@ _{Explain here how the data archiving feature will be implemented}_
 * prefers typing to mouse interactions
 * is reasonably comfortable using CLI apps
 
-**Value proposition**: Provides quick lookup for student address, contact number, last payment made, 
-next lesson date and time, and subjects covered with student
+**Value proposition**: Provides quick lookup for student address, contact number, whether last payment 
+has been made, next lesson date and time, and subjects covered with student
 
 
 ### User stories
