@@ -38,8 +38,13 @@
         </padding>
         <Label fx:id="phone" styleClass="cell_small_label_phone" text="\$phone" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
         <Label fx:id="email" styleClass="cell_small_label_email" text="\$email" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+      </GridPane>
+      <GridPane hgap="50">
+        <padding>
+          <Insets left="35"/>
+        </padding>
+        <Label fx:id="address" styleClass="cell_small_label_address" text="\$address" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
         <Label fx:id="subjects" styleClass="cell_small_label_subject" text="\$subjects" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
-        <Label fx:id="address" styleClass="cell_small_label_address" text="\$address" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
       </GridPane>
     </VBox>
   </GridPane>
