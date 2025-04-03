@@ -14,7 +14,7 @@ public class FilterDateCommand extends Command {
 
     public static final String MESSAGE_SUCCESS = "Filtered %1$d students with lessons on %2$s";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Filters all persons whose next lesson date matches "
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Filters all students whose next lesson date matches "
             + "the specified date and displays them as a list with index numbers.\n"
             + "Parameters: DATE (must be in d/M/yyyy format)\n"
             + "Example: " + COMMAND_WORD + " 15/4/2025";
