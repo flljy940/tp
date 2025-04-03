@@ -335,6 +335,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 **Extensions**
 
 * 1a. The user supplies invalid input parameter(s).
+
   * 1a1. TutorRec shows an error message for the relevant parameters.
 
     Use case resumes at step 1.
