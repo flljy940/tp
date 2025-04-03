@@ -1,7 +1,6 @@
 package seedu.address.logic.parser;
 
 import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_PAYSTATUS;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseFailure;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseSuccess;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
@@ -32,7 +31,7 @@ public class PayCommandParserTest {
         String userInput = "a 100";
         assertParseFailure(parser, userInput, String.format(MESSAGE_INVALID_COMMAND_FORMAT, PayCommand.MESSAGE_USAGE));
 
-        userInput = targetIndex.getOneBased() + " " + PREFIX_PAYSTATUS + "PAID";
+        userInput = targetIndex.getOneBased() + " " + "PAID";
         String expectedMessage = String.format(MESSAGE_INVALID_COMMAND_FORMAT, PayCommand.MESSAGE_USAGE);
         assertParseFailure(parser, userInput, expectedMessage);
     }

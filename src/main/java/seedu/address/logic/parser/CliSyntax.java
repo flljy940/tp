@@ -12,6 +12,4 @@ public class CliSyntax {
     public static final Prefix PREFIX_ADDRESS = new Prefix("a/");
     public static final Prefix PREFIX_SUBJECT = new Prefix("s/");
     public static final Prefix PREFIX_NEXTLESSON = new Prefix("d/");
-    public static final Prefix PREFIX_PAYSTATUS = new Prefix("r/");
-
 }

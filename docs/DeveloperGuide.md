@@ -112,7 +112,7 @@ How the `Logic` component works:
 
 1. When `Logic` is called upon to execute a command, it is passed to an `AddressBookParser` object which in turn creates a parser that matches the command (e.g., `DeleteCommandParser`) and uses it to parse the command.
 1. This results in a `Command` object (more precisely, an object of one of its subclasses e.g., `DeleteCommand`) which is executed by the `LogicManager`.
-1. The command can communicate with the `Model` when it is executed (e.g. to delete a person).<br>
+1. The command can communicate with the `Model` when it is executed (e.g. to delete a student).<br>
    Note that although this is shown as a single step in the diagram above (for simplicity), in the code it can take several interactions (between the command object and the `Model`) to achieve.
 1. The result of the command execution is encapsulated as a `CommandResult` object which is returned back from `Logic`.
 
@@ -186,11 +186,11 @@ Step 1. The user launches the application for the first time. The `VersionedAddr
 
 <puml src="diagrams/UndoRedoState0.puml" alt="UndoRedoState0" />
 
-Step 2. The user executes `delete 5` command to delete the 5th person in the address book. The `delete` command calls `Model#commitAddressBook()`, causing the modified state of the address book after the `delete 5` command executes to be saved in the `addressBookStateList`, and the `currentStatePointer` is shifted to the newly inserted address book state.
+Step 2. The user executes `delete 5` command to delete the 5th student in the address book. The `delete` command calls `Model#commitAddressBook()`, causing the modified state of the address book after the `delete 5` command executes to be saved in the `addressBookStateList`, and the `currentStatePointer` is shifted to the newly inserted address book state.
 
 <puml src="diagrams/UndoRedoState1.puml" alt="UndoRedoState1" />
 
-Step 3. The user executes `add n/David …​` to add a new person. The `add` command also calls `Model#commitAddressBook()`, causing another modified address book state to be saved into the `addressBookStateList`.
+Step 3. The user executes `add n/David …​` to add a new student. The `add` command also calls `Model#commitAddressBook()`, causing another modified address book state to be saved into the `addressBookStateList`.
 
 <puml src="diagrams/UndoRedoState2.puml" alt="UndoRedoState2" />
 
@@ -200,7 +200,7 @@ Step 3. The user executes `add n/David …​` to add a new person. The `add` co
 
 </box>
 
-Step 4. The user now decides that adding the person was a mistake, and decides to undo that action by executing the `undo` command. The `undo` command will call `Model#undoAddressBook()`, which will shift the `currentStatePointer` once to the left, pointing it to the previous address book state, and restores the address book to that state.
+Step 4. The user now decides that adding the student was a mistake, and decides to undo that action by executing the `undo` command. The `undo` command will call `Model#undoAddressBook()`, which will shift the `currentStatePointer` once to the left, pointing it to the previous address book state, and restores the address book to that state.
 
 <puml src="diagrams/UndoRedoState3.puml" alt="UndoRedoState3" />
 
@@ -256,7 +256,7 @@ The following activity diagram summarizes what happens when a user executes a ne
 
 * **Alternative 2:** Individual command knows how to undo/redo by
   itself.
-  * Pros: Will use less memory (e.g. for `delete`, just save the person being deleted).
+  * Pros: Will use less memory (e.g. for `delete`, just save the student being deleted).
   * Cons: We must ensure that the implementation of each individual command are correct.
 
 _{more aspects and alternatives to be added}_
@@ -291,30 +291,36 @@ _{Explain here how the data archiving feature will be implemented}_
 * prefers typing to mouse interactions
 * is reasonably comfortable using CLI apps
 
-**Value proposition**: Provides quick lookup for client address, contact number, last payment made and last topic covered with student
+**Value proposition**: Provides quick lookup for student address, contact number, whether last payment 
+has been made, next lesson date and time, and subjects covered with student
 
 
 ### User stories
 
 Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
 
-| Priority | As a …​                                      | I want to …​                   | So that I can…​                                                         |
-|----------|----------------------------------------------|--------------------------------|-------------------------------------------------------------------------|
-| `* * *`  | new user                                     | see usage instructions         | refer to instructions when I forget how to use the App                  |
-| `* * *`  | tutor                                        | add a new student              | log all my students and their details                                   |
-| `* * *`  | tutor                                        | add a student's address        | easily look up their address to go over and conduct a lesson            |
-| `* * *`  | tutor                                        | add a student's contact number | easily look up their contact if I need to reach out to them             |
-| `* * *`  | tutor                                        | add a student's subject taken  | prepare materials for their lesson                                      |
-| `* * *`  | tutor                                        | delete a student               | remove student entries that I no longer need                            |
-| `* * *`  | tutor                                        | find a student by name         | locate details of students without having to go through the entire list |
-| `* *`    | tutor                                        | hide private contact details   | minimize chance of someone else seeing them by accident                 |
-| `*`      | tutor with many students in the address book | sort students by name          | locate a student easily                                                 |
-
-*{More to be added}*
+| Priority | As a …​                                      | I want to …​                                              | So that I can…​                                                                                                |
+|----------|----------------------------------------------|-----------------------------------------------------------|----------------------------------------------------------------------------------------------------------------|
+| `* * *`  | new user                                     | see usage instructions                                    | refer to instructions when I forget how to use the App                                                         |
+| `* * *`  | tutor                                        | add a new student                                         | log all my students and their details                                                                          |
+| `* * *`  | tutor                                        | add a student's address                                   | easily look up their address to go over and conduct a lesson                                                   |
+| `* * *`  | tutor                                        | add a student's contact number                            | easily look up their contact number if I need to reach out to them                                             |
+| `* * *`  | tutor                                        | add a student's email                                     | easily look up their email if I need to reach out to them                                                      |
+| `* * *`  | tutor                                        | add a student's next lesson date                          | easily look up their next lesson date to see when my next lesson with them is                                  |
+| `* * *`  | tutor                                        | add a student's subject taken                             | prepare materials for their lesson                                                                             |
+| `* * *`  | tutor                                        | mark if a student has paid me for the previous lesson     | keep track of whether the student has paid me for their lessons                                                |
+| `* * *`  | tutor                                        | delete a student                                          | remove student entries that I no longer need                                                                   |
+| `* * *`  | tutor                                        | find a student by name                                    | locate details of students without having to go through the entire list                                        |
+| `* *`    | tutor                                        | reset the payment status of all students to unpaid        | reset payment status for all student on a new week or month                                                    |
+| `* *`    | tutor with many students in the address book | sort students by next lesson date                         | see my upcoming lessons in chronological order                                                                 |
+| `* *`    | tutor                                        | filter students with lessons on a specified date          | see my scheduled lessons on the specified date                                                                 |
+| `* *`    | tutor                                        | filter students who have paid for the previous lesson     | easily look up and track the students who have paid for the previous lesson                                    |
+| `* *`    | tutor                                        | filter students who have not paid for the previous lesson | easily look up the students I have to nudge regarding payment for the previous lesson                          |
+| `*`      | tutor                                        | filter students who are taking a specified subject        | see my students taking the specified subject to monitor results or reach out for testimonials for that subject |
 
 ### Use Cases
 
-(For all use cases below, the **System** is the `TutorRec` and the **Actor** is the `user`, unless specified otherwise)
+(For all use cases below, the **System** is `TutorRec` and the **Actor** is the `user`, unless specified otherwise)
 
 **Use Case U1: Add a student to the contact list**
 
@@ -357,7 +363,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
       Use case resumes at step 2.
 
-**Use Case U3: Mark/unmark student payments**
+**Use Case U3: Mark and unmark student payments**
 
 **MSS**
 
@@ -493,38 +499,68 @@ testers are expected to do more *exploratory* testing.
 
    1. Download the jar file and copy into an empty folder
 
-   1. Double-click the jar file Expected: Shows the GUI with a set of sample contacts. The window size may not be optimum.
+   2. Double-click the jar file 
+       Expected: Shows the GUI with a set of sample contacts. The window size may not be optimum.
 
-1. Saving window preferences
+2. Saving window preferences
 
    1. Resize the window to an optimum size. Move the window to a different location. Close the window.
 
-   1. Re-launch the app by double-clicking the jar file.<br>
+   2. Re-launch the app by double-clicking the jar file.<br>
        Expected: The most recent window size and location is retained.
 
-1. _{ more test cases …​ }_
+3. Shutting down the app
+   
+   1. Click the 'X' button on the window of the app or the `esc` hotkey
 
-### Deleting a person
+   2. Re-launch the app by double-clicking the jar file.<br>
+       Expected: The app saves the most recent set of contacts before closing and shows the GUI with the latest set of contacts.
 
-1. Deleting a person while all persons are being shown
+### Deleting a student
 
-   1. Prerequisites: List all persons using the `list` command. Multiple persons in the list.
+1. Deleting a student while all student are being shown
 
-   1. Test case: `delete 1`<br>
+   1. Prerequisites: List all students using the `list` command. Multiple students in the list.
+
+   2. Test case: `delete 1`<br>
       Expected: First contact is deleted from the list. Details of the deleted contact shown in the status message. Timestamp in the status bar is updated.
 
-   1. Test case: `delete 0`<br>
-      Expected: No person is deleted. Error details shown in the status message. Status bar remains the same.
+   3. Test case: `delete 0`<br>
+      Expected: No student is deleted. Error details shown in the status message. Status bar remains the same.
 
-   1. Other incorrect delete commands to try: `delete`, `delete x`, `...` (where x is larger than the list size)<br>
+   4. Other incorrect delete commands to try: `delete`, `delete x`, `...` (where x is larger than the list size)<br>
       Expected: Similar to previous.
 
-1. _{ more test cases …​ }_
+2. Deleting a student while the list is filtered with students shown
+
+   1. Prerequisites: Filter students using a filter condition of your choice (eg. `filter-payment unpaid` command to filter students with `Not Paid` payment status).
+
+   2. Test case: `delete 1`<br>
+      Expected: First contact is deleted from the list of filtered students. Details of the deleted contact shown in the status message. Timestamp in the status bar is updated.
+
+   3. Test case: `delete 0`<br>
+      Expected: No students is deleted. Error details shown in the status message. Status bar remains the same.
+
+   4. Other incorrect delete commands to try: `delete`, `delete x`, `...` (where x is larger than the filtered list size)<br>
+      Expected: Similar to previous.
+
+   5. `list` after deleting student(s) from the filtered list should show the full list of students in the original unfiltered list excluding the deleted student(s).
 
 ### Saving data
 
-1. Dealing with missing/corrupted data files
+1. Dealing with corrupted data files
 
-   1. _{explain how to simulate a missing/corrupted file, and the expected behavior}_
+   1. Prerequisites: Simulate a corrupted data file by:
+      1. Change directory to the working folder for `tutorrec.jar`
+      2. If the file `data/addressbook.json` is not in the working folder, launch the app by double-clicking on jar file. The app should start with the sample contact list.
+      3. Open the `data/addressbook.json` file and delete the `name` field of the first entry.
 
-1. _{ more test cases …​ }_
+   2. Launch the app by double-clicking on jar file. The app should start with an empty contact list.
+
+2. Dealing with missing data files
+
+   1. Prerequisites: Simulate a missing data file by:
+      1. Change directory to the working folder for `tutorrec.jar`
+      2. If the file `data/addressbook.json` exists in the working folder, delete the `data/addressbook.json` file
+      
+   2. Launch the app by double-clicking ont he jar file. The app should start with the sample contact list.
