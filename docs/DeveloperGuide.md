@@ -291,26 +291,32 @@ _{Explain here how the data archiving feature will be implemented}_
 * prefers typing to mouse interactions
 * is reasonably comfortable using CLI apps
 
-**Value proposition**: Provides quick lookup for client address, contact number, last payment made and last topic covered with student
+**Value proposition**: Provides quick lookup for student address, contact number, last payment made, 
+next lesson date and time, and subjects covered with student
 
 
 ### User stories
 
 Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
 
-| Priority | As a …​                                      | I want to …​                   | So that I can…​                                                         |
-|----------|----------------------------------------------|--------------------------------|-------------------------------------------------------------------------|
-| `* * *`  | new user                                     | see usage instructions         | refer to instructions when I forget how to use the App                  |
-| `* * *`  | tutor                                        | add a new student              | log all my students and their details                                   |
-| `* * *`  | tutor                                        | add a student's address        | easily look up their address to go over and conduct a lesson            |
-| `* * *`  | tutor                                        | add a student's contact number | easily look up their contact if I need to reach out to them             |
-| `* * *`  | tutor                                        | add a student's subject taken  | prepare materials for their lesson                                      |
-| `* * *`  | tutor                                        | delete a student               | remove student entries that I no longer need                            |
-| `* * *`  | tutor                                        | find a student by name         | locate details of students without having to go through the entire list |
-| `* *`    | tutor                                        | hide private contact details   | minimize chance of someone else seeing them by accident                 |
-| `*`      | tutor with many students in the address book | sort students by name          | locate a student easily                                                 |
-
-*{More to be added}*
+| Priority | As a …​                                      | I want to …​                                              | So that I can…​                                                                                                |
+|----------|----------------------------------------------|-----------------------------------------------------------|----------------------------------------------------------------------------------------------------------------|
+| `* * *`  | new user                                     | see usage instructions                                    | refer to instructions when I forget how to use the App                                                         |
+| `* * *`  | tutor                                        | add a new student                                         | log all my students and their details                                                                          |
+| `* * *`  | tutor                                        | add a student's address                                   | easily look up their address to go over and conduct a lesson                                                   |
+| `* * *`  | tutor                                        | add a student's contact number                            | easily look up their contact number if I need to reach out to them                                             |
+| `* * *`  | tutor                                        | add a student's email                                     | easily look up their email if I need to reach out to them                                                      |
+| `* * *`  | tutor                                        | add a student's next lesson date                          | easily look up their next lesson date to see when my next lesson with them is                                  |
+| `* * *`  | tutor                                        | add a student's subject taken                             | prepare materials for their lesson                                                                             |
+| `* * *`  | tutor                                        | mark if a student has paid me for the previous lesson     | keep track of whether the student has paid me for their lessons                                                |
+| `* * *`  | tutor                                        | delete a student                                          | remove student entries that I no longer need                                                                   |
+| `* * *`  | tutor                                        | find a student by name                                    | locate details of students without having to go through the entire list                                        |
+| `* *`    | tutor                                        | hide private contact details                              | minimize chance of someone else seeing them by accident                                                        |
+| `* *`    | tutor                                        | reset the payment status of all students to unpaid        | reset payment status for all student on a new week or month                                                    |
+| `* *`    | tutor with many students in the address book | sort students by next lesson date                         | see my upcoming lessons in chronological order                                                                 |
+| `* *`    | tutor                                        | filter students with lessons on a specified date          | see my scheduled lessons on the specified date                                                                 |
+| `* *`    | tutor                                        | filter students who have not paid for the previous lesson | easily look up the students I have to nudge regarding payment for lessons                                      |
+| `*`      | tutor                                        | filter students who are taking a specified subject        | see my students taking the specified subject to monitor results or reach out for testimonials for that subject |
 
 ### Use Cases
 
