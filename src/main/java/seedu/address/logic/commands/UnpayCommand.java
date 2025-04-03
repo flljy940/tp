@@ -89,7 +89,7 @@ public class UnpayCommand extends Command {
                     personToEdit.getEmail(),
                     personToEdit.getAddress(),
                     personToEdit.getNextLesson(),
-                    new PayStatus(""),
+                    new PayStatus(PayStatus.NOT_PAID),
                     personToEdit.getSubjects());
 
             model.setPerson(personToEdit, unpaidPerson);
