@@ -129,7 +129,7 @@ How the parsing works:
 
 **API** : [`Model.java`](https://github.com/AY2425S2-CS2103T-T16-4/tp/blob/master/src/main/java/seedu/address/model/Model.java)
 
-<puml src="diagrams/ModelClassDiagram.puml" width="450" />
+<puml src="diagrams/ModelClassDiagram.puml" width="600" />
 
 
 The `Model` component,
@@ -180,7 +180,7 @@ Thus editing a person details will create a new `Person` object. The items fro
 
 The following sequence diagram shows how the `Edit` command works:
 
-<puml src="diagrams/EditSequenceDiagram.puml" alt="EditSequenceDiagram" width="250" />
+<puml src="diagrams/EditSequenceDiagram.puml" alt="EditSequenceDiagram" />
 
 #### Design considerations:
 
