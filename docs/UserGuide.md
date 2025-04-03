@@ -333,6 +333,7 @@ Furthermore, certain edits can cause TutorRec to behave in unexpected ways (e.g.
 
 **Q**: Can I import or export student data to other formats?
 **A**: Currently, TutorRec does not support direct import/export functionality to other formats. You can manually edit the JSON data file if needed, but exercise caution as described in the [Editing the data file](#editing-the-data-file) section.
+
 --------------------------------------------------------------------------------------------------------------------
 
 ## Known issues
