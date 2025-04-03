@@ -23,9 +23,18 @@ public class NextLessonCommandParser implements Parser<NextLessonCommand> {
 
     public static final String MESSAGE_CONSTRAINTS =
             "Invalid date format. Expected: 'd/M/yyyy HHmm-HHmm' (e.g., 15/4/2025 0900-1100)";
+    public static final String MESSAGE_INVALID_TIME =
+            "Time must be between 00:00 and 23:59.";
+    public static final String MESSAGE_INVALID_DATE_TIME = "Invalid date or time: ";
+    public static final String MESSAGE_INVALID_NUMERIC = "Invalid next lesson: ";
+    public static final String MESSAGE_INVALID_START_BEFORE_END = "Start time must be before end time.";
+    public static final String MESSAGE_INVALID_START_END_TIME = "Start and end time cannot be the same.";
+    public static final String MESSAGE_INVALID_PAST_LESSON = "Lesson cannot be in the past.";
+
     private static final String DATE_TIME_FORMAT = "d/M/yyyy HHmm-HHmm";
     private static final String DATE_REGEX = "(\\d{1,2})/(\\d{1,2})/(\\d{4})\\s(\\d{4})-(\\d{4})";
     private static final LocalDate CURRENT_DATE = LocalDate.now();
+    private static final LocalTime CURRENT_TIME = LocalTime.now();
 
     /**
      * Parses the given {@code String} of arguments in the ocntext of the {@code NextLessonCommand}
@@ -79,31 +88,34 @@ public class NextLessonCommandParser implements Parser<NextLessonCommand> {
 
             // Validate time ranges
             if (startHours > 23 || startMinutes > 59 || endHours > 23 || endMinutes > 59) {
-                throw new ParseException("Time must be between 00:00 and 23:59.");
+                throw new ParseException(MESSAGE_INVALID_TIME);
             }
 
             LocalDate date = LocalDate.of(year, month, day);
             LocalTime startTime = LocalTime.of(startHours, startMinutes);
             LocalTime endTime = LocalTime.of(endHours, endMinutes);
 
-            if (!startTime.isBefore(endTime)) {
-                System.out.println("🚨 Error: Start time " + startTime + " is NOT before end time " + endTime);
-                throw new ParseException("Start time must be before end time.");
+            if (startTime.equals(endTime)) {
+                throw new ParseException(MESSAGE_INVALID_START_END_TIME, new IllegalArgumentException());
             }
 
-            if (startTime.equals(endTime)) {
-                throw new ParseException("Start time and end time cannot be the same.", new IllegalArgumentException());
+            if (!startTime.isBefore(endTime)) {
+                throw new ParseException(MESSAGE_INVALID_START_BEFORE_END, new IllegalArgumentException());
+            }
+
+            if (date.isEqual(CURRENT_DATE) && startTime.isBefore(CURRENT_TIME)) {
+                throw new ParseException(MESSAGE_INVALID_PAST_LESSON, new IllegalArgumentException());
             }
 
             if (date.isBefore(CURRENT_DATE)) {
-                throw new ParseException("Lesson date cannot be in the past.", new IllegalArgumentException());
+                throw new ParseException(MESSAGE_INVALID_PAST_LESSON, new IllegalArgumentException());
             }
 
             return new NextLesson(date, startTime, endTime);
         } catch (NumberFormatException e) {
-            throw new ParseException("Invalid numeric value in date or time: " + dateTimeString, e);
+            throw new ParseException(MESSAGE_INVALID_NUMERIC + dateTimeString, e);
         } catch (DateTimeException e) {
-            throw new ParseException("Invalid date or time: " + e.getMessage(), e);
+            throw new ParseException(MESSAGE_INVALID_DATE_TIME + e.getMessage(), e);
         }
     }
 }

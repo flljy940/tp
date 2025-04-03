@@ -5,9 +5,12 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_ADDRESS_BOB;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_PHONE_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_SUBJECT_MATH;
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalPersons.ALICE;
+import static seedu.address.testutil.TypicalPersons.AMY;
+import static seedu.address.testutil.TypicalPersons.BOB;
 import static seedu.address.testutil.TypicalPersons.getTypicalAddressBook;
 
 import java.time.LocalDate;
@@ -23,6 +26,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.exceptions.DuplicatePersonException;
+import seedu.address.model.person.exceptions.DuplicatePhoneException;
 import seedu.address.testutil.PersonBuilder;
 
 public class AddressBookTest {
@@ -58,12 +62,33 @@ public class AddressBookTest {
     }
 
     @Test
+    public void resetData_withDuplicatePhone_throwsDuplicatePhoneException() {
+        // Two persons with the same phone number
+        Person editedAmy = new PersonBuilder(AMY).withPhone(VALID_PHONE_BOB).withSubjects(VALID_SUBJECT_MATH)
+                .build();
+        List<Person> newPersons = Arrays.asList(BOB, editedAmy);
+        AddressBookStub newData = new AddressBookStub(newPersons);
+
+        assertThrows(DuplicatePhoneException.class, () -> addressBook.resetData(newData));
+    }
+
+    @Test
     public void hasPerson_nullPerson_throwsNullPointerException() {
         assertThrows(NullPointerException.class, () -> addressBook.hasPerson(null));
     }
 
     @Test
+    public void hasPhone_nullPerson_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () -> addressBook.hasPhone(null));
+    }
+
+    @Test
     public void hasPerson_personNotInAddressBook_returnsFalse() {
+        assertFalse(addressBook.hasPerson(ALICE));
+    }
+
+    @Test
+    public void hasPhone_personNotInAddressBook_returnsFalse() {
         assertFalse(addressBook.hasPerson(ALICE));
     }
 
@@ -74,11 +99,25 @@ public class AddressBookTest {
     }
 
     @Test
+    public void hasPhone_personInAddressBook_returnsTrue() {
+        addressBook.addPerson(ALICE);
+        assertTrue(addressBook.hasPhone(ALICE));
+    }
+
+    @Test
     public void hasPerson_personWithSameIdentityFieldsInAddressBook_returnsTrue() {
         addressBook.addPerson(ALICE);
         Person editedAlice = new PersonBuilder(ALICE).withAddress(VALID_ADDRESS_BOB).withSubjects(VALID_SUBJECT_MATH)
                 .build();
         assertTrue(addressBook.hasPerson(editedAlice));
+    }
+
+    @Test
+    public void hasPhone_personWithSamePhoneNumberInAddressBook_returnsTrue() {
+        addressBook.addPerson(BOB);
+        Person editedBob = new PersonBuilder(ALICE).withPhone(VALID_PHONE_BOB).withSubjects(VALID_SUBJECT_MATH)
+                .build();
+        assertTrue(addressBook.hasPhone(editedBob));
     }
 
     @Test
@@ -91,19 +130,19 @@ public class AddressBookTest {
         // Create an address book to be sorted
         AddressBook addressBookToSort = new AddressBook();
 
-        Person editedAlice = new PersonBuilder().withName("Alice")
+        Person editedAlice = new PersonBuilder().withName("Alice").withPhone("12345678")
                 .withNextLesson(LocalDate.of(2025, 4, 10), LocalTime.of(10, 0), LocalTime.of(12, 0))
                 .build();
 
-        Person editedBob = new PersonBuilder().withName("Bob")
+        Person editedBob = new PersonBuilder().withName("Bob").withPhone("23456789")
                 .withNextLesson(LocalDate.of(2025, 4, 11), LocalTime.of(10, 0), LocalTime.of(12, 0))
                 .build();
 
-        Person editedCharlie = new PersonBuilder().withName("Charlie")
+        Person editedCharlie = new PersonBuilder().withName("Charlie").withPhone("34567891")
                 .withNextLesson(LocalDate.of(2025, 4, 11), LocalTime.of(13, 0), LocalTime.of(15, 0))
                 .build();
 
-        Person editedDavid = new PersonBuilder().withName("David")
+        Person editedDavid = new PersonBuilder().withName("David").withPhone("45678912")
                 .build();
 
         addressBook.addPerson(editedAlice);
@@ -120,7 +159,7 @@ public class AddressBookTest {
         assertEquals(addressBook, addressBookToSort);
 
         // Add Ethan to have the earliest lesson to test sorting
-        Person editedEthan = new PersonBuilder().withName("Ethan")
+        Person editedEthan = new PersonBuilder().withName("Ethan").withPhone("56789123")
                 .withNextLesson(LocalDate.of(2025, 4, 10), LocalTime.of(8, 0), LocalTime.of(10, 0))
                 .build();
 
