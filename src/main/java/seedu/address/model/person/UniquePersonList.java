@@ -10,18 +10,20 @@ import java.util.List;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import seedu.address.model.person.exceptions.DuplicatePersonException;
+import seedu.address.model.person.exceptions.DuplicatePhoneException;
 import seedu.address.model.person.exceptions.PersonNotFoundException;
 
 /**
- * A list of persons that enforces uniqueness between its elements and does not allow nulls.
- * A person is considered unique by comparing using {@code Person#isSamePerson(Person)}. As such, adding and updating of
- * persons uses Person#isSamePerson(Person) for equality so as to ensure that the person being added or updated is
- * unique in terms of identity in the UniquePersonList. However, the removal of a person uses Person#equals(Object) so
- * as to ensure that the person with exactly the same fields will be removed.
+ * A list of persons that enforces uniqueness between its elements and does not allow nulls. A person is considered
+ * unique by comparing using {@code Person#isSamePerson(Person)} and {@code Person#{isSamePhone(Person}}. As such,
+ * adding and updating of persons uses Person#isSamePerson(Person) and Person#isSamePhone(Person) for equality to ensure
+ * that the person being added or updated is unique in terms of identity in the UniquePersonList. However, the removal
+ * of a person uses Person#equals(Object) to ensure that the person with exactly the same fields will be removed.
  *
  * Supports a minimal set of list operations.
  *
  * @see Person#isSamePerson(Person)
+ * @see Person#isSamePhone(Person)
  */
 public class UniquePersonList implements Iterable<Person> {
 
@@ -38,13 +40,25 @@ public class UniquePersonList implements Iterable<Person> {
     }
 
     /**
+     * Returns true if the list contains an equivalent phone number as the given argument.
+     */
+    public boolean containsPhone(Person toCheck) {
+        requireNonNull(toCheck.getPhone());
+        return internalList.stream().anyMatch(toCheck::isSamePhone);
+    }
+
+    /**
      * Adds a person to the list.
      * The person must not already exist in the list.
+     * The phone number must not already exist in the list.
      */
     public void add(Person toAdd) {
         requireNonNull(toAdd);
         if (contains(toAdd)) {
             throw new DuplicatePersonException();
+        }
+        if (containsPhone(toAdd)) {
+            throw new DuplicatePhoneException();
         }
         internalList.add(toAdd);
     }
@@ -64,6 +78,10 @@ public class UniquePersonList implements Iterable<Person> {
 
         if (!target.isSamePerson(editedPerson) && contains(editedPerson)) {
             throw new DuplicatePersonException();
+        }
+
+        if (!target.isSamePhone(editedPerson) && containsPhone(editedPerson)) {
+            throw new DuplicatePhoneException();
         }
 
         internalList.set(index, editedPerson);
@@ -93,6 +111,10 @@ public class UniquePersonList implements Iterable<Person> {
         requireAllNonNull(persons);
         if (!personsAreUnique(persons)) {
             throw new DuplicatePersonException();
+        }
+
+        if (!phoneNumbersAreUnique(persons)) {
+            throw new DuplicatePhoneException();
         }
 
         internalList.setAll(persons);
@@ -173,6 +195,20 @@ public class UniquePersonList implements Iterable<Person> {
         for (int i = 0; i < persons.size() - 1; i++) {
             for (int j = i + 1; j < persons.size(); j++) {
                 if (persons.get(i).isSamePerson(persons.get(j))) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
+    /**
+     * Returns true if {@code persons} contains only unique phone numbers.
+     */
+    private boolean phoneNumbersAreUnique(List<Person> persons) {
+        for (int i = 0; i < persons.size() - 1; i++) {
+            for (int j = i + 1; j < persons.size(); j++) {
+                if (persons.get(i).isSamePhone(persons.get(j))) {
                     return false;
                 }
             }
