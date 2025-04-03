@@ -17,7 +17,7 @@ public class FilterSubjectCommand extends Command {
 
     public static final String COMMAND_WORD = "filter-subject";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Filters all persons whose subjects contain "
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Filters all students whose subjects contain "
             + "any of the specified keywords and displays them as a list with index numbers.\n"
             + "Parameters: KEYWORD [MORE_KEYWORDS]...\n"
             + "Example: " + COMMAND_WORD + " math physics";
