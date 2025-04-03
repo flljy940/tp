@@ -14,6 +14,8 @@ Whether you're managing a few students or a large tutoring roster, TutorRec help
 <!-- * Table of Contents -->
 <page-nav-print />
 
+<div style="page-break-after: always;"></div>
+
 --------------------------------------------------------------------------------------------------------------------
 
 ## Quick start
@@ -27,28 +29,31 @@ Whether you're managing a few students or a large tutoring roster, TutorRec help
 
 4. Open a command terminal, `cd` into the folder you put the jar file in, and use the `java -jar tutorrec.jar` command to run the application.<br>
    A GUI similar to the below should appear in a few seconds. Note how the app contains some sample data.<br>
-   <img src="images/Ui.png" alt="Ui" width="500px" />
+   
+    <img src="images/Ui.png" alt="Ui" width="600px" />
 
 5. Type the command in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will open the help window.<br>
    Some example commands you can try:
 
-   * `list` : Lists all contacts.
+   * `list` : Lists all students.
 
-   * `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01` : Adds a contact named `John Doe` to the contact list.
+   * `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01` : Adds a student named `John Doe` to the contact list.
 
-   * `delete 3` : Deletes the 3rd contact shown in the current list.
+   * `delete 3` : Deletes the 3rd student shown in the current contact list.
 
-   * `unpay all` : Resets all contacts to NOT PAID to indicate that payment has not been made by all contacts.
+   * `unpay all` : Resets all students to NOT PAID to indicate that payment has not been made by all students.
 
-   * `nextlesson 3 d/15/4/2025 0900-1030` : Adds the next lesson date for the 3rd contact as 15/4/2025 0900-1030.
+   * `nextlesson 3 d/15/4/2025 0900-1030` : Adds the next lesson date for the 3rd student as 15/4/2025 0900-1030.
 
-   * `filter-subject math physics` : Shows all contacts taking math or physics, or both.
+   * `filter-subject math physics` : Shows all students taking math or physics, or both.
 
-   * `clear` : Deletes all contacts.
+   * `clear` : Deletes all students.
 
    * `exit` : Exits the app.
 
 6. Refer to the [Features](#features) below for details of each command.
+
+<div style="page-break-after: always;"></div>
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -83,10 +88,14 @@ Whether you're managing a few students or a large tutoring roster, TutorRec help
 
 Shows a message explaining how to access the help page.
 
-<img src="images/helpMessage.png" alt="help message" width="500px" />
+<img src="images/helpMessage.png" alt="help message" width="600px" />
 
 Format: `help`
 
+<box type="tip" seamless>
+
+**Tip:** F1 can be used to open/close the help window.
+</box>
 
 ### Adding a student: `add`
 
@@ -134,7 +143,7 @@ Format: `find KEYWORD [MORE_KEYWORDS]`
 
 * The search is case-insensitive. e.g. `hans` will match `Hans`
 * The order of the keywords does not matter. e.g. `Hans Bo` will match `Bo Hans`
-* Only the![img.png](findAlexDavidResult.png/img.png) name is searched.
+* Only the name of the student is searched.
 * Only full words will be matched e.g. `Han` will not match `Hans`
 * Students matching at least one keyword will be returned (i.e. `OR` search).
   e.g. `Hans Bo` will return `Hans Gruber`, `Bo Yang`
@@ -142,7 +151,8 @@ Format: `find KEYWORD [MORE_KEYWORDS]`
 Examples:
 * `find John` returns `john` and `John Doe`
 * `find alex david` returns `Alex Yeoh`, `David Li`<br>
-  <img src="images/findAlexDavidResult.png" alt="result for 'find alex david'" width="500px" />
+
+<img src="images/findAlexDavidResult.png" alt="result for 'find alex david'" width="600px" />
 
 ### Deleting a student : `delete`
 
@@ -165,15 +175,15 @@ Adds a date for an upcoming lesson for an existing student in the contact list.
 Format: `nextlesson INDEX d/DATE`
 
 * Adds the next lesson date for the student at the specified `INDEX`. The index refers to the index number shown in the displayed student list. The index **must be a positive integer** 1, 2, 3, …​
-* Existing values will be updated to the input values.
-* When adding dates, the existing dates of the student will be appended i.e. adding of tags is cumulative.
-* You can remove all the student's next lesson dates by typing `d/` without
-  specifying any tags after it.
+* Existing lesson dates will be updated to the input lesson dates.
+* You can remove a student's next lesson by typing `d/` without any date after it.
 * `DATE` must be in `d/M/yyyy HHmm-HHmm` format (e.g. `15/4/2025 1800-2000`)
 
 Examples:
-*  `nextlesson 1 d/15/4/2025 1800-2000` Adds/Updates the next lesson date of the 1st student to be `15/4/2025 1800-2000`.
 *  `nextlesson 2 d/` Removes the next lesson date for the 2nd student.
+*  `nextlesson 1 d/15/4/2025 1800-2000` Adds/Updates the next lesson date of the 1st student to be `15/4/2025 1800-2000`.
+
+<img src="images/nextlessonResult.png" alt="result for 'next lesson'" width="600px" />
 
 ### Sorting of all students by lesson date : `sort`
 
@@ -194,8 +204,10 @@ Format: `pay INDEX`
 * The index **must be a positive integer** 1, 2, 3, …​
 
 Examples:
-* `list` followed by `pay 2` marks the 2nd student as PAID in the contact list.
 * `find David` followed by `pay 1` marks the 1st student in the results of the `find` command.
+* `list` followed by `pay 2` marks the 2nd student as PAID in the contact list.
+
+<img src="images/listPayResult.png" alt="result for 'list pay 2'" height="400px" />
 
 ### Resetting the payment statement of one student or all students : `unpay`
 
@@ -249,8 +261,8 @@ Format: `filter-subject SUBJECT [MORE_SUBJECTS]`
 
 * The search is case-insensitive. e.g. `math` will match `Math`
 * Multiple subjects can be specified to find students taking any of those subjects
-* The order of the subjects does not matter
-* Only full words will be matched
+* The order of the subjects you specify doesn't affect the search results
+* Only complete subject names will be matched (e.g. "mat" will not match "math")
 
 Examples:
 * `filter-subject math` shows a list of all students taking Math
@@ -260,6 +272,12 @@ Examples:
 ### Clearing all entries : `clear`
 
 Clears all entries from the contact list.
+
+<box type="warning" seamless>
+
+**Caution:** 
+This action permanently removes all student records from TutorRec and cannot be undone. Make sure to back up your data before using this command if needed.
+</box>
 
 Format: `clear`
 
@@ -271,7 +289,7 @@ Format: `exit`
 
 <box type="tip" seamless>
 
-**Tip:** Once exited, the position and the size of the program on the screen will be updated and saved automatically.
+**Tip:** Escape key can be used to exit the program. All changes are saved automatically.
 </box>
 
 ### Saving the data
@@ -295,9 +313,7 @@ If your changes to the data file makes its format invalid, TutorRec will discard
 Furthermore, certain edits can cause TutorRec to behave in unexpected ways (e.g. if a value entered is outside the acceptable range). Therefore, edit the data file only if you are confident that you can update it correctly.
 </box>
 
-### Archiving data files `[coming in v2.0]`
-
-_Details coming soon ..._
+<div style="page-break-after: always;"></div>
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -306,6 +322,17 @@ _Details coming soon ..._
 **Q**: How do I transfer my data to another Computer?<br>
 **A**: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous TutorRec home folder.
 
+**Q**: Can I use TutorRec on multiple devices simultaneously?
+**A**: TutorRec is designed as a desktop application for individual use. Using the same data file across multiple devices simultaneously may cause data conflicts or corruption.
+
+**Q**: How do I back up my data?
+**A**: You can create a backup by simply copying the `data/addressbook.json` file from your TutorRec home folder to another location periodically.
+
+**Q**: What should I do if the application cannot start?
+**A**: Ensure you have Java 17 or above installed correctly. If the issue persists, try deleting the `[JAR file location]/preferences.json` file and restarting the application.
+
+**Q**: Can I import or export student data to other formats?
+**A**: Currently, TutorRec does not support direct import/export functionality to other formats. You can manually edit the JSON data file if needed, but exercise caution as described in the [Editing the data file](#editing-the-data-file) section.
 --------------------------------------------------------------------------------------------------------------------
 
 ## Known issues
