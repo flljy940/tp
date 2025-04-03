@@ -178,7 +178,7 @@ Thus editing a person details will create a new `Person` object. The items fro
 
 The following sequence diagram shows how the `Edit` command works:
 
-<puml src="diagrams/EditSequenceDiagram.puml" alt="EditSequenceDiagram" width="250" />
+<puml src="diagrams/EditSequenceDiagram.puml" alt="EditSequenceDiagram" />
 
 #### Design considerations:
 
