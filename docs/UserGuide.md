@@ -322,16 +322,16 @@ Furthermore, certain edits can cause TutorRec to behave in unexpected ways (e.g.
 **Q**: How do I transfer my data to another Computer?<br>
 **A**: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous TutorRec home folder.
 
-**Q**: Can I use TutorRec on multiple devices simultaneously?
+**Q**: Can I use TutorRec on multiple devices simultaneously?<br>
 **A**: TutorRec is designed as a desktop application for individual use. Using the same data file across multiple devices simultaneously may cause data conflicts or corruption.
 
-**Q**: How do I back up my data?
+**Q**: How do I back up my data?<br>
 **A**: You can create a backup by simply copying the `data/addressbook.json` file from your TutorRec home folder to another location periodically.
 
-**Q**: What should I do if the application cannot start?
+**Q**: What should I do if the application cannot start?<br>
 **A**: Ensure you have Java 17 or above installed correctly. If the issue persists, try deleting the `[JAR file location]/preferences.json` file and restarting the application.
 
-**Q**: Can I import or export student data to other formats?
+**Q**: Can I import or export student data to other formats?<br>
 **A**: Currently, TutorRec does not support direct import/export functionality to other formats. You can manually edit the JSON data file if needed, but exercise caution as described in the [Editing the data file](#editing-the-data-file) section.
 
 --------------------------------------------------------------------------------------------------------------------
