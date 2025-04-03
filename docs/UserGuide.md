@@ -320,7 +320,7 @@ _Details coming soon ..._
 
 ## Command summary
 
-Action     | Format, Examples
+Action         | Format, Examples
 -----------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 **Add**    | `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [s/SUBJECT]…​` <br> e.g. `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 s/math s/english`
 **Clear**  | `clear`
@@ -329,8 +329,10 @@ Action     | Format, Examples
 **Delete** | `delete INDEX`<br> e.g. `delete 3`
 **Edit**   | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [s/SUBJECT]…​`<br> e.g.`edit 2 n/James Lee e/jameslee@example.com`
 **Find**   | `find KEYWORD [MORE_KEYWORDS]`<br> e.g. `find James Jake`
-**Nextlesson** | `nextlesson INDEX d/[DATE]`<br> e.g. `nextlesson 3 d/15/4/2025 1800-2000`
+**NextLesson** | `nextlesson INDEX d/[DATE]`<br> e.g. `nextlesson 3 d/15/4/2025 1800-2000`
 **List**   | `list`
 **Sort**  | `sort`
-**Filter** | `filter DATE`<br> e.g. `filter 15/4/2025`
+**Filter NextLesson**    | `filter-date DATE`<br> e.g. `filter-date 15/4/2025`
+**Filter PaymentStatus** | `filter-payment STATUS`<br> e.g. `filter-payment PAID`
+**Filter Subject** | `filter-subject SUBJECT [MORE_SUBJECTS]`<br> e.g. `filter-subject MATH`
 **Help**   | `help`
