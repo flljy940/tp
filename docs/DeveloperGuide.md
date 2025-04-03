@@ -314,7 +314,8 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | `* *`    | tutor                                        | reset the payment status of all students to unpaid        | reset payment status for all student on a new week or month                                                    |
 | `* *`    | tutor with many students in the address book | sort students by next lesson date                         | see my upcoming lessons in chronological order                                                                 |
 | `* *`    | tutor                                        | filter students with lessons on a specified date          | see my scheduled lessons on the specified date                                                                 |
-| `* *`    | tutor                                        | filter students who have not paid for the previous lesson | easily look up the students I have to nudge regarding payment for lessons                                      |
+| `* *`    | tutor                                        | filter students who have paid for the previous lesson     | easily look up and track the students who have paid for the previous lesson                                    |
+| `* *`    | tutor                                        | filter students who have not paid for the previous lesson | easily look up the students I have to nudge regarding payment for the previous lesson                          |
 | `*`      | tutor                                        | filter students who are taking a specified subject        | see my students taking the specified subject to monitor results or reach out for testimonials for that subject |
 
 ### Use Cases
