@@ -205,9 +205,9 @@ Format: `pay INDEX`
 
 Examples:
 * `find David` followed by `pay 1` marks the 1st student in the results of the `find` command.
-* `list` followed by `pay 2` marks the 2nd student as PAID in the contact list.
+* `list` followed by `pay 2` marks the 2nd student as PAID in the contact list. (Notice how the paid status is now green)
 
-<img src="images/listPayResult.png" alt="result for 'list pay 2'" height="400px" />
+<img src="images/listPayResult.png" alt="result for 'list pay 2'" width="900px" />
 
 ### Resetting the payment statement of one student or all students : `unpay`
 
