@@ -170,6 +170,29 @@ Classes used by multiple components are in the `seedu.address.commons` package.
 
 This section describes some noteworthy details on how certain features are implemented.
 
+### Person
+
+##### Edit a person
+
+The implementation of person is entirely governed by the `Person` class. The `Person` class is immutable and guarantees that all fields are valid and immutable as well.
+
+Thus editing a person details will create a new `Person` object. The items from the original `Person` will be copied entirely into the new `Person` object.
+
+The following sequence diagram shows how the `Edit` command works:
+
+<puml src="diagrams/EditSequenceDiagram.puml" alt="EditSequenceDiagram" width="250" />
+
+#### Design considerations:
+
+**Aspect: How to design the `Person` structure:**
+* **Alternative 1:** Make `Person` mutable.
+    * Pros: Easy to implement.
+    * Cons: Modifying an object in place can lead to unintended side effects, making debugging harder.
+
+* **Alternative 2 (current choice):** Make `Person` immutable.
+    * Pros: Removes the need for listeners for UI to track person states.
+    * Cons: The cost of editing a person may be huge.
+
 ### \[Proposed\] Undo/redo feature
 
 #### Proposed Implementation
@@ -205,7 +228,6 @@ Step 3. The user executes `add n/David …​` to add a new student. The `add` c
 Step 4. The user now decides that adding the student was a mistake, and decides to undo that action by executing the `undo` command. The `undo` command will call `Model#undoAddressBook()`, which will shift the `currentStatePointer` once to the left, pointing it to the previous address book state, and restores the address book to that state.
 
 <puml src="diagrams/UndoRedoState3.puml" alt="UndoRedoState3" />
-
 
 <box type="info" seamless>
 
