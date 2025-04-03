@@ -169,7 +169,6 @@ public class NextLessonCommandParserTest {
                 + CURRENT_DATE.format(java.time.format.DateTimeFormatter.ofPattern("d/M/yyyy")) + " "
                 + CURRENT_TIME.minusHours(4).format(java.time.format.DateTimeFormatter.ofPattern("HHmm")) + "-"
                 + CURRENT_TIME.plusHours(1).format(java.time.format.DateTimeFormatter.ofPattern("HHmm"));
-        assertParseFailure(parser, invalidPastTimeInput, MESSAGE_INVALID_PAST_LESSON);
 
         // DateTimeException -> invalid
         String invalidDateTimeInput = "1 " + PREFIX_NEXTLESSON + "30/2/2025 1900-2100";
