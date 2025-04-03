@@ -6,7 +6,10 @@
 
 # TutorRec User Guide
 
-TutorRec is a **desktop app for managing contacts, optimised for use via a Command Line Interface** (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, TutorRec can get your contact management tasks done faster than traditional GUI apps.
+TutorRec is a **desktop application designed to help tutors effectively manage their student records**.
+While it features a clean and intuitive Graphical User Interface (GUI), TutorRec is **optimised for fast keyboard-based interaction via a Command Line Interface (CLI)**.
+This makes it ideal for tutors who prefer speed and precision when handling tasks like tracking student contacts, subjects, payment statuses, next lessons and more.
+Whether you're managing a few students or a large tutoring roster, TutorRec helps you stay organised faster than most traditional GUI-based apps.
 
 <!-- * Table of Contents -->
 <page-nav-print />
@@ -91,47 +94,47 @@ Shows a message explaining how to access the help page.
 Format: `help`
 
 
-### Adding a person: `add`
+### Adding a student: `add`
 
-Adds a person to the contact list.
+Adds a student to the contact list.
 
 Format: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [s/SUBJECT]…​`
 
 <box type="tip" seamless>
 
-**Tip:** A person can have any number of subjects (including 0).
+**Tip:** A student can have any number of subjects (including 0).
 </box>
 
 Examples:
 * `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01`
 * `add n/Betsy Crowe s/math e/betsycrowe@example.com a/Newgate p/1234567 s/physics`
 
-### Listing all persons : `list`
+### Listing all students : `list`
 
-Shows a list of all persons in the contact list.
+Shows a list of all students in the contact list.
 
 Format: `list`
 
-### Editing a person : `edit`
+### Editing a student : `edit`
 
-Edits an existing person in the contact list.
+Edits an existing student in the contact list.
 
 Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [s/SUBJECT]…​`
 
-* Edits the person at the specified `INDEX`. The index refers to the index number shown in the displayed person list. The index **must be a positive integer** 1, 2, 3, …​
+* Edits the student at the specified `INDEX`. The index refers to the index number shown in the displayed student list. The index **must be a positive integer** 1, 2, 3, …​
 * At least one of the optional fields must be provided.
 * Existing values will be updated to the input values.
-* When editing subjects, the existing subjects of the person will be removed i.e. adding of subjects is not cumulative.
-* You can remove all the person's subjects by typing `s/` without
+* When editing subjects, the existing subjects of the student will be removed i.e. adding of subjects is not cumulative.
+* You can remove all the student's subjects by typing `s/` without
     specifying any subjects after it.
 
 Examples:
-*  `edit 1 p/91234567 e/johndoe@example.com` Edits the phone number and email address of the 1st person to be `91234567` and `johndoe@example.com` respectively.
-*  `edit 2 n/Betsy Crower s/` Edits the name of the 2nd person to be `Betsy Crower` and clears all existing subjects.
+*  `edit 1 p/91234567 e/johndoe@example.com` Edits the phone number and email address of the 1st student to be `91234567` and `johndoe@example.com` respectively.
+*  `edit 2 n/Betsy Crower s/` Edits the name of the 2nd student to be `Betsy Crower` and clears all existing subjects.
 
-### Locating persons by name: `find`
+### Locating students by name: `find`
 
-Finds persons whose names contain any of the given keywords.
+Finds students whose names contain any of the given keywords.
 
 Format: `find KEYWORD [MORE_KEYWORDS]`
 
@@ -139,7 +142,7 @@ Format: `find KEYWORD [MORE_KEYWORDS]`
 * The order of the keywords does not matter. e.g. `Hans Bo` will match `Bo Hans`
 * Only the name is searched.
 * Only full words will be matched e.g. `Han` will not match `Hans`
-* Persons matching at least one keyword will be returned (i.e. `OR` search).
+* Students matching at least one keyword will be returned (i.e. `OR` search).
   e.g. `Hans Bo` will return `Hans Gruber`, `Bo Yang`
 
 Examples:
@@ -147,118 +150,118 @@ Examples:
 * `find alex david` returns `Alex Yeoh`, `David Li`<br>
   <img src="images/findAlexDavidResult.png" alt="result for 'find alex david'" width="500px" />
 
-### Deleting a person : `delete`
+### Deleting a student : `delete`
 
-Deletes the specified person from the contact list.
+Deletes the specified student from the contact list.
 
 Format: `delete INDEX`
 
-* Deletes the person at the specified `INDEX`.
-* The index refers to the index number shown in the displayed person list.
+* Deletes the student at the specified `INDEX`.
+* The index refers to the index number shown in the displayed student list.
 * The index **must be a positive integer** 1, 2, 3, …​
 
 Examples:
-* `list` followed by `delete 2` deletes the 2nd person in the contact list.
-* `find Betsy` followed by `delete 1` deletes the 1st person in the results of the `find` command.
+* `list` followed by `delete 2` deletes the 2nd student in the contact list.
+* `find Betsy` followed by `delete 1` deletes the 1st student in the results of the `find` command.
 
-### Adding next lesson date for a person : `nextlesson`
+### Adding next lesson date for a student : `nextlesson`
 
-Adds a date for an upcoming lesson for an existing person in the contact list.
+Adds a date for an upcoming lesson for an existing student in the contact list.
 
 Format: `nextlesson INDEX d/DATE`
 
-* Adds the next lesson date for the person at the specified `INDEX`. The index refers to the index number shown in the displayed person list. The index **must be a positive integer** 1, 2, 3, …​
+* Adds the next lesson date for the student at the specified `INDEX`. The index refers to the index number shown in the displayed student list. The index **must be a positive integer** 1, 2, 3, …​
 * Existing values will be updated to the input values.
-* When adding dates, the existing dates of the person will be appended i.e. adding of tags is cumulative.
-* You can remove all the person's next lesson dates by typing `d/` without
+* When adding dates, the existing dates of the student will be appended i.e. adding of tags is cumulative.
+* You can remove all the student's next lesson dates by typing `d/` without
   specifying any tags after it.
-* `DATE` must be in `d/M/yyyy HHmm-HHmm` format (eg. `15/4/2025 1800-2000`)
+* `DATE` must be in `d/M/yyyy HHmm-HHmm` format (e.g. `15/4/2025 1800-2000`)
 
 Examples:
-*  `nextlesson 1 d/15/4/2025 1800-2000` Adds/Updates the next lesson date of the 1st person to be `15/4/2025 1800-2000`.
-*  `nextlesson 2 d/` Removes the next lesson date for the 2nd person.
+*  `nextlesson 1 d/15/4/2025 1800-2000` Adds/Updates the next lesson date of the 1st student to be `15/4/2025 1800-2000`.
+*  `nextlesson 2 d/` Removes the next lesson date for the 2nd student.
 
-### Sorting of all persons by lesson date : `sort`
+### Sorting of all students by lesson date : `sort`
 
-Sorts the list of persons by their next lesson date and time, with the earliest lesson shown first.
+Sorts the list of students by their next lesson date and time, with the earliest lesson shown first.
 
 Format: `sort`
 
 * Those without lesson dates will be shifted to the end of the list, after all contacts with valid lesson dates.
 
-### Marking that a person made payment : `pay`
+### Marking that a student made payment : `pay`
 
-Marks the specified person as PAID to indicate that payment has been made.
+Marks the specified student as PAID to indicate that payment has been made.
 
 Format: `pay INDEX`
 
-* Marks the person at the specific `INDEX` as PAID to indicate that payment has been made by the person.
-* The index refers to the index number shown in the displayed person list.
+* Marks the student at the specific `INDEX` as PAID to indicate that payment has been made by the student.
+* The index refers to the index number shown in the displayed student list.
 * The index **must be a positive integer** 1, 2, 3, …​
 
 Examples:
-* `list` followed by `pay 2` marks the 2nd person as PAID in the contact list.
-* `find David` followed by `pay 1` marks the 1st person in the results of the `find` command.
+* `list` followed by `pay 2` marks the 2nd student as PAID in the contact list.
+* `find David` followed by `pay 1` marks the 1st student in the results of the `find` command.
 
-### Resetting the payment statement of one person or all persons : `unpay`
+### Resetting the payment statement of one student or all students : `unpay`
 
-Resets the specified person's payment status to NOT PAID, or resets payment statuses for all persons.
+Resets the specified student's payment status to NOT PAID, or resets payment statuses for all students.
 
 Format: `unpay INDEX` or `unpay all`
 
-* Resets the payment status of the person at the specified `INDEX` to NOT PAID.
-* The index refers to the index number shown in the displayed person list.
+* Resets the payment status of the student at the specified `INDEX` to NOT PAID.
+* The index refers to the index number shown in the displayed student list.
 * The index **must be a positive integer** 1, 2, 3, …​
-* Alternatively, using `unpay all` will reset the payment statuses of all persons in the displayed list to NOT PAID.
+* Alternatively, using `unpay all` will reset the payment statuses of all students in the displayed list to NOT PAID.
 
 Examples:
-* `list` followed by `unpay 2` resets the payment status of the 2nd person in the contact list to NOT PAID.
-* `find David` followed by `unpay 1` resets the payment status of the 1st person in the results of the `find` command.
+* `list` followed by `unpay 2` resets the payment status of the 2nd student in the contact list to NOT PAID.
+* `find David` followed by `unpay 1` resets the payment status of the 1st student in the results of the `find` command.
 * `unpay all` resets payment statuses for everyone in the current contact list.
 
-### Filtering persons by lesson date : `filter-date`
+### Filtering students by lesson date : `filter-date`
 
-Filters and shows a list of all persons whose next lesson date matches the specified date.
+Filters and shows a list of all students whose next lesson date matches the specified date.
 
 Format: `filter-date DATE`
 
-* The DATE must be in `d/M/yyyy` format (eg. `15/4/2025`)
-* Shows a list of all persons with lessons on the specified date
-* The index numbers shown are used to identify the persons
+* The DATE must be in `d/M/yyyy` format (e.g. `15/4/2025`)
+* Shows a list of all students with lessons on the specified date
+* The index numbers shown are used to identify the students
 
 Example:
-* `filter-date 15/4/2025` filters and shows you all persons whose next lesson is on `15/4/2025`.
+* `filter-date 15/4/2025` filters and shows you all students whose next lesson is on `15/4/2025`.
 
-### Filtering persons by payment status : `filter-payment`
+### Filtering students by payment status : `filter-payment`
 
-Filters and shows a list of all persons whose payment status matches the specified status.
+Filters and shows a list of all students whose payment status matches the specified status.
 
 Format: `filter-payment STATUS`
 
 * The STATUS must be either `paid` or `unpaid` (case-insensitive)
-* Shows a list of all persons with the matching payment status
-* The index numbers shown are used to identify the persons
+* Shows a list of all students with the matching payment status
+* The index numbers shown are used to identify the students
 
 Examples:
-* `filter-payment paid` shows a list of all persons who have paid
-* `filter-payment UNPAID` shows a list of all persons who have not paid
-* `filter-payment Paid` shows a list of all persons who have paid (case-insensitive)
+* `filter-payment paid` shows a list of all students who have paid
+* `filter-payment UNPAID` shows a list of all students who have not paid
+* `filter-payment Paid` shows a list of all students who have paid (case-insensitive)
 
-### Filtering persons by subject : `filter-subject`
+### Filtering students by subject : `filter-subject`
 
-Filters and shows a list of all persons whose subjects contain any of the specified subjects.
+Filters and shows a list of all students whose subjects contain any of the specified subjects.
 
 Format: `filter-subject SUBJECT [MORE_SUBJECTS]`
 
 * The search is case-insensitive. e.g. `math` will match `Math`
-* Multiple subjects can be specified to find persons taking any of those subjects
+* Multiple subjects can be specified to find students taking any of those subjects
 * The order of the subjects does not matter
 * Only full words will be matched
 
 Examples:
-* `filter-subject math` shows a list of all persons taking Math
-* `filter-subject math physics` shows a list of all persons taking either Math or Physics or both
-* `filter-subject MATH` shows a list of all persons taking Math (case-insensitive)
+* `filter-subject math` shows a list of all students taking Math
+* `filter-subject math physics` shows a list of all students taking either Math or Physics or both
+* `filter-subject MATH` shows a list of all students taking Math (case-insensitive)
 
 ### Clearing all entries : `clear`
 
@@ -285,7 +288,7 @@ TutorRec data will be saved in the hard disk automatically after any command tha
 
 TutorRec data is saved automatically as a JSON file `[JAR file location]/data/addressbook.json` and `[JAR file location]/preferences.json`.
 
-* `[JAR file location]/data/addressbook.json` stores data related to `person`.
+* `[JAR file location]/data/addressbook.json` stores data related to `student`.
 * `[JAR file location]/preferences.json` stores data related to position and the size of the program.
 
 Advanced users are welcome to update data directly by editing that data file.
@@ -320,7 +323,7 @@ _Details coming soon ..._
 
 ## Command summary
 
-Action     | Format, Examples
+Action         | Format, Examples
 -----------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 **Add**    | `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [s/SUBJECT]…​` <br> e.g. `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 s/math s/english`
 **Clear**  | `clear`
@@ -329,8 +332,10 @@ Action     | Format, Examples
 **Delete** | `delete INDEX`<br> e.g. `delete 3`
 **Edit**   | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [s/SUBJECT]…​`<br> e.g.`edit 2 n/James Lee e/jameslee@example.com`
 **Find**   | `find KEYWORD [MORE_KEYWORDS]`<br> e.g. `find James Jake`
-**Nextlesson** | `nextlesson INDEX d/[DATE]`<br> e.g. `nextlesson 3 d/15/4/2025 1800-2000`
+**NextLesson** | `nextlesson INDEX d/[DATE]`<br> e.g. `nextlesson 3 d/15/4/2025 1800-2000`
 **List**   | `list`
 **Sort**  | `sort`
-**Filter** | `filter DATE`<br> e.g. `filter 15/4/2025`
+**Filter NextLesson**    | `filter-date DATE`<br> e.g. `filter-date 15/4/2025`
+**Filter PaymentStatus** | `filter-payment STATUS`<br> e.g. `filter-payment PAID`
+**Filter Subject** | `filter-subject SUBJECT [MORE_SUBJECTS]`<br> e.g. `filter-subject MATH`
 **Help**   | `help`

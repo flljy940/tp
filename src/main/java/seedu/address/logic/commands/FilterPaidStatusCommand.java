@@ -12,7 +12,7 @@ public class FilterPaidStatusCommand extends Command {
 
     public static final String COMMAND_WORD = "filter-payment";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Filters all persons whose payment status matches "
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Filters all students whose payment status matches "
             + "the specified status and displays them as a list with index numbers.\n"
             + "Parameters: STATUS (must be either 'paid' or 'unpaid')\n"
             + "Example: " + COMMAND_WORD + " paid";

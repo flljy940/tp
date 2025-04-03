@@ -12,7 +12,7 @@ public class SortCommand extends Command {
 
     public static final String COMMAND_WORD = "sort";
 
-    public static final String MESSAGE_SUCCESS = "Sorted all persons by lesson date & time";
+    public static final String MESSAGE_SUCCESS = "Sorted all students by lesson date & time";
 
     @Override
     public CommandResult execute(Model model) {
