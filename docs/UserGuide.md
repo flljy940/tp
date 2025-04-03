@@ -7,8 +7,8 @@
 # TutorRec User Guide
 
 TutorRec is a **desktop application designed to help tutors effectively manage their student records**.
-While it features a clean and intuitive Graphical User Interface (GUI), TutorRec is **optimised for fast keyboard-based interaction via a Command Lind Interface (CLI)**.
-This makes it ideal for tutors who prefer speed and precision when handling tasks like tracking student contacts, subjects, payment statuses and more.
+While it features a clean and intuitive Graphical User Interface (GUI), TutorRec is **optimised for fast keyboard-based interaction via a Command Line Interface (CLI)**.
+This makes it ideal for tutors who prefer speed and precision when handling tasks like tracking student contacts, subjects, payment statuses, next lessons and more.
 Whether you're managing a few students or a large tutoring roster, TutorRec helps you stay organised faster than most traditional GUI-based apps.
 
 <!-- * Table of Contents -->
