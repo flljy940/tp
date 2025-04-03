@@ -41,6 +41,12 @@ TutorRec is a **desktop app for managing contacts, optimised for use via a Comma
 
    * `unpay all` : Resets all contacts to NOT PAID to indicate that payment has not been made by all contacts.
 
+   * `filter-payment paid` : Shows all contacts who have paid.
+
+   * `filter-subject math physics` : Shows all contacts taking math or physics, or both.
+
+   * `filter-date 15/4/2025` : Shows all contacts with lessons on 15th April 2025.
+
    * `clear` : Deletes all contacts.
 
    * `exit` : Exits the app.
@@ -116,7 +122,7 @@ Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [s/SUBJECT]…​`
 * At least one of the optional fields must be provided.
 * Existing values will be updated to the input values.
 * When editing subjects, the existing subjects of the person will be removed i.e. adding of subjects is not cumulative.
-* You can remove all the person’s subjects by typing `s/` without
+* You can remove all the person's subjects by typing `s/` without
     specifying any subjects after it.
 
 Examples:
@@ -164,7 +170,7 @@ Format: `nextlesson INDEX d/DATE`
 * Adds the next lesson date for the person at the specified `INDEX`. The index refers to the index number shown in the displayed person list. The index **must be a positive integer** 1, 2, 3, …​
 * Existing values will be updated to the input values.
 * When adding dates, the existing dates of the person will be appended i.e. adding of tags is cumulative.
-* You can remove all the person’s next lesson dates by typing `d/` without
+* You can remove all the person's next lesson dates by typing `d/` without
   specifying any tags after it.
 * `DATE` must be in `d/M/yyyy HHmm-HHmm` format (eg. `15/4/2025 1800-2000`)
 
@@ -196,7 +202,7 @@ Examples:
 
 ### Resetting the payment statement of one person or all persons : `unpay`
 
-Resets the specified person’s payment status to NOT PAID, or resets payment statuses for all persons.
+Resets the specified person's payment status to NOT PAID, or resets payment statuses for all persons.
 
 Format: `unpay INDEX` or `unpay all`
 
@@ -210,17 +216,49 @@ Examples:
 * `find David` followed by `unpay 1` resets the payment status of the 1st person in the results of the `find` command.
 * `unpay all` resets payment statuses for everyone in the current contact list.
 
-### Filtering by next lesson date : `filter`
+### Filtering persons by lesson date : `filter-date`
 
-Filters and shows all persons whose next lesson date matches the specified input date.
+Filters and shows a list of all persons whose next lesson date matches the specified date.
 
-Format: `filter DATE`
+Format: `filter-date DATE`
 
-* The date refers to the date you wish to filter all persons by.
-* `DATE` must be in `d/M/yyyy` format (eg. `15/4/2025` or `3/5/2025`)
+* The DATE must be in `d/M/yyyy` format (eg. `15/4/2025`)
+* Shows a list of all persons with lessons on the specified date
+* The index numbers shown are used to identify the persons
 
 Example:
-* `filter 15/4/2025` filters and shows you all persons whose next lesson is on `15/4/2025`.
+* `filter-date 15/4/2025` filters and shows you all persons whose next lesson is on `15/4/2025`.
+
+### Filtering persons by payment status : `filter-payment`
+
+Filters and shows a list of all persons whose payment status matches the specified status.
+
+Format: `filter-payment STATUS`
+
+* The STATUS must be either `paid` or `unpaid` (case-insensitive)
+* Shows a list of all persons with the matching payment status
+* The index numbers shown are used to identify the persons
+
+Examples:
+* `filter-payment paid` shows a list of all persons who have paid
+* `filter-payment UNPAID` shows a list of all persons who have not paid
+* `filter-payment Paid` shows a list of all persons who have paid (case-insensitive)
+
+### Filtering persons by subject : `filter-subject`
+
+Filters and shows a list of all persons whose subjects contain any of the specified subjects.
+
+Format: `filter-subject SUBJECT [MORE_SUBJECTS]`
+
+* The search is case-insensitive. e.g. `math` will match `Math`
+* Multiple subjects can be specified to find persons taking any of those subjects
+* The order of the subjects does not matter
+* Only full words will be matched
+
+Examples:
+* `filter-subject math` shows a list of all persons taking Math
+* `filter-subject math physics` shows a list of all persons taking either Math or Physics or both
+* `filter-subject MATH` shows a list of all persons taking Math (case-insensitive)
 
 ### Clearing all entries : `clear`
 
@@ -236,7 +274,7 @@ Format: `exit`
 
 <box type="tip" seamless>
 
-**Tip:** Once exited, the position and the size of the program on the screen will be updated and saved automatically. 
+**Tip:** Once exited, the position and the size of the program on the screen will be updated and saved automatically.
 </box>
 
 ### Saving the data

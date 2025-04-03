@@ -7,6 +7,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
+import seedu.address.model.person.PayStatus;
 import seedu.address.model.person.Person;
 
 /**
@@ -77,11 +78,10 @@ public class PersonCard extends UiPart<Region> {
             subjects.setText("");
         }
 
-        if (!person.getPayStatus().value.isEmpty()) {
-            payStatus.setText(person.getPayStatus().value);
+        payStatus.setText(person.getPayStatus().value);
+        if (person.getPayStatus().value.equals(PayStatus.PAID)) {
             payStatus.setStyle("-fx-text-fill: green; -fx-font-weight: bold;");
         } else {
-            payStatus.setText("NOT PAID");
             payStatus.setStyle("-fx-text-fill: red; -fx-font-weight: bold;");
         }
     }
