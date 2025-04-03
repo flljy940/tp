@@ -320,7 +320,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 ### Use Cases
 
-(For all use cases below, the **System** is the `TutorRec` and the **Actor** is the `user`, unless specified otherwise)
+(For all use cases below, the **System** is `TutorRec` and the **Actor** is the `user`, unless specified otherwise)
 
 **Use Case U1: Add a student to the contact list**
 
@@ -363,7 +363,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
       Use case resumes at step 2.
 
-**Use Case U3: Mark/unmark student payments**
+**Use Case U3: Mark and unmark student payments**
 
 **MSS**
 
