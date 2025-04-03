@@ -38,17 +38,11 @@ Whether you're managing a few students or a large tutoring roster, TutorRec help
 
    * `delete 3` : Deletes the 3rd contact shown in the current list.
 
-   * `pay 3` : Marks the 3rd contact as PAID to indicate that payment has been made.
-
-   * `unpay 3` : Resets the 3rd contact to NOT PAID to indicate that payment has not been made.
-
    * `unpay all` : Resets all contacts to NOT PAID to indicate that payment has not been made by all contacts.
 
-   * `filter-payment paid` : Shows all contacts who have paid.
+   * `nextlesson 3 d/15/4/2025 0900-1030` : Adds the next lesson date for the 3rd contact as 15/4/2025 0900-1030.
 
    * `filter-subject math physics` : Shows all contacts taking math or physics, or both.
-
-   * `filter-date 15/4/2025` : Shows all contacts with lessons on 15th April 2025.
 
    * `clear` : Deletes all contacts.
 
@@ -140,7 +134,7 @@ Format: `find KEYWORD [MORE_KEYWORDS]`
 
 * The search is case-insensitive. e.g. `hans` will match `Hans`
 * The order of the keywords does not matter. e.g. `Hans Bo` will match `Bo Hans`
-* Only the name is searched.
+* Only the![img.png](img.png) name is searched.
 * Only full words will be matched e.g. `Han` will not match `Hans`
 * Students matching at least one keyword will be returned (i.e. `OR` search).
   e.g. `Hans Bo` will return `Hans Gruber`, `Bo Yang`
