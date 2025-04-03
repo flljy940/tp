@@ -1,0 +1,18 @@
+{
+  "persons": [ {
+    "name": "Alice Pauline",
+    "phone": "94351254",
+    "email": "alice@example.com",
+    "address": "123, Jurong West Ave 6, #08-111",
+    "nextLesson": "",
+    "payStatus" : "",
+    "subjects": [ "math" ]
+  }, {
+    "name": "Alice Paul",
+    "phone": "94351254",
+    "email": "paul@example.com",
+    "address": "5th street",
+    "nextLesson": "",
+    "payStatus" : ""
+  } ]
+}

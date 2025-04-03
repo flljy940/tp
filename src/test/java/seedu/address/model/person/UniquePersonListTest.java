@@ -152,6 +152,14 @@ public class UniquePersonListTest {
     }
 
     @Test
+    public void setPerson_editedPersonHasNonUniquePhone_throwsDuplicatePhoneException() {
+        uniquePersonList.add(AMY);
+        uniquePersonList.add(BOB);
+        Person editedBob = new PersonBuilder(BOB).withPhone(AMY.getPhone().toString()).build();
+        assertThrows(DuplicatePhoneException.class, () -> uniquePersonList.setPerson(BOB, editedBob));
+    }
+
+    @Test
     public void remove_nullPerson_throwsNullPointerException() {
         assertThrows(NullPointerException.class, () -> uniquePersonList.remove(null));
     }
