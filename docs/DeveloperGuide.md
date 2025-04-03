@@ -135,7 +135,7 @@ The `Model` component,
 
 * stores the address book data i.e., all `Person` objects (which are contained in a `UniquePersonList` object).
 * stores the currently 'selected' `Person` objects (e.g., results of a search query) as a separate _filtered_ list which is exposed to outsiders as an unmodifiable `ObservableList<Person>` that can be 'observed' e.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change.
-* stores a `UserPref` object that represents the user’s preferences. This is exposed to the outside as a `ReadOnlyUserPref` objects.
+* stores a `UserPref` object that represents the user's preferences. This is exposed to the outside as a `ReadOnlyUserPref` objects.
 * does not depend on any of the other three components (as the `Model` represents data entities of the domain, they should make sense on their own without depending on other components)
 
 <box type="info" seamless>
@@ -265,7 +265,6 @@ _{more aspects and alternatives to be added}_
 
 _{Explain here how the data archiving feature will be implemented}_
 
-
 --------------------------------------------------------------------------------------------------------------------
 
 ## **Documentation, logging, testing, configuration, dev-ops**
@@ -315,21 +314,21 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 ### Use Cases
 
-(For all use cases below, the **System** is the `AddressBook` and the **Actor** is the `user`, unless specified otherwise)
+(For all use cases below, the **System** is the `TutorRec` and the **Actor** is the `user`, unless specified otherwise)
 
 **Use Case U1: Add a student to the contact list**
 
 **MSS**
 
 1.  User requests to add student and their details
-2.  AddressBook adds the student with the supplied contact details
+2.  TutorRec adds the student with the supplied contact details
 
     Use case ends.
 
 **Extensions**
 
 * 1a. The user supplies invalid input parameter(s).
-  * 1a1. AddressBook shows an error message for the relevant parameters.
+  * 1a1. TutorRec shows an error message for the relevant parameters.
 
     Use case resumes at step 1.
 
@@ -340,9 +339,9 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 **MSS**
 
 1.  User requests to list students
-2.  AddressBook shows a list of students
+2.  TutorRec shows a list of students
 3.  User requests to delete a specific student in the list
-4.  AddressBook deletes the student
+4.  TutorRec deletes the student
 
     Use case ends.
 
@@ -354,7 +353,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 * 3a. The index supplied by the user is invalid.
 
-    * 3a1. AddressBook shows an error message.
+    * 3a1. TutorRec shows an error message.
 
       Use case resumes at step 2.
 
@@ -363,9 +362,9 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 **MSS**
 
 1.  User requests to list students
-2.  AddressBook shows a list of students
-3.  User requests to mark or unmark payment for a specific student in the list
-4.  AddressBook marks or unmarks the payment
+2.  TutorRec shows a list of students
+3.  User requests to mark or unmark payment for a specific student in the list or unmark payment for all students
+4.  TutorRec marks or unmarks the payment(s)
 
     Use case ends.
 
@@ -377,11 +376,80 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 * 3a. The index supplied by the user is invalid.
 
-    * 3a1. AddressBook shows an error message.
+    * 3a1. TutorRec shows an error message.
 
       Use case resumes at step 2.
 
-*{More to be added}*
+**Use Case U4: Add next lesson date and time to a student**
+
+**MSS**
+
+1.  User requests to list students
+2.  TutorRec shows a list of students
+3.  User requests to add a next lesson date and time for a specific student in the list
+4.  TutorRec adds specified next lesson date and time to the student
+
+    Use case ends.
+
+**Extensions**
+
+* 2a. The student list is empty.
+
+  Use case ends.
+
+* 3a. The index supplied by the user is invalid.
+
+    * 3a1. TutorRec shows an error message.
+
+      Use case resumes at step 2.
+
+* 3b. The date or time supplied by the user is invalid or before the current time and date.
+
+    * 3b1. TutorRec shows an error message.
+
+      Use case resumes at step 2.
+
+
+**Use Case U5: Sort by next lesson date and time**
+
+**MSS**
+
+1.  User requests to list students
+2.  TutorRec shows a list of students
+3.  User requests to see students in order of nearest lesson to furthest
+4.  TutorRec shows the list of students sorted from nearest lesson to furthest
+
+    Use case ends.
+
+**Extensions**
+
+* 2a. The student list is empty.
+
+  Use case ends.
+
+**Use Case U5: Filter students with a lesson on a specified date**
+
+**MSS**
+
+1.  User requests to list students
+2.  TutorRec shows a list of students
+3.  User requests to show students who have a lesson on a specified date
+4.  TutorRec shows a list of students with a lesson on the specified date
+
+    Use case ends.
+
+**Extensions**
+
+* 2a. The student list is empty.
+
+  Use case ends.
+
+* 3a. The date or time supplied by the user is invalid or before the current time and date.
+
+    * 3a1. TutorRec shows an error message.
+
+      Use case resumes at step 2.
+
 
 ### Non-Functional Requirements
 
@@ -399,7 +467,6 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 - **Data Storage**: The application should be able to handle up to 10,000 student entries without significant performance degradation.
 - **File Size**: The data file storing student information should not exceed 10MB for 1000 entries.
 
-*{More to be added}*
 
 ### Glossary
 

@@ -11,7 +11,7 @@ public class Email {
 
     private static final String SPECIAL_CHARACTERS = "+_.-";
     public static final String MESSAGE_CONSTRAINTS = "Emails should be of the format local-part@domain, be less than "
-            + "100 characters long, and adhere to the following constraints:\n"
+            + "50 characters long, and adhere to the following constraints:\n"
             + "1. The local-part should only contain alphanumeric characters and these special characters, excluding "
             + "the parentheses, (" + SPECIAL_CHARACTERS + "). It should start or end with any special "
             + "characters. There should be no whitespaces in the email address itself. \n"
@@ -30,7 +30,7 @@ public class Email {
     private static final String DOMAIN_LAST_PART_REGEX = "(" + DOMAIN_PART_REGEX + "){2,}$"; // At least two chars
     private static final String DOMAIN_REGEX = "(" + DOMAIN_PART_REGEX + "\\.)*" + DOMAIN_LAST_PART_REGEX;
     // By RFC 5321, the maximum length of an email address is 254 chars, but we set a lower limit for practical purposes
-    private static final Integer WORD_LIMIT = 100;
+    private static final Integer WORD_LIMIT = 50;
     public static final String VALIDATION_REGEX = LOCAL_PART_REGEX + "@" + DOMAIN_REGEX;
 
     public final String value;
