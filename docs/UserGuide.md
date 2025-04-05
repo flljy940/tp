@@ -20,38 +20,32 @@ Whether you're managing a few students or a large tutoring roster, TutorRec help
 
 ## Quick start
 
-1. Ensure you have Java `17` or above installed in your Computer.<br>
-   **Mac users:** Ensure you have the precise JDK version prescribed [here](https://se-education.org/guides/tutorials/javaInstallationMac.html).
+1. **Set up Java**
+   * Ensure you have Java `17` or above installed on your computer.
+   * Not sure how? Follow these simple guides based on your system:
+     * [**Windows Setup Guide**](https://se-education.org/guides/tutorials/javaInstallationWindows.html)
+     * [**Mac Setup Guide**](https://se-education.org/guides/tutorials/javaInstallationMac.html)
+     * [**Linux Setup Guide**](https://se-education.org/guides/tutorials/javaInstallationLinux.html)
 
-2. Download the latest `.jar` file from [here](https://github.com/AY2425S2-CS2103T-T16-4/tp/releases).
+2. **Download TutorRec**
+   * Get the latest version [here](https://github.com/AY2425S2-CS2103T-T16-4/tp/releases).
+   * Look for the file named `tutorrec.jar` under the latest release.
+   * Click on it to download.
 
-3. Copy the file to the folder you want to use as the _home folder_ for TutorRec.
+3. **Install the application**
+   * Create a new empty folder, where you want to keep the TutorRec application.
+   * Copy the downloaded `.jar` file into this folder.
 
-4. Open a command terminal, `cd` into the folder you put the jar file in, and use the `java -jar tutorrec.jar` command to run the application.<br>
-   A GUI similar to the below should appear in a few seconds. Note how the app contains some sample data.<br>
+4. **Start TutorRec**
+   * **Windows users**: Simply double-click the `.jar` file.
+   * **If double-clicking doesn't work**: Open Command Prompt (search for "cmd" in Start menu), navigate to your folder with `cd path\to\your\folder`, then type `java -jar tutorrec.jar` and press Enter.
+   * **Mac/Linux users**: Open Terminal, navigate to your folder with `cd path/to/your/folder`, then type `java -jar tutorrec.jar` and press Enter.
+   * You should see the TutorRec application window appear with some sample data:
    
-    <img src="images/Ui.png" alt="Ui" width="600px" />
+    <img src="images/Ui.png" alt="TutorRec main screen" width="600px" />
 
-5. Type the command in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will open the help window.<br>
-   Some example commands you can try:
-
-   * `list` : Lists all students.
-
-   * `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01` : Adds a student named `John Doe` to the contact list.
-
-   * `delete 3` : Deletes the 3rd student shown in the current contact list.
-
-   * `unpay all` : Resets all students to NOT PAID to indicate that payment has not been made by all students.
-
-   * `nextlesson 3 d/15/4/2025 0900-1030` : Adds the next lesson date for the 3rd student as 15/4/2025 0900-1030.
-
-   * `filter-subject math physics` : Shows all students taking math or physics, or both.
-
-   * `clear` : Deletes all students.
-
-   * `exit` : Exits the app.
-
-6. Refer to the [Features](#features) below for details of each command.
+5. **Try these simple commands**
+   * Type these commands in the command box at the bottom and press Enter:
 
 <div style="page-break-after: always;"></div>
 
