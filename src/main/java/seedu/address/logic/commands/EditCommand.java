@@ -55,7 +55,6 @@ public class EditCommand extends Command {
     public static final String MESSAGE_DUPLICATE_STUDENT =
             "Student with the same name or phone number already exists in the address book.";
 
-
     private final Index index;
     private final EditPersonDescriptor editPersonDescriptor;
 
