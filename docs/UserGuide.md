@@ -47,6 +47,8 @@ Whether you're managing a few students or a large tutoring roster, TutorRec help
 5. **Try these simple commands**
    * Type these commands in the command box at the bottom and press Enter:
 
+6. **Need help?** Type `help` in the application itself, or press F1 to view the complete user guide.
+
 <div style="page-break-after: always;"></div>
 
 --------------------------------------------------------------------------------------------------------------------
