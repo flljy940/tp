@@ -417,7 +417,7 @@ Format: `exit`
 **Tip:** Escape key can be used to exit the program. All changes are saved automatically.
 </box>
 
-### Understanding Your Data Files
+### Understanding your data files
 
 <box type="info" seamless>
 
