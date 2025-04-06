@@ -12,7 +12,7 @@ This makes it ideal for tutors who prefer speed and precision when handling task
 
 Whether you're managing a few students or a large tutoring roster, TutorRec eliminates the administrative headaches that steal time from what matters most - your teaching!
 
-This guide assumes you're comfortable using a computer, and doesn't require any prior programming knowledge.
+This guide assumes you're comfortable using a computer, and does not require any prior programming knowledge.
 
 Encountered some terms you don't understand? Check out our [Glossary](#glossary) at the end of this document for definitions.
 
@@ -459,7 +459,7 @@ Furthermore, certain edits can cause TutorRec to behave in unexpected ways (e.g.
 
 ## FAQ
 
-**Q**: How do I transfer my data to another Computer?<br>
+**Q**: How do I transfer my data to another computer?<br>
 **A**: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous TutorRec home folder.
 
 **Q**: Can I use TutorRec on multiple devices simultaneously?<br>
