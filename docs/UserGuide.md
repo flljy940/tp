@@ -171,8 +171,8 @@ Format: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [s/SUBJECT]…​`
 </box>
 
 Examples:
-* `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01` adds a new student named John Doe without any subjects.
-* `add n/Betsy Crowe s/math e/betsycrowe@example.com a/Newgate p/1234567 s/physics` adds a new student named Betsy Crowe with math and physics subjects.
+* `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01` adds a new student named John Doe with their contact details, but without any subjects.
+* `add n/Betsy Crowe s/math e/betsycrowe@example.com a/Newgate p/1234567 s/physics` adds a new student named Betsy Crowe with their contact details, along with math and physics subjects.
 
 ### Listing all students : `list`
 
