@@ -15,7 +15,9 @@
 
 ## **Acknowledgements**
 
-This project is based on the AddressBook-Level3 project created by the [SE-EDU initiative](https://se-education.org).
+* This project is based on the AddressBook-Level3 project created by the [SE-EDU initiative](https://se-education.org).
+
+* Most of the images in the UI are taken from [FLATICON](https://www.flaticon.com/), a comprehensive collection of free vector icons.
 
 --------------------------------------------------------------------------------------------------------------------
 
