@@ -9,6 +9,7 @@ import static seedu.address.logic.parser.NextLessonCommandParser.MESSAGE_INVALID
 import static seedu.address.logic.parser.NextLessonCommandParser.MESSAGE_INVALID_START_BEFORE_END;
 import static seedu.address.logic.parser.NextLessonCommandParser.MESSAGE_INVALID_START_END_TIME;
 import static seedu.address.logic.parser.NextLessonCommandParser.MESSAGE_INVALID_TIME;
+import static seedu.address.logic.parser.NextLessonCommandParser.MESSAGE_INVALID_YEAR;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
 
 import java.time.LocalDate;
@@ -28,12 +29,12 @@ public class NextLessonCommandParserTest {
     private final NextLessonCommandParser parser = new NextLessonCommandParser();
     private final String validLessonDateTime =
             CURRENT_DATE.format(java.time.format.DateTimeFormatter.ofPattern("d/M/yyyy"))
-            + " " + CURRENT_TIME.plusHours(1).format(java.time.format.DateTimeFormatter.ofPattern("HHmm"))
-            + "-" + CURRENT_TIME.plusHours(3).format(java.time.format.DateTimeFormatter.ofPattern("HHmm"));
+            + " " + CURRENT_TIME.plusMinutes(1).format(java.time.format.DateTimeFormatter.ofPattern("HHmm"))
+            + "-" + CURRENT_TIME.plusMinutes(3).format(java.time.format.DateTimeFormatter.ofPattern("HHmm"));
     private final String invalidLessonDateTime =
             CURRENT_DATE.minusDays(1).format(java.time.format.DateTimeFormatter.ofPattern("d/M/yyyy"))
-            + " " + CURRENT_TIME.minusHours(1).format(java.time.format.DateTimeFormatter.ofPattern("HHmm"))
-            + "-" + CURRENT_TIME.plusHours(1).format(java.time.format.DateTimeFormatter.ofPattern("HHmm"));
+            + " " + CURRENT_TIME.minusMinutes(1).format(java.time.format.DateTimeFormatter.ofPattern("HHmm"))
+            + "-" + CURRENT_TIME.plusMinutes(1).format(java.time.format.DateTimeFormatter.ofPattern("HHmm"));
 
     @Test
     public void parse_indexSpecified_success() {
@@ -160,6 +161,13 @@ public class NextLessonCommandParserTest {
         String invalidStartAfterEndTimeInput = "1 " + PREFIX_NEXTLESSON + "15/4/2025 1100-0900";
         assertParseFailure(parser, invalidStartAfterEndTimeInput, MESSAGE_INVALID_START_BEFORE_END);
 
+        // Date >1 year in the future -> invalid
+        String invalidFutureDateInput = "1 " + PREFIX_NEXTLESSON
+                + CURRENT_DATE.plusYears(1).format(java.time.format.DateTimeFormatter.ofPattern("d/M/yyyy")) + " "
+                + CURRENT_TIME.plusHours(1).format(java.time.format.DateTimeFormatter.ofPattern("HHmm")) + "-"
+                + CURRENT_TIME.plusHours(1).plusMinutes(1).format(java.time.format.DateTimeFormatter.ofPattern("HHmm"));
+        assertParseFailure(parser, invalidFutureDateInput, MESSAGE_INVALID_YEAR);
+
         // Date in the past -> invalid
         String invalidPastDateInput = "1 " + PREFIX_NEXTLESSON + invalidLessonDateTime;
         assertParseFailure(parser, invalidPastDateInput, MESSAGE_INVALID_PAST_LESSON);
@@ -167,8 +175,8 @@ public class NextLessonCommandParserTest {
         // Time in the past -> invalid
         String invalidPastTimeInput = "1 " + PREFIX_NEXTLESSON
                 + CURRENT_DATE.format(java.time.format.DateTimeFormatter.ofPattern("d/M/yyyy")) + " "
-                + CURRENT_TIME.minusHours(4).format(java.time.format.DateTimeFormatter.ofPattern("HHmm")) + "-"
-                + CURRENT_TIME.plusHours(1).format(java.time.format.DateTimeFormatter.ofPattern("HHmm"));
+                + CURRENT_TIME.minusMinutes(4).format(java.time.format.DateTimeFormatter.ofPattern("HHmm")) + "-"
+                + CURRENT_TIME.plusMinutes(1).format(java.time.format.DateTimeFormatter.ofPattern("HHmm"));
         assertParseFailure(parser, invalidPastTimeInput, MESSAGE_INVALID_PAST_LESSON);
 
         // DateTimeException -> invalid
