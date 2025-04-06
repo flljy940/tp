@@ -30,6 +30,7 @@ public class NextLessonCommandParser implements Parser<NextLessonCommand> {
     public static final String MESSAGE_INVALID_START_BEFORE_END = "Start time must be before end time.";
     public static final String MESSAGE_INVALID_START_END_TIME = "Start and end time cannot be the same.";
     public static final String MESSAGE_INVALID_PAST_LESSON = "Lesson cannot be in the past.";
+    public static final String MESSAGE_INVALID_YEAR = "Lesson must be less than 1 year from now. ";
 
     private static final String DATE_TIME_FORMAT = "d/M/yyyy HHmm-HHmm";
     private static final String DATE_REGEX = "(\\d{1,2})/(\\d{1,2})/(\\d{4})\\s(\\d{4})-(\\d{4})";
@@ -94,6 +95,10 @@ public class NextLessonCommandParser implements Parser<NextLessonCommand> {
             LocalDate date = LocalDate.of(year, month, day);
             LocalTime startTime = LocalTime.of(startHours, startMinutes);
             LocalTime endTime = LocalTime.of(endHours, endMinutes);
+
+            if (!date.isBefore(CURRENT_DATE.plusYears(1))) {
+                throw new ParseException(MESSAGE_INVALID_YEAR, new IllegalArgumentException());
+            }
 
             if (startTime.equals(endTime)) {
                 throw new ParseException(MESSAGE_INVALID_START_END_TIME, new IllegalArgumentException());
