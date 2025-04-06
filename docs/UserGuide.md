@@ -11,6 +11,8 @@ While it features a clean and intuitive Graphical User Interface (GUI), TutorRec
 This makes it ideal for tutors who prefer speed and precision when handling tasks like tracking student contacts, subjects, payment statuses, next lessons and more.
 Whether you're managing a few students or a large tutoring roster, TutorRec helps you stay organised faster than most traditional GUI-based apps.
 
+Encountered terms you don't understand? Check out our [Glossary](#glossary) at the end of this document for definitions.
+
 <!-- * Table of Contents -->
 <page-nav-print />
 
@@ -27,14 +29,20 @@ Whether you're managing a few students or a large tutoring roster, TutorRec help
      * [**Mac Setup Guide**](https://se-education.org/guides/tutorials/javaInstallationMac.html)
      * [**Linux Setup Guide**](https://se-education.org/guides/tutorials/javaInstallationLinux.html)
 
+<div style="margin-top: 10px;"></div>
+
 2. **Download TutorRec**
    * Get the latest version [here](https://github.com/AY2425S2-CS2103T-T16-4/tp/releases).
    * Look for the file named `tutorrec.jar` under the latest release.
    * Click on it to download.
 
+<div style="margin-top: 10px;"></div>
+
 3. **Install the application**
    * Create a new empty folder, where you want to keep the TutorRec application.
    * Copy the downloaded `.jar` file into this folder.
+
+<div style="margin-top: 10px;"></div>
 
 4. **Start TutorRec**
    * **Windows users**: Simply double-click the `.jar` file.
@@ -44,8 +52,8 @@ Whether you're managing a few students or a large tutoring roster, TutorRec help
      * [**Windows Tutorial**](https://learn.microsoft.com/en-us/windows/terminal/faq)
      * [**Mac Tutorial**](https://support.apple.com/en-sg/guide/terminal/apd5265185d-f365-44cb-8b09-71a064a42125/mac)
      * [**Linux Tutorial**](https://ubuntu.com/tutorials/command-line-for-beginners#1-overview)
-   * You should see the TutorRec application window appear with some sample data:<br><br>
-   
+   * You should see the TutorRec application window appear with some sample data:
+
     <img src="images/Ui.png" alt="TutorRec main screen" width="600px" style="margin-bottom: 10px;margin-top: 10px" /><br>
 
 5. **Familiarise yourself with the interface**
@@ -58,6 +66,9 @@ Whether you're managing a few students or a large tutoring roster, TutorRec help
    * `pay 1` → Marks the first student as PAID
    * `nextlesson 1 d/15/4/2025 0900-1030` → Sets the next lesson for first student
    * `exit` → Closes the application (your data is automatically saved)
+
+<div style="margin-top: 10px;"></div>
+
 6. **Need help?** Type `help` in the application itself, or press F1 to view the complete user guide.
 
 <box type="tip" seamless>
