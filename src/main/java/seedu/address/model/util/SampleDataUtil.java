@@ -21,8 +21,8 @@ import seedu.address.model.subject.Subject;
 public class SampleDataUtil {
 
     public static final NextLesson DEFAULT_NEXTLESSON = new NextLesson();
-    public static final NextLesson SAMPLE_NEXTLESSON_1 = new NextLesson("15/04/2025 1900-2100");
-    public static final NextLesson SAMPLE_NEXTLESSON_2 = new NextLesson("22/04/2025 1900-2100");
+    public static final NextLesson SAMPLE_NEXTLESSON_1 = new NextLesson("15/06/2025 1900-2100");
+    public static final NextLesson SAMPLE_NEXTLESSON_2 = new NextLesson("22/06/2025 1900-2100");
     public static final PayStatus DEFAULT_PAYSTATUS = new PayStatus(PayStatus.NOT_PAID);
     public static final PayStatus NOT_DEFAULT_PAYSTATUS = new PayStatus(PayStatus.PAID);
 
