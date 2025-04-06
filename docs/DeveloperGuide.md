@@ -504,7 +504,6 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 * **Mainstream OS**: Windows, Linux, Unix, MacOS
 * **Standard Machine**: A machine with minimally 8GB RAM and an SSD.
-* **Private contact detail**: A contact detail that is not meant to be shared with others
 
 
 <div style="page-break-after: always;"></div>
@@ -527,22 +526,24 @@ testers are expected to do more *exploratory* testing.
 1. Initial launch
 
    1. Download the jar file and copy into an empty folder
+   
+   2. Make sure you have Java 17 or above installed in your computer
 
-   2. Double-click the jar file 
+   3. Open your terminal, cd into the folder you placed the jar file, then type java -jar tutorrec.jar and press enter
        Expected: Shows the GUI with a set of sample contacts. The window size may not be optimum.
 
 2. Saving window preferences
 
    1. Resize the window to an optimum size. Move the window to a different location. Close the window.
 
-   2. Re-launch the app by double-clicking the jar file.<br>
+   2. Re-launch the app by typing java -jar tutorrec.jar.<br>
        Expected: The most recent window size and location is retained.
 
 3. Shutting down the app
    
    1. Click the 'X' button on the window of the app or the `esc` hotkey
 
-   2. Re-launch the app by double-clicking the jar file.<br>
+   2. Re-launch the app by java -jar tutorrec.jar.<br>
        Expected: The app saves the most recent set of contacts before closing and shows the GUI with the latest set of contacts.
 
 ### Deleting a student
@@ -581,10 +582,10 @@ testers are expected to do more *exploratory* testing.
 
    1. Prerequisites: Simulate a corrupted data file by:
       1. Change directory to the working folder for `tutorrec.jar`
-      2. If the file `data/addressbook.json` is not in the working folder, launch the app by double-clicking on jar file. The app should start with the sample contact list.
+      2. If the file `data/addressbook.json` is not in the working folder, launch the app by typing java -jar tutorrec.jar. The app should start with the sample contact list.
       3. Open the `data/addressbook.json` file and delete the `name` field of the first entry.
 
-   2. Launch the app by double-clicking on jar file. The app should start with an empty contact list.
+   2. Launch the app by typing java -jar tutorrec.jar. The app should start with an empty contact list.
 
 2. Dealing with missing data files
 
@@ -592,4 +593,13 @@ testers are expected to do more *exploratory* testing.
       1. Change directory to the working folder for `tutorrec.jar`
       2. If the file `data/addressbook.json` exists in the working folder, delete the `data/addressbook.json` file
       
-   2. Launch the app by double-clicking ont he jar file. The app should start with the sample contact list.
+   2. Launch the app by typing java -jar tutorrec.jar. The app should start with the sample contact list.
+
+<div style="page-break-after: always;"></div>
+
+--------------------------------------------------------------------------------------------------------------------
+
+## **Appendix: Planned Enhancements**
+
+1. **Allowing NextLesson to span over more than one day**
+    Currently, our NextLesson feature requires the next lesson to start and end on the same day. However, tutors may hold longer tuition workshops that span multiple days or end past midnight. We plan to allow for that in the future.

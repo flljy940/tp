@@ -21,15 +21,18 @@ import seedu.address.model.subject.Subject;
 public class SampleDataUtil {
 
     public static final NextLesson DEFAULT_NEXTLESSON = new NextLesson();
+    public static final NextLesson SAMPLE_NEXTLESSON_1 = new NextLesson("15/06/2025 1900-2100");
+    public static final NextLesson SAMPLE_NEXTLESSON_2 = new NextLesson("22/06/2025 1900-2100");
     public static final PayStatus DEFAULT_PAYSTATUS = new PayStatus(PayStatus.NOT_PAID);
+    public static final PayStatus NOT_DEFAULT_PAYSTATUS = new PayStatus(PayStatus.PAID);
 
     public static Person[] getSamplePersons() {
         return new Person[] {
             new Person(new Name("Alex Yeoh"), new Phone("87438807"), new Email("alexyeoh@example.com"),
-                new Address("Blk 30 Geylang Street 29, #06-40"), DEFAULT_NEXTLESSON, DEFAULT_PAYSTATUS,
+                new Address("Blk 30 Geylang Street 29, #06-40"), SAMPLE_NEXTLESSON_1, NOT_DEFAULT_PAYSTATUS,
                 getSubjectSet("math")),
             new Person(new Name("Bernice Yu"), new Phone("99272758"), new Email("berniceyu@example.com"),
-                new Address("Blk 30 Lorong 3 Serangoon Gardens, #07-18"), DEFAULT_NEXTLESSON, DEFAULT_PAYSTATUS,
+                new Address("Blk 30 Lorong 3 Serangoon Gardens, #07-18"), SAMPLE_NEXTLESSON_2, NOT_DEFAULT_PAYSTATUS,
                 getSubjectSet("math", "chemistry")),
             new Person(new Name("Charlotte Oliveiro"), new Phone("93210283"), new Email("charlotte@example.com"),
                 new Address("Blk 11 Ang Mo Kio Street 74, #11-04"), DEFAULT_NEXTLESSON, DEFAULT_PAYSTATUS,
