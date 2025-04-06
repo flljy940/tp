@@ -22,7 +22,7 @@ Whether you're managing a few students or a large tutoring roster, TutorRec help
 
 1. **Set up Java**
    * Ensure you have Java `17` or above installed on your computer.
-   * Not sure how? Follow these simple guides based on your system:
+   * Unsure how to check or install Java? Follow these guides based on your system:
      * [**Windows Setup Guide**](https://se-education.org/guides/tutorials/javaInstallationWindows.html)
      * [**Mac Setup Guide**](https://se-education.org/guides/tutorials/javaInstallationMac.html)
      * [**Linux Setup Guide**](https://se-education.org/guides/tutorials/javaInstallationLinux.html)
@@ -40,14 +40,18 @@ Whether you're managing a few students or a large tutoring roster, TutorRec help
    * **Windows users**: Simply double-click the `.jar` file.
    * **If double-clicking doesn't work**: Open Command Prompt (search for "cmd" in Start menu), navigate to your folder with `cd path\to\your\folder`, then type `java -jar tutorrec.jar` and press Enter.
    * **Mac/Linux users**: Open Terminal, navigate to your folder with `cd path/to/your/folder`, then type `java -jar tutorrec.jar` and press Enter.
-   * You should see the TutorRec application window appear with some sample data:
+   * Not sure how to open your Command Prompt/Terminal? Follow these simple guides based on your system:
+     * [**Windows Tutorial**](https://learn.microsoft.com/en-us/windows/terminal/faq)
+     * [**Mac Tutorial**](https://support.apple.com/en-sg/guide/terminal/apd5265185d-f365-44cb-8b09-71a064a42125/mac)
+     * [**Linux Tutorial**](https://ubuntu.com/tutorials/command-line-for-beginners#1-overview)
+   * You should see the TutorRec application window appear with some sample data:<br><br>
    
-    <img src="images/Ui.png" alt="TutorRec main screen" width="600px" />
+    <img src="images/Ui.png" alt="TutorRec main screen" width="600px" style="margin-bottom: 10px;margin-top: 10px" /><br>
 
 5. **Familiarise yourself with the interface**
    * Here are some basic commands to get you started, which you can type in the command box as shown below:
 
-    <img src="images/commandBox.png" alt="command box" width="600px" />
+    <img src="images/commandBox.png" alt="command box" width="600px" style="margin-bottom: 10px;margin-top: 10px" /><br>
 
    * `list` → Shows all your students
    * `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01` → Adds a new student
@@ -64,6 +68,25 @@ Whether you're managing a few students or a large tutoring roster, TutorRec help
 <div style="page-break-after: always;"></div>
 
 --------------------------------------------------------------------------------------------------------------------
+
+## Command summary
+
+| Action                   | Format, Examples                                                                                                                                                     |
+|--------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Add**                  | `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [s/SUBJECT]…​` <br> e.g. `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 s/math s/english` |
+| **Clear**                | `clear`                                                                                                                                                              |
+| **Pay**                  | `pay INDEX`<br> e.g. `pay 3`                                                                                                                                         |
+| **Unpay**                | `unpay INDEX`<br> e.g. `unpay 3` or `unpay all`                                                                                                                      |
+| **Delete**               | `delete INDEX`<br> e.g. `delete 3`                                                                                                                                   |
+| **Edit**                 | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [s/SUBJECT]…​`<br> e.g.`edit 2 n/James Lee e/jameslee@example.com`                                       |
+| **Find**                 | `find KEYWORD [MORE_KEYWORDS]…​`<br> e.g. `find James Jake`                                                                                                          |
+| **NextLesson**           | `nextlesson INDEX d/[DATE]`<br> e.g. `nextlesson 3 d/15/4/2025 1800-2000`                                                                                            |
+| **List**                 | `list`                                                                                                                                                               |
+| **Sort**                 | `sort`                                                                                                                                                               |
+| **Filter NextLesson**    | `filter-date DATE`<br> e.g. `filter-date 15/4/2025`                                                                                                                  |
+| **Filter PaymentStatus** | `filter-payment STATUS`<br> e.g. `filter-payment PAID`                                                                                                               |
+| **Filter Subject**       | `filter-subject SUBJECT [MORE_SUBJECTS]`<br> e.g. `filter-subject MATH`                                                                                              |
+| **Help**                 | `help`                                                                                                                                                               |
 
 ## Features
 
@@ -96,7 +119,7 @@ Whether you're managing a few students or a large tutoring roster, TutorRec help
 
 Shows a message explaining how to access the help page.
 
-<img src="images/helpMessage.png" alt="help message" width="600px" />
+<img src="images/helpMessage.png" alt="help message" width="600px" style="margin-bottom: 10px;margin-top: 10px" /><br>
 
 Format: `help`
 
@@ -192,7 +215,7 @@ Examples:
 * `find John` returns `john` and `John Doe`
 * `find alex david` returns `Alex Yeoh`, `David Li`<br>
 
-<img src="images/findAlexDavidResult.png" alt="result for 'find alex david'" width="600px" />
+<img src="images/findAlexDavidResult.png" alt="result for 'find alex david'" width="600px" style="margin-bottom: 10px;margin-top: 10px" /><br>
 
 ### Deleting a student : `delete`
 
@@ -237,7 +260,7 @@ Examples:
 *  `nextlesson 2 d/` Removes the next lesson date for the 2nd student.
 *  `nextlesson 1 d/15/4/2025 1800-2000` Adds/Updates the next lesson date of the 1st student to be `15/4/2025 1800-2000`.
 
-<img src="images/nextlessonResult.png" alt="result for 'next lesson'" width="600px" />
+<img src="images/nextlessonResult.png" alt="result for 'next lesson'" width="600px" style="margin-bottom: 10px;margin-top: 10px" /><br>
 
 <box type="warning" seamless>
 
@@ -273,7 +296,7 @@ Examples:
 * `find David` followed by `pay 1` marks the 1st student in the results of the `find` command.
 * `list` followed by `pay 2` marks the 2nd student as PAID in the contact list. (Paid status is now GREEN)
 
-<img src="images/listPayResult.png" alt="result for 'list pay 2'" width="600px" />
+<img src="images/listPayResult.png" alt="result for 'list pay 2'" width="600px" style="margin-bottom: 10px;margin-top: 10px" /><br>
 
 ### Resetting the payment statement of one student or all students : `unpay`
 
@@ -447,25 +470,24 @@ Furthermore, certain edits can cause TutorRec to behave in unexpected ways (e.g.
 1. **When using multiple screens**, if you move the application to a secondary screen, and later switch to using only the primary screen, the GUI will open off-screen. The remedy is to delete the `preferences.json` file created by the application before running the application again.
 2. **If you minimise the Help Window** and then run the `help` command (or use the `Help` menu, or the keyboard shortcut `F1`) again, the original Help Window will remain minimised, and no new Help Window will appear. The remedy is to manually restore the minimised Help Window.
 3. **When a student is selected** as shown below, the `Esc` key does not close the app as intended. The remedy is to use the `exit` command or to manually click `X` on the application's window.
-   <img src="images/selectedStudent.png" alt="selected student" width="600px" />
+   
+    <img src="images/selectedStudent.png" alt="selected student" width="600px" style="margin-bottom: 10px;margin-top: 10px" /><br>
 
 --------------------------------------------------------------------------------------------------------------------
 
-## Command summary
+## Glossary
 
-Action         | Format, Examples
------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------
-**Add**    | `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [s/SUBJECT]…​` <br> e.g. `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 s/math s/english`
-**Clear**  | `clear`
-**Pay**    | `pay INDEX`<br> e.g. `pay 3`
-**Unpay**  | `unpay INDEX`<br> e.g. `unpay 3` or `unpay all`
-**Delete** | `delete INDEX`<br> e.g. `delete 3`
-**Edit**   | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [s/SUBJECT]…​`<br> e.g.`edit 2 n/James Lee e/jameslee@example.com`
-**Find**   | `find KEYWORD [MORE_KEYWORDS]`<br> e.g. `find James Jake`
-**NextLesson** | `nextlesson INDEX d/[DATE]`<br> e.g. `nextlesson 3 d/15/4/2025 1800-2000`
-**List**   | `list`
-**Sort**  | `sort`
-**Filter NextLesson**    | `filter-date DATE`<br> e.g. `filter-date 15/4/2025`
-**Filter PaymentStatus** | `filter-payment STATUS`<br> e.g. `filter-payment PAID`
-**Filter Subject** | `filter-subject SUBJECT [MORE_SUBJECTS]`<br> e.g. `filter-subject MATH`
-**Help**   | `help`
+**CLI (Command Line Interface)**: The text-based system where you type commands to tell the application what to do.
+**Case-insensitive**: The app doesn't care whether you use UPPERCASE or lowercase letters in commands (e.g. "Math" and "math" are treated the same).
+**Command Box**: The text field at the bottom of the application where you type commands.
+**Data file**: A special file on your computer that stores all your student information in a structured format.
+**Desktop application**: A program that runs directly on your computer (not on a website).
+**Extraneous parameters**: Extra information added to a command that isn't needed and will be ignored.
+**GUI (Graphical User Interface)**: The visual elements of the application that you can see and interact with.
+**Hard disk**: Your computer's permanent storage where files are saved.
+**Index**: The number shown beside each student in the list, used to identify which student to select with commands.
+**JAR file**: The file type of the TutorRec application that you download and run.
+**JSON file**: A special format for storing data that computers can easily read and write (stands for JavaScript Object Notation).
+**Parameters**: The specific pieces of information you add to commands (like names, phone numbers, etc.).
+**Preferences**: Settings that control how the application appears and behaves.
+**Terminal/Command Prompt**: A program on your computer that lets you type commands directly to the operating system.
