@@ -529,7 +529,7 @@ testers are expected to do more *exploratory* testing.
    
    2. Make sure you have Java 17 or above installed in your computer
 
-   3. Open your terminal, cd into the folder you placed the jar file. Type java -jar tutorrec.jar and press enter.
+   3. Open your terminal, cd into the folder you placed the jar file, then type java -jar tutorrec.jar and press enter
        Expected: Shows the GUI with a set of sample contacts. The window size may not be optimum.
 
 2. Saving window preferences
@@ -602,4 +602,4 @@ testers are expected to do more *exploratory* testing.
 ## **Appendix: Planned Enhancements**
 
 1. **Allowing NextLesson to span over more than one day**
-    Currently, our NextLesson feature requires the next lesson to start and end on the same day. However, tutors may hold longer tuition workshops that span over a few days or that end past midnight. We plan to allow for that in the future.
+    Currently, our NextLesson feature requires the next lesson to start and end on the same day. However, tutors may hold longer tuition workshops that span multiple days or end past midnight. We plan to allow for that in the future.
