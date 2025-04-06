@@ -13,7 +13,7 @@ public class Phone {
     public static final String MESSAGE_CONSTRAINTS =
             "Phone numbers should only contain numbers, and it should be at least 3 digits long";
     public static final String LENGTH_CONSTRAINTS =
-            "The phone number is invalid as it is too long. "
+            "Phone numbers should only be up to 15 digits long. \n"
                     + "Please ensure that you are entering a valid phone number. ";
     // E.164 standard states that a phone number can be up to 15 digits long.
     public static final Integer MAX_LENGTH = 15;
