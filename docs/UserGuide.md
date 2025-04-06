@@ -193,6 +193,12 @@ Examples:
 
 <img src="images/nextlessonResult.png" alt="result for 'next lesson'" width="600px" />
 
+<box type="warning" seamless>
+
+**Caution:**
+As TutorRec allows group tuition, it will not automatically check for lesson time clashes. Please ensure that you do not schedule overlapping lessons! Consider using the `sort` command after adding lessons to see your schedule in chronological order, which can help identify potential conflicts.
+</box>
+
 ### Sorting of all students by lesson date : `sort`
 
 Sorts the list of students by their next lesson date and time, with the earliest lesson shown first.
