@@ -116,6 +116,22 @@ Format: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [s/SUBJECT]…​`
 **Tip:** A student can have any number of subjects (including 0).
 </box>
 
+<box type="info" seamless>
+
+**Input constraints:**<br>
+
+* `NAME` must be an alphanumeric string with at least 1 alphabet and up to 50 characters long.
+* `PHONE_NUMBER` must be strictly digits and between 3 to 15 digits long.
+* `EMAIL` should be of the format `local@domain`, be up to 50 characters long, and adhere to the following constraints:
+  * `local` should only contain alphanumeric characters or the characters `+`, `.`, `_` and `-`, not start or end with any special character and not contain any whitespaces.
+  * `domain` is made up of `domain labels` separated by `.`.
+    * `Domain labels` should only consist of alphanumeric characters separated only by `-` (if any) and start and end with alphanumeric characters.
+    * The last `domain label` must be at least 2 characters long.
+* `ADDRESS` must be up to 100 characters long.
+* `SUBJECT` must be an alphanumeric string.
+
+</box>
+
 Examples:
 * `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01`
 * `add n/Betsy Crowe s/math e/betsycrowe@example.com a/Newgate p/1234567 s/physics`
@@ -132,12 +148,28 @@ Edits an existing student in the contact list.
 
 Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [s/SUBJECT]…​`
 
-* Edits the student at the specified `INDEX`. The index refers to the index number shown in the displayed student list. The index **must be a positive integer** 1, 2, 3, …​
+<box type="info" seamless>
+
+**Input constraints:**<br>
+
+* `INDEX` must be a positive integer 1, 2, 3…​ shown in the displayed student list.
+* `NAME` must be an alphanumeric string with at least 1 alphabet and up to 50 characters long.
+* `PHONE_NUMBER` must be strictly digits and between 3 to 15 digits long.
+* `EMAIL` should be of the format `local@domain`, be up to 50 characters long, and adhere to the following constraints:
+    * `local` should only contain alphanumeric characters or the characters `+`, `.`, `_` and `-`, not start or end with any special character and not contain any whitespaces.
+    * `domain` is made up of `domain labels` separated by `.`.
+        * `Domain labels` should only consist of alphanumeric characters separated only by `-` (if any) and start and end with alphanumeric characters.
+        * The last `domain label` must be at least 2 characters long.
+* `ADDRESS` must be up to 100 characters long.
+* `SUBJECT` must be an alphanumeric string.
+
+</box>
+
+* Edits the student at the specified `INDEX`.
 * At least one of the optional fields must be provided.
 * Existing values will be updated to the input values.
 * When editing subjects, the existing subjects of the student will be removed i.e. adding of subjects is not cumulative.
-* You can remove all the student's subjects by typing `s/` without
-    specifying any subjects after it.
+* You can remove all the student's subjects by typing `s/` without specifying any subjects after it.
 
 Examples:
 *  `edit 1 p/91234567 e/johndoe@example.com` Edits the phone number and email address of the 1st student to be `91234567` and `johndoe@example.com` respectively.
@@ -147,7 +179,7 @@ Examples:
 
 Finds students whose names contain any of the given keywords.
 
-Format: `find KEYWORD [MORE_KEYWORDS]`
+Format: `find KEYWORD [MORE_KEYWORDS]…​`
 
 * The search is case-insensitive. e.g. `hans` will match `Hans`
 * The order of the keywords does not matter. e.g. `Hans Bo` will match `Bo Hans`
@@ -168,9 +200,15 @@ Deletes the specified student from the contact list.
 
 Format: `delete INDEX`
 
+<box type="info" seamless>
+
+**Input constraints:**<br>
+
+* `INDEX` must be a positive integer 1, 2, 3…​ shown in the displayed student list.
+
+</box>
+
 * Deletes the student at the specified `INDEX`.
-* The index refers to the index number shown in the displayed student list.
-* The index **must be a positive integer** 1, 2, 3, …​
 
 Examples:
 * `list` followed by `delete 2` deletes the 2nd student in the contact list.
@@ -182,10 +220,18 @@ Adds a date for an upcoming lesson for an existing student in the contact list.
 
 Format: `nextlesson INDEX d/DATE`
 
-* Adds the next lesson date for the student at the specified `INDEX`. The index refers to the index number shown in the displayed student list. The index **must be a positive integer** 1, 2, 3, …​
+<box type="info" seamless>
+
+**Input constraints:**<br>
+
+* `INDEX` must be a positive integer 1, 2, 3…​ shown in the displayed student list.
+* `DATE` must be in `d/M/yyyy HHmm-HHmm` format (e.g. `15/4/2025 1800-2000`).
+
+</box>
+
+* Adds the next lesson date for the student at the specified `INDEX`.
 * Existing lesson dates will be updated to the input lesson dates.
 * You can remove a student's next lesson by typing `d/` without any date after it.
-* `DATE` must be in `d/M/yyyy HHmm-HHmm` format (e.g. `15/4/2025 1800-2000`)
 
 Examples:
 *  `nextlesson 2 d/` Removes the next lesson date for the 2nd student.
@@ -213,9 +259,15 @@ Marks the specified student as PAID to indicate that payment has been made.
 
 Format: `pay INDEX`
 
+<box type="info" seamless>
+
+**Input constraints:**<br>
+
+* `INDEX` must be a positive integer 1, 2, 3…​ shown in the displayed student list.
+
+</box>
+
 * Marks the student at the specific `INDEX` as PAID to indicate that payment has been made by the student.
-* The index refers to the index number shown in the displayed student list.
-* The index **must be a positive integer** 1, 2, 3, …​
 
 Examples:
 * `find David` followed by `pay 1` marks the 1st student in the results of the `find` command.
@@ -229,9 +281,15 @@ Resets the specified student's payment status to NOT PAID, or resets payment sta
 
 Format: `unpay INDEX` or `unpay all`
 
+<box type="info" seamless>
+
+**Input constraints:**<br>
+
+* `INDEX` must be a positive integer 1, 2, 3…​ shown in the displayed student list.
+
+</box>
+
 * Resets the payment status of the student at the specified `INDEX` to NOT PAID.
-* The index refers to the index number shown in the displayed student list.
-* The index **must be a positive integer** 1, 2, 3, …​
 * Alternatively, using `unpay all` will reset the payment statuses of all students in the displayed list to NOT PAID.
 
 Examples:
@@ -245,9 +303,13 @@ Filters and shows a list of all students whose next lesson date matches the spec
 
 Format: `filter-date DATE`
 
-* The DATE must be in `d/M/yyyy` format (e.g. `15/4/2025`)
-* Shows a list of all students with lessons on the specified date
-* The index numbers shown are used to identify the students
+<box type="info" seamless>
+
+**Input constraints:**<br>
+
+* `DATE` must be in `d/M/yyyy` format (e.g. `15/4/2025`).
+
+</box>
 
 Example:
 * `filter-date 15/4/2025` filters and shows you all students whose next lesson is on `15/4/2025`.
@@ -258,7 +320,14 @@ Filters and shows a list of all students whose payment status matches the specif
 
 Format: `filter-payment STATUS`
 
-* The STATUS must be either `paid` or `unpaid` (case-insensitive)
+<box type="info" seamless>
+
+**Input constraints:**<br>
+
+* `STATUS` must be either `paid` or `unpaid` (case-insensitive).
+
+</box>
+
 * Shows a list of all students with the matching payment status
 * The index numbers shown are used to identify the students
 
@@ -271,7 +340,15 @@ Examples:
 
 Filters and shows a list of all students whose subjects contain any of the specified subjects.
 
-Format: `filter-subject SUBJECT [MORE_SUBJECTS]`
+Format: `filter-subject SUBJECT [MORE_SUBJECTS]…​`
+
+<box type="info" seamless>
+
+**Input constraints:**<br>
+
+* `SUBJECT` must be an alphanumeric string.
+
+</box>
 
 * The search is case-insensitive. e.g. `math` will match `Math`
 * Multiple subjects can be specified to find students taking any of those subjects
@@ -369,6 +446,8 @@ Furthermore, certain edits can cause TutorRec to behave in unexpected ways (e.g.
 
 1. **When using multiple screens**, if you move the application to a secondary screen, and later switch to using only the primary screen, the GUI will open off-screen. The remedy is to delete the `preferences.json` file created by the application before running the application again.
 2. **If you minimise the Help Window** and then run the `help` command (or use the `Help` menu, or the keyboard shortcut `F1`) again, the original Help Window will remain minimised, and no new Help Window will appear. The remedy is to manually restore the minimised Help Window.
+3. **When a student is selected** as shown below, the `Esc` key does not close the app as intended. The remedy is to use the `exit` command or to manually click `X` on the application's window.
+   <img src="images/selectedStudent.png" alt="selected student" width="600px" />
 
 --------------------------------------------------------------------------------------------------------------------
 
