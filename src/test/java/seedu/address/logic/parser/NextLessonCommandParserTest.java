@@ -181,6 +181,6 @@ public class NextLessonCommandParserTest {
 
         // DateTimeException -> invalid
         String invalidDateTimeInput = "1 " + PREFIX_NEXTLESSON + "30/2/2025 1900-2100";
-        assertParseFailure(parser, invalidDateTimeInput, MESSAGE_INVALID_DATE_TIME + "Invalid date 'FEBRUARY 30'");
+        assertParseFailure(parser, invalidDateTimeInput, MESSAGE_INVALID_DATE_TIME);
     }
 }
