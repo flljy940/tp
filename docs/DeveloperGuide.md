@@ -536,14 +536,14 @@ testers are expected to do more *exploratory* testing.
 
    1. Resize the window to an optimum size. Move the window to a different location. Close the window.
 
-   2. Re-launch the app by double-clicking the jar file.<br>
+   2. Re-launch the app by typing java -jar tutorrec.jar.<br>
        Expected: The most recent window size and location is retained.
 
 3. Shutting down the app
    
    1. Click the 'X' button on the window of the app or the `esc` hotkey
 
-   2. Re-launch the app by double-clicking the jar file.<br>
+   2. Re-launch the app by java -jar tutorrec.jar.<br>
        Expected: The app saves the most recent set of contacts before closing and shows the GUI with the latest set of contacts.
 
 ### Deleting a student
@@ -582,7 +582,7 @@ testers are expected to do more *exploratory* testing.
 
    1. Prerequisites: Simulate a corrupted data file by:
       1. Change directory to the working folder for `tutorrec.jar`
-      2. If the file `data/addressbook.json` is not in the working folder, launch the app by double-clicking on jar file. The app should start with the sample contact list.
+      2. If the file `data/addressbook.json` is not in the working folder, launch the app by typing java -jar tutorrec.jar. The app should start with the sample contact list.
       3. Open the `data/addressbook.json` file and delete the `name` field of the first entry.
 
    2. Launch the app by typing java -jar tutorrec.jar. The app should start with an empty contact list.
