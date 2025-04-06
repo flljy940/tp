@@ -11,6 +11,8 @@ While it features a clean and intuitive Graphical User Interface (GUI), TutorRec
 This makes it ideal for tutors who prefer speed and precision when handling tasks like tracking student contacts, subjects, payment statuses, next lessons and more.
 Whether you're managing a few students or a large tutoring roster, TutorRec helps you stay organised faster than most traditional GUI-based apps.
 
+This guide assumes basic computer literacy but no programming knowledge.
+
 Encountered terms you don't understand? Check out our [Glossary](#glossary) at the end of this document for definitions.
 
 <!-- * Table of Contents -->
@@ -98,6 +100,8 @@ Encountered terms you don't understand? Check out our [Glossary](#glossary) at t
 | **Filter PaymentStatus** | `filter-payment STATUS`<br> e.g. `filter-payment PAID`                                                                                                               |
 | **Filter Subject**       | `filter-subject SUBJECT [MORE_SUBJECTS]`<br> e.g. `filter-subject MATH`                                                                                              |
 | **Help**                 | `help`                                                                                                                                                               |
+| **Exit**                 | `exit`                                                                                                                                                               |
+
 
 ## Features
 
@@ -154,21 +158,21 @@ Format: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [s/SUBJECT]…​`
 
 **Input constraints:**<br>
 
-* `NAME` must be an alphanumeric string with at least 1 alphabet and up to 50 characters long.
-* `PHONE_NUMBER` must be strictly digits and between 3 to 15 digits long.
-* `EMAIL` should be of the format `local@domain`, be up to 50 characters long, and adhere to the following constraints:
+* `NAME` must contain letters, can include numbers, and should not exceed 50 characters.
+* `PHONE_NUMBER` must only contain numbers and be between 3 and 15 digits long.
+* `EMAIL` should be of the format `local@domain`, be at most 50 characters long, and adhere to the following constraints:
   * `local` should only contain alphanumeric characters or the characters `+`, `.`, `_` and `-`, not start or end with any special character and not contain any whitespaces.
   * `domain` is made up of `domain labels` separated by `.`.
     * `Domain labels` should only consist of alphanumeric characters separated only by `-` (if any) and start and end with alphanumeric characters.
     * The last `domain label` must be at least 2 characters long.
-* `ADDRESS` must be up to 100 characters long.
-* `SUBJECT` must be an alphanumeric string.
+* `ADDRESS` must not exceed 100 characters.
+* `SUBJECT`must contain only letters and numbers.
 
 </box>
 
 Examples:
-* `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01`
-* `add n/Betsy Crowe s/math e/betsycrowe@example.com a/Newgate p/1234567 s/physics`
+* `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01` adds a new student named John Doe without any subjects.
+* `add n/Betsy Crowe s/math e/betsycrowe@example.com a/Newgate p/1234567 s/physics` adds a new student named Betsy Crowe with math and physics subjects.
 
 ### Listing all students : `list`
 
@@ -187,21 +191,21 @@ Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [s/SUBJECT]…​`
 **Input constraints:**<br>
 
 * `INDEX` must be a positive integer 1, 2, 3…​ shown in the displayed student list.
-* `NAME` must be an alphanumeric string with at least 1 alphabet and up to 50 characters long.
-* `PHONE_NUMBER` must be strictly digits and between 3 to 15 digits long.
-* `EMAIL` should be of the format `local@domain`, be up to 50 characters long, and adhere to the following constraints:
+* `NAME` must contain letters, can include numbers, and should not exceed 50 characters.
+* `PHONE_NUMBER` must only contain numbers and be between 3 and 15 digits long.
+* `EMAIL` should be of the format `local@domain`, be at most 50 characters long, and adhere to the following constraints:
     * `local` should only contain alphanumeric characters or the characters `+`, `.`, `_` and `-`, not start or end with any special character and not contain any whitespaces.
     * `domain` is made up of `domain labels` separated by `.`.
         * `Domain labels` should only consist of alphanumeric characters separated only by `-` (if any) and start and end with alphanumeric characters.
         * The last `domain label` must be at least 2 characters long.
-* `ADDRESS` must be up to 100 characters long.
-* `SUBJECT` must be an alphanumeric string.
+* `ADDRESS` must not exceed 100 characters.
+* `SUBJECT`must contain only letters and numbers.
 
 </box>
 
 * Edits the student at the specified `INDEX`.
 * At least one of the optional fields must be provided.
-* Existing values will be updated to the input values.
+* Existing values will be replaced with the new values.
 * When editing subjects, the existing subjects of the student will be removed i.e. adding of subjects is not cumulative.
 * You can remove all the student's subjects by typing `s/` without specifying any subjects after it.
 
@@ -223,8 +227,8 @@ Format: `find KEYWORD [MORE_KEYWORDS]…​`
   e.g. `Hans Bo` will return `Hans Gruber`, `Bo Yang`
 
 Examples:
-* `find John` returns `john` and `John Doe`
-* `find alex david` returns `Alex Yeoh`, `David Li`<br>
+* `find John` finds all students with 'John' in their name (e.g. `john` and `John Doe`)
+* `find alex david` finds all students with either 'Alex' or 'David' in their name (e.g. `Alex Yeoh`, `David Li`)<br>
 
 <img src="images/findAlexDavidResult.png" alt="result for 'find alex david'" width="600px" style="margin-bottom: 10px;margin-top: 10px" /><br>
 
@@ -333,7 +337,7 @@ Examples:
 
 ### Filtering students by lesson date : `filter-date`
 
-Filters and shows a list of all students whose next lesson date matches the specified date.
+Filters and shows a list of students with the specified lesson date.
 
 Format: `filter-date DATE`
 
@@ -350,7 +354,7 @@ Example:
 
 ### Filtering students by payment status : `filter-payment`
 
-Filters and shows a list of all students whose payment status matches the specified status.
+Filters and shows a list of students who have the specified payment status.
 
 Format: `filter-payment STATUS`
 
@@ -380,7 +384,7 @@ Format: `filter-subject SUBJECT [MORE_SUBJECTS]…​`
 
 **Input constraints:**<br>
 
-* `SUBJECT` must be an alphanumeric string.
+* `SUBJECT`must contain only letters and numbers.
 
 </box>
 
@@ -488,11 +492,14 @@ Furthermore, certain edits can cause TutorRec to behave in unexpected ways (e.g.
 
 ## Glossary
 
+**Alphanumeric**: A combination of letters (A-Z, a-z) and numbers (0-9).
 **CLI (Command Line Interface)**: The text-based system where you type commands to tell the application what to do.
 **Case-insensitive**: The app doesn't care whether you use UPPERCASE or lowercase letters in commands (e.g. "Math" and "math" are treated the same).
-**Command Box**: The text field at the bottom of the application where you type commands.
+**Command box**: The text field at the bottom of the application where you type commands.
+**Command Prompt/Terminal**: A program on your computer that lets you type commands directly to the operating system.
 **Data file**: A special file on your computer that stores all your student information in a structured format.
 **Desktop application**: A program that runs directly on your computer (not on a website).
+**Domain** (in email context): The part of an email address after the @ symbol (e.g. gmail.com, hotmail.com).
 **Extraneous parameters**: Extra information added to a command that isn't needed and will be ignored.
 **GUI (Graphical User Interface)**: The visual elements of the application that you can see and interact with.
 **Hard disk**: Your computer's permanent storage where files are saved.
@@ -501,4 +508,3 @@ Furthermore, certain edits can cause TutorRec to behave in unexpected ways (e.g.
 **JSON file**: A special format for storing data that computers can easily read and write (stands for JavaScript Object Notation).
 **Parameters**: The specific pieces of information you add to commands (like names, phone numbers, etc.).
 **Preferences**: Settings that control how the application appears and behaves.
-**Terminal/Command Prompt**: A program on your computer that lets you type commands directly to the operating system.
