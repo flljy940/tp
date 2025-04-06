@@ -27,6 +27,9 @@ public class AddressTest {
         // invalid addresses
         assertFalse(Address.isValidAddress("")); // empty string
         assertFalse(Address.isValidAddress(" ")); // spaces only
+        assertFalse(Address.isValidAddress("LengLengLengLengLengLengLengLengLengLengLeng Inc; "
+                + "1234 Market St; San Francisco CA 2349879; USAUSAUSAUSAUSAUSAUSAUSA")); // address too long
+
 
         // valid addresses
         assertTrue(Address.isValidAddress("Blk 456, Den Road, #01-355"));
