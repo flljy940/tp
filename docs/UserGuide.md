@@ -83,6 +83,10 @@ Whether you're managing a few students or a large tutoring roster, TutorRec help
 * Parameters can be in any order.<br>
   e.g. if the command specifies `n/NAME p/PHONE_NUMBER`, `p/PHONE_NUMBER n/NAME` will be interpreted as the same command.
 
+* **All prefixes and commands used are case-sensitive**.<br>
+  e.g. if the command specifies `n/NAME p/PHONE_NUMBER`, `N/NAME P/PHONE_NUMBER` is not acceptable.<br>
+  e.g. if the command specifies `edit INDEX s/SUBJECT`, `EDIT 1 S/SUBJECT` is not acceptable.
+
 * Date format for next lesson must be in `d/M/yyyy HHmm-HHmm` with the time in 24-hour format.<br>
   e.g. `nextlesson 3 d/15/4/2025 1800-2000`
 
