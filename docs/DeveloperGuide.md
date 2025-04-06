@@ -504,7 +504,6 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 * **Mainstream OS**: Windows, Linux, Unix, MacOS
 * **Standard Machine**: A machine with minimally 8GB RAM and an SSD.
-* **Private contact detail**: A contact detail that is not meant to be shared with others
 
 
 <div style="page-break-after: always;"></div>
@@ -527,8 +526,10 @@ testers are expected to do more *exploratory* testing.
 1. Initial launch
 
    1. Download the jar file and copy into an empty folder
+   
+   2. Make sure you have Java 17 or above installed in your computer
 
-   2. Double-click the jar file 
+   3. Open your terminal, cd into the folder you placed the jar file. Type java -jar tutorrec.jar and press enter.
        Expected: Shows the GUI with a set of sample contacts. The window size may not be optimum.
 
 2. Saving window preferences
@@ -584,7 +585,7 @@ testers are expected to do more *exploratory* testing.
       2. If the file `data/addressbook.json` is not in the working folder, launch the app by double-clicking on jar file. The app should start with the sample contact list.
       3. Open the `data/addressbook.json` file and delete the `name` field of the first entry.
 
-   2. Launch the app by double-clicking on jar file. The app should start with an empty contact list.
+   2. Launch the app by typing java -jar tutorrec.jar. The app should start with an empty contact list.
 
 2. Dealing with missing data files
 
@@ -592,4 +593,13 @@ testers are expected to do more *exploratory* testing.
       1. Change directory to the working folder for `tutorrec.jar`
       2. If the file `data/addressbook.json` exists in the working folder, delete the `data/addressbook.json` file
       
-   2. Launch the app by double-clicking ont he jar file. The app should start with the sample contact list.
+   2. Launch the app by typing java -jar tutorrec.jar. The app should start with the sample contact list.
+
+<div style="page-break-after: always;"></div>
+
+--------------------------------------------------------------------------------------------------------------------
+
+## **Appendix: Planned Enhancements**
+
+1. **Allowing NextLesson to span over more than one day**
+    Currently, our NextLesson feature requires the next lesson to start and end on the same day. However, tutors may hold longer tuition workshops that span over a few days or that end past midnight. We plan to allow for that in the future.
