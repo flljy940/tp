@@ -46,7 +46,7 @@ Encountered terms you don't understand? Check out our [Glossary](#glossary) at t
 
 4. **Start TutorRec**
    * **Windows users**: Simply double-click the `.jar` file.
-   * **If double-clicking doesn't work**: Open Command Prompt (search for "cmd" in Start menu), navigate to your folder with `cd path\to\your\folder`, then type `java -jar tutorrec.jar` and press Enter.
+   * **If double-clicking doesn't work**: Open Command Prompt, navigate to your folder with `cd path\to\your\folder`, then type `java -jar tutorrec.jar` and press Enter.
    * **Mac/Linux users**: Open Terminal, navigate to your folder with `cd path/to/your/folder`, then type `java -jar tutorrec.jar` and press Enter.
    * Not sure how to open your Command Prompt/Terminal? Follow these simple guides based on your system:
      * [**Windows Tutorial**](https://learn.microsoft.com/en-us/windows/terminal/faq)
