@@ -4,6 +4,7 @@ import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseFailure;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseSuccess;
 import static seedu.address.logic.parser.FilterDateCommandParser.MESSAGE_INVALID_DATE;
+import static seedu.address.logic.parser.FilterDateCommandParser.MESSAGE_INVALID_FORMAT;
 import static seedu.address.logic.parser.FilterDateCommandParser.MESSAGE_INVALID_PAST_DATE;
 
 import java.time.LocalDate;
@@ -60,16 +61,21 @@ public class FilterDateCommandParserTest {
     @Test
     public void parse_invalidDateFormat_throwsParseException() {
         // invalid format
-        assertParseFailure(parser, "15-04-2025", MESSAGE_INVALID_DATE);
+        assertParseFailure(parser, "15-04-2026", MESSAGE_INVALID_FORMAT);
 
-        // invalid day
-        assertParseFailure(parser, "0/4/2025", MESSAGE_INVALID_DATE);
-
-        // invalid month
-        assertParseFailure(parser, "15/14/2025", MESSAGE_INVALID_DATE);
-
-        // invalid year
-        assertParseFailure(parser, "15/4/202", MESSAGE_INVALID_DATE);
+        // invalid year format
+        assertParseFailure(parser, "15/4/26", MESSAGE_INVALID_FORMAT);
     }
 
+    @Test
+    public void parse_invalidDate_throwsParseException() {
+        // invalid day
+        assertParseFailure(parser, "31/2/2026", MESSAGE_INVALID_DATE);
+
+        // invalid month
+        assertParseFailure(parser, "15/14/2026", MESSAGE_INVALID_DATE);
+
+        // edge case - non-leap year 29 Feb
+        assertParseFailure(parser, "29/2/2026", MESSAGE_INVALID_DATE);
+    }
 }

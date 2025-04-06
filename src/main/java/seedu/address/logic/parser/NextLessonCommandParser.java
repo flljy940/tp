@@ -22,11 +22,11 @@ import seedu.address.model.person.NextLesson;
 public class NextLessonCommandParser implements Parser<NextLessonCommand> {
 
     public static final String MESSAGE_CONSTRAINTS =
-            "Invalid date format. Expected: 'd/M/yyyy HHmm-HHmm' (e.g., 15/4/2025 0900-1100)";
+            "Invalid date or time format. Expected: 'd/M/yyyy HHmm-HHmm' (e.g., 15/4/2025 0900-1100)";
     public static final String MESSAGE_INVALID_TIME =
             "Time must be between 00:00 and 23:59.";
-    public static final String MESSAGE_INVALID_DATE_TIME = "Invalid date or time: ";
-    public static final String MESSAGE_INVALID_NUMERIC = "Invalid next lesson: ";
+    public static final String MESSAGE_INVALID_DATE_TIME =
+            "Invalid date or time entered. Please ensure you have entered a valid date or time.";
     public static final String MESSAGE_INVALID_START_BEFORE_END = "Start time must be before end time.";
     public static final String MESSAGE_INVALID_START_END_TIME = "Start and end time cannot be the same.";
     public static final String MESSAGE_INVALID_PAST_LESSON = "Lesson cannot be in the past.";
@@ -118,9 +118,10 @@ public class NextLessonCommandParser implements Parser<NextLessonCommand> {
 
             return new NextLesson(date, startTime, endTime);
         } catch (NumberFormatException e) {
-            throw new ParseException(MESSAGE_INVALID_NUMERIC + dateTimeString, e);
+            throw new ParseException(
+                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, NextLessonCommand.MESSAGE_USAGE), e);
         } catch (DateTimeException e) {
-            throw new ParseException(MESSAGE_INVALID_DATE_TIME + e.getMessage(), e);
+            throw new ParseException(MESSAGE_INVALID_DATE_TIME, e);
         }
     }
 }
