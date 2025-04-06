@@ -225,7 +225,7 @@ Format: `nextlesson INDEX d/DATE`
 **Input constraints:**<br>
 
 * `INDEX` must be a positive integer 1, 2, 3…​ shown in the displayed student list.
-* `DATE` must be in `d/M/yyyy HHmm-HHmm` format (e.g. `15/4/2025 1800-2000`)
+* `DATE` must be in `d/M/yyyy HHmm-HHmm` format (e.g. `15/4/2025 1800-2000`).
 
 </box>
 
@@ -307,7 +307,7 @@ Format: `filter-date DATE`
 
 **Input constraints:**<br>
 
-* `DATE` must be in `d/M/yyyy` format (e.g. `15/4/2025`)
+* `DATE` must be in `d/M/yyyy` format (e.g. `15/4/2025`).
 
 </box>
 
@@ -324,7 +324,7 @@ Format: `filter-payment STATUS`
 
 **Input constraints:**<br>
 
-* `STATUS` must be either `paid` or `unpaid` (case-insensitive)
+* `STATUS` must be either `paid` or `unpaid` (case-insensitive).
 
 </box>
 
