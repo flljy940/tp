@@ -16,8 +16,10 @@ import seedu.address.model.person.NextLessonEqualsDatePredicate;
  */
 public class FilterDateCommandParser implements Parser<FilterDateCommand> {
 
-    public static final String MESSAGE_INVALID_DATE = "Invalid date format. Expected: 'd/M/yyyy' (e.g., 15/4/2025)";
-    public static final String MESSAGE_INVALID_PAST_DATE = "Invalid date specified. Filter date cannot be in the past.";
+    public static final String MESSAGE_INVALID_FORMAT = "Invalid date format. Expected: 'd/M/yyyy' (e.g., 15/4/2025)";
+    public static final String MESSAGE_INVALID_DATE =
+            "Invalid date entered. Please ensure you have entered a valid date.";
+    public static final String MESSAGE_INVALID_PAST_DATE = "Filter date cannot be in the past.";
     private static final String DATE_REGEX = "(\\d{1,2})/(\\d{1,2})/(\\d{4})";
     private static final LocalDate CURRENT_DATE = LocalDate.now();
 
@@ -41,7 +43,7 @@ public class FilterDateCommandParser implements Parser<FilterDateCommand> {
         Matcher dateMatcher = datePattern.matcher(dateString);
 
         if (!dateMatcher.matches()) {
-            throw new ParseException(MESSAGE_INVALID_DATE);
+            throw new ParseException(MESSAGE_INVALID_FORMAT);
         }
 
         try {
