@@ -20,38 +20,46 @@ Whether you're managing a few students or a large tutoring roster, TutorRec help
 
 ## Quick start
 
-1. Ensure you have Java `17` or above installed in your Computer.<br>
-   **Mac users:** Ensure you have the precise JDK version prescribed [here](https://se-education.org/guides/tutorials/javaInstallationMac.html).
+1. **Set up Java**
+   * Ensure you have Java `17` or above installed on your computer.
+   * Not sure how? Follow these simple guides based on your system:
+     * [**Windows Setup Guide**](https://se-education.org/guides/tutorials/javaInstallationWindows.html)
+     * [**Mac Setup Guide**](https://se-education.org/guides/tutorials/javaInstallationMac.html)
+     * [**Linux Setup Guide**](https://se-education.org/guides/tutorials/javaInstallationLinux.html)
 
-2. Download the latest `.jar` file from [here](https://github.com/AY2425S2-CS2103T-T16-4/tp/releases).
+2. **Download TutorRec**
+   * Get the latest version [here](https://github.com/AY2425S2-CS2103T-T16-4/tp/releases).
+   * Look for the file named `tutorrec.jar` under the latest release.
+   * Click on it to download.
 
-3. Copy the file to the folder you want to use as the _home folder_ for TutorRec.
+3. **Install the application**
+   * Create a new empty folder, where you want to keep the TutorRec application.
+   * Copy the downloaded `.jar` file into this folder.
 
-4. Open a command terminal, `cd` into the folder you put the jar file in, and use the `java -jar tutorrec.jar` command to run the application.<br>
-   A GUI similar to the below should appear in a few seconds. Note how the app contains some sample data.<br>
+4. **Start TutorRec**
+   * **Windows users**: Simply double-click the `.jar` file.
+   * **If double-clicking doesn't work**: Open Command Prompt (search for "cmd" in Start menu), navigate to your folder with `cd path\to\your\folder`, then type `java -jar tutorrec.jar` and press Enter.
+   * **Mac/Linux users**: Open Terminal, navigate to your folder with `cd path/to/your/folder`, then type `java -jar tutorrec.jar` and press Enter.
+   * You should see the TutorRec application window appear with some sample data:
    
-    <img src="images/Ui.png" alt="Ui" width="600px" />
+    <img src="images/Ui.png" alt="TutorRec main screen" width="600px" />
 
-5. Type the command in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will open the help window.<br>
-   Some example commands you can try:
+5. **Familiarise yourself with the interface**
+   * Here are some basic commands to get you started, which you can type in the command box as shown below:
 
-   * `list` : Lists all students.
+    <img src="images/commandBox.png" alt="command box" width="600px" />
 
-   * `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01` : Adds a student named `John Doe` to the contact list.
+   * `list` → Shows all your students
+   * `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01` → Adds a new student
+   * `pay 1` → Marks the first student as PAID
+   * `nextlesson 1 d/15/4/2025 0900-1030` → Sets the next lesson for first student
+   * `exit` → Closes the application (your data is automatically saved)
+6. **Need help?** Type `help` in the application itself, or press F1 to view the complete user guide.
 
-   * `delete 3` : Deletes the 3rd student shown in the current contact list.
+<box type="tip" seamless>
 
-   * `unpay all` : Resets all students to NOT PAID to indicate that payment has not been made by all students.
-
-   * `nextlesson 3 d/15/4/2025 0900-1030` : Adds the next lesson date for the 3rd student as 15/4/2025 0900-1030.
-
-   * `filter-subject math physics` : Shows all students taking math or physics, or both.
-
-   * `clear` : Deletes all students.
-
-   * `exit` : Exits the app.
-
-6. Refer to the [Features](#features) below for details of each command.
+**Tip:** TutorRec will tell you if your command fails to be executed properly in the blank area right below the command box.
+</box>
 
 <div style="page-break-after: always;"></div>
 
@@ -66,16 +74,16 @@ Whether you're managing a few students or a large tutoring roster, TutorRec help
 * Words in `UPPER_CASE` are the parameters to be supplied by the user.<br>
   e.g. in `add n/NAME`, `NAME` is a parameter which can be used as `add n/John Doe`.
 
-* Items in square brackets are optional.<br>
+* Items in **square** brackets are **optional**.<br>
   e.g. `n/NAME [s/SUBJECT]` can be used as `n/John Doe s/math` or as `n/John Doe`.
 
 * Items with `…`​ after them can be used multiple times including zero times.<br>
   e.g. `[s/SUBJECT]…​` can be used as ` ` (i.e. 0 times), `s/math`, `s/math s/chemistry` etc.
 
 * Parameters can be in any order.<br>
-  e.g. if the command specifies `n/NAME p/PHONE_NUMBER`, `p/PHONE_NUMBER n/NAME`
+  e.g. if the command specifies `n/NAME p/PHONE_NUMBER`, `p/PHONE_NUMBER n/NAME` will be interpreted as the same command.
 
-* Date format for next lesson must be in `d/M/yyyy HHmm-HHmm` format. <br>
+* Date format for next lesson must be in `d/M/yyyy HHmm-HHmm` with the time in 24-hour format.<br>
   e.g. `nextlesson 3 d/15/4/2025 1800-2000`
 
 * Extraneous parameters for commands that do not take in parameters (such as `help`, `list`, `exit` and `clear`) will be ignored.<br>
@@ -185,6 +193,12 @@ Examples:
 
 <img src="images/nextlessonResult.png" alt="result for 'next lesson'" width="600px" />
 
+<box type="warning" seamless>
+
+**Caution:**
+As TutorRec allows group tuition, it will not automatically check for lesson time clashes. Please ensure that you do not schedule overlapping lessons! Consider using the `sort` command after adding lessons to see your schedule in chronological order, which can help identify potential conflicts.
+</box>
+
 ### Sorting of all students by lesson date : `sort`
 
 Sorts the list of students by their next lesson date and time, with the earliest lesson shown first.
@@ -292,17 +306,27 @@ Format: `exit`
 **Tip:** Escape key can be used to exit the program. All changes are saved automatically.
 </box>
 
+### Understanding Your Data Files
+
+<box type="info" seamless>
+
+TutorRec stores your information in data files that are automatically managed for you:
+
+* **What is a data file?** Think of it as a special document on your computer that contains all your student records in a structured format.
+* **Where is my data stored?** Your data is saved in a folder called `data` in the same folder as the TutorRec application. This folder contains two files:
+  * `[JAR file location]/data/addressbook.json`: This file stores all your student records, including their names, phone numbers, email addresses, and next lesson dates.
+  * `[JAR file location]/preferences.json`: This file stores your preferences for the application, such as the size and position of the application window.
+</box>
+
 ### Saving the data
 
-TutorRec data will be saved in the hard disk automatically after any command that changes the data. There is no need to save manually.
+TutorRec data will be saved in the hard disk (specifically in `addressbook.json`) automatically after any command that changes the data. There is no need to save manually.
 
 ### Editing the data file
 
-TutorRec data is saved automatically as a JSON file `[JAR file location]/data/addressbook.json` and `[JAR file location]/preferences.json`.
+TutorRec data is saved automatically as a JSON data file `[JAR file location]/data/addressbook.json` and `[JAR file location]/preferences.json`.
 
-* `[JAR file location]/data/addressbook.json` stores data related to `student`.
-* `[JAR file location]/preferences.json` stores data related to position and the size of the program.
-
+Most users won't need to edit this file directly as these settings are automatically saved when you use the application.
 Advanced users are welcome to update data directly by editing that data file.
 
 
@@ -326,7 +350,12 @@ Furthermore, certain edits can cause TutorRec to behave in unexpected ways (e.g.
 **A**: TutorRec is designed as a desktop application for individual use. Using the same data file across multiple devices simultaneously may cause data conflicts or corruption.
 
 **Q**: How do I back up my data?<br>
-**A**: You can create a backup by simply copying the `data/addressbook.json` file from your TutorRec home folder to another location periodically.
+**A**: Follow these simple steps to create a backup:
+
+1. Locate your TutorRec folder (where you placed the app)
+2. Inside it, find the `data` folder
+3. Copy the `addressbook.json` file to another location (like a USB drive or cloud storage)
+4. To restore a backup, simply replace the current existing file with your backed-up copy
 
 **Q**: What should I do if the application cannot start?<br>
 **A**: Ensure you have Java 17 or above installed correctly. If the issue persists, try deleting the `[JAR file location]/preferences.json` file and restarting the application.
