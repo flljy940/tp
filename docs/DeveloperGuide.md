@@ -166,7 +166,7 @@ The `Model` component,
 
 <box type="info" seamless>
 
-**Note:** An alternative (arguably, a more OOP) model is given below. It has a `Tag` list in the `AddressBook`, which `Person` references. This allows `AddressBook` to only require one `Tag` object per unique tag, instead of each `Person` needing their own `Tag` objects.<br>
+**Note:** An alternative (arguably, a more OOP) model is given below. It has a `Subject` list in the `AddressBook`, which `Person` references. This allows `AddressBook` to only require one `Subject` object per unique subject, instead of each `Person` needing their own `Subject` objects.<br>
 
 <puml src="diagrams/BetterModelClassDiagram.puml" width="450" />
 
@@ -376,11 +376,13 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 **MSS**
 1.  User requests to add student and their details.
 2.  TutorRec adds the student with the supplied contact details.
+
     Use case ends.
 
 **Extensions**
 * 1a. The user supplies invalid input parameter(s).
   * 1a1. TutorRec shows an error message for the relevant parameters.
+  
     Use case resumes at step 1.
     
 **Use case U2: Delete a student from the contact list**
@@ -390,13 +392,16 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 2.  TutorRec shows a list of students.
 3.  User requests to delete a specific student in the list.
 4.  TutorRec deletes the student.
+
     Use case ends.
 
 **Extensions**
 * 2a. The student list is empty.
+
   Use case ends.
 * 3a. The index supplied by the user is invalid.
     * 3a1. TutorRec shows an error message.
+  
       Use case resumes at step 2.
 
 **Use case U3: Edit a student's details in the contact list**
@@ -406,16 +411,20 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 2.  TutorRec shows a list of students.
 3.  User requests to edit a specific student's details in the list.
 4.  TutorRec edits the student's details.
+
     Use case ends.
 
 **Extensions**
 * 2a. The student list is empty.
+
   Use case ends.
 * 3a. The index supplied by the user is invalid.
   * 3a1. TutorRec shows an error message.
+  
     Use case resumes at step 2.
 * 3b. The user supplies invalid input parameter(s).
   * 3b1. TutorRec shows an error message for the relevant parameters.
+  
     Use case resumes at step 2.
 
 **Use case U4: Mark and unmark student payments**
@@ -429,9 +438,11 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **Extensions**
 * 2a. The student list is empty.
+
   Use case ends.
 * 3a. The index supplied by the user is invalid.
     * 3a1. TutorRec shows an error message.
+  
       Use case resumes at step 2.
 
 **Use case U5: Add next lesson date and time to a student**
@@ -441,16 +452,20 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 2.  TutorRec shows a list of students.
 3.  User requests to add a next lesson date and time for a specific student in the list.
 4.  TutorRec adds specified next lesson date and time to the student.
+
     Use case ends.
 
 **Extensions**
 * 2a. The student list is empty.
+
   Use case ends.
 * 3a. The index supplied by the user is invalid.
     * 3a1. TutorRec shows an error message.
+  
       Use case resumes at step 2.
 * 3b. The date or time supplied by the user is invalid or before the current time and date.
     * 3b1. TutorRec shows an error message.
+  
       Use case resumes at step 2.
 
 **Use case U6: Sort by next lesson date and time**
@@ -460,10 +475,12 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 2.  TutorRec shows a list of students.
 3.  User requests to see students in chronological order of their next lesson date and time.
 4.  TutorRec shows the list of students sorted in chronological order of their next lesson date and time.
+
     Use case ends.
 
 **Extensions**
 * 2a. The student list is empty.
+
   Use case ends.
 
 **Use case U7: Filter students with a lesson on a specified date**
@@ -473,13 +490,16 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 2.  TutorRec shows a list of students.
 3.  User requests to show students who have a lesson on a specified date.
 4.  TutorRec shows a list of students with a lesson on the specified date.
+
     Use case ends.
 
 **Extensions**
 * 2a. The student list is empty.
+
   Use case ends.
 * 3a. The date or time supplied by the user is invalid or before the current time and date.
     * 3a1. TutorRec shows an error message.
+  
       Use case resumes at step 2.
 
 **Use case U8: Filter students who have paid for the previous lesson**
@@ -489,10 +509,12 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 2.  TutorRec shows a list of students.
 3.  User requests to show students who have paid for the previous lesson.
 4.  TutorRec shows a list of students who have paid for the previous lesson.
+
     Use case ends.
 
 **Extensions**
 * 2a. The student list is empty.
+
   Use case ends.
 
 **Use case U9: Filter students who have not paid for the previous lesson**
@@ -502,6 +524,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 2.  TutorRec shows a list of students.
 3.  User requests to show students who have not paid for the previous lesson.
 4.  TutorRec shows a list of students who have not paid for the previous lesson.
+
     Use case ends.
 
 **Extensions**
@@ -515,13 +538,16 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 2.  TutorRec shows a list of students.
 3.  User requests to show students who are taking the specified subject(s).
 4.  TutorRec shows a list of students taking these subject(s).
+
     Use case ends.
 
 **Extensions**
 * 2a. The student list is empty.
+
   Use case ends.
 * 3a. The subject(s) provided by the user is invalid.
     * 3a1. TutorRec shows an error message.
+  
       Use case resumes at step 2.
 
 
@@ -569,53 +595,62 @@ testers are expected to do more *exploratory* testing.
    1. Download the jar file and copy into an empty folder.
    2. Make sure you have Java 17 or above installed in your computer.
    3. Open your terminal, cd into the folder you placed the jar file, then type `java -jar tutorrec.jar` and press enter.
-       Expected: Shows the GUI with a set of sample contacts. The window size may not be optimum.
+       
+      Expected: Shows the GUI with a set of sample contacts. The window size may not be optimum.<br>
 
 2. Saving window preferences
    1. Resize the window to an optimum size. Move the window to a different location. Close the window.
    2. Re-launch the app by typing `java -jar tutorrec.jar`.<br>
-       Expected: The most recent window size and location is retained.
+   
+      Expected: The most recent window size and location is retained.<br>
 
 3. Shutting down the app
    1. Click the 'X' button on the window of the app or the `esc` hotkey.
    2. Re-launch the app by `java -jar tutorrec.jar`.<br>
-       Expected: The app saves the most recent set of contacts before closing and shows the GUI with the latest set of contacts.
+       
+      Expected: The app saves the most recent set of contacts before closing and shows the GUI with the latest set of contacts.<br>
 
 ### Deleting a student
 
 1. Deleting a student while all student are being shown
    1. Prerequisites: List all students using the `list` command. Multiple students in the list.
    2. Test case: `delete 1`.<br>
-      Expected: First contact is deleted from the list. Details of the deleted contact shown in the status message. Timestamp in the status bar is updated.
+      
+      Expected: First contact is deleted from the list. Details of the deleted contact shown in the status message. Timestamp in the status bar is updated.<br>
    3. Test case: `delete 0`.<br>
-      Expected: No student is deleted. Error details shown in the status message. Status bar remains the same.
+      
+      Expected: No student is deleted. Error details shown in the status message. Status bar remains the same.<br>
    4. Other incorrect delete commands to try: `delete`, `delete x`, `...` (where x is larger than the list size).<br>
-      Expected: Similar to previous.
+      
+      Expected: Similar to previous.<br>
 
 2. Deleting a student while the list is filtered with students shown
    1. Prerequisites: Filter students using a filter condition of your choice (eg. `filter-payment unpaid` command to filter students with `Not Paid` payment status).
    2. Test case: `delete 1`.<br>
-      Expected: First contact is deleted from the list of filtered students. Details of the deleted contact shown in the status message. Timestamp in the status bar is updated.
+   
+      Expected: First contact is deleted from the list of filtered students. Details of the deleted contact shown in the status message. Timestamp in the status bar is updated.<br>
    3. Test case: `delete 0`.<br>
-      Expected: No students is deleted. Error details shown in the status message. Status bar remains the same.
+      
+      Expected: No students is deleted. Error details shown in the status message. Status bar remains the same.<br>
    4. Other incorrect delete commands to try: `delete`, `delete x`, `...` (where x is larger than the filtered list size).<br>
-      Expected: Similar to previous.
-   5. `list` after deleting student(s) from the filtered list should show the full list of students in the original unfiltered list excluding the deleted student(s).
+      
+      Expected: Similar to previous.<br>
+   5. `list` after deleting student(s) from the filtered list should show the full list of students in the original unfiltered list excluding the deleted student(s).<br>
 
 ### Saving data
 
 1. Dealing with corrupted data files
    1. Prerequisites: Simulate a corrupted data file by:
-      1. Change directory to the working folder for `tutorrec.jar`.
-      2. If the file `data/addressbook.json` is not in the working folder, launch the app by typing `java -jar tutorrec.jar`. The app should start with the sample contact list.
-      3. Open the `data/addressbook.json` file and delete the `name` field of the first entry.
-   2. Launch the app by typing `java -jar tutorrec.jar`. The app should start with an empty contact list.
+      * Change directory to the working folder for `tutorrec.jar`.
+      * If the file `data/addressbook.json` is not in the working folder, launch the app by typing `java -jar tutorrec.jar`. The app should start with the sample contact list.
+      * Open the `data/addressbook.json` file and delete the `name` field of the first entry.
+   2. Launch the app by typing `java -jar tutorrec.jar`. The app should start with an empty contact list.<br>
 
 2. Dealing with missing data files
    1. Prerequisites: Simulate a missing data file by:
-      1. Change directory to the working folder for `tutorrec.jar`.
-      2. If the file `data/addressbook.json` exists in the working folder, delete the `data/addressbook.json` file.
-   2. Launch the app by typing `java -jar tutorrec.jar`. The app should start with the sample contact list.
+      * Change directory to the working folder for `tutorrec.jar`.
+      * If the file `data/addressbook.json` exists in the working folder, delete the `data/addressbook.json` file.
+   2. Launch the app by typing `java -jar tutorrec.jar`. The app should start with the sample contact list.<br>
 
 <div style="page-break-after: always;"></div>
 
@@ -630,7 +665,7 @@ testers are expected to do more *exploratory* testing.
 
 2. **Improving parameter input flexibility**<br>
     Currently, our input validation for names and addresses enforces strict formatting rules. We plan to enhance this by: 
-   * Allowing special characters (e.g., '/', '.', '-', etc.) in names and addresses
+   * Allowing special characters (e.g. `/`, `.`, `-`, etc.) in names and addresses
    * Implementing intelligent duplicate detection that ignores whitespace differences (e.g. recognising 'Alex Yeoh' and 'Alex&nbsp;&nbsp;&nbsp;Yeoh' as duplicates).<br>
 
     These improvements will give tutors more flexibility when recording student names and addresses, as well as to prevent accidental duplicate entries.
