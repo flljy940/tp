@@ -25,7 +25,7 @@ This project is based on the AddressBook-Level3 project created by the [SE-EDU i
 
 * **[JavaFX](https://openjfx.io/)**: for building the custom graphical user interface (GUI).
 
-* **[Jackson](https://github.com/FasterXML/jackson)**: for JSON serialization and deserialization.
+* **[Jackson](https://github.com/FasterXML/jackson)**: for JSON serialisation and deserialisation.
 
 * **[JUnit 5](https://github.com/junit-team/junit5)**: for unit testing.
 
@@ -37,7 +37,7 @@ This project is based on the AddressBook-Level3 project created by the [SE-EDU i
 
 * **[MarkBind](https://markbind.org/)**: for generating developer and user documentation.
 
-* **[PlantUML](https://plantuml.com/)**: for creating UML diagrams to visualize software design and workflows.
+* **[PlantUML](https://plantuml.com/)**: for creating UML diagrams to visualise software design and workflows.
 
 --------------------------------------------------------------------------------------------------------------------
 
