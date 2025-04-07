@@ -626,5 +626,5 @@ testers are expected to do more *exploratory* testing.
 1. **Allowing NextLesson to span over more than one day**
     Currently, our NextLesson feature requires the next lesson to start and end on the same day. However, tutors may hold longer tuition workshops that span multiple days or end past midnight. We plan to allow for that in the future.
 
-2. **Improving student name input flexibility**
-    Currently, our name input validation enforces strict formatting rules. We plan to enhance this by allowing special characters (e.g. '/', '.', '-', etc.)  in names and implementing intelligent duplicate detection that ignores differences in whitespace (e.g. 'Alex Yeoh' and 'Alex   Yeoh' would be recognised as duplicates with this feature). This will help tutors record more flexible names and prevent accidental duplicate entries.
+2. **Improving input flexibility**
+Currently, our input validation for names and addresses enforces strict formatting rules. We plan to enhance this by: (1) allowing special characters (e.g., '/', '.', '-', etc.) in names, and (2) implementing intelligent duplicate detection that ignores whitespace differences (e.g. recognising 'Alex Yeoh' and 'Alex   Yeoh' as duplicates). These improvements will give tutors more flexibility when recording student names and addresses, as well as to prevent accidental duplicate entries.
