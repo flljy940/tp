@@ -400,7 +400,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     * 3a1. TutorRec shows an error message.
       Use case resumes at step 2.
 
-**Use case U3: Edit a student's details in the contact list**
+**Use Case U3: Edit a student's details in the contact list**
 
 **MSS**
 1.  User requests to list students.
