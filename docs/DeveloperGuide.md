@@ -316,7 +316,7 @@ The following activity diagram summarizes what happens when a user executes a ne
 * prefers typing to mouse interactions
 * is reasonably comfortable using CLI apps
 
-**Value proposition**: Provides quick lookup for student address, contact number, whether last payment 
+**Value proposition**: Provides quick lookup for student address, contact number, whether last payment
 has been made, next lesson date and time, and subjects covered with student
 
 
@@ -526,7 +526,7 @@ testers are expected to do more *exploratory* testing.
 1. Initial launch
 
    1. Download the jar file and copy into an empty folder
-   
+
    2. Make sure you have Java 17 or above installed in your computer
 
    3. Open your terminal, cd into the folder you placed the jar file, then type java -jar tutorrec.jar and press enter
@@ -540,7 +540,7 @@ testers are expected to do more *exploratory* testing.
        Expected: The most recent window size and location is retained.
 
 3. Shutting down the app
-   
+
    1. Click the 'X' button on the window of the app or the `esc` hotkey
 
    2. Re-launch the app by java -jar tutorrec.jar.<br>
@@ -592,7 +592,7 @@ testers are expected to do more *exploratory* testing.
    1. Prerequisites: Simulate a missing data file by:
       1. Change directory to the working folder for `tutorrec.jar`
       2. If the file `data/addressbook.json` exists in the working folder, delete the `data/addressbook.json` file
-      
+
    2. Launch the app by typing java -jar tutorrec.jar. The app should start with the sample contact list.
 
 <div style="page-break-after: always;"></div>
