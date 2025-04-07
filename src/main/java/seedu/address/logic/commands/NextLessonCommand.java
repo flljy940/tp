@@ -30,6 +30,7 @@ public class NextLessonCommand extends Command {
 
     public static final String MESSAGE_ADD_NEXTLESSON_SUCCESS = "Added Next Lesson to Person: %1$s\"";
     public static final String MESSAGE_DELETE_NEXTLESSON_SUCCESS = "Removed Next Lesson to Person: %1$s\"";
+    public static final String MESSAGE_NO_LESSON_TO_REMOVE = "There is no upcoming lesson to remove";
 
     private final Index index;
     private final NextLesson nextLesson;
@@ -54,6 +55,10 @@ public class NextLessonCommand extends Command {
         }
 
         Person personToEdit = lastShownList.get(index.getZeroBased());
+
+        if ((nextLesson == null || nextLesson.isEmpty()) && personToEdit.getNextLesson().isEmpty()) {
+            return new CommandResult(MESSAGE_NO_LESSON_TO_REMOVE);
+        }
 
         NextLesson nextLessonToSet = (nextLesson == null || nextLesson.isEmpty())
                 ? new NextLesson()

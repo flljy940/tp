@@ -32,13 +32,12 @@ public class NextLessonCommandParser implements Parser<NextLessonCommand> {
     public static final String MESSAGE_INVALID_PAST_LESSON = "Lesson cannot be in the past.";
     public static final String MESSAGE_INVALID_YEAR = "Lesson must be less than 1 year from now. ";
 
-    private static final String DATE_TIME_FORMAT = "d/M/yyyy HHmm-HHmm";
     private static final String DATE_REGEX = "(\\d{1,2})/(\\d{1,2})/(\\d{4})\\s(\\d{4})-(\\d{4})";
     private static final LocalDate CURRENT_DATE = LocalDate.now();
     private static final LocalTime CURRENT_TIME = LocalTime.now();
 
     /**
-     * Parses the given {@code String} of arguments in the ocntext of the {@code NextLessonCommand}
+     * Parses the given {@code String} of arguments in the context of the {@code NextLessonCommand}
      * and returns a {@code NextLessonCommand} object for execution.
      * @throws ParseException if the user input does not conform the expected format
      */
@@ -52,6 +51,11 @@ public class NextLessonCommandParser implements Parser<NextLessonCommand> {
         } catch (IllegalValueException ive) {
             throw new ParseException(
                     String.format(MESSAGE_INVALID_COMMAND_FORMAT, NextLessonCommand.MESSAGE_USAGE), ive);
+        }
+
+        if (!argumentMultimap.getValue(PREFIX_NEXTLESSON).isPresent()) {
+            throw new ParseException(
+                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, NextLessonCommand.MESSAGE_USAGE));
         }
 
         String dateTimeString = argumentMultimap.getValue(PREFIX_NEXTLESSON).orElse("");
