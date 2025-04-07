@@ -66,8 +66,8 @@ Encountered some terms you don't understand? Check out our [Glossary](#glossary)
 
    * `list` → Shows all your students
    * `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01` → Adds a new student
-   * `pay 1` → Marks the first student as PAID
-   * `nextlesson 1 d/15/4/2025 0900-1030` → Sets the next lesson for first student
+   * `pay 1` → Marks the 1st student as PAID
+   * `nextlesson 1 d/15/4/2025 0900-1030` → Sets the next lesson for 1st student
    * `exit` → Closes the application (your data is automatically saved)
 
 <div style="margin-top: 10px;"></div>
@@ -117,7 +117,7 @@ Encountered some terms you don't understand? Check out our [Glossary](#glossary)
   e.g. `n/NAME [s/SUBJECT]` can be used as `n/John Doe s/math` or as `n/John Doe`.
 
 * Items with `…`​ after them can be used multiple times including zero times.<br>
-  e.g. `[s/SUBJECT]…​` can be used as ` ` (i.e. 0 times), `s/math`, `s/math s/chemistry` etc.
+  e.g. `[s/SUBJECT]…​` can be used as ` ` (i.e. 0 times), `s/math`, `s/math s/chemistry`, etc.
 
 * Parameters can be in any order.<br>
   e.g. if the command specifies `n/NAME p/PHONE_NUMBER`, `p/PHONE_NUMBER n/NAME` will be interpreted as the same command.
@@ -137,7 +137,7 @@ Encountered some terms you don't understand? Check out our [Glossary](#glossary)
 
 ### Viewing help : `help`
 
-Shows a message explaining how to access the help page.
+Shows a message with a URL link for quick access to this user guide. 
 
 <img src="images/helpMessage.png" alt="help message" width="600px" style="margin-bottom: 10px;margin-top: 10px" /><br>
 
@@ -156,7 +156,7 @@ Format: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [s/SUBJECT]…​`
 
 <box type="tip" seamless>
 
-**Tip:** A student can have any number of subjects (including 0).
+**Tip:** You can add as many subjects as needed for a student, or none at all.
 </box>
 
 <box type="info" seamless>
@@ -171,7 +171,7 @@ Format: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [s/SUBJECT]…​`
     * `Domain labels` should only consist of alphanumeric characters separated only by `-` (if any) and start and end with alphanumeric characters.
     * The last `domain label` must be at least 2 characters long.
 * `ADDRESS` must not exceed 100 characters.
-* `SUBJECT`must contain only letters and numbers.
+* `SUBJECT` must contain only letters and/or numbers (no spaces or special characters).
 
 </box>
 
@@ -204,7 +204,7 @@ Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [s/SUBJECT]…​`
         * `Domain labels` should only consist of alphanumeric characters separated only by `-` (if any) and start and end with alphanumeric characters.
         * The last `domain label` must be at least 2 characters long.
 * `ADDRESS` must not exceed 100 characters.
-* `SUBJECT`must contain only letters and numbers.
+* `SUBJECT` must contain only letters and/or numbers (no spaces or special characters).
 
 </box>
 
@@ -268,7 +268,10 @@ Format: `nextlesson INDEX d/DATE`
 **Input constraints:**<br>
 
 * `INDEX` must be a positive integer 1, 2, 3…​ shown in the displayed student list.
-* `DATE` must be in `d/M/yyyy HHmm-HHmm` format (e.g. `15/4/2025 1800-2000`).
+* `DATE` must be in the format `d/M/yyyy HHmm-HHmm` where:
+  * `d/M/yyyy` is the date (day/month/year)
+  * `HHmm-HHmm` is the time range in 24-hour format (start time - end time)
+  * Example: `15/4/2025 1800-2000` for April 15, 2025, from 6:00 PM to 8:00 PM
 
 </box>
 
@@ -285,16 +288,16 @@ Examples:
 <box type="warning" seamless>
 
 **Caution:**
-As TutorRec allows group tuition, it will not automatically check for lesson time clashes. Please ensure that you do not schedule overlapping lessons! Consider using the `sort` command after adding lessons to see your schedule in chronological order, which can help identify potential conflicts.
+As TutorRec allows group tuition, you need to manually check for lesson time clashes, as the application does not perform automatic clash detection. To help you identify potential conflicts, use the `sort` command after adding lessons to view your schedule in chronological order, and check for any overlapping lesson timings.
 </box>
 
 ### Sorting of all students by lesson date : `sort`
 
-Sorts the list of students by their next lesson date and time, with the earliest lesson shown first.
+Sorts all students in chronological order based on their upcoming lesson dates and times.
 
 Format: `sort`
 
-* Those without lesson dates will be shifted to the end of the list, after all contacts with valid lesson dates.
+* Students without scheduled lessons will appear at the end of the list.
 
 ### Marking that a student made payment : `pay`
 
@@ -320,7 +323,7 @@ Examples:
 
 ### Resetting the payment statement of one student or all students : `unpay`
 
-Resets the specified student's payment status to NOT PAID, or resets payment statuses for all students.
+Resets the specified student's payment status to NOT PAID, or resets payment statuses for all students at once.
 
 Format: `unpay INDEX` or `unpay all`
 
@@ -350,7 +353,7 @@ Format: `filter-date DATE`
 
 **Input constraints:**<br>
 
-* `DATE` must be in `d/M/yyyy` format (e.g. `15/4/2025`).
+* `DATE` must be in `d/M/yyyy` format (e.g. `15/4/2025`), containing only numbers and the `/` character. Letters or other characters are not allowed.
 
 </box>
 
@@ -371,13 +374,9 @@ Format: `filter-payment STATUS`
 
 </box>
 
-* Shows a list of all students with the matching payment status
-* The index numbers shown are used to identify the students
-
 Examples:
-* `filter-payment paid` shows a list of all students who have paid
-* `filter-payment UNPAID` shows a list of all students who have not paid
-* `filter-payment Paid` shows a list of all students who have paid (case-insensitive)
+* `filter-payment paid` shows a list of all students who have PAID.
+* `filter-payment UNPAID` shows a list of all students who have NOT PAID.
 
 ### Filtering students by subject : `filter-subject`
 
@@ -389,41 +388,41 @@ Format: `filter-subject SUBJECT [MORE_SUBJECTS]…​`
 
 **Input constraints:**<br>
 
-* `SUBJECT`must contain only letters and numbers.
+* `SUBJECT` must contain only letters and/or numbers (no spaces or special characters).
 
 </box>
 
-* The search is case-insensitive. e.g. `math` will match `Math`
-* Multiple subjects can be specified to find students taking any of those subjects
-* The order of the subjects you specify doesn't affect the search results
-* Only complete subject names will be matched (e.g. "mat" will not match "math")
+* The search is case-insensitive. e.g. `math` will match `Math`.
+* Multiple subjects can be specified to find students taking any of those subjects.
+* You can list subjects in any order (e.g. `math physics` or `physics math` will give the same result).
+* The subject name must be exact - partial matches won't work (e.g. `mat` won't find students taking `math`).
 
 Examples:
 * `filter-subject math` shows a list of all students taking Math
 * `filter-subject math physics` shows a list of all students taking either Math or Physics or both
 * `filter-subject MATH` shows a list of all students taking Math (case-insensitive)
 
-### Clearing all entries : `clear`
+### Clearing all students : `clear`
 
-Clears all entries from the contact list.
+Clears all students from the contact list.
 
 <box type="warning" seamless>
 
 **Caution:** 
-This action permanently removes all student records from TutorRec and cannot be undone. Make sure to back up your data before using this command if needed.
+This action permanently removes all student records from TutorRec and **cannot be undone**. Make sure to back up your data before using this command if needed.
 </box>
 
 Format: `clear`
 
 ### Exiting the program : `exit`
 
-Exits the program.
+Exits the program. All changes are saved automatically.
 
 Format: `exit`
 
 <box type="tip" seamless>
 
-**Tip:** Escape key can be used to exit the program. All changes are saved automatically.
+**Tip:** Escape key can also be used to exit the program.
 </box>
 
 ### Understanding your data files
@@ -433,18 +432,24 @@ Format: `exit`
 TutorRec stores your information in data files that are automatically managed for you:
 
 * **What is a data file?** Think of it as a special document on your computer that contains all your student records in a structured format.
-* **Where is my data stored?** Your data is saved in a folder called `data` in the same folder as the TutorRec application. This folder contains two files:
-  * `[JAR file location]/data/addressbook.json`: This file stores all your student records, including their names, phone numbers, email addresses, and next lesson dates.
-  * `[JAR file location]/preferences.json`: This file stores your preferences for the application, such as the size and position of the application window.
+* **Where is my data stored?** Your data is saved in a folder called `data` in the same folder as the TutorRec application, which contains:
+  * `[JAR file location]/data/addressbook.json`: This file stores all your student records, including their names, phone numbers, email addresses, next lesson dates, and payment status.
+* The application also creates a `[JAR file location]/preferences.json` file outside the data folder, which stores your preferences for the application, such as the size and position of the application window.
 </box>
 
-### Saving the data
+### Backing up the data file
 
-TutorRec data will be saved in the hard disk (specifically in `addressbook.json`) automatically after any command that changes the data. There is no need to save manually.
+To ensure you don't lose your data, it's a good idea to back up your `addressbook.json` file regularly. You can do this by copying the file to another location on your computer or an external storage device. Follow these simple steps to create a backup:
+
+1. Locate your TutorRec folder (where you placed the app)
+2. Inside it, find the `data` folder
+3. Copy the `addressbook.json` file to another location (like a USB drive or cloud storage)
+
+To restore a backup, simply replace the current `addressbook.json` file in your `data` folder with your backed-up copy.
 
 ### Editing the data file
 
-TutorRec data is saved automatically as a JSON data file `[JAR file location]/data/addressbook.json` and `[JAR file location]/preferences.json`.
+TutorRec data is saved as a JSON data file `[JAR file location]/data/addressbook.json` and `[JAR file location]/preferences.json`.
 
 Most users won't need to edit this file directly as these settings are automatically saved when you use the application.
 Advanced users are welcome to update data directly by editing that data file.
@@ -469,13 +474,8 @@ Furthermore, certain edits can cause TutorRec to behave in unexpected ways (e.g.
 **Q**: Can I use TutorRec on multiple devices simultaneously?<br>
 **A**: TutorRec is designed as a desktop application for individual use. Using the same data file across multiple devices simultaneously may cause data conflicts or corruption.
 
-**Q**: How do I back up my data?<br>
-**A**: Follow these simple steps to create a backup:
-
-1. Locate your TutorRec folder (where you placed the app)
-2. Inside it, find the `data` folder
-3. Copy the `addressbook.json` file to another location (like a USB drive or cloud storage)
-4. To restore a backup, simply replace the current existing file with your backed-up copy
+**Q**: How do I save my data?<br>
+**A**: TutorRec data will be saved in the hard disk (specifically in `addressbook.json`) automatically after any command that changes the data. There is no need to save manually.
 
 **Q**: What should I do if the application cannot start?<br>
 **A**: Ensure you have Java 17 or above installed correctly. If the issue persists, try deleting the `[JAR file location]/preferences.json` file and restarting the application.
@@ -497,19 +497,21 @@ Furthermore, certain edits can cause TutorRec to behave in unexpected ways (e.g.
 
 ## Glossary
 
-**Alphanumeric**: A combination of letters (A-Z, a-z) and numbers (0-9).
-**CLI (Command Line Interface)**: The text-based system where you type commands to tell the application what to do.
-**Case-insensitive**: The app doesn't care whether you use UPPERCASE or lowercase letters in commands (e.g. "Math" and "math" are treated the same).
-**Command box**: The text field at the bottom of the application where you type commands.
-**Command Prompt/Terminal**: A program on your computer that lets you type commands directly to the operating system.
-**Data file**: A special file on your computer that stores all your student information in a structured format.
-**Desktop application**: A program that runs directly on your computer (not on a website).
-**Domain** (in email context): The part of an email address after the @ symbol (e.g. gmail.com, hotmail.com).
-**Extraneous parameters**: Extra information added to a command that isn't needed and will be ignored.
-**GUI (Graphical User Interface)**: The visual elements of the application that you can see and interact with.
-**Hard disk**: Your computer's permanent storage where files are saved.
-**Index**: The number shown beside each student in the list, used to identify which student to select with commands.
-**JAR file**: The file type of the TutorRec application that you download and run.
-**JSON file**: A special format for storing data that computers can easily read and write (stands for JavaScript Object Notation).
-**Parameters**: The specific pieces of information you add to commands (like names, phone numbers, etc.).
-**Preferences**: Settings that control how the application appears and behaves.
+| Term                               | Definition                                                                                                                     |
+|------------------------------------|--------------------------------------------------------------------------------------------------------------------------------|
+| **Alphanumeric**                   | A combination of letters (A-Z, a-z) and numbers (0-9).                                                                         |
+| **CLI (Command Line Interface)**   | The text-based system where you type commands to tell the application what to do.                                              |
+| **Case-insensitive**               | The app doesn't care whether you use UPPERCASE or lowercase letters in commands (e.g. "Math" and "math" are treated the same). |
+| **Command box**                    | The text field at the bottom of the application where you type commands.                                                       |
+| **Command Prompt/Terminal**        | A program on your computer that lets you type commands directly to the operating system.                                       |
+| **Data file**                      | A special file on your computer that stores all your student information in a structured format.                               |
+| **Desktop application**            | A program that runs directly on your computer (not on a website).                                                              |
+| **Domain** (in email context)      | The part of an email address after the @ symbol (e.g. gmail.com, hotmail.com).                                                 |
+| **Extraneous parameters**          | Extra information added to a command that isn't needed and will be ignored.                                                    |
+| **GUI (Graphical User Interface)** | The visual elements of the application that you can see and interact with.                                                     |
+| **Hard disk**                      | Your computer's permanent storage where files are saved.                                                                       |
+| **Index**                          | The number shown beside each student in the list, used to identify which student to select with commands.                      |
+| **JAR file**                       | The file type of the TutorRec application that you download and run.                                                           |
+| **JSON file**                      | A special format for storing data that computers can easily read and write (stands for JavaScript Object Notation).            |
+| **Parameters**                     | The specific pieces of information you add to commands (like names, phone numbers, etc.).                                      |
+| **Preferences**                    | Settings that control how the application appears and behaves.                                                                 |
