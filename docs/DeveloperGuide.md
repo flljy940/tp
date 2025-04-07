@@ -596,19 +596,19 @@ testers are expected to do more *exploratory* testing.
    2. Make sure you have Java 17 or above installed in your computer.
    3. Open your terminal, cd into the folder you placed the jar file, then type `java -jar tutorrec.jar` and press enter.
        
-      Expected: Shows the GUI with a set of sample contacts. The window size may not be optimum.
+      Expected: Shows the GUI with a set of sample contacts. The window size may not be optimum.<br>
 
 2. Saving window preferences
    1. Resize the window to an optimum size. Move the window to a different location. Close the window.
    2. Re-launch the app by typing `java -jar tutorrec.jar`.<br>
    
-      Expected: The most recent window size and location is retained.
+      Expected: The most recent window size and location is retained.<br>
 
 3. Shutting down the app
    1. Click the 'X' button on the window of the app or the `esc` hotkey.
    2. Re-launch the app by `java -jar tutorrec.jar`.<br>
        
-      Expected: The app saves the most recent set of contacts before closing and shows the GUI with the latest set of contacts.
+      Expected: The app saves the most recent set of contacts before closing and shows the GUI with the latest set of contacts.<br>
 
 ### Deleting a student
 
@@ -616,41 +616,41 @@ testers are expected to do more *exploratory* testing.
    1. Prerequisites: List all students using the `list` command. Multiple students in the list.
    2. Test case: `delete 1`.<br>
       
-      Expected: First contact is deleted from the list. Details of the deleted contact shown in the status message. Timestamp in the status bar is updated.
+      Expected: First contact is deleted from the list. Details of the deleted contact shown in the status message. Timestamp in the status bar is updated.<br>
    3. Test case: `delete 0`.<br>
       
-      Expected: No student is deleted. Error details shown in the status message. Status bar remains the same.
+      Expected: No student is deleted. Error details shown in the status message. Status bar remains the same.<br>
    4. Other incorrect delete commands to try: `delete`, `delete x`, `...` (where x is larger than the list size).<br>
       
-      Expected: Similar to previous.
+      Expected: Similar to previous.<br>
 
 2. Deleting a student while the list is filtered with students shown
    1. Prerequisites: Filter students using a filter condition of your choice (eg. `filter-payment unpaid` command to filter students with `Not Paid` payment status).
    2. Test case: `delete 1`.<br>
    
-      Expected: First contact is deleted from the list of filtered students. Details of the deleted contact shown in the status message. Timestamp in the status bar is updated.
+      Expected: First contact is deleted from the list of filtered students. Details of the deleted contact shown in the status message. Timestamp in the status bar is updated.<br>
    3. Test case: `delete 0`.<br>
       
-      Expected: No students is deleted. Error details shown in the status message. Status bar remains the same.
+      Expected: No students is deleted. Error details shown in the status message. Status bar remains the same.<br>
    4. Other incorrect delete commands to try: `delete`, `delete x`, `...` (where x is larger than the filtered list size).<br>
       
-      Expected: Similar to previous.
-   5. `list` after deleting student(s) from the filtered list should show the full list of students in the original unfiltered list excluding the deleted student(s).
+      Expected: Similar to previous.<br>
+   5. `list` after deleting student(s) from the filtered list should show the full list of students in the original unfiltered list excluding the deleted student(s).<br>
 
 ### Saving data
 
 1. Dealing with corrupted data files
    1. Prerequisites: Simulate a corrupted data file by:
-      1. Change directory to the working folder for `tutorrec.jar`.
-      2. If the file `data/addressbook.json` is not in the working folder, launch the app by typing `java -jar tutorrec.jar`. The app should start with the sample contact list.
-      3. Open the `data/addressbook.json` file and delete the `name` field of the first entry.
-   2. Launch the app by typing `java -jar tutorrec.jar`. The app should start with an empty contact list.
+      * Change directory to the working folder for `tutorrec.jar`.
+      * If the file `data/addressbook.json` is not in the working folder, launch the app by typing `java -jar tutorrec.jar`. The app should start with the sample contact list.
+      * Open the `data/addressbook.json` file and delete the `name` field of the first entry.
+   2. Launch the app by typing `java -jar tutorrec.jar`. The app should start with an empty contact list.<br>
 
 2. Dealing with missing data files
    1. Prerequisites: Simulate a missing data file by:
-      1. Change directory to the working folder for `tutorrec.jar`.
-      2. If the file `data/addressbook.json` exists in the working folder, delete the `data/addressbook.json` file.
-   2. Launch the app by typing `java -jar tutorrec.jar`. The app should start with the sample contact list.
+      * Change directory to the working folder for `tutorrec.jar`.
+      * If the file `data/addressbook.json` exists in the working folder, delete the `data/addressbook.json` file.
+   2. Launch the app by typing `java -jar tutorrec.jar`. The app should start with the sample contact list.<br>
 
 <div style="page-break-after: always;"></div>
 
@@ -665,7 +665,7 @@ testers are expected to do more *exploratory* testing.
 
 2. **Improving parameter input flexibility**<br>
     Currently, our input validation for names and addresses enforces strict formatting rules. We plan to enhance this by: 
-   * Allowing special characters (e.g., '/', '.', '-', etc.) in names and addresses
+   * Allowing special characters (e.g., `/`, `.`, `-`, etc.) in names and addresses
    * Implementing intelligent duplicate detection that ignores whitespace differences (e.g. recognising 'Alex Yeoh' and 'Alex&nbsp;&nbsp;&nbsp;Yeoh' as duplicates).<br>
 
     These improvements will give tutors more flexibility when recording student names and addresses, as well as to prevent accidental duplicate entries.
