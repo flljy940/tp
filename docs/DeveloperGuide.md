@@ -595,36 +595,45 @@ testers are expected to do more *exploratory* testing.
    1. Download the jar file and copy into an empty folder.
    2. Make sure you have Java 17 or above installed in your computer.
    3. Open your terminal, cd into the folder you placed the jar file, then type `java -jar tutorrec.jar` and press enter.
-       Expected: Shows the GUI with a set of sample contacts. The window size may not be optimum.
+       
+      Expected: Shows the GUI with a set of sample contacts. The window size may not be optimum.
 
 2. Saving window preferences
    1. Resize the window to an optimum size. Move the window to a different location. Close the window.
    2. Re-launch the app by typing `java -jar tutorrec.jar`.<br>
-       Expected: The most recent window size and location is retained.
+   
+      Expected: The most recent window size and location is retained.
 
 3. Shutting down the app
    1. Click the 'X' button on the window of the app or the `esc` hotkey.
    2. Re-launch the app by `java -jar tutorrec.jar`.<br>
-       Expected: The app saves the most recent set of contacts before closing and shows the GUI with the latest set of contacts.
+       
+      Expected: The app saves the most recent set of contacts before closing and shows the GUI with the latest set of contacts.
 
 ### Deleting a student
 
 1. Deleting a student while all student are being shown
    1. Prerequisites: List all students using the `list` command. Multiple students in the list.
    2. Test case: `delete 1`.<br>
+      
       Expected: First contact is deleted from the list. Details of the deleted contact shown in the status message. Timestamp in the status bar is updated.
    3. Test case: `delete 0`.<br>
+      
       Expected: No student is deleted. Error details shown in the status message. Status bar remains the same.
    4. Other incorrect delete commands to try: `delete`, `delete x`, `...` (where x is larger than the list size).<br>
+      
       Expected: Similar to previous.
 
 2. Deleting a student while the list is filtered with students shown
    1. Prerequisites: Filter students using a filter condition of your choice (eg. `filter-payment unpaid` command to filter students with `Not Paid` payment status).
    2. Test case: `delete 1`.<br>
+   
       Expected: First contact is deleted from the list of filtered students. Details of the deleted contact shown in the status message. Timestamp in the status bar is updated.
    3. Test case: `delete 0`.<br>
+      
       Expected: No students is deleted. Error details shown in the status message. Status bar remains the same.
    4. Other incorrect delete commands to try: `delete`, `delete x`, `...` (where x is larger than the filtered list size).<br>
+      
       Expected: Similar to previous.
    5. `list` after deleting student(s) from the filtered list should show the full list of students in the original unfiltered list excluding the deleted student(s).
 
