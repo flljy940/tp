@@ -69,7 +69,7 @@ public class NextLessonCommandParserTest {
     void parseNextLesson_invalidDateFormat_throwsParseException() {
         String[] invalidInputs = {
             "15-4-2025 0900-1100", // Wrong separator in date
-            "15/04/2025 9:00-11:00", // Wrong time format
+            "15/4/2025 9:00-11:00", // Wrong time format
             "2025/4/15 0900-1100", // Wrong date format order
             "15/4/2025 0900", // Missing end time
             "15/4/2025-1100", // Missing start time
@@ -99,8 +99,8 @@ public class NextLessonCommandParserTest {
     @Test
     void constructor_startTimeNotBeforeEndTime_throwsException() {
         String[] invalidStartEndTimes = {
-            "15/4/2025 1200-1200", // Start time == End time
-            "15/4/2025 1500-1400" // Start time > End time
+            "15/6/2025 1200-1200", // Start time == End time
+            "15/6/2025 1500-1400" // Start time > End time
         };
 
         for (String input : invalidStartEndTimes) {
@@ -120,9 +120,9 @@ public class NextLessonCommandParserTest {
 
     @Test
     public void parse_validInput_success() {
-        String validTimeRangeInput = "1 " + PREFIX_NEXTLESSON + "15/4/2025 1900-2200";
+        String validTimeRangeInput = "1 " + PREFIX_NEXTLESSON + "15/6/2025 1900-2200";
         assertParseSuccess(parser, validTimeRangeInput,
-                new NextLessonCommand(INDEX_FIRST_PERSON, new NextLesson("15/4/2025 1900-2200")));
+                new NextLessonCommand(INDEX_FIRST_PERSON, new NextLesson("15/6/2025 1900-2200")));
 
         String validDateTimeInput = "1 " + PREFIX_NEXTLESSON + validLessonDateTime;
         assertParseSuccess(parser, validDateTimeInput,
@@ -132,7 +132,7 @@ public class NextLessonCommandParserTest {
     @Test
     public void parse_invalidInput_throwsParseException() {
         // Invalid index
-        String invalidIndexInput = "a " + PREFIX_NEXTLESSON + "15/4/2025 1900-2100";
+        String invalidIndexInput = "a " + PREFIX_NEXTLESSON + "15/6/2025 1900-2100";
         assertParseFailure(parser, invalidIndexInput,
                 String.format(MESSAGE_INVALID_COMMAND_FORMAT, NextLessonCommand.MESSAGE_USAGE));
 
@@ -142,26 +142,26 @@ public class NextLessonCommandParserTest {
                 String.format(NextLessonCommandParser.MESSAGE_CONSTRAINTS));
 
         // Invalid time format
-        String invalidTimeFormatInput = "1 " + PREFIX_NEXTLESSON + "15/4/2025 19:00-21:00";
+        String invalidTimeFormatInput = "1 " + PREFIX_NEXTLESSON + "15/6/2025 19:00-21:00";
         assertParseFailure(parser, invalidTimeFormatInput,
                 String.format(NextLessonCommandParser.MESSAGE_CONSTRAINTS));
 
         // Invalid time ranges -> invalid
-        String invalidTimeRangeInput = "1 " + PREFIX_NEXTLESSON + "15/4/2025 1960-2200";
+        String invalidTimeRangeInput = "1 " + PREFIX_NEXTLESSON + "15/6/2025 1960-2200";
         assertParseFailure(parser, invalidTimeRangeInput, MESSAGE_INVALID_TIME);
-        invalidTimeRangeInput = "1 " + PREFIX_NEXTLESSON + "15/4/2025 2100-2260";
+        invalidTimeRangeInput = "1 " + PREFIX_NEXTLESSON + "15/6/2025 2100-2260";
         assertParseFailure(parser, invalidTimeRangeInput, MESSAGE_INVALID_TIME);
-        invalidTimeRangeInput = "1 " + PREFIX_NEXTLESSON + "15/4/2025 2400-2200";
+        invalidTimeRangeInput = "1 " + PREFIX_NEXTLESSON + "15/6/2025 2400-2200";
         assertParseFailure(parser, invalidTimeRangeInput, MESSAGE_INVALID_TIME);
-        invalidTimeRangeInput = "1 " + PREFIX_NEXTLESSON + "15/4/2025 2300-2400";
+        invalidTimeRangeInput = "1 " + PREFIX_NEXTLESSON + "15/6/2025 2300-2400";
         assertParseFailure(parser, invalidTimeRangeInput, MESSAGE_INVALID_TIME);
 
         // Same start and end time -> invalid
-        String invalidStartEqualEndTimeInput = "1 " + PREFIX_NEXTLESSON + "15/4/2025 0900-0900";
+        String invalidStartEqualEndTimeInput = "1 " + PREFIX_NEXTLESSON + "15/6/2025 0900-0900";
         assertParseFailure(parser, invalidStartEqualEndTimeInput, MESSAGE_INVALID_START_END_TIME);
 
         // Start time after end time -> invalid
-        String invalidStartAfterEndTimeInput = "1 " + PREFIX_NEXTLESSON + "15/4/2025 1100-0900";
+        String invalidStartAfterEndTimeInput = "1 " + PREFIX_NEXTLESSON + "15/6/2025 1100-0900";
         assertParseFailure(parser, invalidStartAfterEndTimeInput, MESSAGE_INVALID_START_BEFORE_END);
 
         // Date >1 year in the future -> invalid

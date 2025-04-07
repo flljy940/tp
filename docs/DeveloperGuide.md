@@ -629,7 +629,7 @@ testers are expected to do more *exploratory* testing.
 <div style="margin-top: 10px;"></div>
 
 2. **Improving parameter input flexibility**<br>
-Currently, our input validation for names and addresses enforces strict formatting rules. We plan to enhance this by: 
+    Currently, our input validation for names and addresses enforces strict formatting rules. We plan to enhance this by: 
    * Allowing special characters (e.g., '/', '.', '-', etc.) in names and addresses
    * Implementing intelligent duplicate detection that ignores whitespace differences (e.g. recognising 'Alex Yeoh' and 'Alex&nbsp;&nbsp;&nbsp;Yeoh' as duplicates).<br>
 

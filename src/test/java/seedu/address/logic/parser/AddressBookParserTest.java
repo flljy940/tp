@@ -100,7 +100,7 @@ public class AddressBookParserTest {
 
     @Test
     public void parseCommand_nextLesson() throws Exception {
-        final NextLesson nextlesson = new NextLesson("15/4/2025 1900-2100");
+        final NextLesson nextlesson = new NextLesson("15/6/2025 1900-2100");
         NextLessonCommand command = (NextLessonCommand) parser.parseCommand(NextLessonCommand.COMMAND_WORD + " "
                 + INDEX_FIRST_PERSON.getOneBased() + " " + PREFIX_NEXTLESSON + nextlesson.getValue());
         assertEquals(new NextLessonCommand(INDEX_FIRST_PERSON, nextlesson), command);
@@ -129,7 +129,7 @@ public class AddressBookParserTest {
 
     @Test
     public void parseCommand_filterDate() throws Exception {
-        String dateString = "15/4/2025";
+        String dateString = "15/6/2025";
         LocalDate date = LocalDate.parse(dateString, DateTimeFormatter.ofPattern("d/M/yyyy"));
         FilterDateCommand command = (FilterDateCommand) parser.parseCommand(
                 FilterDateCommand.COMMAND_WORD + " " + dateString);

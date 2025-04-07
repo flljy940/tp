@@ -14,8 +14,8 @@ public class NextLessonEqualsDatePredicateTest {
 
     @Test
     public void equals() {
-        LocalDate firstDate = LocalDate.of(2025, 4, 20);
-        LocalDate secondDate = LocalDate.of(2025, 4, 25);
+        LocalDate firstDate = LocalDate.of(2025, 6, 20);
+        LocalDate secondDate = LocalDate.of(2025, 6, 25);
 
         NextLessonEqualsDatePredicate firstPredicate = new NextLessonEqualsDatePredicate(firstDate);
         NextLessonEqualsDatePredicate secondPredicate = new NextLessonEqualsDatePredicate(secondDate);
@@ -39,27 +39,27 @@ public class NextLessonEqualsDatePredicateTest {
 
     @Test
     public void test_nextLessonEqualsDate_returnsTrue() {
-        LocalDate date = LocalDate.of(2025, 4, 20);
+        LocalDate date = LocalDate.of(2025, 6, 20);
         NextLessonEqualsDatePredicate predicate = new NextLessonEqualsDatePredicate(date);
 
-        assertTrue(predicate.test(new PersonBuilder().withNextLesson("20/4/2025 1600-1800").build()));
+        assertTrue(predicate.test(new PersonBuilder().withNextLesson("20/6/2025 1600-1800").build()));
     }
 
     @Test
     public void test_nextLessonNotEqualsDate_returnsFalse() {
-        LocalDate date = LocalDate.of(2025, 4, 20);
+        LocalDate date = LocalDate.of(2025, 6, 20);
         NextLessonEqualsDatePredicate predicate = new NextLessonEqualsDatePredicate(date);
 
         // empty NextLesson
         assertFalse(predicate.test(new PersonBuilder().build()));
 
         // different NextLesson dates
-        assertFalse(predicate.test(new PersonBuilder().withNextLesson("15/4/2025 1600-1800").build()));
+        assertFalse(predicate.test(new PersonBuilder().withNextLesson("15/6/2025 1600-1800").build()));
     }
 
     @Test
     public void toStringMethod() {
-        LocalDate date = LocalDate.of(2025, 4, 20);
+        LocalDate date = LocalDate.of(2025, 6, 20);
         NextLessonEqualsDatePredicate predicate = new NextLessonEqualsDatePredicate(date);
 
         String expected = NextLessonEqualsDatePredicate.class.getCanonicalName()
