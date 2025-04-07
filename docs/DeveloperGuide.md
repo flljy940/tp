@@ -45,6 +45,8 @@ This project is based on the AddressBook-Level3 project created by the [SE-EDU i
 
 Refer to the guide [_Setting up and getting started_](SettingUp.md).
 
+If you ever encounter any issues while setting up the project, please refer to the [_User Guide_](UserGuide.md) for troubleshooting.
+
 --------------------------------------------------------------------------------------------------------------------
 
 ## **Design**
