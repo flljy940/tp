@@ -9,7 +9,12 @@
 TutorRec is a **desktop application designed to help tutors effectively manage their student records**.
 While it features a clean and intuitive Graphical User Interface (GUI), TutorRec is **optimised for fast keyboard-based interaction via a Command Line Interface (CLI)**.
 This makes it ideal for tutors who prefer speed and precision when handling tasks like tracking student contacts, subjects, payment statuses, next lessons and more.
-Whether you're managing a few students or a large tutoring roster, TutorRec helps you stay organised faster than most traditional GUI-based apps.
+
+Whether you're managing a few students or a large tutoring roster, TutorRec eliminates the administrative headaches that steal time from what matters most - your teaching!
+
+This guide assumes you're comfortable using a computer, and does not require any prior programming knowledge.
+
+Encountered some terms you don't understand? Check out our [Glossary](#glossary) at the end of this document for definitions.
 
 <!-- * Table of Contents -->
 <page-nav-print />
@@ -22,38 +27,51 @@ Whether you're managing a few students or a large tutoring roster, TutorRec help
 
 1. **Set up Java**
    * Ensure you have Java `17` or above installed on your computer.
-   * Not sure how? Follow these simple guides based on your system:
+   * Unsure how to check or install Java? Follow these guides based on your system:
      * [**Windows Setup Guide**](https://se-education.org/guides/tutorials/javaInstallationWindows.html)
      * [**Mac Setup Guide**](https://se-education.org/guides/tutorials/javaInstallationMac.html)
      * [**Linux Setup Guide**](https://se-education.org/guides/tutorials/javaInstallationLinux.html)
+
+<div style="margin-top: 10px;"></div>
 
 2. **Download TutorRec**
    * Get the latest version [here](https://github.com/AY2425S2-CS2103T-T16-4/tp/releases).
    * Look for the file named `tutorrec.jar` under the latest release.
    * Click on it to download.
 
+<div style="margin-top: 10px;"></div>
+
 3. **Install the application**
    * Create a new empty folder, where you want to keep the TutorRec application.
    * Copy the downloaded `.jar` file into this folder.
 
+<div style="margin-top: 10px;"></div>
+
 4. **Start TutorRec**
    * **Windows users**: Simply double-click the `.jar` file.
-   * **If double-clicking doesn't work**: Open Command Prompt (search for "cmd" in Start menu), navigate to your folder with `cd path\to\your\folder`, then type `java -jar tutorrec.jar` and press Enter.
+   * **If double-clicking doesn't work**: Open Command Prompt, navigate to your folder with `cd path\to\your\folder`, then type `java -jar tutorrec.jar` and press Enter.
    * **Mac/Linux users**: Open Terminal, navigate to your folder with `cd path/to/your/folder`, then type `java -jar tutorrec.jar` and press Enter.
+   * Not sure how to open your Command Prompt/Terminal? Follow these simple guides based on your system:
+     * [**Windows Tutorial**](https://learn.microsoft.com/en-us/windows/terminal/faq)
+     * [**Mac Tutorial**](https://support.apple.com/en-sg/guide/terminal/apd5265185d-f365-44cb-8b09-71a064a42125/mac)
+     * [**Linux Tutorial**](https://ubuntu.com/tutorials/command-line-for-beginners#1-overview)
    * You should see the TutorRec application window appear with some sample data:
-   
-    <img src="images/Ui.png" alt="TutorRec main screen" width="600px" />
+
+    <img src="images/Ui.png" alt="TutorRec main screen" width="600px" style="margin-bottom: 10px;margin-top: 10px" /><br>
 
 5. **Familiarise yourself with the interface**
    * Here are some basic commands to get you started, which you can type in the command box as shown below:
 
-    <img src="images/commandBox.png" alt="command box" width="600px" />
+    <img src="images/commandBox.png" alt="command box" width="600px" style="margin-bottom: 10px;margin-top: 10px" /><br>
 
    * `list` → Shows all your students
    * `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01` → Adds a new student
    * `pay 1` → Marks the first student as PAID
    * `nextlesson 1 d/15/4/2025 0900-1030` → Sets the next lesson for first student
    * `exit` → Closes the application (your data is automatically saved)
+
+<div style="margin-top: 10px;"></div>
+
 6. **Need help?** Type `help` in the application itself, or press F1 to view the complete user guide.
 
 <box type="tip" seamless>
@@ -64,6 +82,27 @@ Whether you're managing a few students or a large tutoring roster, TutorRec help
 <div style="page-break-after: always;"></div>
 
 --------------------------------------------------------------------------------------------------------------------
+
+## Command summary
+
+| Action                   | Format, Examples                                                                                                                                                     |
+|--------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Add**                  | `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [s/SUBJECT]…​` <br> e.g. `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 s/math s/english` |
+| **Clear**                | `clear`                                                                                                                                                              |
+| **Pay**                  | `pay INDEX`<br> e.g. `pay 3`                                                                                                                                         |
+| **Unpay**                | `unpay INDEX`<br> e.g. `unpay 3` or `unpay all`                                                                                                                      |
+| **Delete**               | `delete INDEX`<br> e.g. `delete 3`                                                                                                                                   |
+| **Edit**                 | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [s/SUBJECT]…​`<br> e.g.`edit 2 n/James Lee e/jameslee@example.com`                                       |
+| **Find**                 | `find KEYWORD [MORE_KEYWORDS]…​`<br> e.g. `find James Jake`                                                                                                          |
+| **NextLesson**           | `nextlesson INDEX d/[DATE]`<br> e.g. `nextlesson 3 d/15/4/2025 1800-2000`                                                                                            |
+| **List**                 | `list`                                                                                                                                                               |
+| **Sort**                 | `sort`                                                                                                                                                               |
+| **Filter NextLesson**    | `filter-date DATE`<br> e.g. `filter-date 15/4/2025`                                                                                                                  |
+| **Filter PaymentStatus** | `filter-payment STATUS`<br> e.g. `filter-payment PAID`                                                                                                               |
+| **Filter Subject**       | `filter-subject SUBJECT [MORE_SUBJECTS]`<br> e.g. `filter-subject MATH`                                                                                              |
+| **Help**                 | `help`                                                                                                                                                               |
+| **Exit**                 | `exit`                                                                                                                                                               |
+
 
 ## Features
 
@@ -96,7 +135,7 @@ Whether you're managing a few students or a large tutoring roster, TutorRec help
 
 Shows a message explaining how to access the help page.
 
-<img src="images/helpMessage.png" alt="help message" width="600px" />
+<img src="images/helpMessage.png" alt="help message" width="600px" style="margin-bottom: 10px;margin-top: 10px" /><br>
 
 Format: `help`
 
@@ -120,21 +159,21 @@ Format: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [s/SUBJECT]…​`
 
 **Input constraints:**<br>
 
-* `NAME` must be an alphanumeric string with at least 1 alphabet and up to 50 characters long.
-* `PHONE_NUMBER` must be strictly digits and between 3 to 15 digits long.
-* `EMAIL` should be of the format `local@domain`, be up to 50 characters long, and adhere to the following constraints:
+* `NAME` must contain letters, can include numbers, and should not exceed 50 characters.
+* `PHONE_NUMBER` must only contain numbers and be between 3 and 15 digits long.
+* `EMAIL` should be of the format `local@domain`, be at most 50 characters long, and adhere to the following constraints:
   * `local` should only contain alphanumeric characters or the characters `+`, `.`, `_` and `-`, not start or end with any special character and not contain any whitespaces.
   * `domain` is made up of `domain labels` separated by `.`.
     * `Domain labels` should only consist of alphanumeric characters separated only by `-` (if any) and start and end with alphanumeric characters.
     * The last `domain label` must be at least 2 characters long.
-* `ADDRESS` must be up to 100 characters long.
-* `SUBJECT` must be an alphanumeric string.
+* `ADDRESS` must not exceed 100 characters.
+* `SUBJECT`must contain only letters and numbers.
 
 </box>
 
 Examples:
-* `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01`
-* `add n/Betsy Crowe s/math e/betsycrowe@example.com a/Newgate p/1234567 s/physics`
+* `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01` adds a new student named John Doe with their contact details, but without any subjects.
+* `add n/Betsy Crowe s/math e/betsycrowe@example.com a/Newgate p/1234567 s/physics` adds a new student named Betsy Crowe with their contact details, along with math and physics subjects.
 
 ### Listing all students : `list`
 
@@ -153,21 +192,21 @@ Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [s/SUBJECT]…​`
 **Input constraints:**<br>
 
 * `INDEX` must be a positive integer 1, 2, 3…​ shown in the displayed student list.
-* `NAME` must be an alphanumeric string with at least 1 alphabet and up to 50 characters long.
-* `PHONE_NUMBER` must be strictly digits and between 3 to 15 digits long.
-* `EMAIL` should be of the format `local@domain`, be up to 50 characters long, and adhere to the following constraints:
+* `NAME` must contain letters, can include numbers, and should not exceed 50 characters.
+* `PHONE_NUMBER` must only contain numbers and be between 3 and 15 digits long.
+* `EMAIL` should be of the format `local@domain`, be at most 50 characters long, and adhere to the following constraints:
     * `local` should only contain alphanumeric characters or the characters `+`, `.`, `_` and `-`, not start or end with any special character and not contain any whitespaces.
     * `domain` is made up of `domain labels` separated by `.`.
         * `Domain labels` should only consist of alphanumeric characters separated only by `-` (if any) and start and end with alphanumeric characters.
         * The last `domain label` must be at least 2 characters long.
-* `ADDRESS` must be up to 100 characters long.
-* `SUBJECT` must be an alphanumeric string.
+* `ADDRESS` must not exceed 100 characters.
+* `SUBJECT`must contain only letters and numbers.
 
 </box>
 
 * Edits the student at the specified `INDEX`.
 * At least one of the optional fields must be provided.
-* Existing values will be updated to the input values.
+* Existing values will be replaced with the new values.
 * When editing subjects, the existing subjects of the student will be removed i.e. adding of subjects is not cumulative.
 * You can remove all the student's subjects by typing `s/` without specifying any subjects after it.
 
@@ -189,10 +228,10 @@ Format: `find KEYWORD [MORE_KEYWORDS]…​`
   e.g. `Hans Bo` will return `Hans Gruber`, `Bo Yang`
 
 Examples:
-* `find John` returns `john` and `John Doe`
-* `find alex david` returns `Alex Yeoh`, `David Li`<br>
+* `find John` finds all students with 'John' in their name (e.g. `john` and `John Doe`)
+* `find alex david` finds all students with either 'Alex' or 'David' in their name (e.g. `Alex Yeoh`, `David Li`)<br>
 
-<img src="images/findAlexDavidResult.png" alt="result for 'find alex david'" width="600px" />
+<img src="images/findAlexDavidResult.png" alt="result for 'find alex david'" width="600px" style="margin-bottom: 10px;margin-top: 10px" /><br>
 
 ### Deleting a student : `delete`
 
@@ -237,7 +276,7 @@ Examples:
 *  `nextlesson 2 d/` Removes the next lesson date for the 2nd student.
 *  `nextlesson 1 d/15/4/2025 1800-2000` Adds/Updates the next lesson date of the 1st student to be `15/4/2025 1800-2000`.
 
-<img src="images/nextlessonResult.png" alt="result for 'next lesson'" width="600px" />
+<img src="images/nextlessonResult.png" alt="result for 'next lesson'" width="600px" style="margin-bottom: 10px;margin-top: 10px" /><br>
 
 <box type="warning" seamless>
 
@@ -273,7 +312,7 @@ Examples:
 * `find David` followed by `pay 1` marks the 1st student in the results of the `find` command.
 * `list` followed by `pay 2` marks the 2nd student as PAID in the contact list. (Paid status is now GREEN)
 
-<img src="images/listPayResult.png" alt="result for 'list pay 2'" width="600px" />
+<img src="images/listPayResult.png" alt="result for 'list pay 2'" width="600px" style="margin-bottom: 10px;margin-top: 10px" /><br>
 
 ### Resetting the payment statement of one student or all students : `unpay`
 
@@ -299,7 +338,7 @@ Examples:
 
 ### Filtering students by lesson date : `filter-date`
 
-Filters and shows a list of all students whose next lesson date matches the specified date.
+Filters and shows a list of students with the specified lesson date.
 
 Format: `filter-date DATE`
 
@@ -316,7 +355,7 @@ Example:
 
 ### Filtering students by payment status : `filter-payment`
 
-Filters and shows a list of all students whose payment status matches the specified status.
+Filters and shows a list of students who have the specified payment status.
 
 Format: `filter-payment STATUS`
 
@@ -346,7 +385,7 @@ Format: `filter-subject SUBJECT [MORE_SUBJECTS]…​`
 
 **Input constraints:**<br>
 
-* `SUBJECT` must be an alphanumeric string.
+* `SUBJECT`must contain only letters and numbers.
 
 </box>
 
@@ -383,7 +422,7 @@ Format: `exit`
 **Tip:** Escape key can be used to exit the program. All changes are saved automatically.
 </box>
 
-### Understanding Your Data Files
+### Understanding your data files
 
 <box type="info" seamless>
 
@@ -420,7 +459,7 @@ Furthermore, certain edits can cause TutorRec to behave in unexpected ways (e.g.
 
 ## FAQ
 
-**Q**: How do I transfer my data to another Computer?<br>
+**Q**: How do I transfer my data to another computer?<br>
 **A**: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous TutorRec home folder.
 
 **Q**: Can I use TutorRec on multiple devices simultaneously?<br>
@@ -447,25 +486,26 @@ Furthermore, certain edits can cause TutorRec to behave in unexpected ways (e.g.
 1. **When using multiple screens**, if you move the application to a secondary screen, and later switch to using only the primary screen, the GUI will open off-screen. The remedy is to delete the `preferences.json` file created by the application before running the application again.
 2. **If you minimise the Help Window** and then run the `help` command (or use the `Help` menu, or the keyboard shortcut `F1`) again, the original Help Window will remain minimised, and no new Help Window will appear. The remedy is to manually restore the minimised Help Window.
 3. **When a student is selected** as shown below, the `Esc` key does not close the app as intended. The remedy is to use the `exit` command or to manually click `X` on the application's window.
-   <img src="images/selectedStudent.png" alt="selected student" width="600px" />
+   
+    <img src="images/selectedStudent.png" alt="selected student" width="600px" style="margin-bottom: 10px;margin-top: 10px" /><br>
 
 --------------------------------------------------------------------------------------------------------------------
 
-## Command summary
+## Glossary
 
-Action         | Format, Examples
------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------
-**Add**    | `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [s/SUBJECT]…​` <br> e.g. `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 s/math s/english`
-**Clear**  | `clear`
-**Pay**    | `pay INDEX`<br> e.g. `pay 3`
-**Unpay**  | `unpay INDEX`<br> e.g. `unpay 3` or `unpay all`
-**Delete** | `delete INDEX`<br> e.g. `delete 3`
-**Edit**   | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [s/SUBJECT]…​`<br> e.g.`edit 2 n/James Lee e/jameslee@example.com`
-**Find**   | `find KEYWORD [MORE_KEYWORDS]`<br> e.g. `find James Jake`
-**NextLesson** | `nextlesson INDEX d/[DATE]`<br> e.g. `nextlesson 3 d/15/4/2025 1800-2000`
-**List**   | `list`
-**Sort**  | `sort`
-**Filter NextLesson**    | `filter-date DATE`<br> e.g. `filter-date 15/4/2025`
-**Filter PaymentStatus** | `filter-payment STATUS`<br> e.g. `filter-payment PAID`
-**Filter Subject** | `filter-subject SUBJECT [MORE_SUBJECTS]`<br> e.g. `filter-subject MATH`
-**Help**   | `help`
+**Alphanumeric**: A combination of letters (A-Z, a-z) and numbers (0-9).
+**CLI (Command Line Interface)**: The text-based system where you type commands to tell the application what to do.
+**Case-insensitive**: The app doesn't care whether you use UPPERCASE or lowercase letters in commands (e.g. "Math" and "math" are treated the same).
+**Command box**: The text field at the bottom of the application where you type commands.
+**Command Prompt/Terminal**: A program on your computer that lets you type commands directly to the operating system.
+**Data file**: A special file on your computer that stores all your student information in a structured format.
+**Desktop application**: A program that runs directly on your computer (not on a website).
+**Domain** (in email context): The part of an email address after the @ symbol (e.g. gmail.com, hotmail.com).
+**Extraneous parameters**: Extra information added to a command that isn't needed and will be ignored.
+**GUI (Graphical User Interface)**: The visual elements of the application that you can see and interact with.
+**Hard disk**: Your computer's permanent storage where files are saved.
+**Index**: The number shown beside each student in the list, used to identify which student to select with commands.
+**JAR file**: The file type of the TutorRec application that you download and run.
+**JSON file**: A special format for storing data that computers can easily read and write (stands for JavaScript Object Notation).
+**Parameters**: The specific pieces of information you add to commands (like names, phone numbers, etc.).
+**Preferences**: Settings that control how the application appears and behaves.
