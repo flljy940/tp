@@ -326,7 +326,7 @@ The following activity diagram summarises what happens when a user executes a ne
 
 ## **Appendix: Requirements**
 
-### Product scope
+### Product Scope
 
 **Target user profile**:
 
@@ -342,7 +342,7 @@ The following activity diagram summarises what happens when a user executes a ne
 has been made, next lesson date and time, and subjects covered with student
 
 
-### User stories
+### User Stories
 
 Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
 
@@ -470,8 +470,8 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 1.  User requests to list students
 2.  TutorRec shows a list of students
-3.  User requests to see students in order of nearest lesson to furthest
-4.  TutorRec shows the list of students sorted from nearest lesson to furthest
+3.  User requests to see students in chronological order of their next lesson date and time
+4.  TutorRec shows the list of students sorted in chronological order of their next lesson date and time
 
     Use case ends.
 
