@@ -15,7 +15,29 @@
 
 ## **Acknowledgements**
 
-This project is based on the AddressBook-Level3 project created by the [SE-EDU initiative](https://se-education.org).
+This project is based on the AddressBook-Level3 project created by the [SE-EDU initiative](https://se-education.org/). We would like to gratefully acknowledge the following libraries and dependencies that have been used in the development of our project:<br>
+
+**Project Foundation**
+
+* **[AddressBook-Level3](https://se-education.org/addressbook-level3/)**: for providing the foundational structure and core functionalities upon which our project is built.
+
+**Software Dependencies**
+
+* **[JavaFX](https://openjfx.io/)**: for building the custom graphical user interface (GUI).
+
+* **[Jackson](https://github.com/FasterXML/jackson)**: for JSON serialisation and deserialisation.
+
+* **[JUnit 5](https://github.com/junit-team/junit5)**: for unit testing.
+
+* **[Flaticon](https://www.flaticon.com/)**: for sourcing icons and images used in the UI.
+
+* **[Gradle](https://gradle.org/)**: for automation build and packaging processes.
+
+**Documentation Dependencies**
+
+* **[MarkBind](https://markbind.org/)**: for generating developer and user documentation.
+
+* **[PlantUML](https://plantuml.com/)**: for creating UML diagrams to visualise software design and workflows.
 
 --------------------------------------------------------------------------------------------------------------------
 
