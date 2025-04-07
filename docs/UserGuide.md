@@ -497,21 +497,21 @@ Furthermore, certain edits can cause TutorRec to behave in unexpected ways (e.g.
 
 ## Glossary
 
-| Term                               | Definition                                                                                                                     |
-|------------------------------------|--------------------------------------------------------------------------------------------------------------------------------|
-| **Alphanumeric**                   | A combination of letters (A-Z, a-z) and numbers (0-9).                                                                         |
-| **CLI (Command Line Interface)**   | The text-based system where you type commands to tell the application what to do.                                              |
-| **Case-insensitive**               | The app doesn't care whether you use UPPERCASE or lowercase letters in commands (e.g. "Math" and "math" are treated the same). |
-| **Command box**                    | The text field at the bottom of the application where you type commands.                                                       |
-| **Command Prompt/Terminal**        | A program on your computer that lets you type commands directly to the operating system.                                       |
-| **Data file**                      | A special file on your computer that stores all your student information in a structured format.                               |
-| **Desktop application**            | A program that runs directly on your computer (not on a website).                                                              |
-| **Domain** (in email context)      | The part of an email address after the @ symbol (e.g. gmail.com, hotmail.com).                                                 |
-| **Extraneous parameters**          | Extra information added to a command that isn't needed and will be ignored.                                                    |
-| **GUI (Graphical User Interface)** | The visual elements of the application that you can see and interact with.                                                     |
-| **Hard disk**                      | Your computer's permanent storage where files are saved.                                                                       |
-| **Index**                          | The number shown beside each student in the list, used to identify which student to select with commands.                      |
-| **JAR file**                       | The file type of the TutorRec application that you download and run.                                                           |
-| **JSON file**                      | A special format for storing data that computers can easily read and write (stands for JavaScript Object Notation).            |
-| **Parameters**                     | The specific pieces of information you add to commands (like names, phone numbers, etc.).                                      |
-| **Preferences**                    | Settings that control how the application appears and behaves.                                                                 |
+| Term                               | Definition                                                                                                             |
+|------------------------------------|------------------------------------------------------------------------------------------------------------------------|
+| **Alphanumeric**                   | Regular letters and numbers (like A-Z, a-z, 0-9) without special symbols.                                             |
+| **CLI (Command Line Interface)**   | The area where you type written instructions for the application to follow.                                           |
+| **Case-insensitive**               | It doesn't matter if you use capital or small letters (e.g., "Math" and "math" are treated the same).                 |
+| **Command box**                    | The text field at the bottom of TutorRec where you type your instructions.                                            |
+| **Command Prompt/Terminal**        | The basic text program on your computer that lets you type instructions.                                              |
+| **Data file**                      | The file where TutorRec stores all your student information.                                                          |
+| **Desktop application**            | A program you install directly on your computer (not a website).                                                       |
+| **Domain** (in email context)      | The part after @ in an email address (like gmail.com or hotmail.com).                                                 |
+| **Extraneous parameters**          | Extra information you type that the app doesn't need and will ignore.                                                 |
+| **GUI (Graphical User Interface)** | The visual part of TutorRec that you see and click on (buttons, lists, etc.).                                        |
+| **Hard disk**                      | Your computer's storage space where files are saved.                                                                  |
+| **Index**                          | The number shown next to each student in the list, used to select them in commands.                                   |
+| **JAR file**                       | The type of file you download to run TutorRec on your computer.                                                       |
+| **JSON file**                      | A type of file that stores information in an organized way.                                                           |
+| **Parameters**                     | The specific details you add to commands (like names, phone numbers, etc.).                                           |
+| **Preferences**                    | Your personal settings for how TutorRec looks and behaves.                                                            |
