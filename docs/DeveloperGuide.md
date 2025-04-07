@@ -29,7 +29,7 @@ This project is based on the AddressBook-Level3 project created by the [SE-EDU i
 
 * **[JUnit 5](https://github.com/junit-team/junit5)**: for unit testing.
 
-* **[FLATICON](https://www.flaticon.com/)**: for sourcing icons and images used in the UI.
+* **[Flaticon](https://www.flaticon.com/)**: for sourcing icons and images used in the UI.
 
 * **[Gradle](https://gradle.org/)**: for automation build and packaging processes.
 
