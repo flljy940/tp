@@ -468,6 +468,10 @@ Furthermore, certain edits can cause TutorRec to behave in unexpected ways (e.g.
 
 ## FAQ
 
+**Q**: Why is some of the information in TutorRec displayed as "..." and how can I fix this?<br>
+**A**: This happens when the information is too long to fit in the available space. You can resize the application window by expanding the program edges to see the full information.
+
+
 **Q**: How do I transfer my data to another computer?<br>
 **A**: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous TutorRec home folder.
 
