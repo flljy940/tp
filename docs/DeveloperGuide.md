@@ -371,7 +371,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 (For all use cases below, the **System** is `TutorRec` and the **Actor** is the `user`, unless specified otherwise)
 
-**Use Case U1: Add a student to the contact list**
+**Use case U1: Add a student to the contact list**
 
 **MSS**
 1.  User requests to add student and their details.
@@ -382,9 +382,8 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 * 1a. The user supplies invalid input parameter(s).
   * 1a1. TutorRec shows an error message for the relevant parameters.
     Use case resumes at step 1.
-
     
-**Use Case U2: Delete a student from the contact list**
+**Use case U2: Delete a student from the contact list**
 
 **MSS**
 1.  User requests to list students.
@@ -400,7 +399,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     * 3a1. TutorRec shows an error message.
       Use case resumes at step 2.
 
-**Use Case U3: Edit a student's details in the contact list**
+**Use case U3: Edit a student's details in the contact list**
 
 **MSS**
 1.  User requests to list students.
@@ -419,7 +418,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
   * 3b1. TutorRec shows an error message for the relevant parameters.
     Use case resumes at step 2.
 
-**Use Case U4: Mark and unmark student payments**
+**Use case U4: Mark and unmark student payments**
 
 **MSS**
 1.  User requests to list students.
@@ -435,7 +434,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     * 3a1. TutorRec shows an error message.
       Use case resumes at step 2.
 
-**Use Case U5: Add next lesson date and time to a student**
+**Use case U5: Add next lesson date and time to a student**
 
 **MSS**
 1.  User requests to list students.
@@ -454,7 +453,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     * 3b1. TutorRec shows an error message.
       Use case resumes at step 2.
 
-**Use Case U6: Sort by next lesson date and time**
+**Use case U6: Sort by next lesson date and time**
 
 **MSS**
 1.  User requests to list students.
@@ -467,7 +466,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 * 2a. The student list is empty.
   Use case ends.
 
-**Use Case U7: Filter students with a lesson on a specified date**
+**Use case U7: Filter students with a lesson on a specified date**
 
 **MSS**
 1.  User requests to list students.
@@ -483,7 +482,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     * 3a1. TutorRec shows an error message.
       Use case resumes at step 2.
 
-**Use Case U8: Filter students who have paid for the previous lesson**
+**Use case U8: Filter students who have paid for the previous lesson**
 
 **MSS**
 1.  User requests to list students.
@@ -496,7 +495,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 * 2a. The student list is empty.
   Use case ends.
 
-**Use Case U9: Filter students who have not paid for the previous lesson**
+**Use case U9: Filter students who have not paid for the previous lesson**
 
 **MSS**
 1.  User requests to list students.
@@ -509,7 +508,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 * 2a. The student list is empty.
   Use case ends.
 
-**Use Case U10: Filter students are taking specific subject(s)**
+**Use case U10: Filter students are taking specific subject(s)**
 
 **MSS**
 1.  User requests to list students.
