@@ -665,7 +665,7 @@ testers are expected to do more *exploratory* testing.
 
 2. **Improving parameter input flexibility**<br>
     Currently, our input validation for names and addresses enforces strict formatting rules. We plan to enhance this by: 
-   * Allowing special characters (e.g., `/`, `.`, `-`, etc.) in names and addresses
+   * Allowing special characters (e.g. `/`, `.`, `-`, etc.) in names and addresses
    * Implementing intelligent duplicate detection that ignores whitespace differences (e.g. recognising 'Alex Yeoh' and 'Alex&nbsp;&nbsp;&nbsp;Yeoh' as duplicates).<br>
 
     These improvements will give tutors more flexibility when recording student names and addresses, as well as to prevent accidental duplicate entries.
