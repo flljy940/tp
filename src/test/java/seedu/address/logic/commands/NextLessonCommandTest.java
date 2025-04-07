@@ -68,6 +68,23 @@ public class NextLessonCommandTest {
     }
 
     @Test
+    public void execute_deleteNoExistingLessonUnfilteredList_success() {
+        Person secondPerson = model.getFilteredPersonList().get(INDEX_SECOND_PERSON.getZeroBased());
+        Person editedPerson = new PersonBuilder(secondPerson).withNextLesson("").build();
+
+        NextLessonCommand nextLessonCommand = new NextLessonCommand(
+                INDEX_SECOND_PERSON, new NextLesson(editedPerson.getNextLesson().getValue()));
+
+        String expectedMessage = String.format(
+                NextLessonCommand.MESSAGE_NO_LESSON_TO_REMOVE, Messages.format(editedPerson));
+
+        Model expectedModel = new ModelManager(new AddressBook(model.getAddressBook()), new UserPrefs());
+        expectedModel.setPerson(secondPerson, editedPerson);
+
+        assertCommandSuccess(nextLessonCommand, model, expectedMessage, expectedModel);
+    }
+
+    @Test
     public void execute_filteredList_success() {
         showPersonAtIndex(model, INDEX_FIRST_PERSON);
 

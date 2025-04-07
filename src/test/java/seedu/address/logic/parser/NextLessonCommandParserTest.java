@@ -60,6 +60,9 @@ public class NextLessonCommandParserTest {
 
         // no index
         assertParseFailure(parser, NextLessonCommand.COMMAND_WORD + " " + validLessonDateTime, expectedMessage);
+
+        // no field
+        assertParseFailure(parser, "1", expectedMessage);
     }
 
     @Test
