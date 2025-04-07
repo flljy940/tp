@@ -276,7 +276,7 @@ public class UniquePersonListTest {
         // Create persons with empty NextLesson
         Person editedAlice = new PersonBuilder().withName("Alice").withPhone("12345678").withNextLesson("").build();
         Person editedBob = new PersonBuilder().withName("Bob").withPhone("98765432")
-                .withNextLesson(LocalDate.of(2025, 4, 10), LocalTime.of(10, 0), LocalTime.of(12, 0)).build();
+                .withNextLesson(LocalDate.of(2025, 6, 10), LocalTime.of(10, 0), LocalTime.of(12, 0)).build();
 
         uniquePersonList.add(editedAlice);
         uniquePersonList.add(editedBob);

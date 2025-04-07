@@ -38,8 +38,8 @@ public class CommandTestUtil {
     public static final String VALID_SUBJECT_MATH = "math";
     public static final String VALID_SUBJECT_PHYSICS = "physics";
     public static final String VALID_SUBJECT_CHEMISTRY = "chemistry";
-    public static final String VALID_NEXTLESSON_AMY = "13/04/2025 0900-1100";
-    public static final String VALID_NEXTLESSON_BOB = "15/04/2025 1700-1900";
+    public static final String VALID_NEXTLESSON_AMY = "13/06/2025 0900-1100";
+    public static final String VALID_NEXTLESSON_BOB = "15/06/2025 1700-1900";
     public static final String VALID_PAYSTATUS_AMY = PayStatus.PAID;
     public static final String VALID_PAYSTATUS_BOB = PayStatus.NOT_PAID;
     public static final String VALID_PAY_STATUS_PAID = "paid";

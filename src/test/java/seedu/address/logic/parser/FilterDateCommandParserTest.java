@@ -35,13 +35,13 @@ public class FilterDateCommandParserTest {
     public void parse_validArgs_returnsFilterDateCommand() {
         FilterDateCommand expectedFilterDateCommand =
                 new FilterDateCommand(new NextLessonEqualsDatePredicate(
-                        LocalDate.parse("20/4/2025", DateTimeFormatter.ofPattern("d/M/yyyy"))
+                        LocalDate.parse("20/6/2025", DateTimeFormatter.ofPattern("d/M/yyyy"))
                 ));
 
-        assertParseSuccess(parser, "20/4/2025", expectedFilterDateCommand);
+        assertParseSuccess(parser, "20/6/2025", expectedFilterDateCommand);
 
         // trailing whitespaces
-        assertParseSuccess(parser, " \n 20/4/2025  \t", expectedFilterDateCommand);
+        assertParseSuccess(parser, " \n 20/6/2025  \t", expectedFilterDateCommand);
     }
 
     @Test

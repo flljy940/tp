@@ -30,7 +30,7 @@ public class TypicalPersons {
             .withAddress("123, Jurong West Ave 6, #08-111").withEmail("alice@example.com")
             .withPhone("94351253")
             .withPayStatus(PayStatus.PAID).withSubjects("math")
-            .withNextLesson(LocalDate.of(2025, 4, 30), LocalTime.of(14, 0), LocalTime.of(16, 0))
+            .withNextLesson(LocalDate.of(2025, 6, 30), LocalTime.of(14, 0), LocalTime.of(16, 0))
             .build();
     public static final Person BENSON = new PersonBuilder().withName("Benson Meier")
             .withAddress("311, Clementi Ave 2, #02-25")
@@ -38,7 +38,7 @@ public class TypicalPersons {
             .withSubjects("math", "chemistry").withNextLesson("").build();
     public static final Person CARL = new PersonBuilder().withName("Carl Kurz").withPhone("95352563")
             .withEmail("heinz@example.com").withAddress("wall street")
-            .withNextLesson(LocalDate.of(2025, 4, 30), LocalTime.of(17, 0), LocalTime.of(19, 0))
+            .withNextLesson(LocalDate.of(2025, 6, 30), LocalTime.of(17, 0), LocalTime.of(19, 0))
             .withPayStatus(PayStatus.PAID)
             .build();
     public static final Person DANIEL = new PersonBuilder().withName("Daniel Meier").withPhone("87652533")

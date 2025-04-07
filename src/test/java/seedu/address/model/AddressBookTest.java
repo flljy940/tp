@@ -131,15 +131,15 @@ public class AddressBookTest {
         AddressBook addressBookToSort = new AddressBook();
 
         Person editedAlice = new PersonBuilder().withName("Alice").withPhone("12345678")
-                .withNextLesson(LocalDate.of(2025, 4, 10), LocalTime.of(10, 0), LocalTime.of(12, 0))
+                .withNextLesson(LocalDate.of(2025, 6, 10), LocalTime.of(10, 0), LocalTime.of(12, 0))
                 .build();
 
         Person editedBob = new PersonBuilder().withName("Bob").withPhone("23456789")
-                .withNextLesson(LocalDate.of(2025, 4, 11), LocalTime.of(10, 0), LocalTime.of(12, 0))
+                .withNextLesson(LocalDate.of(2025, 6, 11), LocalTime.of(10, 0), LocalTime.of(12, 0))
                 .build();
 
         Person editedCharlie = new PersonBuilder().withName("Charlie").withPhone("34567891")
-                .withNextLesson(LocalDate.of(2025, 4, 11), LocalTime.of(13, 0), LocalTime.of(15, 0))
+                .withNextLesson(LocalDate.of(2025, 6, 11), LocalTime.of(13, 0), LocalTime.of(15, 0))
                 .build();
 
         Person editedDavid = new PersonBuilder().withName("David").withPhone("45678912")
@@ -160,7 +160,7 @@ public class AddressBookTest {
 
         // Add Ethan to have the earliest lesson to test sorting
         Person editedEthan = new PersonBuilder().withName("Ethan").withPhone("56789123")
-                .withNextLesson(LocalDate.of(2025, 4, 10), LocalTime.of(8, 0), LocalTime.of(10, 0))
+                .withNextLesson(LocalDate.of(2025, 6, 10), LocalTime.of(8, 0), LocalTime.of(10, 0))
                 .build();
 
         AddressBook expectedAddressBook = new AddressBook();

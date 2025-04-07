@@ -29,7 +29,7 @@ import seedu.address.testutil.PersonBuilder;
  */
 public class NextLessonCommandTest {
 
-    private static final String NEXTLESSON_STUB = "15/04/2025 1900-2100";
+    private static final String NEXTLESSON_STUB = "15/06/2025 1900-2100";
 
     private Model model = new ModelManager(getTypicalAddressBook(), new UserPrefs());
 

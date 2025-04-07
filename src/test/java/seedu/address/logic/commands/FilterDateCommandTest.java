@@ -36,8 +36,8 @@ public class FilterDateCommandTest {
 
     @Test
     public void equals() {
-        LocalDate firstDate = LocalDate.of(2025, 4, 20);
-        LocalDate secondDate = LocalDate.of(2025, 4, 25);
+        LocalDate firstDate = LocalDate.of(2025, 6, 20);
+        LocalDate secondDate = LocalDate.of(2025, 6, 25);
 
         NextLessonEqualsDatePredicate firstPredicate = new NextLessonEqualsDatePredicate(firstDate);
         NextLessonEqualsDatePredicate secondPredicate = new NextLessonEqualsDatePredicate(secondDate);
@@ -64,7 +64,7 @@ public class FilterDateCommandTest {
 
     @Test
     public void execute_validDate_success() {
-        String testDate = "30/4/2025";
+        String testDate = "30/6/2025";
         String expectedMessage = String.format(FilterDateCommand.MESSAGE_SUCCESS, 2, testDate);
 
         NextLessonEqualsDatePredicate predicate = preparePredicate(testDate);
